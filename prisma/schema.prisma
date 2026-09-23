@@ -33,12 +33,6 @@ enum CourseStatus {
   archived
 }
 
-enum CourseSource {
-  manual
-  google
-  teams
-}
-
 enum GradingSource {
   ta
   ai
@@ -104,7 +98,6 @@ model Course {
   name             String
   description      String          @default("")
   status           CourseStatus    @default(active)
-  source           CourseSource    @default(manual)
   coverColor       String
   icon             CourseIcon      @default(book)
   code             String?

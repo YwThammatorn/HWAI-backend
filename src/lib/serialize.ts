@@ -51,7 +51,6 @@ export function toCourse(c: Course) {
     name: c.name,
     description: c.description,
     status: c.status,
-    source: c.source,
     coverColor: c.coverColor,
     icon: c.icon,
     createdAt: c.createdAt.toISOString(),

@@ -10,7 +10,6 @@ const courseFields = z.object({
   name: z.string().trim().min(1),
   description: z.string(),
   status: z.enum(["active", "archived"]),
-  source: z.enum(["manual", "google", "teams"]),
   coverColor: z.string().min(1),
   icon: z.enum(["book", "chart", "flask", "code", "palette", "laptop", "graduation", "globe"]), // COURSE_ICON_KEYS in HWAI-frontend
   code: z.string().nullish(),
@@ -28,7 +27,6 @@ export const courseCreate = courseFields.extend({
   id: z.string().min(1).optional(),
   description: courseFields.shape.description.default(""),
   status: courseFields.shape.status.default("active"),
-  source: courseFields.shape.source.default("manual"),
   icon: courseFields.shape.icon.default("book"),
 });
 export const courseUpdate = courseFields.partial();

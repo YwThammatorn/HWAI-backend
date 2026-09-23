@@ -30,7 +30,6 @@ const responses = {
     name: z.string(),
     description: z.string(),
     status: z.enum(["active", "archived"]),
-    source: z.enum(["manual", "google", "teams"]),
     coverColor: z.string(),
     icon: z.enum(["book", "chart", "flask", "code", "palette", "laptop", "graduation", "globe"]),
     createdAt: z.iso.datetime(),
