@@ -1,0 +1,172 @@
+// HWAI Agent — data model for the admin screens (/admin/users, /admin/courses, /admin/curriculum).
+// Shapes mirror the frontend types in HWAI-frontend/src/lib/{curriculum,courses,managed-teachers,cohort-students}.ts.
+// IDs are plain strings (not the uuid type) because the frontend generates ids client-side for optimistic
+// updates and the mock data uses readable ids like "cv-ce-2569".
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Program {
+  CECS
+  CEI
+  CE
+}
+
+enum AccountStatus {
+  active
+  inactive
+}
+
+enum TeacherRole {
+  teacher
+  ta
+}
+
+enum CourseStatus {
+  active
+  archived
+}
+
+enum CourseSource {
+  manual
+  google
+  teams
+}
+
+enum GradingSource {
+  ta
+  ai
+  blind
+}
+
+enum PublishMode {
+  auto
+  manual
+}
+
+// HWAI-frontend/src/components/CourseIcon.tsx COURSE_ICON_KEYS
+enum CourseIcon {
+  book
+  chart
+  flask
+  code
+  palette
+  laptop
+  graduation
+  globe
+}
+
+// Frontend Term is 1 | 2 | "summer" — mapped in src/lib/serialize.ts.
+enum Term {
+  T1
+  T2
+  SUMMER
+}
+
+model CurriculumVersion {
+  id            String           @id @default(uuid())
+  program       Program
+  label         String
+  effectiveFrom Int // พ.ศ.
+  effectiveTo   Int? // null = still in use
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  templates     CourseTemplate[]
+  students      CohortStudent[]
+
+  @@map("curriculum_versions")
+}
+
+model CourseTemplate {
+  id                  String            @id @default(uuid())
+  curriculumVersionId String
+  curriculumVersion   CurriculumVersion @relation(fields: [curriculumVersionId], references: [id], onDelete: Cascade)
+  code                String
+  name                String
+  description         String?
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  courses             Course[]
+
+  @@index([curriculumVersionId])
+  @@map("course_templates")
+}
+
+// A Course is one *section* offering of a subject in a term (see HWAI-frontend/src/lib/courses.ts).
+model Course {
+  id               String          @id @default(uuid())
+  name             String
+  description      String          @default("")
+  status           CourseStatus    @default(active)
+  source           CourseSource    @default(manual)
+  coverColor       String
+  icon             CourseIcon      @default(book)
+  code             String?
+  courseTemplateId String?
+  courseTemplate   CourseTemplate? @relation(fields: [courseTemplateId], references: [id], onDelete: SetNull)
+  academicYear     Int?
+  term             Term?
+  sectionNumber    String?
+  gradingSource    GradingSource?
+  publishMode      PublishMode?
+  schedule         String?
+  room             String?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  teachers         TeacherCourse[]
+
+  @@index([courseTemplateId])
+  @@map("courses")
+}
+
+model ManagedTeacher {
+  id        String          @id @default(uuid())
+  title     String?
+  name      String
+  email     String          @unique
+  role      TeacherRole     @default(teacher)
+  status    AccountStatus   @default(active)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  courses   TeacherCourse[]
+
+  @@map("managed_teachers")
+}
+
+// ManagedTeacher.courseIds on the frontend.
+model TeacherCourse {
+  teacherId  String
+  courseId   String
+  teacher    ManagedTeacher @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  course     Course         @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  assignedAt DateTime       @default(now())
+
+  @@id([teacherId, courseId])
+  @@index([courseId])
+  @@map("teacher_courses")
+}
+
+model CohortStudent {
+  id                  String             @id @default(uuid())
+  studentId           String             @unique // institutional id e.g. "69070101"
+  title               String?
+  firstName           String
+  lastName            String
+  email               String
+  cohort              String // e.g. "CE69"
+  program             String
+  status              AccountStatus      @default(active)
+  curriculumVersionId String?
+  curriculumVersion   CurriculumVersion? @relation(fields: [curriculumVersionId], references: [id], onDelete: SetNull)
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+
+  @@index([cohort])
+  @@map("cohort_students")
+}

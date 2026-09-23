@@ -1,0 +1,47 @@
+[
+  {
+    "id": "t-mock-1",
+    "title": "ผศ.ดร.",
+    "name": "สมศักดิ์ เจริญสุข",
+    "email": "somsak.c@kmitl.ac.th",
+    "role": "teacher",
+    "status": "active",
+    "courseIds": ["c-mock-1", "c-mock-2"]
+  },
+  {
+    "id": "t-mock-2",
+    "title": "รศ.ดร.",
+    "name": "ประเสริฐ ดีเลิศ",
+    "email": "prasert.d@kmitl.ac.th",
+    "role": "teacher",
+    "status": "active",
+    "courseIds": ["c-mock-3"]
+  },
+  {
+    "id": "t-mock-3",
+    "title": "อ.",
+    "name": "กานต์ ศรีสุวรรณ",
+    "email": "karn.s@kmitl.ac.th",
+    "role": "teacher",
+    "status": "active",
+    "courseIds": ["c-mock-4", "c-mock-5"]
+  },
+  {
+    "id": "t-mock-4",
+    "title": "อ.",
+    "name": "นภาพร มานะ",
+    "email": "napaporn.m@kmitl.ac.th",
+    "role": "ta",
+    "status": "active",
+    "courseIds": ["c-mock-1"]
+  },
+  {
+    "id": "t-mock-5",
+    "title": "",
+    "name": "วิทยา สมบูรณ์",
+    "email": "witaya.s@kmitl.ac.th",
+    "role": "ta",
+    "status": "active",
+    "courseIds": []
+  }
+]
