@@ -22,26 +22,26 @@ export const teacherUpdate = teacherFields.partial().extend({
 });
 
 managedTeachersRouter.get("/managed-teachers", async (_req, res) => {
-  const rows = await prisma.managedTeacher.findMany({ include, orderBy: { createdAt: "asc" } });
+  const rows = await prisma.teacher.findMany({ include, orderBy: { createdAt: "asc" } });
   res.json(rows.map(toManagedTeacher));
 });
 
 managedTeachersRouter.post("/managed-teachers", async (req, res) => {
   const data = parse(teacherCreate, req.body);
-  const row = await prisma.managedTeacher.create({ data, include });
+  const row = await prisma.teacher.create({ data, include });
   res.status(201).json(toManagedTeacher(row));
 });
 
 // All-or-nothing: one duplicate email rejects the whole batch with 409.
 managedTeachersRouter.post("/managed-teachers/import", async (req, res) => {
   const items = parse(z.array(teacherCreate), req.body);
-  const rows = await prisma.$transaction(items.map((data) => prisma.managedTeacher.create({ data, include })));
+  const rows = await prisma.$transaction(items.map((data) => prisma.teacher.create({ data, include })));
   res.status(201).json(rows.map(toManagedTeacher));
 });
 
 managedTeachersRouter.patch("/managed-teachers/:id", async (req, res) => {
   const { courseIds, ...data } = parse(teacherUpdate, req.body);
-  const row = await prisma.managedTeacher.update({
+  const row = await prisma.teacher.update({
     where: { id: req.params.id },
     data: {
       ...data,
@@ -56,22 +56,22 @@ managedTeachersRouter.patch("/managed-teachers/:id", async (req, res) => {
 
 managedTeachersRouter.patch("/managed-teachers/:id/status", async (req, res) => {
   const body = parse(z.object({ status }), req.body);
-  await prisma.managedTeacher.update({ where: { id: req.params.id }, data: { status: body.status } });
+  await prisma.teacher.update({ where: { id: req.params.id }, data: { status: body.status } });
   res.status(204).end();
 });
 
-// Course assignments cascade-delete via the FK. Section roles / grading assignments still live in
+// Course assignments (course_teachers) cascade-delete via the FK. Section roles / grading assignments still live in
 // frontend localStorage and are cascaded there.
 managedTeachersRouter.delete("/managed-teachers/:id", async (req, res) => {
-  await prisma.managedTeacher.delete({ where: { id: req.params.id } });
+  await prisma.teacher.delete({ where: { id: req.params.id } });
   res.status(204).end();
 });
 
 // Idempotent — assigning twice is a no-op.
 managedTeachersRouter.post("/managed-teachers/:id/courses/:courseId", async (req, res) => {
   const { id: teacherId, courseId } = req.params;
-  await prisma.teacherCourse.upsert({
-    where: { teacherId_courseId: { teacherId, courseId } },
+  await prisma.courseTeacher.upsert({
+    where: { courseId_teacherId: { courseId, teacherId } },
     create: { teacherId, courseId },
     update: {},
   });
@@ -79,6 +79,6 @@ managedTeachersRouter.post("/managed-teachers/:id/courses/:courseId", async (req
 });
 
 managedTeachersRouter.delete("/managed-teachers/:id/courses/:courseId", async (req, res) => {
-  await prisma.teacherCourse.deleteMany({ where: { teacherId: req.params.id, courseId: req.params.courseId } });
+  await prisma.courseTeacher.deleteMany({ where: { teacherId: req.params.id, courseId: req.params.courseId } });
   res.status(204).end();
 });

@@ -1,5 +1,9 @@
 // HWAI Agent — data model for the admin screens (/admin/users, /admin/courses, /admin/curriculum).
-// Shapes mirror the frontend types in HWAI-frontend/src/lib/{curriculum,courses,managed-teachers,cohort-students}.ts.
+// Shapes mirror the frontend types in HWAI-frontend/src/lib/{curriculum,courses,managed-teachers,cohort-students}.ts;
+// the API keeps the frontend's names (ManagedTeacher → /api/managed-teachers, CohortStudent → /api/cohort-students),
+// the database uses plain ones (teachers, students).
+//
+// Naming: models/fields are camelCase in code and snake_case in PostgreSQL (@map / @@map), so SQL needs no quoting.
 // IDs are plain strings (not the uuid type) because the frontend generates ids client-side for optimistic
 // updates and the mock data uses readable ids like "cv-ce-2569".
 
@@ -16,32 +20,29 @@ enum Program {
   CECS
   CEI
   CE
+
+  @@map("program")
 }
 
 enum AccountStatus {
   active
   inactive
+
+  @@map("account_status")
 }
 
 enum TeacherRole {
   teacher
   ta
+
+  @@map("teacher_role")
 }
 
 enum CourseStatus {
   active
   archived
-}
 
-enum GradingSource {
-  ta
-  ai
-  blind
-}
-
-enum PublishMode {
-  auto
-  manual
+  @@map("course_status")
 }
 
 // HWAI-frontend/src/components/CourseIcon.tsx COURSE_ICON_KEYS
@@ -54,112 +55,116 @@ enum CourseIcon {
   laptop
   graduation
   globe
+
+  @@map("course_icon")
 }
 
-// Frontend Term is 1 | 2 | "summer" — mapped in src/lib/serialize.ts.
+// Frontend Term is 1 | 2 | 3 | "summer" — mapped in src/lib/serialize.ts. Stored as '1' / '2' / '3' / 'summer'.
 enum Term {
-  T1
-  T2
-  SUMMER
+  T1     @map("1")
+  T2     @map("2")
+  T3     @map("3")
+  SUMMER @map("summer")
+
+  @@map("term")
 }
 
 model CurriculumVersion {
   id            String           @id @default(uuid())
   program       Program
   label         String
-  effectiveFrom Int // พ.ศ.
-  effectiveTo   Int? // null = still in use
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
+  effectiveFrom Int              @map("effective_from") // พ.ศ.
+  effectiveTo   Int?             @map("effective_to") // null = still in use
+  createdAt     DateTime         @default(now()) @map("created_at")
+  updatedAt     DateTime         @updatedAt @map("updated_at")
   templates     CourseTemplate[]
-  students      CohortStudent[]
+  students      Student[]
 
   @@map("curriculum_versions")
 }
 
+// รายวิชาในหลักสูตร — the abstract subject a curriculum offers.
 model CourseTemplate {
   id                  String            @id @default(uuid())
-  curriculumVersionId String
+  curriculumVersionId String            @map("curriculum_version_id")
   curriculumVersion   CurriculumVersion @relation(fields: [curriculumVersionId], references: [id], onDelete: Cascade)
   code                String
   name                String
   description         String?
-  createdAt           DateTime          @default(now())
-  updatedAt           DateTime          @updatedAt
+  createdAt           DateTime          @default(now()) @map("created_at")
+  updatedAt           DateTime          @updatedAt @map("updated_at")
   courses             Course[]
 
   @@index([curriculumVersionId])
   @@map("course_templates")
 }
 
-// A Course is one *section* offering of a subject in a term (see HWAI-frontend/src/lib/courses.ts).
+// รายวิชาที่เปิดสอน — one *section* offering of a subject in a term (see HWAI-frontend/src/lib/courses.ts).
 model Course {
   id               String          @id @default(uuid())
   name             String
   description      String          @default("")
   status           CourseStatus    @default(active)
-  coverColor       String
+  coverColor       String          @map("cover_color")
   icon             CourseIcon      @default(book)
   code             String?
-  courseTemplateId String?
+  courseTemplateId String?         @map("course_template_id")
   courseTemplate   CourseTemplate? @relation(fields: [courseTemplateId], references: [id], onDelete: SetNull)
-  academicYear     Int?
+  academicYear     Int?            @map("academic_year")
   term             Term?
-  sectionNumber    String?
-  gradingSource    GradingSource?
-  publishMode      PublishMode?
+  sectionNumber    String?         @map("section_number")
   schedule         String?
   room             String?
-  createdAt        DateTime        @default(now())
-  updatedAt        DateTime        @updatedAt
-  teachers         TeacherCourse[]
+  createdAt        DateTime        @default(now()) @map("created_at")
+  updatedAt        DateTime        @updatedAt @map("updated_at")
+  teachers         CourseTeacher[]
 
   @@index([courseTemplateId])
   @@map("courses")
 }
 
-model ManagedTeacher {
+// อาจารย์ / TA (ManagedTeacher on the frontend).
+model Teacher {
   id        String          @id @default(uuid())
   title     String?
   name      String
   email     String          @unique
   role      TeacherRole     @default(teacher)
   status    AccountStatus   @default(active)
-  createdAt DateTime        @default(now())
-  updatedAt DateTime        @updatedAt
-  courses   TeacherCourse[]
+  createdAt DateTime        @default(now()) @map("created_at")
+  updatedAt DateTime        @updatedAt @map("updated_at")
+  courses   CourseTeacher[]
 
-  @@map("managed_teachers")
+  @@map("teachers")
 }
 
-// ManagedTeacher.courseIds on the frontend.
-model TeacherCourse {
-  teacherId  String
-  courseId   String
-  teacher    ManagedTeacher @relation(fields: [teacherId], references: [id], onDelete: Cascade)
-  course     Course         @relation(fields: [courseId], references: [id], onDelete: Cascade)
-  assignedAt DateTime       @default(now())
+// Which teachers are assigned to which course section (ManagedTeacher.courseIds on the frontend).
+model CourseTeacher {
+  courseId   String   @map("course_id")
+  teacherId  String   @map("teacher_id")
+  course     Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  teacher    Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  assignedAt DateTime @default(now()) @map("assigned_at")
 
-  @@id([teacherId, courseId])
-  @@index([courseId])
-  @@map("teacher_courses")
+  @@id([courseId, teacherId])
+  @@index([teacherId])
+  @@map("course_teachers")
 }
 
-model CohortStudent {
+// นักศึกษา — account-level record (CohortStudent on the frontend).
+model Student {
   id                  String             @id @default(uuid())
-  studentId           String             @unique // institutional id e.g. "69070101"
+  studentId           String             @unique @map("student_id") // institutional id e.g. "69070101"
   title               String?
-  firstName           String
-  lastName            String
+  firstName           String             @map("first_name")
+  lastName            String             @map("last_name")
   email               String
-  cohort              String // e.g. "CE69"
   program             String
   status              AccountStatus      @default(active)
-  curriculumVersionId String?
+  curriculumVersionId String?            @map("curriculum_version_id")
   curriculumVersion   CurriculumVersion? @relation(fields: [curriculumVersionId], references: [id], onDelete: SetNull)
-  createdAt           DateTime           @default(now())
-  updatedAt           DateTime           @updatedAt
+  createdAt           DateTime           @default(now()) @map("created_at")
+  updatedAt           DateTime           @updatedAt @map("updated_at")
 
-  @@index([cohort])
-  @@map("cohort_students")
+  @@map("students")
 }

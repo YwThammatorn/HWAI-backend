@@ -12,7 +12,6 @@ const studentFields = z.object({
   firstName: z.string().trim().min(1),
   lastName: z.string().trim().min(1),
   email: z.string().trim().min(1),
-  cohort: z.string().trim().min(1),
   program: z.string().trim().min(1),
   status: z.enum(["active", "inactive"]).optional(),
   curriculumVersionId: z.string().nullish(),
@@ -20,12 +19,8 @@ const studentFields = z.object({
 export const studentCreate = studentFields.extend({ id: z.string().min(1).optional() });
 export const studentUpdate = studentFields.partial();
 
-cohortStudentsRouter.get("/cohort-students", async (req, res) => {
-  const cohort = typeof req.query.cohort === "string" ? req.query.cohort : undefined;
-  const rows = await prisma.cohortStudent.findMany({
-    where: cohort ? { cohort } : undefined,
-    orderBy: [{ cohort: "asc" }, { studentId: "asc" }],
-  });
+cohortStudentsRouter.get("/cohort-students", async (_req, res) => {
+  const rows = await prisma.student.findMany({ orderBy: { studentId: "asc" } });
   res.json(rows.map(toCohortStudent));
 });
 
@@ -33,17 +28,17 @@ cohortStudentsRouter.get("/cohort-students", async (req, res) => {
 // studentId rejects the whole batch with 409.
 cohortStudentsRouter.post("/cohort-students", async (req, res) => {
   const items = parse(z.array(studentCreate), req.body);
-  const rows = await prisma.$transaction(items.map((data) => prisma.cohortStudent.create({ data })));
+  const rows = await prisma.$transaction(items.map((data) => prisma.student.create({ data })));
   res.status(201).json(rows.map(toCohortStudent));
 });
 
 cohortStudentsRouter.patch("/cohort-students/:id", async (req, res) => {
   const data = parse(studentUpdate, req.body);
-  const row = await prisma.cohortStudent.update({ where: { id: req.params.id }, data });
+  const row = await prisma.student.update({ where: { id: req.params.id }, data });
   res.json(toCohortStudent(row));
 });
 
 cohortStudentsRouter.delete("/cohort-students/:id", async (req, res) => {
-  await prisma.cohortStudent.delete({ where: { id: req.params.id } });
+  await prisma.student.delete({ where: { id: req.params.id } });
   res.status(204).end();
 });

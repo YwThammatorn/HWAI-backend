@@ -6,7 +6,6 @@
     "firstName": "สมชาย",
     "lastName": "ใจดี",
     "email": "69070101@kmitl.ac.th",
-    "cohort": "CE69",
     "program": "CE",
     "status": "active"
   },
@@ -17,7 +16,6 @@
     "firstName": "สุดา",
     "lastName": "วงษ์สา",
     "email": "69070102@kmitl.ac.th",
-    "cohort": "CE69",
     "program": "CECS",
     "status": "active"
   },
@@ -28,7 +26,6 @@
     "firstName": "อนุชา",
     "lastName": "ปานเพชร",
     "email": "69070103@kmitl.ac.th",
-    "cohort": "CE69",
     "program": "CEI",
     "status": "active"
   },
@@ -39,7 +36,6 @@
     "firstName": "ภูริช",
     "lastName": "วงศ์สวัสดิ์",
     "email": "68020101@kmitl.ac.th",
-    "cohort": "CE68",
     "program": "CE",
     "status": "active"
   },
@@ -50,7 +46,6 @@
     "firstName": "ณัฐวุฒิ",
     "lastName": "ศรีสุข",
     "email": "67010101@kmitl.ac.th",
-    "cohort": "CE67",
     "program": "CE",
     "status": "inactive"
   },
@@ -61,7 +56,6 @@
     "firstName": "กมล",
     "lastName": "พูนทรัพย์",
     "email": "69070104@kmitl.ac.th",
-    "cohort": "CE69",
     "program": "CE",
     "status": "active"
   },
@@ -72,7 +66,6 @@
     "firstName": "ปรียา",
     "lastName": "แสงทอง",
     "email": "69070105@kmitl.ac.th",
-    "cohort": "CE69",
     "program": "CECS",
     "status": "active"
   },
@@ -83,7 +76,6 @@
     "firstName": "ธีรพงษ์",
     "lastName": "มั่นคง",
     "email": "69070106@kmitl.ac.th",
-    "cohort": "CE69",
     "program": "CEI",
     "status": "active"
   },
@@ -94,7 +86,6 @@
     "firstName": "วรรณา",
     "lastName": "ชูเกียรติ",
     "email": "69070107@kmitl.ac.th",
-    "cohort": "CE69",
     "program": "CE",
     "status": "active"
   },
@@ -105,7 +96,6 @@
     "firstName": "สิทธิชัย",
     "lastName": "โพธิ์งาม",
     "email": "69070108@kmitl.ac.th",
-    "cohort": "CE69",
     "program": "CE",
     "status": "active"
   },
@@ -116,7 +106,6 @@
     "firstName": "นันทนา",
     "lastName": "ทองดี",
     "email": "68020102@kmitl.ac.th",
-    "cohort": "CE68",
     "program": "CE",
     "status": "active"
   },
@@ -127,7 +116,6 @@
     "firstName": "อดิศร",
     "lastName": "บุญเรือง",
     "email": "68020103@kmitl.ac.th",
-    "cohort": "CE68",
     "program": "CECS",
     "status": "active"
   },
@@ -138,7 +126,6 @@
     "firstName": "มาลี",
     "lastName": "รุ่งเรือง",
     "email": "68020104@kmitl.ac.th",
-    "cohort": "CE68",
     "program": "CEI",
     "status": "active"
   }

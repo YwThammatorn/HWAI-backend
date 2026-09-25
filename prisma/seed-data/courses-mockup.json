@@ -13,8 +13,6 @@
     "academicYear": 2569,
     "term": 1,
     "sectionNumber": "1",
-    "gradingSource": "ta",
-    "publishMode": "manual",
     "schedule": "จันทร์ 9:00-12:00",
     "room": "811"
   },
@@ -32,8 +30,6 @@
     "academicYear": 2569,
     "term": 1,
     "sectionNumber": "1",
-    "gradingSource": "ai",
-    "publishMode": "auto",
     "schedule": "อังคาร 13:00-16:00",
     "room": "810"
   },
@@ -51,8 +47,6 @@
     "academicYear": 2569,
     "term": 2,
     "sectionNumber": "1",
-    "gradingSource": "ta",
-    "publishMode": "manual",
     "schedule": "พุธ 9:00-12:00",
     "room": "502"
   },
@@ -70,8 +64,6 @@
     "academicYear": 2569,
     "term": 1,
     "sectionNumber": "1",
-    "gradingSource": "blind",
-    "publishMode": "manual",
     "schedule": "พฤหัสบดี 13:00-15:00",
     "room": "706"
   },
@@ -88,9 +80,7 @@
     "courseTemplateId": "ct-26",
     "academicYear": 2569,
     "term": 2,
-    "sectionNumber": "1",
-    "gradingSource": "ta",
-    "publishMode": "auto"
+    "sectionNumber": "1"
   },
   {
     "id": "c-mock-6",
@@ -105,8 +95,6 @@
     "courseTemplateId": "ct-17",
     "academicYear": 2568,
     "term": 1,
-    "sectionNumber": "1",
-    "gradingSource": "ta",
-    "publishMode": "manual"
+    "sectionNumber": "1"
   }
 ]

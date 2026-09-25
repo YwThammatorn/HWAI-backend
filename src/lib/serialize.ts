@@ -1,21 +1,22 @@
 // Converts DB rows into the exact JSON shapes the frontend types expect
 // (HWAI-frontend/src/lib/*.ts): optional fields are omitted rather than null,
-// dates are ISO strings, and Term is mapped back to 1 | 2 | "summer".
+// dates are ISO strings, and Term is mapped back to 1 | 2 | 3 | "summer".
+// Function names follow the API/frontend shapes (ManagedTeacher, CohortStudent), not the table names.
 import type {
-  CohortStudent,
   Course,
   CourseTemplate,
   CurriculumVersion,
-  ManagedTeacher,
+  Student,
+  Teacher,
   Term,
 } from "../generated/prisma/client.js";
 
-export type ApiTerm = 1 | 2 | "summer";
+export type ApiTerm = 1 | 2 | 3 | "summer";
 
-const TERM_TO_API: Record<Term, ApiTerm> = { T1: 1, T2: 2, SUMMER: "summer" };
+const TERM_TO_API: Record<Term, ApiTerm> = { T1: 1, T2: 2, T3: 3, SUMMER: "summer" };
 
 export function termFromApi(term: ApiTerm): Term {
-  return term === 1 ? "T1" : term === 2 ? "T2" : "SUMMER";
+  return term === 1 ? "T1" : term === 2 ? "T2" : term === 3 ? "T3" : "SUMMER";
 }
 
 /** Drop keys whose value is null so optional fields come out as `undefined` on the client. */
@@ -60,14 +61,12 @@ export function toCourse(c: Course) {
     academicYear: c.academicYear,
     term: c.term ? TERM_TO_API[c.term] : null,
     sectionNumber: c.sectionNumber,
-    gradingSource: c.gradingSource,
-    publishMode: c.publishMode,
     schedule: c.schedule,
     room: c.room,
   });
 }
 
-export function toManagedTeacher(t: ManagedTeacher & { courses: { courseId: string }[] }) {
+export function toManagedTeacher(t: Teacher & { courses: { courseId: string }[] }) {
   return compact({
     id: t.id,
     title: t.title,
@@ -79,7 +78,7 @@ export function toManagedTeacher(t: ManagedTeacher & { courses: { courseId: stri
   });
 }
 
-export function toCohortStudent(s: CohortStudent) {
+export function toCohortStudent(s: Student) {
   return compact({
     id: s.id,
     studentId: s.studentId,
@@ -87,7 +86,6 @@ export function toCohortStudent(s: CohortStudent) {
     firstName: s.firstName,
     lastName: s.lastName,
     email: s.email,
-    cohort: s.cohort,
     program: s.program,
     status: s.status,
     curriculumVersionId: s.curriculumVersionId,

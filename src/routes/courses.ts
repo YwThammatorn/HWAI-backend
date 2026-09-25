@@ -15,10 +15,8 @@ const courseFields = z.object({
   code: z.string().nullish(),
   courseTemplateId: z.string().nullish(),
   academicYear: z.number().int().nullish(),
-  term: z.union([z.literal(1), z.literal(2), z.literal("summer")]).nullish(),
+  term: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal("summer")]).nullish(),
   sectionNumber: z.string().nullish(),
-  gradingSource: z.enum(["ta", "ai", "blind"]).nullish(),
-  publishMode: z.enum(["auto", "manual"]).nullish(),
   schedule: z.string().nullish(),
   room: z.string().nullish(),
 });
@@ -31,7 +29,7 @@ export const courseCreate = courseFields.extend({
 });
 export const courseUpdate = courseFields.partial();
 
-function mapTerm<T extends { term?: 1 | 2 | "summer" | null }>(data: T) {
+function mapTerm<T extends { term?: 1 | 2 | 3 | "summer" | null }>(data: T) {
   const { term, ...rest } = data;
   if (term === undefined) return rest;
   return { ...rest, term: term === null ? null : termFromApi(term) };
@@ -66,7 +64,7 @@ coursesRouter.delete("/courses/:id", async (req, res) => {
 });
 
 coursesRouter.get("/courses/:id/teachers", async (req, res) => {
-  const rows = await prisma.managedTeacher.findMany({
+  const rows = await prisma.teacher.findMany({
     where: { courses: { some: { courseId: req.params.id } } },
     include: { courses: { select: { courseId: true } } },
     orderBy: { createdAt: "asc" },

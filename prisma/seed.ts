@@ -15,13 +15,13 @@ type Curriculum = {
   courseTemplates: Prisma.CourseTemplateCreateManyInput[];
 };
 type SeedCourse = Omit<Prisma.CourseCreateManyInput, "term"> & { term?: ApiTerm };
-type SeedTeacher = Prisma.ManagedTeacherCreateManyInput & { courseIds: string[] };
+type SeedTeacher = Prisma.TeacherCreateManyInput & { courseIds: string[] };
 
 async function main() {
   const curriculum = load<Curriculum>("curriculum-mockup.json");
   const courses = load<SeedCourse[]>("courses-mockup.json");
   const teachers = load<SeedTeacher[]>("teachers-mockup.json");
-  const students = load<Prisma.CohortStudentCreateManyInput[]>("cohort-students-mockup.json");
+  const students = load<Prisma.StudentCreateManyInput[]>("students-mockup.json");
 
   for (const v of curriculum.curriculumVersions) {
     await prisma.curriculumVersion.upsert({ where: { id: v.id }, create: v, update: v });
@@ -35,19 +35,19 @@ async function main() {
   }
   for (const { courseIds, ...t } of teachers) {
     const courses = { deleteMany: {}, create: courseIds.map((courseId) => ({ courseId })) };
-    await prisma.managedTeacher.upsert({
+    await prisma.teacher.upsert({
       where: { id: t.id },
       create: { ...t, courses: { create: courses.create } },
       update: { ...t, courses },
     });
   }
   for (const s of students) {
-    await prisma.cohortStudent.upsert({ where: { id: s.id }, create: s, update: s });
+    await prisma.student.upsert({ where: { id: s.id }, create: s, update: s });
   }
 
   console.log(
     `Seeded ${curriculum.curriculumVersions.length} curriculum versions, ${curriculum.courseTemplates.length} course templates, ` +
-      `${courses.length} courses, ${teachers.length} teachers, ${students.length} cohort students.`,
+      `${courses.length} courses, ${teachers.length} teachers, ${students.length} students.`,
   );
 }
 

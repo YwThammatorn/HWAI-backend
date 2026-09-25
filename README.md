@@ -79,7 +79,7 @@ Response shape ตรงกับ type ใน `HWAI-frontend/src/lib/*.ts` (fiel
 | DELETE | `/managed-teachers/:id` | | 204 |
 | POST | `/managed-teachers/:id/courses/:courseId` | — (เรียกซ้ำได้) | 204 |
 | DELETE | `/managed-teachers/:id/courses/:courseId` | | 204 |
-| GET | `/cohort-students?cohort=CE69` | `cohort` optional | `CohortStudent[]` |
+| GET | `/cohort-students` | | `CohortStudent[]` |
 | POST | `/cohort-students` | array ของ `CohortStudent` (ซ้ำตัวเดียว = reject ทั้งชุด) | `CohortStudent[]` |
 | PATCH | `/cohort-students/:id` | partial | `CohortStudent` |
 | DELETE | `/cohort-students/:id` | | 204 |
@@ -88,7 +88,7 @@ Response shape ตรงกับ type ใน `HWAI-frontend/src/lib/*.ts` (fiel
 
 ```
 prisma/
-  schema.prisma        data model (CurriculumVersion, CourseTemplate, Course, ManagedTeacher, TeacherCourse, CohortStudent)
+  schema.prisma        data model (ดูตารางด้านล่าง)
   migrations/
   seed.ts, seed-data/  ข้อมูลตัวอย่าง
 src/
@@ -97,6 +97,22 @@ src/
   lib/                 prisma client, error handling, serializers (DB row → frontend shape)
   routes/              หนึ่งไฟล์ต่อ domain
 ```
+
+## ตารางในฐานข้อมูล
+
+ชื่อตาราง/คอลัมน์/enum ใน PostgreSQL เป็น snake_case ทั้งหมด (ในโค้ด Prisma เป็น camelCase แล้ว map ด้วย `@map`) —
+ชื่อ path ของ API ยังตามชื่อฝั่ง frontend เพื่อไม่ให้ contract เปลี่ยน
+
+| ตาราง | Prisma model | API | คืออะไร |
+|---|---|---|---|
+| `curriculum_versions` | `CurriculumVersion` | `/curriculum-versions` | หลักสูตร |
+| `course_templates` | `CourseTemplate` | `/course-templates` | รายวิชาในหลักสูตร |
+| `courses` | `Course` | `/courses` | รายวิชาที่เปิดสอน (section) |
+| `teachers` | `Teacher` | `/managed-teachers` | อาจารย์ / TA |
+| `course_teachers` | `CourseTeacher` | `/managed-teachers/:id/courses/:courseId` | อาจารย์ที่ assign ในแต่ละรายวิชา |
+| `students` | `Student` | `/cohort-students` | นักศึกษา |
+
+`courses.term` เก็บเป็น `'1'` / `'2'` / `'3'` / `'summer'`
 
 ## ยังไม่ได้ทำ
 

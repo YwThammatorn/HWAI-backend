@@ -37,10 +37,8 @@ const responses = {
     code: opt(z.string()),
     courseTemplateId: opt(z.string()),
     academicYear: opt(z.number().int()),
-    term: opt(z.union([z.literal(1), z.literal(2), z.literal("summer")])),
+    term: opt(z.union([z.literal(1), z.literal(2), z.literal(3), z.literal("summer")])),
     sectionNumber: opt(z.string()),
-    gradingSource: opt(z.enum(["ta", "ai", "blind"])),
-    publishMode: opt(z.enum(["auto", "manual"])),
     schedule: opt(z.string()),
     room: opt(z.string()),
   }),
@@ -60,7 +58,6 @@ const responses = {
     firstName: z.string(),
     lastName: z.string(),
     email: z.string(),
-    cohort: z.string(),
     program: z.string(),
     status: z.enum(["active", "inactive"]),
     curriculumVersionId: opt(z.string()),
@@ -110,7 +107,7 @@ const examples = {
   ],
   teacherUpdate: { title: null, courseIds: ["c-mock-1"] },
   studentCreate: [
-    { studentId: "69070999", title: "นาย", firstName: "ทดลอง", lastName: "ระบบ", email: "69070999@kmitl.ac.th", cohort: "CE69", program: "CE" },
+    { studentId: "69070999", title: "นาย", firstName: "ทดลอง", lastName: "ระบบ", email: "69070999@kmitl.ac.th", program: "CE" },
   ],
   studentUpdate: { status: "inactive" },
 };
@@ -228,7 +225,6 @@ export const openapiSpec = {
     "/cohort-students": {
       get: op("Students", {
         summary: "นักศึกษาทั้งหมด",
-        query: [{ name: "cohort", in: "query", required: false, schema: { type: "string" }, description: "กรองตามรุ่น เช่น CE69" }],
         res: ok({ type: "array", items: ref("CohortStudent") }),
       }),
       post: op("Students", { summary: "เพิ่มนักศึกษา (ส่งเป็น array, ซ้ำคนเดียว = reject ทั้งชุด)", body: body({ type: "array", items: json(studentCreate) }, examples.studentCreate), res: ok({ type: "array", items: ref("CohortStudent") }, "201"), errors: { ...V400, "409": "รหัสนักศึกษาซ้ำ" } }),
