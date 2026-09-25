@@ -6,7 +6,13 @@
     "email": "somsak.c@kmitl.ac.th",
     "role": "teacher",
     "status": "active",
-    "courseIds": ["c-mock-1", "c-mock-2"]
+    "courseIds": [
+      "c-mock-1",
+      "c-mock-2",
+      "c-mock-10",
+      "c-mock-17",
+      "c-mock-18"
+    ]
   },
   {
     "id": "t-mock-2",
@@ -15,7 +21,12 @@
     "email": "prasert.d@kmitl.ac.th",
     "role": "teacher",
     "status": "active",
-    "courseIds": ["c-mock-3"]
+    "courseIds": [
+      "c-mock-3",
+      "c-mock-7",
+      "c-mock-11",
+      "c-mock-19"
+    ]
   },
   {
     "id": "t-mock-3",
@@ -24,7 +35,15 @@
     "email": "karn.s@kmitl.ac.th",
     "role": "teacher",
     "status": "active",
-    "courseIds": ["c-mock-4", "c-mock-5"]
+    "courseIds": [
+      "c-mock-4",
+      "c-mock-5",
+      "c-mock-12",
+      "c-mock-26",
+      "c-mock-29",
+      "c-mock-32",
+      "c-mock-34"
+    ]
   },
   {
     "id": "t-mock-4",
@@ -33,7 +52,10 @@
     "email": "napaporn.m@kmitl.ac.th",
     "role": "ta",
     "status": "active",
-    "courseIds": ["c-mock-1"]
+    "courseIds": [
+      "c-mock-1",
+      "c-mock-12"
+    ]
   },
   {
     "id": "t-mock-5",
@@ -43,5 +65,50 @@
     "role": "ta",
     "status": "active",
     "courseIds": []
+  },
+  {
+    "id": "t-mock-6",
+    "title": "ผศ.ดร.",
+    "name": "วรรณา ใจดี",
+    "email": "wanna.j@kmitl.ac.th",
+    "role": "teacher",
+    "status": "active",
+    "courseIds": [
+      "c-mock-9",
+      "c-mock-21",
+      "c-mock-22",
+      "c-mock-30",
+      "c-mock-31",
+      "c-mock-35",
+      "c-mock-36"
+    ]
+  },
+  {
+    "id": "t-mock-7",
+    "title": "รศ.",
+    "name": "ธนากร พงษ์ไทย",
+    "email": "thanakorn.p@kmitl.ac.th",
+    "role": "teacher",
+    "status": "active",
+    "courseIds": [
+      "c-mock-13",
+      "c-mock-14",
+      "c-mock-23",
+      "c-mock-27"
+    ]
+  },
+  {
+    "id": "t-mock-8",
+    "title": "อ.ดร.",
+    "name": "ปิยะ รักเรียน",
+    "email": "piya.r@kmitl.ac.th",
+    "role": "teacher",
+    "status": "active",
+    "courseIds": [
+      "c-mock-16",
+      "c-mock-20",
+      "c-mock-24",
+      "c-mock-25"
+    ]
   }
 ]
