@@ -5,11 +5,24 @@ import { courseCreate, courseUpdate } from "./routes/courses.js";
 import { templateCreate, templateUpdate, versionCreate, versionUpdate } from "./routes/curriculum.js";
 import { teacherCreate, teacherUpdate } from "./routes/managed-teachers.js";
 import { studentBulkUpdate, studentCreate, studentUpdate } from "./routes/cohort-students.js";
+import { enrollmentCreate, enrollmentUpdate } from "./routes/enrollments.js";
+import { categoryCreate, categoryUpdate } from "./routes/grading-categories.js";
+import {
+  assignmentCreate,
+  assignmentUpdate,
+  rubricCreate,
+  rubricUpdate,
+  submissionCreate,
+  submissionUpdate,
+} from "./routes/assignments.js";
+import { groupCreate, groupUpdate } from "./routes/student-groups.js";
+import { MAX_FILE_BYTES } from "./routes/files.js";
 
 const json = (schema: z.ZodType) => z.toJSONSchema(schema, { io: "input", unrepresentable: "any" });
 
 // Response shapes (see src/lib/serialize.ts). Optional fields are omitted rather than null.
 const opt = <T extends z.ZodType>(s: T) => s.optional();
+const timestamps = { createdAt: z.iso.datetime(), updatedAt: z.iso.datetime() };
 const responses = {
   CurriculumVersion: z.object({
     id: z.string(),
@@ -62,6 +75,30 @@ const responses = {
     status: z.enum(["active", "inactive"]),
     curriculumVersionId: opt(z.string()),
   }),
+  // ── Course content (see src/lib/content.ts) ──
+  Enrollment: z.object({
+    id: z.string(),
+    courseId: z.string(),
+    studentId: z.string(),
+    firstName: z.string(),
+    lastName: z.string(),
+    email: z.string(),
+    sequenceNumber: opt(z.number().int()),
+    enrollmentStatus: opt(z.enum(["enrolled", "withdrawn", "added-midterm"])),
+  }),
+  GradingCategory: z.object({ id: z.string(), courseId: z.string(), name: z.string(), weight: z.number(), ...timestamps }),
+  Assignment: assignmentUpdate.extend({ id: z.string(), courseId: z.string(), ...timestamps }),
+  Rubric: rubricUpdate.required().extend({ id: z.string(), assignmentId: z.string(), ...timestamps }),
+  Submission: submissionCreate.omit({ id: true }).extend({ id: z.string(), assignmentId: z.string(), updatedAt: z.iso.datetime() }),
+  StudentGroup: z.object({
+    id: z.string(),
+    assignmentId: z.string(),
+    courseId: z.string(),
+    name: z.string(),
+    memberStudentIds: z.array(z.string()),
+    ...timestamps,
+  }),
+  StoredFile: z.object({ id: z.string(), name: z.string(), mimeType: z.string(), size: z.number().int() }),
 };
 
 type Model = keyof typeof responses;
@@ -111,6 +148,38 @@ const examples = {
   ],
   studentUpdate: { status: "inactive" },
   studentBulkUpdate: { ids: ["cs-mock-1", "cs-mock-2"], data: { status: "inactive" } },
+  enrollmentCreate: [{ studentId: "69070104", firstName: "ทดลอง", lastName: "ลงทะเบียน", email: "69070104@kmitl.ac.th" }],
+  enrollmentUpdate: { enrollmentStatus: "withdrawn" },
+  categoryCreate: { name: "งานกลุ่ม", weight: 10 },
+  categoryUpdate: { weight: 30 },
+  assignmentCreate: {
+    name: "Lab ทดลองจาก Swagger",
+    description: "เขียนโปรแกรมวนซ้ำ 3 ข้อ",
+    dueDate: "2026-10-20",
+    maxPoints: 100,
+    categoryId: "gcat-seed-c1-1",
+    fileTypes: ["pdf"],
+    submissionType: "individual",
+  },
+  assignmentUpdate: { gradingFinalized: true },
+  rubricCreate: {
+    name: "เกณฑ์ทดลอง",
+    criteria: [{
+      id: "c1", name: "ความถูกต้อง", description: "", maxPoints: 100, weight: 100,
+      levels: [{ label: "ดี", description: "" }, { label: "ต้องปรับปรุง", description: "" }],
+    }],
+  },
+  rubricUpdate: { name: "เกณฑ์ทดลอง (แก้ชื่อ)" },
+  submissionCreate: {
+    studentId: "69070102",
+    studentName: "สุดา วงษ์สา",
+    email: "69070102@kmitl.ac.th",
+    submittedAt: "2026-10-01T10:00:00.000Z",
+    attachments: [{ id: "att-1", kind: "link", name: "งานของฉัน", source: "url", ref: "https://example.com/work" }],
+  },
+  submissionUpdate: { status: "graded", instructorScore: 88, instructorComment: "ดีมาก" },
+  groupCreate: { name: "ทีม A", memberStudentIds: ["69070101", "69070102"] },
+  groupUpdate: { memberStudentIds: ["69070101"] },
 };
 const pathParam = (name: string, description?: string) => ({
   name,
@@ -143,6 +212,8 @@ function op(tag: string, o: Op) {
 }
 
 const id = pathParam("id");
+const courseId = pathParam("courseId");
+const list = (m: Model) => ({ type: "array", items: ref(m) });
 const V400 = { "400": "Validation error" };
 const N404 = { "404": "Not found" };
 
@@ -163,6 +234,12 @@ export const openapiSpec = {
     { name: "Courses", description: "รายวิชาที่เปิดสอน / section (/admin/courses)" },
     { name: "Teachers", description: "อาจารย์ / TA (/admin/users)" },
     { name: "Students", description: "นักศึกษา (/admin/users)" },
+    { name: "Rosters", description: "รายชื่อนักศึกษาในแต่ละรายวิชา (Student ของ frontend)" },
+    { name: "Grading categories", description: "หมวดคะแนนของรายวิชา" },
+    { name: "Assignments", description: "งาน + rubric (หน้าสร้างงานของอาจารย์)" },
+    { name: "Submissions", description: "งานที่นักศึกษาส่ง + คะแนน" },
+    { name: "Teams", description: "ทีมสำหรับงานกลุ่ม" },
+    { name: "Files", description: "ไฟล์แนบ (เก็บใน PostgreSQL)" },
     { name: "System" },
   ],
   components: {
@@ -234,6 +311,101 @@ export const openapiSpec = {
     "/cohort-students/{id}": {
       patch: op("Students", { summary: "แก้ไขนักศึกษา", params: [id], body: body(json(studentUpdate), examples.studentUpdate), res: ok(ref("CohortStudent")), errors: { ...V400, ...N404 } }),
       delete: op("Students", { summary: "ลบนักศึกษา", params: [id], res: noContent, errors: N404 }),
+    },
+
+    // ── Course content ─────────────────────────────────────────────────────────
+    "/students": {
+      get: op("Rosters", { summary: "รายชื่อนักศึกษาของทุกรายวิชา", res: ok(list("Enrollment")) }),
+    },
+    "/courses/{courseId}/students": {
+      get: op("Rosters", { summary: "รายชื่อนักศึกษาในรายวิชา", params: [courseId], res: ok(list("Enrollment")) }),
+      post: op("Rosters", {
+        summary: "เพิ่มนักศึกษาเข้ารายวิชา (array) — ลำดับต่อท้าย, คนที่เพิ่มทีหลัง = added-midterm",
+        params: [courseId], body: body({ type: "array", items: json(enrollmentCreate) }, examples.enrollmentCreate),
+        res: ok(list("Enrollment"), "201"), errors: { ...V400, "409": "นักศึกษาอยู่ในรายวิชานี้แล้ว" },
+      }),
+    },
+    "/students/{id}": {
+      patch: op("Rosters", { summary: "แก้ไข / ถอนรายวิชา (enrollmentStatus)", params: [id], body: body(json(enrollmentUpdate), examples.enrollmentUpdate), res: ok(ref("Enrollment")), errors: { ...V400, ...N404 } }),
+      delete: op("Rosters", { summary: "ลบออกจากรายวิชา", params: [id], res: noContent, errors: N404 }),
+    },
+
+    "/grading-categories": {
+      get: op("Grading categories", { summary: "หมวดคะแนนของทุกรายวิชา", res: ok(list("GradingCategory")) }),
+    },
+    "/courses/{courseId}/grading-categories": {
+      get: op("Grading categories", { summary: "หมวดคะแนนของรายวิชา", params: [courseId], res: ok(list("GradingCategory")) }),
+      post: op("Grading categories", { summary: "เพิ่มหมวดคะแนน", params: [courseId], body: body(json(categoryCreate), examples.categoryCreate), res: ok(ref("GradingCategory"), "201"), errors: V400 }),
+    },
+    "/grading-categories/{id}": {
+      patch: op("Grading categories", { summary: "แก้ไขหมวดคะแนน", params: [id], body: body(json(categoryUpdate), examples.categoryUpdate), res: ok(ref("GradingCategory")), errors: { ...V400, ...N404 } }),
+      delete: op("Grading categories", { summary: "ลบหมวดคะแนน (งานในหมวดยังอยู่ แค่ไม่มีหมวด)", params: [id], res: noContent, errors: N404 }),
+    },
+
+    "/assignments": {
+      get: op("Assignments", { summary: "งานของทุกรายวิชา", res: ok(list("Assignment")) }),
+    },
+    "/courses/{courseId}/assignments": {
+      get: op("Assignments", { summary: "งานในรายวิชา", params: [courseId], res: ok(list("Assignment")) }),
+      post: op("Assignments", { summary: "สร้างงาน", params: [courseId], body: body(json(assignmentCreate), examples.assignmentCreate), res: ok(ref("Assignment"), "201"), errors: V400 }),
+    },
+    "/assignments/{id}": {
+      get: op("Assignments", { summary: "ดูงาน", params: [id], res: ok(ref("Assignment")), errors: N404 }),
+      patch: op("Assignments", { summary: "แก้ไขงาน (gradingFinalized = ประกาศคะแนน)", params: [id], body: body(json(assignmentUpdate), examples.assignmentUpdate), res: ok(ref("Assignment")), errors: { ...V400, ...N404 } }),
+      delete: op("Assignments", { summary: "ลบงาน (rubric, งานที่ส่ง, ทีม ถูกลบด้วย)", params: [id], res: noContent, errors: N404 }),
+    },
+    "/rubrics": {
+      get: op("Assignments", { summary: "rubric ทั้งหมด", res: ok(list("Rubric")) }),
+    },
+    "/assignments/{id}/rubrics": {
+      get: op("Assignments", { summary: "rubric ของงาน", params: [id], res: ok(list("Rubric")) }),
+      post: op("Assignments", { summary: "เพิ่ม rubric (แล้ว PATCH งานให้ rubricIds ชี้มา)", params: [id], body: body(json(rubricCreate), examples.rubricCreate), res: ok(ref("Rubric"), "201"), errors: V400 }),
+    },
+    "/rubrics/{id}": {
+      patch: op("Assignments", { summary: "แก้ไข rubric", params: [id], body: body(json(rubricUpdate), examples.rubricUpdate), res: ok(ref("Rubric")), errors: { ...V400, ...N404 } }),
+      delete: op("Assignments", { summary: "ลบ rubric", params: [id], res: noContent, errors: N404 }),
+    },
+
+    "/submissions": {
+      get: op("Submissions", { summary: "งานที่ส่งทั้งหมด", res: ok(list("Submission")) }),
+    },
+    "/assignments/{id}/submissions": {
+      get: op("Submissions", { summary: "งานที่ส่งของงานนี้", params: [id], res: ok(list("Submission")) }),
+      post: op("Submissions", { summary: "ส่งงาน (1 ครั้งต่อคนต่องาน — ส่งใหม่ใช้ PATCH)", params: [id], body: body(json(submissionCreate), examples.submissionCreate), res: ok(ref("Submission"), "201"), errors: { ...V400, "409": "นักศึกษาคนนี้ส่งงานนี้แล้ว" } }),
+    },
+    "/submissions/{id}": {
+      patch: op("Submissions", { summary: "ส่งใหม่ / ให้คะแนน", params: [id], body: body(json(submissionUpdate), examples.submissionUpdate), res: ok(ref("Submission")), errors: { ...V400, ...N404 } }),
+    },
+
+    "/student-groups": {
+      get: op("Teams", { summary: "ทีมทั้งหมด", res: ok(list("StudentGroup")) }),
+    },
+    "/assignments/{id}/groups": {
+      get: op("Teams", { summary: "ทีมของงานกลุ่มนี้", params: [id], res: ok(list("StudentGroup")) }),
+      post: op("Teams", { summary: "ตั้งทีม (ไม่เกิน maxGroupSize ของงาน)", params: [id], body: body(json(groupCreate), examples.groupCreate), res: ok(ref("StudentGroup"), "201"), errors: { "400": "Validation error / ไม่ใช่งานกลุ่ม / สมาชิกเกิน", ...N404 } }),
+    },
+    "/student-groups/{id}": {
+      patch: op("Teams", { summary: "แก้ชื่อ / สมาชิก", params: [id], body: body(json(groupUpdate), examples.groupUpdate), res: ok(ref("StudentGroup")), errors: { ...V400, ...N404 } }),
+      delete: op("Teams", { summary: "ยุบทีม", params: [id], res: noContent, errors: N404 }),
+    },
+
+    "/files": {
+      post: op("Files", {
+        summary: `อัปโหลดไฟล์ (ไม่เกิน ${MAX_FILE_BYTES / 1024 / 1024} MB) — body คือตัวไฟล์, ชื่อไฟล์ใส่ใน header X-File-Name (URI-encoded)`,
+        params: [{ name: "X-File-Name", in: "header", required: false, schema: { type: "string" }, description: "ชื่อไฟล์ (encodeURIComponent)" }],
+        body: { required: true, content: { "application/octet-stream": { schema: { type: "string", format: "binary" } } } },
+        res: ok(ref("StoredFile"), "201"),
+        errors: { "400": "ไม่มีไฟล์", "413": "ไฟล์ใหญ่เกิน" },
+      }),
+    },
+    "/files/{id}": {
+      get: op("Files", {
+        summary: "ดาวน์โหลด / เปิดไฟล์ (รูปและ PDF เปิดในเบราว์เซอร์ ที่เหลือดาวน์โหลด)",
+        params: [id],
+        res: { "200": { description: "ตัวไฟล์", content: { "application/octet-stream": { schema: { type: "string", format: "binary" } } } } },
+        errors: N404,
+      }),
+      delete: op("Files", { summary: "ลบไฟล์ (เรียกซ้ำได้)", params: [id], res: noContent }),
     },
   },
 };

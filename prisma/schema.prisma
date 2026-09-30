@@ -101,23 +101,27 @@ model CourseTemplate {
 
 // รายวิชาที่เปิดสอน — one *section* offering of a subject in a term (see HWAI-frontend/src/lib/courses.ts).
 model Course {
-  id               String          @id @default(uuid())
-  name             String
-  description      String          @default("")
-  status           CourseStatus    @default(active)
-  coverColor       String          @map("cover_color")
-  icon             CourseIcon      @default(book)
-  code             String?
-  courseTemplateId String?         @map("course_template_id")
-  courseTemplate   CourseTemplate? @relation(fields: [courseTemplateId], references: [id], onDelete: SetNull)
-  academicYear     Int?            @map("academic_year")
-  term             Term?
-  sectionNumber    String?         @map("section_number")
-  schedule         String?
-  room             String?
-  createdAt        DateTime        @default(now()) @map("created_at")
-  updatedAt        DateTime        @updatedAt @map("updated_at")
-  teachers         CourseTeacher[]
+  id                String            @id @default(uuid())
+  name              String
+  description       String            @default("")
+  status            CourseStatus      @default(active)
+  coverColor        String            @map("cover_color")
+  icon              CourseIcon        @default(book)
+  code              String?
+  courseTemplateId  String?           @map("course_template_id")
+  courseTemplate    CourseTemplate?   @relation(fields: [courseTemplateId], references: [id], onDelete: SetNull)
+  academicYear      Int?              @map("academic_year")
+  term              Term?
+  sectionNumber     String?           @map("section_number")
+  schedule          String?
+  room              String?
+  createdAt         DateTime          @default(now()) @map("created_at")
+  updatedAt         DateTime          @updatedAt @map("updated_at")
+  teachers          CourseTeacher[]
+  enrollments       Enrollment[]
+  gradingCategories GradingCategory[]
+  assignments       Assignment[]
+  studentGroups     StudentGroup[]
 
   @@index([courseTemplateId])
   @@map("courses")
@@ -167,4 +171,176 @@ model Student {
   updatedAt           DateTime           @updatedAt @map("updated_at")
 
   @@map("students")
+}
+
+// ── Course content: roster, grading, assignments, submissions ────────────────
+// Student references below (Enrollment.studentId, Submission.studentId, StudentGroup.memberStudentIds)
+// hold the institutional student id (students.student_id, e.g. "69070101") as plain text — the same
+// value the frontend keys on — not a foreign key.
+
+enum EnrollmentStatus {
+  enrolled
+  withdrawn
+  addedMidterm @map("added-midterm")
+
+  @@map("enrollment_status")
+}
+
+// A student on one course section's roster (Student in HWAI-frontend/src/lib/students.ts).
+model Enrollment {
+  id               String            @id @default(uuid())
+  courseId         String            @map("course_id")
+  course           Course            @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  studentId        String            @map("student_id")
+  firstName        String            @map("first_name")
+  lastName         String            @map("last_name")
+  email            String
+  sequenceNumber   Int?              @map("sequence_number") // ลำดับในวิชา — new students continue the numbering
+  enrollmentStatus EnrollmentStatus? @map("enrollment_status")
+  createdAt        DateTime          @default(now()) @map("created_at")
+  updatedAt        DateTime          @updatedAt @map("updated_at")
+
+  @@unique([courseId, studentId])
+  @@index([studentId])
+  @@map("enrollments")
+}
+
+// หมวดคะแนน — share of the course grade (weights of a course should add up to 100).
+model GradingCategory {
+  id          String       @id @default(uuid())
+  courseId    String       @map("course_id")
+  course      Course       @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  name        String
+  weight      Float
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+  assignments Assignment[]
+
+  @@index([courseId])
+  @@map("grading_categories")
+}
+
+enum SubmissionFileType {
+  figma
+  pdf
+  image
+
+  @@map("submission_file_type")
+}
+
+enum SubmissionType {
+  individual
+  group
+
+  @@map("submission_type")
+}
+
+model Assignment {
+  id               String               @id @default(uuid())
+  courseId         String               @map("course_id")
+  course           Course               @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  name             String
+  description      String               @default("")
+  /// Teacher reference files/images/links: AssignmentAttachment[] (see src/lib/content.ts).
+  attachments      Json?
+  dueDate          DateTime?            @map("due_date") @db.Date // none for an exam
+  maxPoints        Float                @map("max_points")
+  categoryId       String?              @map("category_id")
+  category         GradingCategory?     @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  acceptsFiles     Boolean              @default(true) @map("accepts_files")
+  fileTypes        SubmissionFileType[] @map("file_types")
+  submissionType   SubmissionType       @default(individual) @map("submission_type")
+  maxGroupSize     Int?                 @map("max_group_size")
+  /// Kept as the frontend manages it (its rubric list, in order); rubrics also point back via assignment_id.
+  rubricIds        String[]             @map("rubric_ids")
+  gradingFinalized Boolean              @default(false) @map("grading_finalized") // "Finish & announce"
+  isExam           Boolean              @default(false) @map("is_exam")
+  createdAt        DateTime             @default(now()) @map("created_at")
+  updatedAt        DateTime             @updatedAt @map("updated_at")
+  rubrics          Rubric[]
+  submissions      Submission[]
+  studentGroups    StudentGroup[]
+
+  @@index([courseId])
+  @@index([categoryId])
+  @@map("assignments")
+}
+
+model Rubric {
+  id           String     @id @default(uuid())
+  assignmentId String     @map("assignment_id")
+  assignment   Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  name         String
+  /// RubricCriterion[] with their levels (see src/lib/content.ts).
+  criteria     Json
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  @@index([assignmentId])
+  @@map("rubrics")
+}
+
+enum SubmissionStatus {
+  notGraded  @map("not_graded")
+  needReview @map("need_review")
+  graded
+
+  @@map("submission_status")
+}
+
+// One student's hand-in for one assignment. Group work gives every member their own row sharing group_id.
+model Submission {
+  id                 String           @id @default(uuid())
+  assignmentId       String           @map("assignment_id")
+  assignment         Assignment       @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  studentId          String           @map("student_id")
+  studentName        String           @map("student_name") // denormalized for display, as on the frontend
+  email              String
+  submittedAt        DateTime         @map("submitted_at")
+  fileUrl            String?          @map("file_url") // legacy single link
+  attachments        Json?
+  aiScore            Float?           @map("ai_score")
+  instructorScore    Float?           @map("instructor_score")
+  instructorComment  String           @default("") @map("instructor_comment")
+  criterionComments  Json?            @map("criterion_comments") // { [criterionId]: string }
+  criterionScores    Json?            @map("criterion_scores") // { [criterionId]: number }
+  externalUseConsent Boolean          @default(false) @map("external_use_consent")
+  status             SubmissionStatus @default(notGraded)
+  groupId            String?          @map("group_id") // not a FK: kept even if the team is later dissolved
+  createdAt          DateTime         @default(now()) @map("created_at")
+  updatedAt          DateTime         @updatedAt @map("updated_at")
+
+  @@unique([assignmentId, studentId])
+  @@index([studentId])
+  @@map("submissions")
+}
+
+// A team for one group assignment.
+model StudentGroup {
+  id               String     @id @default(uuid())
+  assignmentId     String     @map("assignment_id")
+  assignment       Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  courseId         String     @map("course_id")
+  course           Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  name             String
+  memberStudentIds String[]   @map("member_student_ids")
+  createdAt        DateTime   @default(now()) @map("created_at")
+  updatedAt        DateTime   @updatedAt @map("updated_at")
+
+  @@index([assignmentId])
+  @@index([courseId])
+  @@map("student_groups")
+}
+
+// Uploaded files (assignment attachments and submissions). An attachment with source "upload"
+// stores this id as its `ref`; the file is served at GET /api/files/:id.
+model StoredFile {
+  id        String   @id @default(uuid())
+  name      String
+  mimeType  String   @map("mime_type")
+  size      Int
+  data      Bytes
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("files")
 }

@@ -4,6 +4,7 @@ import "dotenv/config";
 import { readFileSync } from "node:fs";
 import { prisma } from "../src/lib/prisma.js";
 import { termFromApi, type ApiTerm } from "../src/lib/serialize.js";
+import { enrollmentStatus, submissionStatus } from "../src/lib/content.js";
 import type { Prisma } from "../src/generated/prisma/client.js";
 
 function load<T>(file: string): T {
@@ -45,9 +46,80 @@ async function main() {
     await prisma.student.upsert({ where: { id: s.id }, create: s, update: s });
   }
 
+  const content = await seedCourseContent();
+
   console.log(
     `Seeded ${curriculum.curriculumVersions.length} curriculum versions, ${curriculum.courseTemplates.length} course templates, ` +
-      `${courses.length} courses, ${teachers.length} teachers, ${students.length} students.`,
+      `${courses.length} courses, ${teachers.length} teachers, ${students.length} students; ${content}.`,
+  );
+}
+
+// Course content = seed-commands [5] (student-flow) + [14] (student-history), merged the way those
+// commands merge them in localStorage.
+async function seedCourseContent() {
+  type Row = Record<string, unknown> & { id: string };
+  type Learning = Record<"courseStudents" | "gradingCategories" | "assignments" | "rubrics" | "submissions", Row[]>;
+  const flow = load<Learning>("student-flow-mockup.json");
+  const history = load<Learning>("student-history-mockup.json");
+
+  const byId = (a: Row[] = [], b: Row[] = []) => { const ids = new Set(a.map((x) => x.id)); return [...a, ...b.filter((x) => !ids.has(x.id))]; };
+  // [14] replaces a roster entry for the same student + course rather than keeping both.
+  const pair = (x: Row) => `${x.studentId}|${x.courseId}`;
+  const historyPairs = new Set((history.courseStudents ?? []).map(pair));
+  const roster = [...flow.courseStudents.filter((x) => !historyPairs.has(pair(x))), ...(history.courseStudents ?? [])];
+  const categories = byId(flow.gradingCategories, history.gradingCategories);
+  const assignments = byId(flow.assignments, history.assignments);
+  const rubrics = byId(flow.rubrics, history.rubrics);
+  const submissions = byId(flow.submissions, history.submissions);
+
+  const json = (v: unknown) => (v === undefined || v === null ? undefined : (v as Prisma.InputJsonValue));
+  const date = (v: unknown) => (typeof v === "string" ? new Date(v.length === 10 ? `${v}T00:00:00Z` : v) : undefined);
+
+  for (const e of roster) {
+    const { id, courseId, studentId, enrollmentStatus: s, ...rest } = e as Row & { courseId: string; studentId: string; enrollmentStatus?: string };
+    const data = {
+      ...(rest as Omit<Prisma.EnrollmentCreateManyInput, "id" | "courseId" | "studentId">),
+      enrollmentStatus: s === undefined ? undefined : enrollmentStatus.toDb(s as "enrolled" | "withdrawn" | "added-midterm"),
+    };
+    await prisma.enrollment.upsert({
+      where: { courseId_studentId: { courseId, studentId } },
+      create: { id, courseId, studentId, ...data },
+      update: data,
+    });
+  }
+  for (const c of categories) {
+    const data = c as unknown as Prisma.GradingCategoryCreateManyInput;
+    await prisma.gradingCategory.upsert({ where: { id: c.id }, create: data, update: data });
+  }
+  for (const a of assignments) {
+    const { attachments, dueDate, createdAt, updatedAt, ...rest } = a;
+    const data = {
+      ...(rest as unknown as Prisma.AssignmentCreateManyInput),
+      attachments: json(attachments),
+      dueDate: date(dueDate) ?? null,
+      createdAt: date(createdAt),
+      updatedAt: date(updatedAt),
+    };
+    await prisma.assignment.upsert({ where: { id: a.id }, create: data, update: data });
+  }
+  for (const r of rubrics) {
+    const data = { ...(r as unknown as Prisma.RubricCreateManyInput), criteria: r.criteria as Prisma.InputJsonValue };
+    await prisma.rubric.upsert({ where: { id: r.id }, create: data, update: data });
+  }
+  for (const s of submissions) {
+    const { status, attachments, criterionComments, criterionScores, ...rest } = s;
+    const data = {
+      ...(rest as unknown as Prisma.SubmissionCreateManyInput),
+      status: submissionStatus.toDb(status as "not_graded" | "need_review" | "graded"),
+      attachments: json(attachments),
+      criterionComments: json(criterionComments),
+      criterionScores: json(criterionScores),
+    };
+    await prisma.submission.upsert({ where: { id: s.id }, create: data, update: data });
+  }
+  return (
+    `${roster.length} roster entries, ${categories.length} grading categories, ${assignments.length} assignments, ` +
+    `${rubrics.length} rubrics, ${submissions.length} submissions`
   );
 }
 

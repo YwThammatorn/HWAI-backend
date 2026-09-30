@@ -1,0 +1,1080 @@
+{
+  "cohortStudents": [
+    {
+      "id": "cs-mock-1",
+      "studentId": "69070101",
+      "title": "นาย",
+      "firstName": "สมชาย",
+      "lastName": "ใจดี",
+      "email": "69070101@kmitl.ac.th",
+      "program": "CE",
+      "status": "active"
+    },
+    {
+      "id": "cs-mock-2",
+      "studentId": "69070102",
+      "title": "นางสาว",
+      "firstName": "สุดา",
+      "lastName": "วงษ์สา",
+      "email": "69070102@kmitl.ac.th",
+      "program": "CECS",
+      "status": "active"
+    },
+    {
+      "id": "cs-mock-3",
+      "studentId": "69070103",
+      "title": "Mr.",
+      "firstName": "Anucha",
+      "lastName": "Phanphet",
+      "email": "69070103@kmitl.ac.th",
+      "program": "CEI",
+      "status": "active"
+    },
+    {
+      "id": "cs-mock-4",
+      "studentId": "68020101",
+      "title": "นาย",
+      "firstName": "ภูริช",
+      "lastName": "วงศ์สวัสดิ์",
+      "email": "68020101@kmitl.ac.th",
+      "program": "CE",
+      "status": "active"
+    },
+    {
+      "id": "cs-mock-5",
+      "studentId": "67010101",
+      "title": "นาย",
+      "firstName": "ณัฐวุฒิ",
+      "lastName": "ศรีสุข",
+      "email": "67010101@kmitl.ac.th",
+      "program": "CE",
+      "status": "inactive"
+    },
+    {
+      "id": "cs-mock-6",
+      "studentId": "69070104",
+      "title": "นาย",
+      "firstName": "กมล",
+      "lastName": "พูนทรัพย์",
+      "email": "69070104@kmitl.ac.th",
+      "program": "CE",
+      "status": "active"
+    },
+    {
+      "id": "cs-mock-7",
+      "studentId": "69070105",
+      "title": "นางสาว",
+      "firstName": "ปรียา",
+      "lastName": "แสงทอง",
+      "email": "69070105@kmitl.ac.th",
+      "program": "CECS",
+      "status": "active"
+    },
+    {
+      "id": "cs-mock-8",
+      "studentId": "69070106",
+      "title": "Mr.",
+      "firstName": "Theerapong",
+      "lastName": "Mankong",
+      "email": "69070106@kmitl.ac.th",
+      "program": "CEI",
+      "status": "active"
+    },
+    {
+      "id": "cs-mock-9",
+      "studentId": "69070107",
+      "title": "นางสาว",
+      "firstName": "วรรณา",
+      "lastName": "ชูเกียรติ",
+      "email": "69070107@kmitl.ac.th",
+      "program": "CE",
+      "status": "active"
+    },
+    {
+      "id": "cs-mock-10",
+      "studentId": "69070108",
+      "title": "นาย",
+      "firstName": "สิทธิชัย",
+      "lastName": "โพธิ์งาม",
+      "email": "69070108@kmitl.ac.th",
+      "program": "CE",
+      "status": "active"
+    },
+    {
+      "id": "cs-mock-11",
+      "studentId": "68020102",
+      "title": "นางสาว",
+      "firstName": "นันทนา",
+      "lastName": "ทองดี",
+      "email": "68020102@kmitl.ac.th",
+      "program": "CE",
+      "status": "active"
+    },
+    {
+      "id": "cs-mock-12",
+      "studentId": "68020103",
+      "title": "นาย",
+      "firstName": "อดิศร",
+      "lastName": "บุญเรือง",
+      "email": "68020103@kmitl.ac.th",
+      "program": "CECS",
+      "status": "active"
+    },
+    {
+      "id": "cs-mock-13",
+      "studentId": "68020104",
+      "title": "Ms.",
+      "firstName": "Malee",
+      "lastName": "Rungruang",
+      "email": "68020104@kmitl.ac.th",
+      "program": "CEI",
+      "status": "active"
+    }
+  ],
+  "courseStudents": [
+    {
+      "id": "s-roster-1",
+      "courseId": "c-mock-1",
+      "studentId": "69070101",
+      "firstName": "สมชาย",
+      "lastName": "ใจดี",
+      "email": "69070101@kmitl.ac.th",
+      "sequenceNumber": 1,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-roster-2",
+      "courseId": "c-mock-1",
+      "studentId": "69070102",
+      "firstName": "สุดา",
+      "lastName": "วงษ์สา",
+      "email": "69070102@kmitl.ac.th",
+      "sequenceNumber": 2,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-roster-3",
+      "courseId": "c-mock-1",
+      "studentId": "69070103",
+      "firstName": "Anucha",
+      "lastName": "Phanphet",
+      "email": "69070103@kmitl.ac.th",
+      "sequenceNumber": 3,
+      "enrollmentStatus": "enrolled"
+    }
+  ],
+  "gradingCategories": [
+    {
+      "id": "gcat-seed-c1-1",
+      "courseId": "c-mock-1",
+      "name": "งานที่มอบหมาย",
+      "weight": 40,
+      "createdAt": "2026-07-01T09:00:00.000Z",
+      "updatedAt": "2026-07-01T09:00:00.000Z"
+    },
+    {
+      "id": "gcat-seed-c1-2",
+      "courseId": "c-mock-1",
+      "name": "สอบกลางภาค",
+      "weight": 25,
+      "createdAt": "2026-07-01T09:00:00.000Z",
+      "updatedAt": "2026-07-01T09:00:00.000Z"
+    },
+    {
+      "id": "gcat-seed-c1-3",
+      "courseId": "c-mock-1",
+      "name": "สอบปลายภาค",
+      "weight": 35,
+      "createdAt": "2026-07-01T09:00:00.000Z",
+      "updatedAt": "2026-07-01T09:00:00.000Z"
+    }
+  ],
+  "assignments": [
+    {
+      "id": "a-mock-1",
+      "courseId": "c-mock-1",
+      "name": "แบบฝึกหัด Python เบื้องต้น",
+      "description": "เขียนโปรแกรม Python แก้โจทย์ 5 ข้อ ตามที่กำหนดใน worksheet ส่งเป็นไฟล์ PDF",
+      "dueDate": "2026-09-05",
+      "maxPoints": 100,
+      "categoryId": "gcat-seed-c1-1",
+      "acceptsFiles": true,
+      "fileTypes": [
+        "pdf"
+      ],
+      "submissionType": "individual",
+      "maxGroupSize": null,
+      "rubricIds": [
+        "r-mock-1"
+      ],
+      "gradingFinalized": true,
+      "createdAt": "2026-08-20T09:00:00.000Z",
+      "updatedAt": "2026-08-20T09:00:00.000Z"
+    },
+    {
+      "id": "a-mock-2",
+      "courseId": "c-mock-1",
+      "name": "โปรเจกต์เล็ก: เครื่องคิดเลข",
+      "description": "สร้างโปรแกรมเครื่องคิดเลขอย่างง่ายด้วย Python รองรับ +, -, *, / และจัดการ error เบื้องต้น",
+      "dueDate": "2026-09-25",
+      "maxPoints": 100,
+      "categoryId": "gcat-seed-c1-1",
+      "acceptsFiles": true,
+      "fileTypes": [
+        "pdf"
+      ],
+      "submissionType": "individual",
+      "maxGroupSize": null,
+      "rubricIds": [
+        "r-mock-2"
+      ],
+      "createdAt": "2026-09-01T09:00:00.000Z",
+      "updatedAt": "2026-09-01T09:00:00.000Z"
+    },
+    {
+      "id": "a-mock-3",
+      "courseId": "c-mock-1",
+      "name": "โปรเจกต์กลุ่ม: ระบบจัดการร้านค้าเล็กๆ",
+      "description": "จับคู่ 2 คน เขียนโปรแกรม Python จัดการสต๊อกสินค้าร้านค้าเล็กๆ (เพิ่ม/ลบ/แก้ไขสินค้า, คำนวณยอดขาย) ส่งเป็นไฟล์ PDF พร้อมเอกสารแบ่งงาน",
+      "dueDate": "2026-10-10",
+      "maxPoints": 100,
+      "categoryId": "gcat-seed-c1-1",
+      "acceptsFiles": true,
+      "fileTypes": [
+        "pdf"
+      ],
+      "submissionType": "group",
+      "maxGroupSize": 2,
+      "rubricIds": [
+        "r-mock-3"
+      ],
+      "createdAt": "2026-09-10T09:00:00.000Z",
+      "updatedAt": "2026-09-10T09:00:00.000Z"
+    },
+    {
+      "id": "a-mock-4",
+      "courseId": "c-mock-1",
+      "name": "Quiz 1: ตัวแปรและชนิดข้อมูล",
+      "description": "ควิซสั้น 5 ข้อ เรื่องตัวแปรและชนิดข้อมูลใน Python ส่งเป็นไฟล์ PDF",
+      "dueDate": "2026-08-25",
+      "maxPoints": 100,
+      "categoryId": "gcat-seed-c1-1",
+      "acceptsFiles": true,
+      "fileTypes": [
+        "pdf"
+      ],
+      "submissionType": "individual",
+      "maxGroupSize": null,
+      "rubricIds": [
+        "r-mock-4"
+      ],
+      "gradingFinalized": true,
+      "createdAt": "2026-08-10T09:00:00.000Z",
+      "updatedAt": "2026-08-27T10:00:00.000Z"
+    },
+    {
+      "id": "a-mock-5",
+      "courseId": "c-mock-1",
+      "name": "สอบกลางภาค",
+      "description": "สอบข้อเขียนกลางภาค ครอบคลุมเนื้อหาตัวแปร เงื่อนไข และลูป ให้คะแนนโดยตรงจากกระดาษคำตอบ ไม่มี rubric",
+      "dueDate": "2026-09-10",
+      "maxPoints": 50,
+      "categoryId": "gcat-seed-c1-2",
+      "acceptsFiles": true,
+      "fileTypes": [
+        "pdf"
+      ],
+      "submissionType": "individual",
+      "maxGroupSize": null,
+      "rubricIds": [],
+      "isExam": true,
+      "gradingFinalized": true,
+      "createdAt": "2026-08-25T09:00:00.000Z",
+      "updatedAt": "2026-09-11T10:00:00.000Z"
+    },
+    {
+      "id": "a-mock-6",
+      "courseId": "c-mock-1",
+      "name": "Quiz 2: โครงสร้างข้อมูล",
+      "description": "ควิซสั้นเรื่อง List, Tuple, Dict ใน Python ส่งเป็นไฟล์ PDF",
+      "dueDate": "2026-09-18",
+      "maxPoints": 100,
+      "categoryId": "gcat-seed-c1-1",
+      "acceptsFiles": true,
+      "fileTypes": [
+        "pdf"
+      ],
+      "submissionType": "individual",
+      "maxGroupSize": null,
+      "rubricIds": [
+        "r-mock-6"
+      ],
+      "gradingFinalized": true,
+      "createdAt": "2026-09-05T09:00:00.000Z",
+      "updatedAt": "2026-09-05T09:00:00.000Z"
+    },
+    {
+      "id": "a-mock-7",
+      "courseId": "c-mock-1",
+      "name": "โปรเจกต์กลุ่ม 2: ระบบจองห้องประชุม",
+      "description": "จับคู่ 2 คน เขียนโปรแกรม Python จัดการการจองห้องประชุม (จอง/ยกเลิก/ตรวจสอบตารางว่าง) ส่งเป็นไฟล์ PDF พร้อมเอกสารแบ่งงาน",
+      "dueDate": "2026-10-15",
+      "maxPoints": 100,
+      "categoryId": "gcat-seed-c1-1",
+      "acceptsFiles": true,
+      "fileTypes": [
+        "pdf"
+      ],
+      "submissionType": "group",
+      "maxGroupSize": 2,
+      "rubricIds": [
+        "r-mock-7"
+      ],
+      "createdAt": "2026-09-15T09:00:00.000Z",
+      "updatedAt": "2026-09-15T09:00:00.000Z"
+    },
+    {
+      "id": "a-mock-8",
+      "courseId": "c-mock-1",
+      "name": "Lab 5: การเขียนฟังก์ชัน",
+      "description": "เขียนฟังก์ชัน Python 3 ฟังก์ชันตามโจทย์ พร้อม docstring อธิบายการทำงาน ส่งเป็นไฟล์ PDF",
+      "dueDate": "2026-09-20",
+      "maxPoints": 100,
+      "categoryId": "gcat-seed-c1-1",
+      "acceptsFiles": true,
+      "fileTypes": [
+        "pdf"
+      ],
+      "submissionType": "individual",
+      "maxGroupSize": null,
+      "rubricIds": [
+        "r-mock-8"
+      ],
+      "gradingFinalized": true,
+      "createdAt": "2026-09-10T09:00:00.000Z",
+      "updatedAt": "2026-09-10T09:00:00.000Z"
+    },
+    {
+      "id": "a-mock-9",
+      "courseId": "c-mock-1",
+      "name": "สอบปลายภาค",
+      "description": "สอบข้อเขียนปลายภาค ครอบคลุมเนื้อหาทั้งเทอม ให้คะแนนโดยตรงจากกระดาษคำตอบ ไม่มี rubric",
+      "dueDate": "2026-11-20",
+      "maxPoints": 100,
+      "categoryId": "gcat-seed-c1-3",
+      "acceptsFiles": true,
+      "fileTypes": [
+        "pdf"
+      ],
+      "submissionType": "individual",
+      "maxGroupSize": null,
+      "rubricIds": [],
+      "isExam": true,
+      "createdAt": "2026-09-20T09:00:00.000Z",
+      "updatedAt": "2026-09-20T09:00:00.000Z"
+    }
+  ],
+  "rubrics": [
+    {
+      "id": "r-mock-1",
+      "assignmentId": "a-mock-1",
+      "name": "เกณฑ์ตรวจแบบฝึกหัด Python เบื้องต้น",
+      "criteria": [
+        {
+          "id": "rc-1",
+          "name": "ความถูกต้องของโปรแกรม",
+          "description": "โปรแกรมทำงานได้ผลลัพธ์ถูกต้องตามโจทย์",
+          "maxPoints": 60,
+          "weight": 60,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "ถูกต้องครบทุกข้อ"
+            },
+            {
+              "label": "Good",
+              "description": "ถูกต้องส่วนใหญ่"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "ผิดหลายข้อ"
+            }
+          ]
+        },
+        {
+          "id": "rc-2",
+          "name": "ความสะอาดของโค้ด",
+          "description": "จัดรูปแบบโค้ดอ่านง่าย มี comment เหมาะสม",
+          "maxPoints": 20,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": ""
+            },
+            {
+              "label": "Good",
+              "description": ""
+            },
+            {
+              "label": "Needs Improvement",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": "rc-3",
+          "name": "การจัดการ Error",
+          "description": "จัดการ input ผิดพลาดอย่างเหมาะสม",
+          "maxPoints": 20,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": ""
+            },
+            {
+              "label": "Good",
+              "description": ""
+            },
+            {
+              "label": "Needs Improvement",
+              "description": ""
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-08-20T09:00:00.000Z",
+      "updatedAt": "2026-08-20T09:00:00.000Z"
+    },
+    {
+      "id": "r-mock-2",
+      "assignmentId": "a-mock-2",
+      "name": "เกณฑ์ตรวจโปรเจกต์เล็ก: เครื่องคิดเลข",
+      "criteria": [
+        {
+          "id": "rc-4",
+          "name": "ความถูกต้องของการคำนวณ",
+          "description": "รองรับ +, -, *, / และให้ผลลัพธ์ถูกต้อง",
+          "maxPoints": 50,
+          "weight": 50,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "ถูกต้องครบทุกโจทย์"
+            },
+            {
+              "label": "Good",
+              "description": "ถูกต้องส่วนใหญ่"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "ผิดหลายกรณี"
+            }
+          ]
+        },
+        {
+          "id": "rc-5",
+          "name": "การจัดการ Error",
+          "description": "จัดการกรณีหารด้วยศูนย์และ input ผิดพลาดอย่างเหมาะสม",
+          "maxPoints": 30,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "ครอบคลุมทุกกรณี"
+            },
+            {
+              "label": "Good",
+              "description": "ครอบคลุมกรณีหลัก"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "โปรแกรม crash เมื่อ input ผิดพลาด"
+            }
+          ]
+        },
+        {
+          "id": "rc-6",
+          "name": "ความสะอาดของโค้ด",
+          "description": "จัดรูปแบบโค้ดอ่านง่าย มี comment เหมาะสม",
+          "maxPoints": 20,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": ""
+            },
+            {
+              "label": "Good",
+              "description": ""
+            },
+            {
+              "label": "Needs Improvement",
+              "description": ""
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-09-01T09:00:00.000Z",
+      "updatedAt": "2026-09-01T09:00:00.000Z"
+    },
+    {
+      "id": "r-mock-3",
+      "assignmentId": "a-mock-3",
+      "name": "เกณฑ์ตรวจโปรเจกต์กลุ่ม: ระบบจัดการร้านค้าเล็กๆ",
+      "criteria": [
+        {
+          "id": "rc-7",
+          "name": "ความถูกต้องของฟังก์ชันการทำงาน",
+          "description": "เพิ่ม/ลบ/แก้ไขสินค้า และคำนวณยอดขายได้ถูกต้อง",
+          "maxPoints": 50,
+          "weight": 50,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "ทำงานถูกต้องครบทุกฟังก์ชัน"
+            },
+            {
+              "label": "Good",
+              "description": "ถูกต้องส่วนใหญ่ มีข้อผิดพลาดเล็กน้อย"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "ฟังก์ชันหลักทำงานไม่ถูกต้อง"
+            }
+          ]
+        },
+        {
+          "id": "rc-8",
+          "name": "การออกแบบโครงสร้างโปรแกรม",
+          "description": "แบ่งฟังก์ชัน/โมดูลอย่างเหมาะสม อ่านง่าย",
+          "maxPoints": 30,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "โครงสร้างชัดเจน แบ่งโมดูลดี"
+            },
+            {
+              "label": "Good",
+              "description": "โครงสร้างพอใช้ได้"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "โค้ดปนกันไม่มีโครงสร้าง"
+            }
+          ]
+        },
+        {
+          "id": "rc-9",
+          "name": "การทำงานร่วมกันเป็นทีม",
+          "description": "มีเอกสารแบ่งงานชัดเจน ทั้งคู่มีส่วนร่วม",
+          "maxPoints": 20,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "แบ่งงานชัดเจน สมดุล"
+            },
+            {
+              "label": "Good",
+              "description": "แบ่งงานพอใช้ได้"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "ไม่มีเอกสารแบ่งงาน"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-09-10T09:00:00.000Z",
+      "updatedAt": "2026-09-10T09:00:00.000Z"
+    },
+    {
+      "id": "r-mock-4",
+      "assignmentId": "a-mock-4",
+      "name": "เกณฑ์ตรวจ Quiz 1: ตัวแปรและชนิดข้อมูล",
+      "criteria": [
+        {
+          "id": "rc-10",
+          "name": "ความถูกต้องของคำตอบ",
+          "description": "คำตอบถูกต้องตามเฉลย",
+          "maxPoints": 70,
+          "weight": 70,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "ถูกต้องครบทุกข้อ"
+            },
+            {
+              "label": "Good",
+              "description": "ถูกต้องส่วนใหญ่"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "ผิดหลายข้อ"
+            }
+          ]
+        },
+        {
+          "id": "rc-11",
+          "name": "ความครบถ้วนของคำตอบ",
+          "description": "ตอบครบทุกข้อ ไม่เว้นว่าง",
+          "maxPoints": 30,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "ตอบครบทุกข้อ"
+            },
+            {
+              "label": "Good",
+              "description": "เว้นว่าง 1 ข้อ"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "เว้นว่างหลายข้อ"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-08-10T09:00:00.000Z",
+      "updatedAt": "2026-08-10T09:00:00.000Z"
+    },
+    {
+      "id": "r-mock-6",
+      "assignmentId": "a-mock-6",
+      "name": "เกณฑ์ตรวจ Quiz 2: โครงสร้างข้อมูล",
+      "criteria": [
+        {
+          "id": "rc-12",
+          "name": "ความเข้าใจโครงสร้างข้อมูล",
+          "description": "เข้าใจการใช้งาน List, Tuple, Dict ถูกต้อง",
+          "maxPoints": 60,
+          "weight": 60,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "เข้าใจและใช้งานได้ถูกต้องครบ"
+            },
+            {
+              "label": "Good",
+              "description": "เข้าใจส่วนใหญ่"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "สับสนระหว่างชนิดข้อมูล"
+            }
+          ]
+        },
+        {
+          "id": "rc-13",
+          "name": "การประยุกต์ใช้งาน",
+          "description": "นำไปใช้แก้โจทย์ได้อย่างเหมาะสม",
+          "maxPoints": 40,
+          "weight": 40,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "เลือกใช้ชนิดข้อมูลได้เหมาะสมทุกข้อ"
+            },
+            {
+              "label": "Good",
+              "description": "เหมาะสมส่วนใหญ่"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "เลือกใช้ไม่เหมาะสม"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-09-05T09:00:00.000Z",
+      "updatedAt": "2026-09-05T09:00:00.000Z"
+    },
+    {
+      "id": "r-mock-7",
+      "assignmentId": "a-mock-7",
+      "name": "เกณฑ์ตรวจโปรเจกต์กลุ่ม 2: ระบบจองห้องประชุม",
+      "criteria": [
+        {
+          "id": "rc-14",
+          "name": "ความถูกต้องของฟังก์ชันการทำงาน",
+          "description": "จอง/ยกเลิก/ตรวจสอบตารางว่างได้ถูกต้อง",
+          "maxPoints": 50,
+          "weight": 50,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "ทำงานถูกต้องครบทุกฟังก์ชัน"
+            },
+            {
+              "label": "Good",
+              "description": "ถูกต้องส่วนใหญ่ มีข้อผิดพลาดเล็กน้อย"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "ฟังก์ชันหลักทำงานไม่ถูกต้อง"
+            }
+          ]
+        },
+        {
+          "id": "rc-15",
+          "name": "การออกแบบโครงสร้างโปรแกรม",
+          "description": "แบ่งฟังก์ชัน/โมดูลอย่างเหมาะสม อ่านง่าย",
+          "maxPoints": 30,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "โครงสร้างชัดเจน แบ่งโมดูลดี"
+            },
+            {
+              "label": "Good",
+              "description": "โครงสร้างพอใช้ได้"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "โค้ดปนกันไม่มีโครงสร้าง"
+            }
+          ]
+        },
+        {
+          "id": "rc-16",
+          "name": "การทำงานร่วมกันเป็นทีม",
+          "description": "มีเอกสารแบ่งงานชัดเจน ทั้งคู่มีส่วนร่วม",
+          "maxPoints": 20,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "แบ่งงานชัดเจน สมดุล"
+            },
+            {
+              "label": "Good",
+              "description": "แบ่งงานพอใช้ได้"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "ไม่มีเอกสารแบ่งงาน"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-09-15T09:00:00.000Z",
+      "updatedAt": "2026-09-15T09:00:00.000Z"
+    },
+    {
+      "id": "r-mock-8",
+      "assignmentId": "a-mock-8",
+      "name": "เกณฑ์ตรวจ Lab 5: การเขียนฟังก์ชัน",
+      "criteria": [
+        {
+          "id": "rc-17",
+          "name": "ความถูกต้องของฟังก์ชัน",
+          "description": "ฟังก์ชันทำงานได้ผลลัพธ์ถูกต้องตามโจทย์",
+          "maxPoints": 70,
+          "weight": 70,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "ถูกต้องครบทุกฟังก์ชัน"
+            },
+            {
+              "label": "Good",
+              "description": "ถูกต้องส่วนใหญ่"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "ผิดหลายฟังก์ชัน"
+            }
+          ]
+        },
+        {
+          "id": "rc-18",
+          "name": "รูปแบบและเอกสารประกอบ",
+          "description": "มี docstring อธิบายการทำงานของแต่ละฟังก์ชัน",
+          "maxPoints": 30,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "Excellent",
+              "description": "มี docstring ครบทุกฟังก์ชัน อธิบายชัดเจน"
+            },
+            {
+              "label": "Good",
+              "description": "มี docstring บางฟังก์ชัน"
+            },
+            {
+              "label": "Needs Improvement",
+              "description": "ไม่มี docstring"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-09-10T09:00:00.000Z",
+      "updatedAt": "2026-09-10T09:00:00.000Z"
+    }
+  ],
+  "submissions": [
+    {
+      "id": "sub-mock-1",
+      "assignmentId": "a-mock-1",
+      "studentId": "69070101",
+      "studentName": "สมชาย ใจดี",
+      "email": "69070101@kmitl.ac.th",
+      "submittedAt": "2026-09-04T14:30:00.000Z",
+      "fileUrl": null,
+      "aiScore": 88,
+      "instructorScore": 90,
+      "instructorComment": "ทำได้ดีมาก โค้ดอ่านง่าย",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-09-06T10:00:00.000Z",
+      "criterionScores": {
+        "rc-1": 56,
+        "rc-2": 18,
+        "rc-3": 16
+      }
+    },
+    {
+      "id": "sub-mock-2",
+      "assignmentId": "a-mock-1",
+      "studentId": "69070102",
+      "studentName": "สุดา วงษ์สา",
+      "email": "69070102@kmitl.ac.th",
+      "submittedAt": "2026-09-05T09:15:00.000Z",
+      "fileUrl": null,
+      "aiScore": 72,
+      "instructorScore": null,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "need_review",
+      "updatedAt": "2026-09-05T09:15:00.000Z"
+    },
+    {
+      "id": "sub-mock-3",
+      "assignmentId": "a-mock-1",
+      "studentId": "69070103",
+      "studentName": "Anucha Phanphet",
+      "email": "69070103@kmitl.ac.th",
+      "submittedAt": "2026-09-05T23:50:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": null,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "not_graded",
+      "updatedAt": "2026-09-05T23:50:00.000Z"
+    },
+    {
+      "id": "sub-mock-4",
+      "assignmentId": "a-mock-4",
+      "studentId": "69070101",
+      "studentName": "สมชาย ใจดี",
+      "email": "69070101@kmitl.ac.th",
+      "submittedAt": "2026-08-24T15:00:00.000Z",
+      "fileUrl": null,
+      "aiScore": 85,
+      "instructorScore": 85,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-08-27T10:00:00.000Z",
+      "criterionScores": {
+        "rc-10": 60,
+        "rc-11": 25
+      }
+    },
+    {
+      "id": "sub-mock-5",
+      "assignmentId": "a-mock-4",
+      "studentId": "69070102",
+      "studentName": "สุดา วงษ์สา",
+      "email": "69070102@kmitl.ac.th",
+      "submittedAt": "2026-08-24T18:20:00.000Z",
+      "fileUrl": null,
+      "aiScore": 76,
+      "instructorScore": 78,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-08-27T10:00:00.000Z",
+      "criterionScores": {
+        "rc-10": 56,
+        "rc-11": 22
+      }
+    },
+    {
+      "id": "sub-mock-6",
+      "assignmentId": "a-mock-4",
+      "studentId": "69070103",
+      "studentName": "Anucha Phanphet",
+      "email": "69070103@kmitl.ac.th",
+      "submittedAt": "2026-08-25T09:40:00.000Z",
+      "fileUrl": null,
+      "aiScore": 90,
+      "instructorScore": 90,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-08-27T10:00:00.000Z",
+      "criterionScores": {
+        "rc-10": 63,
+        "rc-11": 27
+      }
+    },
+    {
+      "id": "sub-mock-7",
+      "assignmentId": "a-mock-5",
+      "studentId": "69070101",
+      "studentName": "สมชาย ใจดี",
+      "email": "69070101@kmitl.ac.th",
+      "submittedAt": "2026-09-10T11:00:00.000Z",
+      "fileUrl": null,
+      "aiScore": 42,
+      "instructorScore": 42,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-09-11T10:00:00.000Z"
+    },
+    {
+      "id": "sub-mock-8",
+      "assignmentId": "a-mock-5",
+      "studentId": "69070102",
+      "studentName": "สุดา วงษ์สา",
+      "email": "69070102@kmitl.ac.th",
+      "submittedAt": "2026-09-10T11:05:00.000Z",
+      "fileUrl": null,
+      "aiScore": 35,
+      "instructorScore": 38,
+      "instructorComment": "ทวนคะแนนแล้วให้เพิ่มบางข้อ",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-09-11T10:00:00.000Z"
+    },
+    {
+      "id": "sub-mock-9",
+      "assignmentId": "a-mock-5",
+      "studentId": "69070103",
+      "studentName": "Anucha Phanphet",
+      "email": "69070103@kmitl.ac.th",
+      "submittedAt": "2026-09-10T11:10:00.000Z",
+      "fileUrl": null,
+      "aiScore": 45,
+      "instructorScore": 45,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-09-11T10:00:00.000Z"
+    },
+    {
+      "id": "sub-mock-10",
+      "assignmentId": "a-mock-6",
+      "studentId": "69070101",
+      "studentName": "สมชาย ใจดี",
+      "email": "69070101@kmitl.ac.th",
+      "submittedAt": "2026-09-17T20:00:00.000Z",
+      "fileUrl": null,
+      "aiScore": 82,
+      "instructorScore": 85,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-09-19T10:00:00.000Z",
+      "criterionScores": {
+        "rc-12": 49,
+        "rc-13": 36
+      }
+    },
+    {
+      "id": "sub-mock-11",
+      "assignmentId": "a-mock-6",
+      "studentId": "69070102",
+      "studentName": "สุดา วงษ์สา",
+      "email": "69070102@kmitl.ac.th",
+      "submittedAt": "2026-09-18T09:30:00.000Z",
+      "fileUrl": null,
+      "aiScore": 68,
+      "instructorScore": null,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "need_review",
+      "updatedAt": "2026-09-18T09:30:00.000Z"
+    },
+    {
+      "id": "sub-mock-12",
+      "assignmentId": "a-mock-8",
+      "studentId": "69070101",
+      "studentName": "สมชาย ใจดี",
+      "email": "69070101@kmitl.ac.th",
+      "submittedAt": "2026-09-19T16:40:00.000Z",
+      "fileUrl": null,
+      "aiScore": 90,
+      "instructorScore": 92,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-09-21T10:00:00.000Z",
+      "criterionScores": {
+        "rc-17": 65,
+        "rc-18": 27
+      }
+    },
+    {
+      "id": "sub-mock-13",
+      "assignmentId": "a-mock-8",
+      "studentId": "69070102",
+      "studentName": "สุดา วงษ์สา",
+      "email": "69070102@kmitl.ac.th",
+      "submittedAt": "2026-09-19T21:15:00.000Z",
+      "fileUrl": null,
+      "aiScore": 75,
+      "instructorScore": 75,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-09-21T10:00:00.000Z",
+      "criterionScores": {
+        "rc-17": 52,
+        "rc-18": 23
+      }
+    }
+  ],
+  "clos": [
+    {
+      "id": "clo-mock-1",
+      "courseId": "c-mock-1",
+      "code": "CLO1",
+      "text": "นักศึกษาสามารถเขียนโปรแกรม Python เพื่อแก้ปัญหาพื้นฐานโดยใช้ตัวแปร เงื่อนไข และลูปได้",
+      "createdAt": "2026-07-01T09:00:00.000Z",
+      "updatedAt": "2026-07-01T09:00:00.000Z"
+    },
+    {
+      "id": "clo-mock-2",
+      "courseId": "c-mock-1",
+      "code": "CLO2",
+      "text": "นักศึกษาสามารถออกแบบและใช้งานโครงสร้างข้อมูล (List, Tuple, Dictionary) ได้อย่างเหมาะสมกับปัญหา",
+      "createdAt": "2026-07-01T09:05:00.000Z",
+      "updatedAt": "2026-07-01T09:05:00.000Z"
+    },
+    {
+      "id": "clo-mock-3",
+      "courseId": "c-mock-1",
+      "code": "CLO3",
+      "text": "นักศึกษาสามารถเขียนฟังก์ชันที่มีการจัดการข้อผิดพลาด (Error Handling) และมีเอกสารประกอบ (Docstring) ได้",
+      "createdAt": "2026-07-01T09:10:00.000Z",
+      "updatedAt": "2026-07-01T09:10:00.000Z"
+    },
+    {
+      "id": "clo-mock-4",
+      "courseId": "c-mock-1",
+      "code": "CLO4",
+      "text": "นักศึกษาสามารถทำงานร่วมกันเป็นทีมเพื่อวางแผนและพัฒนาโปรแกรมขนาดเล็กได้",
+      "createdAt": "2026-07-01T09:15:00.000Z",
+      "updatedAt": "2026-07-01T09:15:00.000Z"
+    }
+  ]
+}

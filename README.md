@@ -2,7 +2,13 @@
 [KMITL Project] AI Agent Web Application Backend Section
 
 Express 5 + Prisma 7 + PostgreSQL API สำหรับ [HWAI-frontend](../HWAI-frontend).
-ตอนนี้รองรับเฉพาะหน้า **admin** (`/admin/users`, `/admin/courses`, `/admin/curriculum`) — หน้า teacher/student ยังใช้ localStorage เหมือนเดิม
+ตอนนี้รองรับ:
+- หน้า **admin** (`/admin/users`, `/admin/courses`, `/admin/curriculum`)
+- หน้า **นักศึกษา** ทั้งหมด (`/student/...`) และหน้า**สร้าง/แก้ไขงาน**ของอาจารย์ — รวมถึงรายชื่อนักศึกษาในวิชา, หมวดคะแนน,
+  งาน + rubric, งานที่ส่ง + คะแนน, ทีม และไฟล์แนบ
+
+ที่ยังอยู่ใน localStorage ของ frontend: CLO, section roles (ผู้ร่วมสอน/TA), การแบ่งงานตรวจ (grading assignments) และ
+ประกาศ / แผนรายสัปดาห์ / สื่อการสอน ซึ่ง frontend ซ่อนไว้ชั่วคราว (`featureFlags.ts`) — จะทำ backend ให้ตอนเปิดใช้
 
 ## Setup
 
@@ -85,6 +91,31 @@ Response shape ตรงกับ type ใน `HWAI-frontend/src/lib/*.ts` (fiel
 | PATCH | `/cohort-students/:id` | partial | `CohortStudent` |
 | DELETE | `/cohort-students/:id` | | 204 |
 
+### เนื้อหารายวิชา (หน้านักศึกษา + หน้าสร้างงาน)
+
+ทุก resource มี `GET` แบบ "ทั้งหมด" (provider ของ frontend โหลดทีเดียว) และแบบรายวิชา/รายงาน — รายละเอียดครบ + ตัวอย่างที่ยิงได้จริงอยู่ใน Swagger (`/docs`)
+
+| Resource | ทั้งหมด | ของรายวิชา / งาน | สร้าง | แก้ / ลบ |
+|---|---|---|---|---|
+| รายชื่อนักศึกษาในวิชา | `GET /students` | `GET /courses/:courseId/students` | `POST /courses/:courseId/students` (array) | `PATCH`/`DELETE /students/:id` |
+| หมวดคะแนน | `GET /grading-categories` | `GET /courses/:courseId/grading-categories` | `POST` ที่เดียวกัน | `PATCH`/`DELETE /grading-categories/:id` |
+| งาน | `GET /assignments` | `GET /courses/:courseId/assignments` | `POST` ที่เดียวกัน | `GET`/`PATCH`/`DELETE /assignments/:id` |
+| rubric | `GET /rubrics` | `GET /assignments/:id/rubrics` | `POST` ที่เดียวกัน | `PATCH`/`DELETE /rubrics/:id` |
+| งานที่ส่ง | `GET /submissions` | `GET /assignments/:id/submissions` | `POST` ที่เดียวกัน (1 ครั้ง/คน/งาน, ซ้ำ = 409) | `PATCH /submissions/:id` |
+| ทีม | `GET /student-groups` | `GET /assignments/:id/groups` | `POST` ที่เดียวกัน (ไม่เกิน `maxGroupSize`) | `PATCH`/`DELETE /student-groups/:id` |
+
+ลบงาน → rubric, งานที่ส่ง และทีมของงานนั้นถูกลบตาม · ลบรายวิชา → เนื้อหาทั้งหมดของรายวิชาถูกลบตาม · ลบหมวดคะแนน → งานยังอยู่แค่ไม่มีหมวด
+
+### ไฟล์
+
+ไฟล์เก็บในตาราง `files` ของ PostgreSQL (ไม่เกิน 10 MB ต่อไฟล์) — ไฟล์แนบที่ `source: "upload"` เก็บ id ของไฟล์ไว้ใน `ref`
+
+| Method | Path | |
+|---|---|---|
+| POST | `/files` | body = ตัวไฟล์, `Content-Type` = ชนิดไฟล์, `X-File-Name` = ชื่อไฟล์ (URI-encoded) → `{ id, name, mimeType, size }` |
+| GET | `/files/:id` | รูป (ยกเว้น SVG) และ PDF เปิดในเบราว์เซอร์ ที่เหลือบังคับดาวน์โหลด และทุกไฟล์ส่งพร้อม `Content-Security-Policy: sandbox` เพื่อไม่ให้ไฟล์ที่อัปโหลดรันสคริปต์ได้ |
+| DELETE | `/files/:id` | เรียกซ้ำได้ |
+
 ## โครงสร้าง
 
 ```
@@ -112,11 +143,20 @@ src/
 | `teachers` | `Teacher` | `/managed-teachers` | อาจารย์ / TA |
 | `course_teachers` | `CourseTeacher` | `/managed-teachers/:id/courses/:courseId` | อาจารย์ที่ assign ในแต่ละรายวิชา |
 | `students` | `Student` | `/cohort-students` | นักศึกษา |
+| `enrollments` | `Enrollment` | `/students`, `/courses/:courseId/students` | นักศึกษาในแต่ละรายวิชา (roster) |
+| `grading_categories` | `GradingCategory` | `/grading-categories` | หมวดคะแนน |
+| `assignments` | `Assignment` | `/assignments` | งาน |
+| `rubrics` | `Rubric` | `/rubrics` | เกณฑ์ให้คะแนน (criteria เก็บเป็น JSON) |
+| `submissions` | `Submission` | `/submissions` | งานที่นักศึกษาส่ง + คะแนน |
+| `student_groups` | `StudentGroup` | `/student-groups` | ทีมของงานกลุ่ม |
+| `files` | `StoredFile` | `/files` | ไฟล์ที่อัปโหลด |
 
-`courses.term` เก็บเป็น `'1'` / `'2'` / `'3'` / `'summer'`
+`courses.term` เก็บเป็น `'1'` / `'2'` / `'3'` / `'summer'` ·
+`enrollments.student_id`, `submissions.student_id`, `student_groups.member_student_ids` เก็บ**รหัสนักศึกษา** (เช่น `69070101`) เป็นข้อความ ไม่ใช่ FK — ตรงกับที่ frontend ใช้
 
 ## ยังไม่ได้ทำ
 
 - **Auth** — API ยังไม่มีการยืนยันตัวตน ใครเรียกก็ได้ (frontend ยังไม่มี login จริง/ไม่มี token)
-- Section roles / grading assignments ยังอยู่ใน localStorage ของ frontend — การ cascade ตอนลบอาจารย์/นักศึกษายังทำฝั่ง client
-- Domain อื่น ๆ ของ teacher/student (assignments, submissions, rubrics ฯลฯ)
+  ผลที่ตามมา: การซ่อนคะแนนก่อนอาจารย์ "ประกาศ" (`studentVisibleSubmission`) ยังทำแค่ฝั่ง frontend — ถ้าเรียก API ตรง ๆ จะเห็นคะแนนได้
+- CLO, section roles, grading assignments ยังอยู่ใน localStorage ของ frontend — การ cascade ตอนลบอาจารย์/นักศึกษายังทำฝั่ง client
+- ไฟล์ที่ไม่มีใครอ้างถึงแล้ว (เช่น ไฟล์ในงานที่ส่งของงานที่ถูกลบ) ยังไม่ถูกเก็บกวาดอัตโนมัติ

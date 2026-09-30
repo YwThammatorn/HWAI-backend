@@ -53,6 +53,10 @@ export const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
       return;
     }
   }
+  if (err?.type === "entity.too.large") {
+    res.status(413).json({ error: `Too large (limit ${Math.round(err.limit / 1024 / 1024)} MB)` });
+    return;
+  }
   if (err?.type === "entity.parse.failed") {
     res.status(400).json({ error: "Invalid JSON body" });
     return;
