@@ -81,6 +81,7 @@ Response shape ตรงกับ type ใน `HWAI-frontend/src/lib/*.ts` (fiel
 | DELETE | `/managed-teachers/:id/courses/:courseId` | | 204 |
 | GET | `/cohort-students` | | `CohortStudent[]` |
 | POST | `/cohort-students` | array ของ `CohortStudent` (ซ้ำตัวเดียว = reject ทั้งชุด) | `CohortStudent[]` |
+| PATCH | `/cohort-students` | `{ ids, data }` แก้หลายคนพร้อมกัน เช่น ปิดใช้งานทั้งรุ่น (ไม่เจอคนใด = ไม่แก้เลย, 404) | `CohortStudent[]` |
 | PATCH | `/cohort-students/:id` | partial | `CohortStudent` |
 | DELETE | `/cohort-students/:id` | | 204 |
 

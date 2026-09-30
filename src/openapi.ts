@@ -4,7 +4,7 @@ import { z } from "zod";
 import { courseCreate, courseUpdate } from "./routes/courses.js";
 import { templateCreate, templateUpdate, versionCreate, versionUpdate } from "./routes/curriculum.js";
 import { teacherCreate, teacherUpdate } from "./routes/managed-teachers.js";
-import { studentCreate, studentUpdate } from "./routes/cohort-students.js";
+import { studentBulkUpdate, studentCreate, studentUpdate } from "./routes/cohort-students.js";
 
 const json = (schema: z.ZodType) => z.toJSONSchema(schema, { io: "input", unrepresentable: "any" });
 
@@ -110,6 +110,7 @@ const examples = {
     { studentId: "69070999", title: "นาย", firstName: "ทดลอง", lastName: "ระบบ", email: "69070999@kmitl.ac.th", program: "CE" },
   ],
   studentUpdate: { status: "inactive" },
+  studentBulkUpdate: { ids: ["cs-mock-1", "cs-mock-2"], data: { status: "inactive" } },
 };
 const pathParam = (name: string, description?: string) => ({
   name,
@@ -228,6 +229,7 @@ export const openapiSpec = {
         res: ok({ type: "array", items: ref("CohortStudent") }),
       }),
       post: op("Students", { summary: "เพิ่มนักศึกษา (ส่งเป็น array, ซ้ำคนเดียว = reject ทั้งชุด)", body: body({ type: "array", items: json(studentCreate) }, examples.studentCreate), res: ok({ type: "array", items: ref("CohortStudent") }, "201"), errors: { ...V400, "409": "รหัสนักศึกษาซ้ำ" } }),
+      patch: op("Students", { summary: "แก้ไขนักศึกษาหลายคนพร้อมกัน เช่น ปิดใช้งานทั้งรุ่น (ไม่เจอคนใดคนหนึ่ง = ไม่แก้เลย)", body: body(json(studentBulkUpdate), examples.studentBulkUpdate), res: ok({ type: "array", items: ref("CohortStudent") }), errors: { ...V400, ...N404 } }),
     },
     "/cohort-students/{id}": {
       patch: op("Students", { summary: "แก้ไขนักศึกษา", params: [id], body: body(json(studentUpdate), examples.studentUpdate), res: ok(ref("CohortStudent")), errors: { ...V400, ...N404 } }),
