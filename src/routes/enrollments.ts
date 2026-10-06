@@ -2,7 +2,8 @@
 import { Router } from "express";
 import { z } from "zod";
 import { prisma } from "../lib/prisma.js";
-import { parse } from "../lib/http.js";
+import { HttpError, parse } from "../lib/http.js";
+import type { Prisma } from "../generated/prisma/client.js";
 import { enrollmentStatus, idOverride, toEnrollment } from "../lib/content.js";
 
 export const enrollmentsRouter = Router();
@@ -38,17 +39,64 @@ enrollmentsRouter.get("/courses/:courseId/students", async (req, res) => {
   res.json(rows.map(toEnrollment));
 });
 
+// ── One section = one program (CE / CECS / CEI) ──────────────────────────────
+// Same rule as HWAI-frontend/src/lib/sectionProgram.ts: a section's program is its curriculum's
+// (course → course template → curriculum version); a section with no curriculum takes the program of
+// the first non-withdrawn student on its roster. Until something pins it, the section takes anyone —
+// and within one batch the first student with a program pins it for the rest.
+
+type Tx = Prisma.TransactionClient;
+
+async function programsOf(tx: Tx, studentIds: string[]) {
+  const rows = await tx.student.findMany({ where: { studentId: { in: studentIds } }, select: { studentId: true, program: true } });
+  return new Map(rows.map((s) => [s.studentId, s.program]));
+}
+
+async function sectionProgram(tx: Tx, courseId: string): Promise<string | null> {
+  const course = await tx.course.findUnique({
+    where: { id: courseId },
+    select: { courseTemplate: { select: { curriculumVersion: { select: { program: true } } } } },
+  });
+  if (!course) throw new HttpError(404, "Course not found");
+  const fromCurriculum = course.courseTemplate?.curriculumVersion.program;
+  if (fromCurriculum) return fromCurriculum;
+  const roster = await tx.enrollment.findMany({
+    // A missing status counts as enrolled (as on the frontend) — plain NOT would drop NULLs too.
+    where: { courseId, OR: [{ enrollmentStatus: null }, { enrollmentStatus: { not: "withdrawn" } }] },
+    orderBy: order,
+    select: { studentId: true },
+  });
+  const programs = await programsOf(tx, roster.map((e) => e.studentId));
+  for (const e of roster) {
+    const p = programs.get(e.studentId);
+    if (p) return p;
+  }
+  return null;
+}
+
 // Takes an array (single enrol and CSV import share it). Numbering continues after the current roster
 // and a student added to a non-empty roster counts as "added-midterm" — unless the client says otherwise
-// (the same rule as the frontend's StudentProvider). All-or-nothing: one duplicate rejects the batch (409).
+// (the same rule as the frontend's StudentProvider).
+// Students from another program than the section's are not enrolled: the rest go in, and the response
+// lists every refused row — 201 { enrolled, rejected } (rejected is [] when all went in), or 422 when
+// nobody could be enrolled. A duplicate still rejects the whole batch (409).
 enrollmentsRouter.post("/courses/:courseId/students", async (req, res) => {
   const courseId = req.params.courseId;
   const items = parse(z.array(enrollmentCreate), req.body);
-  const rows = await prisma.$transaction(async (tx) => {
+  const { created, rejected } = await prisma.$transaction(async (tx) => {
+    let pinned = await sectionProgram(tx, courseId);
+    const programs = await programsOf(tx, items.map((i) => i.studentId));
     const existing = await tx.enrollment.count({ where: { courseId } });
     let nextSeq = existing + 1;
     const created = [];
+    const rejected: { studentId: string; program: string; sectionProgram: string; reason: "wrong_program" }[] = [];
     for (const item of items) {
+      const program = programs.get(item.studentId);
+      if (pinned && program && program !== pinned) {
+        rejected.push({ studentId: item.studentId, program, sectionProgram: pinned, reason: "wrong_program" });
+        continue;
+      }
+      if (!pinned && program) pinned = program;
       created.push(
         await tx.enrollment.create({
           data: {
@@ -62,9 +110,16 @@ enrollmentsRouter.post("/courses/:courseId/students", async (req, res) => {
         }),
       );
     }
-    return created;
+    return { created, rejected };
   });
-  res.status(201).json(rows.map(toEnrollment));
+  if (created.length === 0 && rejected.length > 0) {
+    res.status(422).json({
+      error: `Every student is from another program than this section (${rejected[0].sectionProgram})`,
+      rejected,
+    });
+    return;
+  }
+  res.status(201).json({ enrolled: created.map(toEnrollment), rejected });
 });
 
 enrollmentsRouter.patch("/students/:id", async (req, res) => {

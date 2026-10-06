@@ -108,6 +108,12 @@ const responses = {
     permissions: opt(z.object({ canManageRoster: z.boolean(), canEditSettings: z.boolean(), canPublishScores: z.boolean() })),
   }),
   CLO: z.object({ id: z.string(), courseId: z.string(), code: z.string(), text: z.string(), ...timestamps }),
+  RejectedEnrollment: z.object({
+    studentId: z.string(),
+    program: z.string(),
+    sectionProgram: z.string(),
+    reason: z.literal("wrong_program"),
+  }),
 };
 
 type Model = keyof typeof responses;
@@ -335,9 +341,16 @@ export const openapiSpec = {
     "/courses/{courseId}/students": {
       get: op("Rosters", { summary: "รายชื่อนักศึกษาในรายวิชา", params: [courseId], res: ok(list("Enrollment")) }),
       post: op("Rosters", {
-        summary: "เพิ่มนักศึกษาเข้ารายวิชา (array) — ลำดับต่อท้าย, คนที่เพิ่มทีหลัง = added-midterm",
+        summary: "เพิ่มนักศึกษาเข้ารายวิชา (array) — ลำดับต่อท้าย, คนที่เพิ่มทีหลัง = added-midterm. 1 section = 1 สาขา: คนต่างสาขาจะไม่ถูกเพิ่มและอยู่ใน rejected",
         params: [courseId], body: body({ type: "array", items: json(enrollmentCreate) }, examples.enrollmentCreate),
-        res: ok(list("Enrollment"), "201"), errors: { ...V400, "409": "นักศึกษาอยู่ในรายวิชานี้แล้ว" },
+        res: ok({
+          type: "object",
+          properties: {
+            enrolled: list("Enrollment"),
+            rejected: { type: "array", items: ref("RejectedEnrollment") },
+          },
+        }, "201"),
+        errors: { ...V400, "404": "ไม่พบรายวิชา", "409": "นักศึกษาอยู่ในรายวิชานี้แล้ว", "422": "ทุกคนอยู่คนละสาขากับ section (มี rejected แนบมา)" },
       }),
     },
     "/students/{id}": {

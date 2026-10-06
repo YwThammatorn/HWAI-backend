@@ -98,7 +98,7 @@ Response shape ตรงกับ type ใน `HWAI-frontend/src/lib/*.ts` (fiel
 
 | Resource | ทั้งหมด | ของรายวิชา / งาน | สร้าง | แก้ / ลบ |
 |---|---|---|---|---|
-| รายชื่อนักศึกษาในวิชา | `GET /students` | `GET /courses/:courseId/students` | `POST /courses/:courseId/students` (array) | `PATCH`/`DELETE /students/:id` |
+| รายชื่อนักศึกษาในวิชา | `GET /students` | `GET /courses/:courseId/students` | `POST /courses/:courseId/students` (array → `{ enrolled, rejected }`) | `PATCH`/`DELETE /students/:id` |
 | หมวดคะแนน | `GET /grading-categories` | `GET /courses/:courseId/grading-categories` | `POST` ที่เดียวกัน | `PATCH`/`DELETE /grading-categories/:id` |
 | งาน | `GET /assignments` | `GET /courses/:courseId/assignments` | `POST` ที่เดียวกัน | `GET`/`PATCH`/`DELETE /assignments/:id` |
 | rubric | `GET /rubrics` | `GET /assignments/:id/rubrics` | `POST` ที่เดียวกัน | `PATCH`/`DELETE /rubrics/:id` |
@@ -108,6 +108,11 @@ Response shape ตรงกับ type ใน `HWAI-frontend/src/lib/*.ts` (fiel
 | CLO | `GET /clos` | `GET /courses/:courseId/clos` | `POST` ที่เดียวกัน | `PATCH`/`DELETE /clos/:id` |
 
 ลบงาน → rubric, งานที่ส่ง และทีมของงานนั้นถูกลบตาม · ลบรายวิชา → เนื้อหาทั้งหมดของรายวิชาถูกลบตาม · ลบหมวดคะแนน → งานยังอยู่แค่ไม่มีหมวด
+
+**1 section = 1 สาขา** (CE / CECS / CEI) — กติกาเดียวกับ `HWAI-frontend/src/lib/sectionProgram.ts`: สาขาของ section คือสาขาของหลักสูตรที่วิชานั้นสังกัด
+ถ้าวิชาไม่ผูกหลักสูตร ใช้สาขาของนักศึกษาคนแรกในรายชื่อที่ยังไม่ถอน (ถ้ายังไม่มีใคร คนแรกในชุดที่ส่งมาจะเป็นตัวกำหนด)
+`POST /courses/:courseId/students` เพิ่มเฉพาะคนที่สาขาตรง แล้วตอบ `201 { enrolled, rejected }` — ถ้าไม่มีใครเพิ่มได้เลยตอบ `422 { error, rejected }`
+นักศึกษาที่ไม่มีในรายชื่อนักศึกษากลาง (ไม่รู้สาขา) เพิ่มได้ เหมือนฝั่ง frontend
 
 ### ไฟล์
 

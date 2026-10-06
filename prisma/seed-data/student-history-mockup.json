@@ -500,7 +500,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-66010101-1-c-mock-38-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -519,7 +519,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-66010101-1-c-mock-38-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -537,7 +537,7 @@
       "courseId": "c-mock-38",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-66010101-1-c-mock-38-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -557,7 +557,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-66010101-1-c-mock-39-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -576,7 +576,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-66010101-1-c-mock-39-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -594,7 +594,7 @@
       "courseId": "c-mock-39",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-66010101-1-c-mock-39-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -614,7 +614,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-66010101-2-c-mock-40-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -633,7 +633,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-66010101-2-c-mock-40-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -651,7 +651,7 @@
       "courseId": "c-mock-40",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-66010101-2-c-mock-40-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -671,7 +671,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-66010101-2-c-mock-41-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -690,7 +690,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-66010101-2-c-mock-41-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -708,7 +708,7 @@
       "courseId": "c-mock-41",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-66010101-2-c-mock-41-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -728,7 +728,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-66010101-3-c-mock-42-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -747,7 +747,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-66010101-3-c-mock-42-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -765,7 +765,7 @@
       "courseId": "c-mock-42",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-66010101-3-c-mock-42-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -785,7 +785,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-66010101-4-c-mock-44-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -804,7 +804,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-66010101-4-c-mock-44-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -822,7 +822,7 @@
       "courseId": "c-mock-44",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-66010101-4-c-mock-44-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -842,7 +842,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-67010201-1-c-mock-46-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -861,7 +861,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-67010201-1-c-mock-46-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -879,7 +879,7 @@
       "courseId": "c-mock-46",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-67010201-1-c-mock-46-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -899,7 +899,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-67010201-1-c-mock-47-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -918,7 +918,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-67010201-1-c-mock-47-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -936,7 +936,7 @@
       "courseId": "c-mock-47",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-67010201-1-c-mock-47-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -956,7 +956,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-67010201-2-c-mock-48-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -975,7 +975,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-67010201-2-c-mock-48-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -993,7 +993,7 @@
       "courseId": "c-mock-48",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-67010201-2-c-mock-48-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1013,7 +1013,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-67010201-2-c-mock-49-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1032,7 +1032,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-67010201-2-c-mock-49-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1050,7 +1050,7 @@
       "courseId": "c-mock-49",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-67010201-2-c-mock-49-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1070,7 +1070,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-67010201-3-c-mock-53-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1089,7 +1089,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-67010201-3-c-mock-53-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1107,7 +1107,7 @@
       "courseId": "c-mock-53",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-67010201-3-c-mock-53-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1127,7 +1127,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-68020101-1-c-mock-19-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1146,7 +1146,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-68020101-1-c-mock-19-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1164,7 +1164,7 @@
       "courseId": "c-mock-19",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-68020101-1-c-mock-19-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1184,7 +1184,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-68020101-1-c-mock-51-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1203,7 +1203,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-68020101-1-c-mock-51-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1221,7 +1221,7 @@
       "courseId": "c-mock-51",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-68020101-1-c-mock-51-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1241,7 +1241,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-68020101-2-c-mock-52-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1260,7 +1260,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-68020101-2-c-mock-52-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1278,7 +1278,7 @@
       "courseId": "c-mock-52",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-68020101-2-c-mock-52-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1298,7 +1298,7 @@
       "name": "แล็บ 1",
       "description": "",
       "dueDate": "2025-10-20",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-69070101-3-c-mock-50-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1317,7 +1317,7 @@
       "name": "แบบทดสอบย่อย 1",
       "description": "",
       "dueDate": "2025-11-15",
-      "maxPoints": 100,
+      "maxPoints": 20,
       "categoryId": "gcat-hist-69070101-3-c-mock-50-1",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1335,7 +1335,7 @@
       "courseId": "c-mock-50",
       "name": "สอบปลายภาค",
       "description": "",
-      "maxPoints": 100,
+      "maxPoints": 40,
       "categoryId": "gcat-hist-69070101-3-c-mock-50-2",
       "acceptsFiles": false,
       "fileTypes": [],
@@ -1360,14 +1360,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 91,
+      "instructorScore": 38,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-1-c-mock-38-1-a": 55,
-        "rc-hist-a-hist-66010101-1-c-mock-38-1-b": 36
+        "rc-hist-a-hist-66010101-1-c-mock-38-1-a": 23,
+        "rc-hist-a-hist-66010101-1-c-mock-38-1-b": 15
       }
     },
     {
@@ -1379,14 +1379,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 91,
+      "instructorScore": 19,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-1-c-mock-38-2-a": 45,
-        "rc-hist-a-hist-66010101-1-c-mock-38-2-b": 46
+        "rc-hist-a-hist-66010101-1-c-mock-38-2-a": 9,
+        "rc-hist-a-hist-66010101-1-c-mock-38-2-b": 10
       }
     },
     {
@@ -1398,15 +1398,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 91,
+      "instructorScore": 34,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-1-c-mock-38-3-a": 37,
-        "rc-hist-a-hist-66010101-1-c-mock-38-3-b": 27,
-        "rc-hist-a-hist-66010101-1-c-mock-38-3-c": 27
+        "rc-hist-a-hist-66010101-1-c-mock-38-3-a": 14,
+        "rc-hist-a-hist-66010101-1-c-mock-38-3-b": 10,
+        "rc-hist-a-hist-66010101-1-c-mock-38-3-c": 10
       }
     },
     {
@@ -1418,14 +1418,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 84,
+      "instructorScore": 36,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-1-c-mock-39-1-a": 50,
-        "rc-hist-a-hist-66010101-1-c-mock-39-1-b": 34
+        "rc-hist-a-hist-66010101-1-c-mock-39-1-a": 21,
+        "rc-hist-a-hist-66010101-1-c-mock-39-1-b": 15
       }
     },
     {
@@ -1437,14 +1437,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 84,
+      "instructorScore": 17,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-1-c-mock-39-2-a": 42,
-        "rc-hist-a-hist-66010101-1-c-mock-39-2-b": 42
+        "rc-hist-a-hist-66010101-1-c-mock-39-2-a": 9,
+        "rc-hist-a-hist-66010101-1-c-mock-39-2-b": 8
       }
     },
     {
@@ -1456,15 +1456,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 84,
+      "instructorScore": 31,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-1-c-mock-39-3-a": 34,
-        "rc-hist-a-hist-66010101-1-c-mock-39-3-b": 25,
-        "rc-hist-a-hist-66010101-1-c-mock-39-3-c": 25
+        "rc-hist-a-hist-66010101-1-c-mock-39-3-a": 13,
+        "rc-hist-a-hist-66010101-1-c-mock-39-3-b": 9,
+        "rc-hist-a-hist-66010101-1-c-mock-39-3-c": 9
       }
     },
     {
@@ -1476,14 +1476,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 78,
+      "instructorScore": 34,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-2-c-mock-40-1-a": 47,
-        "rc-hist-a-hist-66010101-2-c-mock-40-1-b": 31
+        "rc-hist-a-hist-66010101-2-c-mock-40-1-a": 20,
+        "rc-hist-a-hist-66010101-2-c-mock-40-1-b": 14
       }
     },
     {
@@ -1495,14 +1495,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 78,
+      "instructorScore": 14,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-2-c-mock-40-2-a": 39,
-        "rc-hist-a-hist-66010101-2-c-mock-40-2-b": 39
+        "rc-hist-a-hist-66010101-2-c-mock-40-2-a": 7,
+        "rc-hist-a-hist-66010101-2-c-mock-40-2-b": 7
       }
     },
     {
@@ -1514,15 +1514,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 78,
+      "instructorScore": 30,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-2-c-mock-40-3-a": 32,
-        "rc-hist-a-hist-66010101-2-c-mock-40-3-b": 23,
-        "rc-hist-a-hist-66010101-2-c-mock-40-3-c": 23
+        "rc-hist-a-hist-66010101-2-c-mock-40-3-a": 12,
+        "rc-hist-a-hist-66010101-2-c-mock-40-3-b": 9,
+        "rc-hist-a-hist-66010101-2-c-mock-40-3-c": 9
       }
     },
     {
@@ -1534,14 +1534,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 65,
+      "instructorScore": 28,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-2-c-mock-41-1-a": 39,
-        "rc-hist-a-hist-66010101-2-c-mock-41-1-b": 26
+        "rc-hist-a-hist-66010101-2-c-mock-41-1-a": 17,
+        "rc-hist-a-hist-66010101-2-c-mock-41-1-b": 11
       }
     },
     {
@@ -1553,14 +1553,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 65,
+      "instructorScore": 12,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-2-c-mock-41-2-a": 32,
-        "rc-hist-a-hist-66010101-2-c-mock-41-2-b": 33
+        "rc-hist-a-hist-66010101-2-c-mock-41-2-a": 6,
+        "rc-hist-a-hist-66010101-2-c-mock-41-2-b": 6
       }
     },
     {
@@ -1572,15 +1572,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 65,
+      "instructorScore": 25,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-2-c-mock-41-3-a": 25,
-        "rc-hist-a-hist-66010101-2-c-mock-41-3-b": 20,
-        "rc-hist-a-hist-66010101-2-c-mock-41-3-c": 20
+        "rc-hist-a-hist-66010101-2-c-mock-41-3-a": 9,
+        "rc-hist-a-hist-66010101-2-c-mock-41-3-b": 8,
+        "rc-hist-a-hist-66010101-2-c-mock-41-3-c": 8
       }
     },
     {
@@ -1592,14 +1592,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 58,
+      "instructorScore": 26,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-3-c-mock-42-1-a": 35,
-        "rc-hist-a-hist-66010101-3-c-mock-42-1-b": 23
+        "rc-hist-a-hist-66010101-3-c-mock-42-1-a": 16,
+        "rc-hist-a-hist-66010101-3-c-mock-42-1-b": 10
       }
     },
     {
@@ -1611,14 +1611,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 58,
+      "instructorScore": 10,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-3-c-mock-42-2-a": 29,
-        "rc-hist-a-hist-66010101-3-c-mock-42-2-b": 29
+        "rc-hist-a-hist-66010101-3-c-mock-42-2-a": 5,
+        "rc-hist-a-hist-66010101-3-c-mock-42-2-b": 5
       }
     },
     {
@@ -1630,15 +1630,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 58,
+      "instructorScore": 22,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-3-c-mock-42-3-a": 24,
-        "rc-hist-a-hist-66010101-3-c-mock-42-3-b": 17,
-        "rc-hist-a-hist-66010101-3-c-mock-42-3-c": 17
+        "rc-hist-a-hist-66010101-3-c-mock-42-3-a": 9,
+        "rc-hist-a-hist-66010101-3-c-mock-42-3-b": 7,
+        "rc-hist-a-hist-66010101-3-c-mock-42-3-c": 6
       }
     },
     {
@@ -1650,14 +1650,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 88,
+      "instructorScore": 34,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-4-c-mock-44-1-a": 53,
-        "rc-hist-a-hist-66010101-4-c-mock-44-1-b": 35
+        "rc-hist-a-hist-66010101-4-c-mock-44-1-a": 20,
+        "rc-hist-a-hist-66010101-4-c-mock-44-1-b": 14
       }
     },
     {
@@ -1669,14 +1669,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 88,
+      "instructorScore": 17,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-4-c-mock-44-2-a": 44,
-        "rc-hist-a-hist-66010101-4-c-mock-44-2-b": 44
+        "rc-hist-a-hist-66010101-4-c-mock-44-2-a": 9,
+        "rc-hist-a-hist-66010101-4-c-mock-44-2-b": 8
       }
     },
     {
@@ -1688,15 +1688,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 88,
+      "instructorScore": 37,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-4-c-mock-44-3-a": 36,
-        "rc-hist-a-hist-66010101-4-c-mock-44-3-b": 26,
-        "rc-hist-a-hist-66010101-4-c-mock-44-3-c": 26
+        "rc-hist-a-hist-66010101-4-c-mock-44-3-a": 15,
+        "rc-hist-a-hist-66010101-4-c-mock-44-3-b": 11,
+        "rc-hist-a-hist-66010101-4-c-mock-44-3-c": 11
       }
     },
     {
@@ -1708,14 +1708,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 86,
+      "instructorScore": 35,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-1-c-mock-46-1-a": 52,
-        "rc-hist-a-hist-67010201-1-c-mock-46-1-b": 34
+        "rc-hist-a-hist-67010201-1-c-mock-46-1-a": 21,
+        "rc-hist-a-hist-67010201-1-c-mock-46-1-b": 14
       }
     },
     {
@@ -1727,14 +1727,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 86,
+      "instructorScore": 17,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-1-c-mock-46-2-a": 43,
-        "rc-hist-a-hist-67010201-1-c-mock-46-2-b": 43
+        "rc-hist-a-hist-67010201-1-c-mock-46-2-a": 9,
+        "rc-hist-a-hist-67010201-1-c-mock-46-2-b": 8
       }
     },
     {
@@ -1746,15 +1746,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 86,
+      "instructorScore": 34,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-1-c-mock-46-3-a": 34,
-        "rc-hist-a-hist-67010201-1-c-mock-46-3-b": 26,
-        "rc-hist-a-hist-67010201-1-c-mock-46-3-c": 26
+        "rc-hist-a-hist-67010201-1-c-mock-46-3-a": 14,
+        "rc-hist-a-hist-67010201-1-c-mock-46-3-b": 10,
+        "rc-hist-a-hist-67010201-1-c-mock-46-3-c": 10
       }
     },
     {
@@ -1766,14 +1766,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 79,
+      "instructorScore": 33,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-1-c-mock-47-1-a": 47,
-        "rc-hist-a-hist-67010201-1-c-mock-47-1-b": 32
+        "rc-hist-a-hist-67010201-1-c-mock-47-1-a": 20,
+        "rc-hist-a-hist-67010201-1-c-mock-47-1-b": 13
       }
     },
     {
@@ -1785,14 +1785,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 79,
+      "instructorScore": 17,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-1-c-mock-47-2-a": 39,
-        "rc-hist-a-hist-67010201-1-c-mock-47-2-b": 40
+        "rc-hist-a-hist-67010201-1-c-mock-47-2-a": 8,
+        "rc-hist-a-hist-67010201-1-c-mock-47-2-b": 9
       }
     },
     {
@@ -1804,15 +1804,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 79,
+      "instructorScore": 29,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-1-c-mock-47-3-a": 31,
-        "rc-hist-a-hist-67010201-1-c-mock-47-3-b": 24,
-        "rc-hist-a-hist-67010201-1-c-mock-47-3-c": 24
+        "rc-hist-a-hist-67010201-1-c-mock-47-3-a": 11,
+        "rc-hist-a-hist-67010201-1-c-mock-47-3-b": 9,
+        "rc-hist-a-hist-67010201-1-c-mock-47-3-c": 9
       }
     },
     {
@@ -1824,14 +1824,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 47,
+      "instructorScore": 18,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-2-c-mock-48-1-a": 28,
-        "rc-hist-a-hist-67010201-2-c-mock-48-1-b": 19
+        "rc-hist-a-hist-67010201-2-c-mock-48-1-a": 11,
+        "rc-hist-a-hist-67010201-2-c-mock-48-1-b": 7
       }
     },
     {
@@ -1843,14 +1843,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 47,
+      "instructorScore": 10,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-2-c-mock-48-2-a": 23,
-        "rc-hist-a-hist-67010201-2-c-mock-48-2-b": 24
+        "rc-hist-a-hist-67010201-2-c-mock-48-2-a": 5,
+        "rc-hist-a-hist-67010201-2-c-mock-48-2-b": 5
       }
     },
     {
@@ -1862,15 +1862,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 47,
+      "instructorScore": 19,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-2-c-mock-48-3-a": 19,
-        "rc-hist-a-hist-67010201-2-c-mock-48-3-b": 14,
-        "rc-hist-a-hist-67010201-2-c-mock-48-3-c": 14
+        "rc-hist-a-hist-67010201-2-c-mock-48-3-a": 8,
+        "rc-hist-a-hist-67010201-2-c-mock-48-3-b": 6,
+        "rc-hist-a-hist-67010201-2-c-mock-48-3-c": 5
       }
     },
     {
@@ -1882,14 +1882,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 55,
+      "instructorScore": 21,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-2-c-mock-49-1-a": 33,
-        "rc-hist-a-hist-67010201-2-c-mock-49-1-b": 22
+        "rc-hist-a-hist-67010201-2-c-mock-49-1-a": 13,
+        "rc-hist-a-hist-67010201-2-c-mock-49-1-b": 8
       }
     },
     {
@@ -1901,14 +1901,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 55,
+      "instructorScore": 11,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-2-c-mock-49-2-a": 27,
-        "rc-hist-a-hist-67010201-2-c-mock-49-2-b": 28
+        "rc-hist-a-hist-67010201-2-c-mock-49-2-a": 5,
+        "rc-hist-a-hist-67010201-2-c-mock-49-2-b": 6
       }
     },
     {
@@ -1920,15 +1920,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 55,
+      "instructorScore": 23,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-2-c-mock-49-3-a": 21,
-        "rc-hist-a-hist-67010201-2-c-mock-49-3-b": 17,
-        "rc-hist-a-hist-67010201-2-c-mock-49-3-c": 17
+        "rc-hist-a-hist-67010201-2-c-mock-49-3-a": 9,
+        "rc-hist-a-hist-67010201-2-c-mock-49-3-b": 7,
+        "rc-hist-a-hist-67010201-2-c-mock-49-3-c": 7
       }
     },
     {
@@ -1940,14 +1940,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 75,
+      "instructorScore": 29,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-3-c-mock-53-1-a": 45,
-        "rc-hist-a-hist-67010201-3-c-mock-53-1-b": 30
+        "rc-hist-a-hist-67010201-3-c-mock-53-1-a": 17,
+        "rc-hist-a-hist-67010201-3-c-mock-53-1-b": 12
       }
     },
     {
@@ -1959,14 +1959,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 75,
+      "instructorScore": 14,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-3-c-mock-53-2-a": 37,
-        "rc-hist-a-hist-67010201-3-c-mock-53-2-b": 38
+        "rc-hist-a-hist-67010201-3-c-mock-53-2-a": 7,
+        "rc-hist-a-hist-67010201-3-c-mock-53-2-b": 7
       }
     },
     {
@@ -1978,15 +1978,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 75,
+      "instructorScore": 32,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-3-c-mock-53-3-a": 29,
-        "rc-hist-a-hist-67010201-3-c-mock-53-3-b": 23,
-        "rc-hist-a-hist-67010201-3-c-mock-53-3-c": 23
+        "rc-hist-a-hist-67010201-3-c-mock-53-3-a": 12,
+        "rc-hist-a-hist-67010201-3-c-mock-53-3-b": 10,
+        "rc-hist-a-hist-67010201-3-c-mock-53-3-c": 10
       }
     },
     {
@@ -1998,14 +1998,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 88,
+      "instructorScore": 35,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-1-c-mock-19-1-a": 53,
-        "rc-hist-a-hist-68020101-1-c-mock-19-1-b": 35
+        "rc-hist-a-hist-68020101-1-c-mock-19-1-a": 21,
+        "rc-hist-a-hist-68020101-1-c-mock-19-1-b": 14
       }
     },
     {
@@ -2017,14 +2017,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 88,
+      "instructorScore": 17,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-1-c-mock-19-2-a": 44,
-        "rc-hist-a-hist-68020101-1-c-mock-19-2-b": 44
+        "rc-hist-a-hist-68020101-1-c-mock-19-2-a": 9,
+        "rc-hist-a-hist-68020101-1-c-mock-19-2-b": 8
       }
     },
     {
@@ -2036,15 +2036,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 88,
+      "instructorScore": 36,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-1-c-mock-19-3-a": 36,
-        "rc-hist-a-hist-68020101-1-c-mock-19-3-b": 26,
-        "rc-hist-a-hist-68020101-1-c-mock-19-3-c": 26
+        "rc-hist-a-hist-68020101-1-c-mock-19-3-a": 15,
+        "rc-hist-a-hist-68020101-1-c-mock-19-3-b": 11,
+        "rc-hist-a-hist-68020101-1-c-mock-19-3-c": 10
       }
     },
     {
@@ -2056,14 +2056,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 65,
+      "instructorScore": 29,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-1-c-mock-51-1-a": 39,
-        "rc-hist-a-hist-68020101-1-c-mock-51-1-b": 26
+        "rc-hist-a-hist-68020101-1-c-mock-51-1-a": 17,
+        "rc-hist-a-hist-68020101-1-c-mock-51-1-b": 12
       }
     },
     {
@@ -2075,14 +2075,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 65,
+      "instructorScore": 12,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-1-c-mock-51-2-a": 32,
-        "rc-hist-a-hist-68020101-1-c-mock-51-2-b": 33
+        "rc-hist-a-hist-68020101-1-c-mock-51-2-a": 6,
+        "rc-hist-a-hist-68020101-1-c-mock-51-2-b": 6
       }
     },
     {
@@ -2094,15 +2094,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 65,
+      "instructorScore": 24,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-1-c-mock-51-3-a": 25,
-        "rc-hist-a-hist-68020101-1-c-mock-51-3-b": 20,
-        "rc-hist-a-hist-68020101-1-c-mock-51-3-c": 20
+        "rc-hist-a-hist-68020101-1-c-mock-51-3-a": 9,
+        "rc-hist-a-hist-68020101-1-c-mock-51-3-b": 8,
+        "rc-hist-a-hist-68020101-1-c-mock-51-3-c": 7
       }
     },
     {
@@ -2114,14 +2114,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 78,
+      "instructorScore": 32,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-2-c-mock-52-1-a": 47,
-        "rc-hist-a-hist-68020101-2-c-mock-52-1-b": 31
+        "rc-hist-a-hist-68020101-2-c-mock-52-1-a": 19,
+        "rc-hist-a-hist-68020101-2-c-mock-52-1-b": 13
       }
     },
     {
@@ -2133,14 +2133,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 78,
+      "instructorScore": 15,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-2-c-mock-52-2-a": 39,
-        "rc-hist-a-hist-68020101-2-c-mock-52-2-b": 39
+        "rc-hist-a-hist-68020101-2-c-mock-52-2-a": 8,
+        "rc-hist-a-hist-68020101-2-c-mock-52-2-b": 7
       }
     },
     {
@@ -2152,15 +2152,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 78,
+      "instructorScore": 31,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-2-c-mock-52-3-a": 32,
-        "rc-hist-a-hist-68020101-2-c-mock-52-3-b": 23,
-        "rc-hist-a-hist-68020101-2-c-mock-52-3-c": 23
+        "rc-hist-a-hist-68020101-2-c-mock-52-3-a": 13,
+        "rc-hist-a-hist-68020101-2-c-mock-52-3-b": 9,
+        "rc-hist-a-hist-68020101-2-c-mock-52-3-c": 9
       }
     },
     {
@@ -2172,14 +2172,14 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 89,
+      "instructorScore": 36,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-69070101-3-c-mock-50-1-a": 53,
-        "rc-hist-a-hist-69070101-3-c-mock-50-1-b": 36
+        "rc-hist-a-hist-69070101-3-c-mock-50-1-a": 21,
+        "rc-hist-a-hist-69070101-3-c-mock-50-1-b": 15
       }
     },
     {
@@ -2191,14 +2191,14 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 89,
+      "instructorScore": 18,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-69070101-3-c-mock-50-2-a": 44,
-        "rc-hist-a-hist-69070101-3-c-mock-50-2-b": 45
+        "rc-hist-a-hist-69070101-3-c-mock-50-2-a": 9,
+        "rc-hist-a-hist-69070101-3-c-mock-50-2-b": 9
       }
     },
     {
@@ -2210,15 +2210,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 89,
+      "instructorScore": 35,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-69070101-3-c-mock-50-3-a": 35,
-        "rc-hist-a-hist-69070101-3-c-mock-50-3-b": 27,
-        "rc-hist-a-hist-69070101-3-c-mock-50-3-c": 27
+        "rc-hist-a-hist-69070101-3-c-mock-50-3-a": 14,
+        "rc-hist-a-hist-69070101-3-c-mock-50-3-b": 11,
+        "rc-hist-a-hist-69070101-3-c-mock-50-3-c": 10
       }
     },
     {
@@ -2230,14 +2230,14 @@
       "submittedAt": "2025-12-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 74,
+      "instructorScore": 30,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-2-c-mock-52-1-a": 44,
-        "rc-hist-a-hist-68020101-2-c-mock-52-1-b": 30
+        "rc-hist-a-hist-68020101-2-c-mock-52-1-a": 18,
+        "rc-hist-a-hist-68020101-2-c-mock-52-1-b": 12
       }
     },
     {
@@ -2249,14 +2249,14 @@
       "submittedAt": "2025-12-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 74,
+      "instructorScore": 14,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-2-c-mock-52-2-a": 37,
-        "rc-hist-a-hist-68020101-2-c-mock-52-2-b": 37
+        "rc-hist-a-hist-68020101-2-c-mock-52-2-a": 7,
+        "rc-hist-a-hist-68020101-2-c-mock-52-2-b": 7
       }
     },
     {
@@ -2268,15 +2268,15 @@
       "submittedAt": "2025-12-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 74,
+      "instructorScore": 30,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-2-c-mock-52-3-a": 30,
-        "rc-hist-a-hist-68020101-2-c-mock-52-3-b": 22,
-        "rc-hist-a-hist-68020101-2-c-mock-52-3-c": 22
+        "rc-hist-a-hist-68020101-2-c-mock-52-3-a": 12,
+        "rc-hist-a-hist-68020101-2-c-mock-52-3-b": 9,
+        "rc-hist-a-hist-68020101-2-c-mock-52-3-c": 9
       }
     }
   ],
@@ -2290,7 +2290,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -2311,7 +2311,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -2341,7 +2341,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -2362,7 +2362,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -2392,7 +2392,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -2413,7 +2413,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -2434,7 +2434,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -2464,7 +2464,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -2485,7 +2485,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -2515,7 +2515,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -2536,7 +2536,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -2566,7 +2566,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -2587,7 +2587,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -2608,7 +2608,7 @@
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -2638,7 +2638,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -2659,7 +2659,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -2689,7 +2689,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -2710,7 +2710,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -2740,7 +2740,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -2761,7 +2761,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -2782,7 +2782,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -2812,7 +2812,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -2833,7 +2833,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -2863,7 +2863,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -2884,7 +2884,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -2914,7 +2914,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -2935,7 +2935,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -2956,7 +2956,7 @@
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -2986,7 +2986,7 @@
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -3007,7 +3007,7 @@
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -3037,7 +3037,7 @@
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -3058,7 +3058,7 @@
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -3088,7 +3088,7 @@
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -3109,7 +3109,7 @@
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -3130,7 +3130,7 @@
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -3160,7 +3160,7 @@
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -3181,7 +3181,7 @@
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -3211,7 +3211,7 @@
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -3232,7 +3232,7 @@
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -3262,7 +3262,7 @@
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -3283,7 +3283,7 @@
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -3304,7 +3304,7 @@
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -3334,7 +3334,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -3355,7 +3355,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -3385,7 +3385,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -3406,7 +3406,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -3436,7 +3436,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -3457,7 +3457,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -3478,7 +3478,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -3508,7 +3508,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -3529,7 +3529,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -3559,7 +3559,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -3580,7 +3580,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -3610,7 +3610,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -3631,7 +3631,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -3652,7 +3652,7 @@
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -3682,7 +3682,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -3703,7 +3703,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -3733,7 +3733,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -3754,7 +3754,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -3784,7 +3784,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -3805,7 +3805,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -3826,7 +3826,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -3856,7 +3856,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -3877,7 +3877,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -3907,7 +3907,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -3928,7 +3928,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -3958,7 +3958,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -3979,7 +3979,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -4000,7 +4000,7 @@
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -4030,7 +4030,7 @@
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -4051,7 +4051,7 @@
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -4081,7 +4081,7 @@
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -4102,7 +4102,7 @@
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -4132,7 +4132,7 @@
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -4153,7 +4153,7 @@
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -4174,7 +4174,7 @@
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -4204,7 +4204,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -4225,7 +4225,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -4255,7 +4255,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -4276,7 +4276,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -4306,7 +4306,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -4327,7 +4327,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -4348,7 +4348,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -4378,7 +4378,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -4399,7 +4399,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -4429,7 +4429,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -4450,7 +4450,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -4480,7 +4480,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -4501,7 +4501,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -4522,7 +4522,7 @@
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -4552,7 +4552,7 @@
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -4573,7 +4573,7 @@
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -4603,7 +4603,7 @@
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -4624,7 +4624,7 @@
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -4654,7 +4654,7 @@
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -4675,7 +4675,7 @@
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -4696,7 +4696,7 @@
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -4726,7 +4726,7 @@
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-1-a",
           "name": "ความถูกต้องของผลลัพธ์",
           "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 60,
+          "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
@@ -4747,7 +4747,7 @@
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-1-b",
           "name": "ความสมบูรณ์ของการส่งงาน",
           "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -4777,7 +4777,7 @@
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-2-a",
           "name": "ความเข้าใจเนื้อหา",
           "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -4798,7 +4798,7 @@
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-2-b",
           "name": "ความแม่นยำของคำตอบ",
           "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 50,
+          "maxPoints": 10,
           "weight": 50,
           "levels": [
             {
@@ -4828,7 +4828,7 @@
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-3-a",
           "name": "ความเข้าใจภาพรวมของรายวิชา",
           "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 40,
+          "maxPoints": 16,
           "weight": 40,
           "levels": [
             {
@@ -4849,7 +4849,7 @@
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-3-b",
           "name": "การประยุกต์ใช้ความรู้",
           "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
@@ -4870,7 +4870,7 @@
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-3-c",
           "name": "การวิเคราะห์และแก้ปัญหา",
           "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
-          "maxPoints": 30,
+          "maxPoints": 12,
           "weight": 30,
           "levels": [
             {

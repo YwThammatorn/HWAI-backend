@@ -16,17 +16,17 @@
     "firstName": "สุดา",
     "lastName": "วงษ์สา",
     "email": "69070102@kmitl.ac.th",
-    "program": "CECS",
+    "program": "CE",
     "status": "active"
   },
   {
     "id": "cs-mock-3",
     "studentId": "69070103",
-    "title": "Mr.",
-    "firstName": "Anucha",
-    "lastName": "Phanphet",
+    "title": "นาย",
+    "firstName": "อนุชา",
+    "lastName": "พันธ์เพชร",
     "email": "69070103@kmitl.ac.th",
-    "program": "CEI",
+    "program": "CE",
     "status": "active"
   },
   {
@@ -515,7 +515,7 @@
     "firstName": "ณภัทร",
     "lastName": "สินสมบูรณ์",
     "email": "69070207@kmitl.ac.th",
-    "program": "CECS",
+    "program": "CE",
     "status": "active"
   },
   {
@@ -525,7 +525,7 @@
     "firstName": "วิภาวี",
     "lastName": "ศรีทอง",
     "email": "69070208@kmitl.ac.th",
-    "program": "CECS",
+    "program": "CE",
     "status": "active"
   },
   {
@@ -541,41 +541,41 @@
   {
     "id": "cs-mock-55",
     "studentId": "69070210",
-    "title": "Ms.",
-    "firstName": "Manatsanan",
-    "lastName": "Udom",
+    "title": "นางสาว",
+    "firstName": "มนัสนันท์",
+    "lastName": "อุดมสุข",
     "email": "69070210@kmitl.ac.th",
-    "program": "CEI",
+    "program": "CE",
     "status": "active"
   },
   {
     "id": "cs-mock-56",
     "studentId": "69070211",
-    "title": "Mr.",
-    "firstName": "Punyawee",
-    "lastName": "Kiatkul",
+    "title": "นาย",
+    "firstName": "ปุณยวีร์",
+    "lastName": "เกียรติกุล",
     "email": "69070211@kmitl.ac.th",
-    "program": "CEI",
+    "program": "CE",
     "status": "active"
   },
   {
     "id": "cs-mock-57",
     "studentId": "69070212",
-    "title": "Ms.",
-    "firstName": "Yada",
-    "lastName": "Phimson",
+    "title": "นางสาว",
+    "firstName": "ญาดา",
+    "lastName": "พิมสอน",
     "email": "69070212@kmitl.ac.th",
-    "program": "CEI",
+    "program": "CE",
     "status": "active"
   },
   {
     "id": "cs-mock-58",
     "studentId": "69070213",
-    "title": "Mr.",
-    "firstName": "Kittipat",
-    "lastName": "Wongsawat",
+    "title": "นาย",
+    "firstName": "กิตติพัฒน์",
+    "lastName": "วงศ์สวัสดิ์",
     "email": "69070213@kmitl.ac.th",
-    "program": "CEI",
+    "program": "CE",
     "status": "active"
   },
   {
@@ -605,7 +605,7 @@
     "firstName": "ปุณณวิช",
     "lastName": "ศรีวงศ์",
     "email": "69070216@kmitl.ac.th",
-    "program": "CECS",
+    "program": "CE",
     "status": "active"
   },
   {
@@ -635,7 +635,7 @@
     "firstName": "ศิริพร",
     "lastName": "ใจเย็น",
     "email": "69070219@kmitl.ac.th",
-    "program": "CECS",
+    "program": "CE",
     "status": "active"
   },
   {
@@ -651,11 +651,11 @@
   {
     "id": "cs-mock-66",
     "studentId": "69070221",
-    "title": "Ms.",
-    "firstName": "Pimchanok",
-    "lastName": "Saelim",
+    "title": "นางสาว",
+    "firstName": "พิมพ์ชนก",
+    "lastName": "แซ่ลิ้ม",
     "email": "69070221@kmitl.ac.th",
-    "program": "CEI",
+    "program": "CE",
     "status": "active"
   },
   {
@@ -675,7 +675,7 @@
     "firstName": "ธนภัทร",
     "lastName": "เรืองศรี",
     "email": "69070223@kmitl.ac.th",
-    "program": "CECS",
+    "program": "CE",
     "status": "active"
   },
   {
@@ -715,7 +715,7 @@
     "firstName": "ชยพล",
     "lastName": "อินทรประเสริฐ",
     "email": "69070227@kmitl.ac.th",
-    "program": "CECS",
+    "program": "CE",
     "status": "active"
   },
   {
@@ -731,11 +731,11 @@
   {
     "id": "cs-mock-74",
     "studentId": "69070229",
-    "title": "Mr.",
-    "firstName": "Natthawut",
-    "lastName": "Chaiyasit",
+    "title": "นาย",
+    "firstName": "ณัฐวุฒิ",
+    "lastName": "ไชยสิทธิ์",
     "email": "69070229@kmitl.ac.th",
-    "program": "CEI",
+    "program": "CE",
     "status": "active"
   },
   {
@@ -755,7 +755,7 @@
     "firstName": "สุภาพร",
     "lastName": "ดวงจันทร์",
     "email": "69070231@kmitl.ac.th",
-    "program": "CECS",
+    "program": "CE",
     "status": "active"
   },
   {
@@ -785,7 +785,7 @@
     "firstName": "ณัฐพงษ์",
     "lastName": "คงเจริญ",
     "email": "69070234@kmitl.ac.th",
-    "program": "CECS",
+    "program": "CE",
     "status": "active"
   },
   {
@@ -801,11 +801,11 @@
   {
     "id": "cs-mock-81",
     "studentId": "69070236",
-    "title": "Ms.",
-    "firstName": "Warunee",
-    "lastName": "Boonmee",
+    "title": "นางสาว",
+    "firstName": "วารุณี",
+    "lastName": "บุญมี",
     "email": "69070236@kmitl.ac.th",
-    "program": "CEI",
+    "program": "CE",
     "status": "active"
   },
   {
@@ -825,7 +825,7 @@
     "firstName": "ณัฐริกา",
     "lastName": "เพชรรัตน์",
     "email": "69070238@kmitl.ac.th",
-    "program": "CECS",
+    "program": "CE",
     "status": "active"
   },
   {
