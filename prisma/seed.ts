@@ -61,7 +61,7 @@ async function main() {
 // commands merge them in localStorage.
 async function seedCourseContent() {
   type Row = Record<string, unknown> & { id: string };
-  type Learning = Record<"courseStudents" | "gradingCategories" | "assignments" | "rubrics" | "submissions", Row[]>;
+  type Learning = Record<"courseStudents" | "gradingCategories" | "assignments" | "rubrics" | "submissions" | "clos", Row[]>;
   const flow = load<Learning>("student-flow-mockup.json");
   const history = load<Learning>("student-history-mockup.json");
 
@@ -74,6 +74,7 @@ async function seedCourseContent() {
   const assignments = byId(flow.assignments, history.assignments);
   const rubrics = byId(flow.rubrics, history.rubrics);
   const submissions = byId(flow.submissions, history.submissions);
+  const clos = byId(flow.clos, history.clos);
 
   const json = (v: unknown) => (v === undefined || v === null ? undefined : (v as Prisma.InputJsonValue));
   const date = (v: unknown) => (typeof v === "string" ? new Date(v.length === 10 ? `${v}T00:00:00Z` : v) : undefined);
@@ -128,9 +129,13 @@ async function seedCourseContent() {
     });
     void id;
   }
+  for (const c of clos) {
+    const data = c as unknown as Prisma.CloCreateManyInput;
+    await prisma.clo.upsert({ where: { id: c.id }, create: data, update: data });
+  }
   return (
     `${roster.length} roster entries, ${categories.length} grading categories, ${assignments.length} assignments, ` +
-    `${rubrics.length} rubrics, ${submissions.length} submissions`
+    `${rubrics.length} rubrics, ${submissions.length} submissions, ${clos.length} CLOs`
   );
 }
 

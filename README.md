@@ -6,9 +6,10 @@ Express 5 + Prisma 7 + PostgreSQL API สำหรับ [HWAI-frontend](../HWAI
 - หน้า **admin** (`/admin/users`, `/admin/courses`, `/admin/curriculum`)
 - หน้า **นักศึกษา** ทั้งหมด (`/student/...`) และหน้า**สร้าง/แก้ไขงาน**ของอาจารย์ — รวมถึงรายชื่อนักศึกษาในวิชา, หมวดคะแนน,
   งาน + rubric, งานที่ส่ง + คะแนน, ทีม และไฟล์แนบ
+- หน้า **Collaborators** (ผู้ร่วมสอน: TA / co-teacher) และหน้า **CLO** ของอาจารย์
 
-ที่ยังอยู่ใน localStorage ของ frontend: CLO, section roles (ผู้ร่วมสอน/TA), การแบ่งงานตรวจ (grading assignments) และ
-ประกาศ / แผนรายสัปดาห์ / สื่อการสอน ซึ่ง frontend ซ่อนไว้ชั่วคราว (`featureFlags.ts`) — จะทำ backend ให้ตอนเปิดใช้
+ที่ยังอยู่ใน localStorage ของ frontend (ทั้งหมดถูกซ่อนด้วย `featureFlags.ts` อยู่): การแบ่งงานตรวจ (grading assignments),
+ประกาศ, แผนรายสัปดาห์, สื่อการสอน — จะทำ backend ให้ตอนเปิดใช้
 
 ## Setup
 
@@ -103,6 +104,8 @@ Response shape ตรงกับ type ใน `HWAI-frontend/src/lib/*.ts` (fiel
 | rubric | `GET /rubrics` | `GET /assignments/:id/rubrics` | `POST` ที่เดียวกัน | `PATCH`/`DELETE /rubrics/:id` |
 | งานที่ส่ง | `GET /submissions` | `GET /assignments/:id/submissions` | `POST` ที่เดียวกัน (1 ครั้ง/คน/งาน, ซ้ำ = 409) | `PATCH /submissions/:id` |
 | ทีม | `GET /student-groups` | `GET /assignments/:id/groups` | `POST` ที่เดียวกัน (ไม่เกิน `maxGroupSize`) | `PATCH`/`DELETE /student-groups/:id` |
+| ผู้ร่วมสอน (section roles) | `GET /section-roles` | `GET /courses/:courseId/roles` | `POST` ที่เดียวกัน (`accountId` = id นักศึกษาสำหรับ TA / id อาจารย์สำหรับ co-teacher, 1 role ต่อคนต่อวิชา) | `PATCH /section-roles/:id/permissions`, `DELETE /section-roles/:id` |
+| CLO | `GET /clos` | `GET /courses/:courseId/clos` | `POST` ที่เดียวกัน | `PATCH`/`DELETE /clos/:id` |
 
 ลบงาน → rubric, งานที่ส่ง และทีมของงานนั้นถูกลบตาม · ลบรายวิชา → เนื้อหาทั้งหมดของรายวิชาถูกลบตาม · ลบหมวดคะแนน → งานยังอยู่แค่ไม่มีหมวด
 
@@ -150,6 +153,8 @@ src/
 | `submissions` | `Submission` | `/submissions` | งานที่นักศึกษาส่ง + คะแนน |
 | `student_groups` | `StudentGroup` | `/student-groups` | ทีมของงานกลุ่ม |
 | `files` | `StoredFile` | `/files` | ไฟล์ที่อัปโหลด |
+| `section_roles` | `SectionRole` | `/section-roles` | ผู้ร่วมสอนในรายวิชา — `teacher_id` หรือ `student_id` อย่างใดอย่างหนึ่ง (CHECK) ลบอาจารย์/นักศึกษาแล้ว role หายตาม |
+| `clos` | `Clo` | `/clos` | ผลลัพธ์การเรียนรู้ของรายวิชา (CLO) |
 
 `courses.term` เก็บเป็น `'1'` / `'2'` / `'3'` / `'summer'` ·
 `enrollments.student_id`, `submissions.student_id`, `student_groups.member_student_ids` เก็บ**รหัสนักศึกษา** (เช่น `69070101`) เป็นข้อความ ไม่ใช่ FK — ตรงกับที่ frontend ใช้
@@ -158,5 +163,6 @@ src/
 
 - **Auth** — API ยังไม่มีการยืนยันตัวตน ใครเรียกก็ได้ (frontend ยังไม่มี login จริง/ไม่มี token)
   ผลที่ตามมา: การซ่อนคะแนนก่อนอาจารย์ "ประกาศ" (`studentVisibleSubmission`) ยังทำแค่ฝั่ง frontend — ถ้าเรียก API ตรง ๆ จะเห็นคะแนนได้
-- CLO, section roles, grading assignments ยังอยู่ใน localStorage ของ frontend — การ cascade ตอนลบอาจารย์/นักศึกษายังทำฝั่ง client
+- การแบ่งงานตรวจ (grading assignments) ยังอยู่ใน localStorage ของ frontend (หน้าถูกซ่อนอยู่) — ตอนลบ TA การล้างข้อมูลส่วนนี้ยังทำฝั่ง client
+- AI ตรวจงาน / AI Rubric Assistant ยังเป็นของจำลองในฝั่ง frontend
 - ไฟล์ที่ไม่มีใครอ้างถึงแล้ว (เช่น ไฟล์ในงานที่ส่งของงานที่ถูกลบ) ยังไม่ถูกเก็บกวาดอัตโนมัติ

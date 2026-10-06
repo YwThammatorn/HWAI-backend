@@ -17,6 +17,7 @@ import {
 } from "./routes/assignments.js";
 import { groupCreate, groupUpdate } from "./routes/student-groups.js";
 import { MAX_FILE_BYTES } from "./routes/files.js";
+import { cloCreate, cloUpdate, sectionRoleCreate } from "./routes/course-staff.js";
 
 const json = (schema: z.ZodType) => z.toJSONSchema(schema, { io: "input", unrepresentable: "any" });
 
@@ -99,6 +100,14 @@ const responses = {
     ...timestamps,
   }),
   StoredFile: z.object({ id: z.string(), name: z.string(), mimeType: z.string(), size: z.number().int() }),
+  SectionRole: z.object({
+    id: z.string(),
+    accountId: z.string(),
+    courseId: z.string(),
+    role: z.enum(["teacher", "ta", "co-teacher"]),
+    permissions: opt(z.object({ canManageRoster: z.boolean(), canEditSettings: z.boolean(), canPublishScores: z.boolean() })),
+  }),
+  CLO: z.object({ id: z.string(), courseId: z.string(), code: z.string(), text: z.string(), ...timestamps }),
 };
 
 type Model = keyof typeof responses;
@@ -180,6 +189,10 @@ const examples = {
   submissionUpdate: { status: "graded", instructorScore: 88, instructorComment: "ดีมาก" },
   groupCreate: { name: "ทีม A", memberStudentIds: ["69070101", "69070102"] },
   groupUpdate: { memberStudentIds: ["69070101"] },
+  roleCreateTa: { accountId: "cs-mock-14", role: "ta" },
+  rolePermissions: { canManageRoster: false, canEditSettings: false, canPublishScores: true },
+  cloCreate: { code: "CLO5", text: "นักศึกษาสามารถทดสอบโปรแกรมด้วย unit test ได้" },
+  cloUpdate: { text: "นักศึกษาสามารถเขียน unit test ครอบคลุมกรณีขอบได้" },
 };
 const pathParam = (name: string, description?: string) => ({
   name,
@@ -239,6 +252,8 @@ export const openapiSpec = {
     { name: "Assignments", description: "งาน + rubric (หน้าสร้างงานของอาจารย์)" },
     { name: "Submissions", description: "งานที่นักศึกษาส่ง + คะแนน" },
     { name: "Teams", description: "ทีมสำหรับงานกลุ่ม" },
+    { name: "Collaborators", description: "ผู้ร่วมสอนในรายวิชา: TA (นักศึกษา) / co-teacher (อาจารย์)" },
+    { name: "CLOs", description: "ผลลัพธ์การเรียนรู้ของรายวิชา" },
     { name: "Files", description: "ไฟล์แนบ (เก็บใน PostgreSQL)" },
     { name: "System" },
   ],
@@ -387,6 +402,40 @@ export const openapiSpec = {
     "/student-groups/{id}": {
       patch: op("Teams", { summary: "แก้ชื่อ / สมาชิก", params: [id], body: body(json(groupUpdate), examples.groupUpdate), res: ok(ref("StudentGroup")), errors: { ...V400, ...N404 } }),
       delete: op("Teams", { summary: "ยุบทีม", params: [id], res: noContent, errors: N404 }),
+    },
+
+    "/section-roles": {
+      get: op("Collaborators", { summary: "role ทั้งหมด", res: ok(list("SectionRole")) }),
+    },
+    "/courses/{courseId}/roles": {
+      get: op("Collaborators", { summary: "ผู้ร่วมสอนของรายวิชา", params: [courseId], res: ok(list("SectionRole")) }),
+      post: op("Collaborators", {
+        summary: "เพิ่มผู้ร่วมสอน — accountId = id ของนักศึกษา (TA) หรืออาจารย์ (co-teacher)",
+        params: [courseId], body: body(json(sectionRoleCreate), examples.roleCreateTa), res: ok(ref("SectionRole"), "201"),
+        errors: { "400": "Validation error / role ไม่เข้ากับบัญชี (นักศึกษาเป็นได้แค่ TA) / ไม่พบบัญชี", "409": "คนนี้มี role ในรายวิชานี้แล้ว" },
+      }),
+    },
+    "/section-roles/{id}/permissions": {
+      patch: op("Collaborators", {
+        summary: "กำหนดสิทธิ์แทนค่าเริ่มต้นของ role (ส่ง null = กลับไปใช้ค่าเริ่มต้น)",
+        params: [id], body: body({ type: ["object", "null"], properties: { canManageRoster: { type: "boolean" }, canEditSettings: { type: "boolean" }, canPublishScores: { type: "boolean" } } }, examples.rolePermissions),
+        res: ok(ref("SectionRole")), errors: { ...V400, ...N404 },
+      }),
+    },
+    "/section-roles/{id}": {
+      delete: op("Collaborators", { summary: "เอาออกจากรายวิชา", params: [id], res: noContent, errors: N404 }),
+    },
+
+    "/clos": {
+      get: op("CLOs", { summary: "CLO ทั้งหมด", res: ok(list("CLO")) }),
+    },
+    "/courses/{courseId}/clos": {
+      get: op("CLOs", { summary: "CLO ของรายวิชา", params: [courseId], res: ok(list("CLO")) }),
+      post: op("CLOs", { summary: "เพิ่ม CLO", params: [courseId], body: body(json(cloCreate), examples.cloCreate), res: ok(ref("CLO"), "201"), errors: V400 }),
+    },
+    "/clos/{id}": {
+      patch: op("CLOs", { summary: "แก้ไข CLO", params: [id], body: body(json(cloUpdate), examples.cloUpdate), res: ok(ref("CLO")), errors: { ...V400, ...N404 } }),
+      delete: op("CLOs", { summary: "ลบ CLO", params: [id], res: noContent, errors: N404 }),
     },
 
     "/files": {

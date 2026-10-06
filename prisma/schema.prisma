@@ -122,6 +122,8 @@ model Course {
   gradingCategories GradingCategory[]
   assignments       Assignment[]
   studentGroups     StudentGroup[]
+  sectionRoles      SectionRole[]
+  clos              Clo[]
 
   @@index([courseTemplateId])
   @@map("courses")
@@ -129,15 +131,16 @@ model Course {
 
 // อาจารย์ / TA (ManagedTeacher on the frontend).
 model Teacher {
-  id        String          @id @default(uuid())
-  title     String?
-  name      String
-  email     String          @unique
-  role      TeacherRole     @default(teacher)
-  status    AccountStatus   @default(active)
-  createdAt DateTime        @default(now()) @map("created_at")
-  updatedAt DateTime        @updatedAt @map("updated_at")
-  courses   CourseTeacher[]
+  id           String          @id @default(uuid())
+  title        String?
+  name         String
+  email        String          @unique
+  role         TeacherRole     @default(teacher)
+  status       AccountStatus   @default(active)
+  createdAt    DateTime        @default(now()) @map("created_at")
+  updatedAt    DateTime        @updatedAt @map("updated_at")
+  courses      CourseTeacher[]
+  sectionRoles SectionRole[]
 
   @@map("teachers")
 }
@@ -169,6 +172,7 @@ model Student {
   curriculumVersion   CurriculumVersion? @relation(fields: [curriculumVersionId], references: [id], onDelete: SetNull)
   createdAt           DateTime           @default(now()) @map("created_at")
   updatedAt           DateTime           @updatedAt @map("updated_at")
+  sectionRoles        SectionRole[]
 
   @@map("students")
 }
@@ -343,4 +347,53 @@ model StoredFile {
   createdAt DateTime @default(now()) @map("created_at")
 
   @@map("files")
+}
+
+// ── Course staff and outcomes ────────────────────────────────────────────────
+
+enum SectionRoleType {
+  teacher
+  ta
+  coTeacher @map("co-teacher")
+
+  @@map("section_role_type")
+}
+
+// A collaborator on one course section (SectionRole in HWAI-frontend/src/lib/section-roles.ts):
+// a TA is a student, a co-teacher is a teacher. The frontend's single `accountId` is stored as
+// exactly one of teacher_id / student_id (CHECK constraint in the migration), so deleting the
+// teacher or student removes their roles too. The primary teacher comes from course_teachers.
+model SectionRole {
+  id          String          @id @default(uuid())
+  courseId    String          @map("course_id")
+  course      Course          @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  teacherId   String?         @map("teacher_id")
+  teacher     Teacher?        @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  studentId   String?         @map("student_id")
+  student     Student?        @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  role        SectionRoleType
+  /// Overrides the role's default permissions when set: { canManageRoster, canEditSettings, canPublishScores }.
+  permissions Json?
+  createdAt   DateTime        @default(now()) @map("created_at")
+  updatedAt   DateTime        @updatedAt @map("updated_at")
+
+  @@unique([courseId, teacherId])
+  @@unique([courseId, studentId])
+  @@index([teacherId])
+  @@index([studentId])
+  @@map("section_roles")
+}
+
+// Course Learning Outcome (CLO in HWAI-frontend/src/lib/clo.ts). Codes aren't unique: the CLO page allows repeats.
+model Clo {
+  id        String   @id @default(uuid())
+  courseId  String   @map("course_id")
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  code      String
+  text      String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([courseId])
+  @@map("clos")
 }
