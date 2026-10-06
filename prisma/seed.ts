@@ -43,7 +43,10 @@ async function main() {
     });
   }
   for (const s of students) {
-    await prisma.student.upsert({ where: { id: s.id }, create: s, update: s });
+    // Keyed on the student ID (unique), so one added through the admin page under another id is updated, not duplicated.
+    const { id: _id, ...changes } = s;
+    void _id;
+    await prisma.student.upsert({ where: { studentId: s.studentId }, create: s, update: changes });
   }
 
   const content = await seedCourseContent();
@@ -115,7 +118,15 @@ async function seedCourseContent() {
       criterionComments: json(criterionComments),
       criterionScores: json(criterionScores),
     };
-    await prisma.submission.upsert({ where: { id: s.id }, create: data, update: data });
+    // Keyed on (assignment, student) — the real uniqueness — so a submission someone already made in the
+    // database under another id gets updated instead of tripping the unique constraint.
+    const { id, ...changes } = data;
+    await prisma.submission.upsert({
+      where: { assignmentId_studentId: { assignmentId: data.assignmentId, studentId: data.studentId } },
+      create: data,
+      update: changes,
+    });
+    void id;
   }
   return (
     `${roster.length} roster entries, ${categories.length} grading categories, ${assignments.length} assignments, ` +
