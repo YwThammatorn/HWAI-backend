@@ -18,6 +18,7 @@ import {
 import { groupCreate, groupUpdate } from "./routes/student-groups.js";
 import { MAX_FILE_BYTES } from "./routes/files.js";
 import { cloCreate, cloUpdate, sectionRoleCreate } from "./routes/course-staff.js";
+import { calibrationRunPut, libraryEntryCreate, libraryEntryUpdate } from "./routes/rubric-tools.js";
 
 const json = (schema: z.ZodType) => z.toJSONSchema(schema, { io: "input", unrepresentable: "any" });
 
@@ -108,6 +109,8 @@ const responses = {
     permissions: opt(z.object({ canManageRoster: z.boolean(), canEditSettings: z.boolean(), canPublishScores: z.boolean() })),
   }),
   CLO: z.object({ id: z.string(), courseId: z.string(), code: z.string(), text: z.string(), ...timestamps }),
+  RubricLibraryEntry: libraryEntryCreate.omit({ id: true }).extend({ id: z.string(), createdAt: z.iso.datetime() }),
+  CalibrationRun: calibrationRunPut.omit({ id: true }).extend({ id: z.string() }),
   RejectedEnrollment: z.object({
     studentId: z.string(),
     program: z.string(),
@@ -199,6 +202,20 @@ const examples = {
   rolePermissions: { canManageRoster: false, canEditSettings: false, canPublishScores: true },
   cloCreate: { code: "CLO5", text: "นักศึกษาสามารถทดสอบโปรแกรมด้วย unit test ได้" },
   cloUpdate: { text: "นักศึกษาสามารถเขียน unit test ครอบคลุมกรณีขอบได้" },
+  libraryEntryCreate: {
+    name: "เกณฑ์แบบฝึกหัด Python",
+    courseTemplateId: "ct-18",
+    sourceAssignmentId: "a-mock-1",
+    criteria: [{ id: "c1", name: "ความถูกต้อง", description: "", maxPoints: 10, weight: 100, levels: [{ label: "ดี", description: "" }], cloIds: ["clo-mock-1"] }],
+  },
+  libraryEntryUpdate: { name: "เกณฑ์แบบฝึกหัด Python (ปี 2569)" },
+  calibrationRunPut: {
+    assignmentId: "a-mock-1",
+    createdAt: "2026-10-12T09:00:00.000Z",
+    sampleIds: ["sub-mock-1", "sub-mock-2"],
+    teacherLevels: { "sub-mock-1": { "rc-1": 0, "rc-2": 1 }, "sub-mock-2": { "rc-1": 2, "rc-2": 1 } },
+    completedAt: "2026-10-12T09:30:00.000Z",
+  },
 };
 const pathParam = (name: string, description?: string) => ({
   name,
@@ -260,6 +277,7 @@ export const openapiSpec = {
     { name: "Teams", description: "ทีมสำหรับงานกลุ่ม" },
     { name: "Collaborators", description: "ผู้ร่วมสอนในรายวิชา: TA (นักศึกษา) / co-teacher (อาจารย์)" },
     { name: "CLOs", description: "ผลลัพธ์การเรียนรู้ของรายวิชา" },
+    { name: "Rubric tools", description: "คลัง rubric สำหรับใช้ซ้ำ และผล Calibration ของ AI" },
     { name: "Files", description: "ไฟล์แนบ (เก็บใน PostgreSQL)" },
     { name: "System" },
   ],
@@ -449,6 +467,34 @@ export const openapiSpec = {
     "/clos/{id}": {
       patch: op("CLOs", { summary: "แก้ไข CLO", params: [id], body: body(json(cloUpdate), examples.cloUpdate), res: ok(ref("CLO")), errors: { ...V400, ...N404 } }),
       delete: op("CLOs", { summary: "ลบ CLO", params: [id], res: noContent, errors: N404 }),
+    },
+
+    "/rubric-library": {
+      get: op("Rubric tools", {
+        summary: "คลัง rubric (ใส่ courseTemplateId = ของวิชานั้น + ที่ใช้ได้ทุกวิชา)",
+        query: [{ name: "courseTemplateId", in: "query", required: false, schema: { type: "string" } }],
+        res: ok(list("RubricLibraryEntry")),
+      }),
+      post: op("Rubric tools", { summary: "บันทึก rubric ลงคลัง", body: body(json(libraryEntryCreate), examples.libraryEntryCreate), res: ok(ref("RubricLibraryEntry"), "201"), errors: V400 }),
+    },
+    "/rubric-library/{id}": {
+      patch: op("Rubric tools", { summary: "เปลี่ยนชื่อ", params: [id], body: body(json(libraryEntryUpdate), examples.libraryEntryUpdate), res: ok(ref("RubricLibraryEntry")), errors: { ...V400, ...N404 } }),
+      delete: op("Rubric tools", { summary: "ลบออกจากคลัง", params: [id], res: noContent, errors: N404 }),
+    },
+    "/calibration-runs": {
+      get: op("Rubric tools", {
+        summary: "ผล Calibration",
+        query: [{ name: "assignmentId", in: "query", required: false, schema: { type: "string" } }],
+        res: ok(list("CalibrationRun")),
+      }),
+    },
+    "/calibration-runs/{id}": {
+      put: op("Rubric tools", {
+        summary: "สร้างหรือแทนที่ทั้ง run (201 ถ้าสร้างใหม่, 200 ถ้าแทนที่)",
+        params: [id], body: body(json(calibrationRunPut), examples.calibrationRunPut),
+        res: { ...ok(ref("CalibrationRun")), ...ok(ref("CalibrationRun"), "201") }, errors: V400,
+      }),
+      delete: op("Rubric tools", { summary: "ลบ run", params: [id], res: noContent, errors: N404 }),
     },
 
     "/files": {

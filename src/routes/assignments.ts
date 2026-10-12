@@ -37,6 +37,7 @@ const assignmentFields = z.object({
   rubricIds: z.array(z.string().min(1)),
   gradingFinalized: z.boolean().optional(),
   isExam: z.boolean().optional(),
+  gradingMode: z.enum(["ai", "manual"]).nullish(), // teacher's choice; null = not chosen yet
 });
 export const assignmentCreate = assignmentFields.extend({
   ...idOverride,
@@ -97,6 +98,7 @@ assignmentsRouter.delete("/assignments/:id", async (req, res) => {
 const rubricFields = z.object({
   name: z.string().trim().min(1),
   criteria: z.array(criterionSchema),
+  aiOffsets: z.record(z.string(), z.number()).nullish(), // set from the Calibration page
 });
 export const rubricCreate = rubricFields.extend({ ...idOverride, assignmentId: z.string().optional() });
 export const rubricUpdate = rubricFields.partial();
@@ -112,18 +114,18 @@ assignmentsRouter.get("/assignments/:id/rubrics", async (req, res) => {
 });
 
 assignmentsRouter.post("/assignments/:id/rubrics", async (req, res) => {
-  const { assignmentId: _ignored, criteria, ...data } = parse(rubricCreate, req.body);
+  const { assignmentId: _ignored, criteria, aiOffsets, ...data } = parse(rubricCreate, req.body);
   const row = await prisma.rubric.create({
-    data: { ...data, criteria: criteria as Prisma.InputJsonValue, assignmentId: req.params.id },
+    data: { ...data, criteria: criteria as Prisma.InputJsonValue, aiOffsets: json(aiOffsets), assignmentId: req.params.id },
   });
   res.status(201).json(toRubric(row));
 });
 
 assignmentsRouter.patch("/rubrics/:id", async (req, res) => {
-  const { criteria, ...data } = parse(rubricUpdate, req.body);
+  const { criteria, aiOffsets, ...data } = parse(rubricUpdate, req.body);
   const row = await prisma.rubric.update({
     where: { id: req.params.id },
-    data: { ...data, ...(criteria && { criteria: criteria as Prisma.InputJsonValue }) },
+    data: { ...data, ...(criteria && { criteria: criteria as Prisma.InputJsonValue }), aiOffsets: json(aiOffsets) },
   });
   res.json(toRubric(row));
 });
@@ -151,6 +153,7 @@ export const submissionCreate = z.object({
   instructorComment: z.string().default(""),
   criterionComments: z.record(z.string(), z.string()).nullish(),
   criterionScores: z.record(z.string(), z.number()).nullish(),
+  aiCriterionScores: z.record(z.string(), z.number()).nullish(),
   externalUseConsent: z.boolean().default(false),
   status: statusSchema.default("not_graded"),
   groupId: z.string().min(1).nullish(),
@@ -162,21 +165,23 @@ export const submissionUpdate = z.object({
   instructorComment: z.string(),
   criterionComments: z.record(z.string(), z.string()).nullable(),
   criterionScores: z.record(z.string(), z.number()).nullable(),
+  aiCriterionScores: z.record(z.string(), z.number()).nullable(),
   status: statusSchema,
   fileUrl: z.string().nullable(),
   attachments: z.array(attachmentSchema).nullable(),
 }).partial();
 
 function submissionData<T extends {
-  attachments?: unknown; criterionComments?: unknown; criterionScores?: unknown;
+  attachments?: unknown; criterionComments?: unknown; criterionScores?: unknown; aiCriterionScores?: unknown;
   status?: z.infer<typeof statusSchema>; submittedAt?: string;
 }>(data: T) {
-  const { attachments, criterionComments, criterionScores, status, submittedAt, ...rest } = data;
+  const { attachments, criterionComments, criterionScores, aiCriterionScores, status, submittedAt, ...rest } = data;
   return {
     ...rest,
     attachments: json(attachments),
     criterionComments: json(criterionComments),
     criterionScores: json(criterionScores),
+    aiCriterionScores: json(aiCriterionScores),
     ...(status && { status: submissionStatus.toDb(status) }),
     ...(submittedAt && { submittedAt: new Date(submittedAt) }),
   };

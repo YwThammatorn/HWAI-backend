@@ -1,0 +1,1182 @@
+{
+  "courseStudents": [
+    {
+      "id": "s-uxui-1",
+      "courseId": "c-mock-4",
+      "studentId": "66010102",
+      "firstName": "กมลชนก",
+      "lastName": "ศรีวิไล",
+      "email": "66010102@kmitl.ac.th",
+      "sequenceNumber": 1,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-2",
+      "courseId": "c-mock-4",
+      "studentId": "66010103",
+      "firstName": "ปกรณ์",
+      "lastName": "วงศ์ทอง",
+      "email": "66010103@kmitl.ac.th",
+      "sequenceNumber": 2,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-3",
+      "courseId": "c-mock-4",
+      "studentId": "66010104",
+      "firstName": "พิมพ์ชนก",
+      "lastName": "ทองใบ",
+      "email": "66010104@kmitl.ac.th",
+      "sequenceNumber": 3,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-4",
+      "courseId": "c-mock-4",
+      "studentId": "66010106",
+      "firstName": "ชลธิชา",
+      "lastName": "วัฒนชัย",
+      "email": "66010106@kmitl.ac.th",
+      "sequenceNumber": 4,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-5",
+      "courseId": "c-mock-4",
+      "studentId": "67010201",
+      "firstName": "พงศกร",
+      "lastName": "เพชรรัตน์",
+      "email": "67010201@kmitl.ac.th",
+      "sequenceNumber": 5,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-6",
+      "courseId": "c-mock-4",
+      "studentId": "67010202",
+      "firstName": "ปาริชาต",
+      "lastName": "ดอกไม้",
+      "email": "67010202@kmitl.ac.th",
+      "sequenceNumber": 6,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-7",
+      "courseId": "c-mock-4",
+      "studentId": "67010203",
+      "firstName": "อภิสิทธิ์",
+      "lastName": "ทองคำ",
+      "email": "67010203@kmitl.ac.th",
+      "sequenceNumber": 7,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-8",
+      "courseId": "c-mock-4",
+      "studentId": "67010205",
+      "firstName": "สุรชัย",
+      "lastName": "มีสุข",
+      "email": "67010205@kmitl.ac.th",
+      "sequenceNumber": 8,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-9",
+      "courseId": "c-mock-4",
+      "studentId": "68020201",
+      "firstName": "นภัสสร",
+      "lastName": "เพ็ชรสุวรรณ",
+      "email": "68020201@kmitl.ac.th",
+      "sequenceNumber": 9,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-10",
+      "courseId": "c-mock-4",
+      "studentId": "68020202",
+      "firstName": "เมธัส",
+      "lastName": "ประเสริฐสุข",
+      "email": "68020202@kmitl.ac.th",
+      "sequenceNumber": 10,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-11",
+      "courseId": "c-mock-4",
+      "studentId": "68020203",
+      "firstName": "ฐิติมา",
+      "lastName": "ปัญญาดี",
+      "email": "68020203@kmitl.ac.th",
+      "sequenceNumber": 11,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-12",
+      "courseId": "c-mock-4",
+      "studentId": "68020204",
+      "firstName": "จักรพันธ์",
+      "lastName": "คำแสน",
+      "email": "68020204@kmitl.ac.th",
+      "sequenceNumber": 12,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-13",
+      "courseId": "c-mock-4",
+      "studentId": "69070101",
+      "firstName": "สมชาย",
+      "lastName": "ใจดี",
+      "email": "69070101@kmitl.ac.th",
+      "sequenceNumber": 13,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-14",
+      "courseId": "c-mock-4",
+      "studentId": "69070102",
+      "firstName": "สุดา",
+      "lastName": "วงษ์สา",
+      "email": "69070102@kmitl.ac.th",
+      "sequenceNumber": 14,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-15",
+      "courseId": "c-mock-4",
+      "studentId": "69070201",
+      "firstName": "ศุภชัย",
+      "lastName": "บัวทอง",
+      "email": "69070201@kmitl.ac.th",
+      "sequenceNumber": 15,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-16",
+      "courseId": "c-mock-4",
+      "studentId": "69070203",
+      "firstName": "คณิน",
+      "lastName": "พึ่งบุญ",
+      "email": "69070203@kmitl.ac.th",
+      "sequenceNumber": 16,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-17",
+      "courseId": "c-mock-4",
+      "studentId": "69070206",
+      "firstName": "สุพัตรา",
+      "lastName": "บุญมา",
+      "email": "69070206@kmitl.ac.th",
+      "sequenceNumber": 17,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-18",
+      "courseId": "c-mock-4",
+      "studentId": "69070208",
+      "firstName": "วิภาวี",
+      "lastName": "ศรีทอง",
+      "email": "69070208@kmitl.ac.th",
+      "sequenceNumber": 18,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-19",
+      "courseId": "c-mock-4",
+      "studentId": "69070212",
+      "firstName": "ญาดา",
+      "lastName": "พิมสอน",
+      "email": "69070212@kmitl.ac.th",
+      "sequenceNumber": 19,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-20",
+      "courseId": "c-mock-4",
+      "studentId": "69070214",
+      "firstName": "ธีรภัทร",
+      "lastName": "จันทร์เพ็ญ",
+      "email": "69070214@kmitl.ac.th",
+      "sequenceNumber": 20,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-21",
+      "courseId": "c-mock-4",
+      "studentId": "69070216",
+      "firstName": "ปุณณวิช",
+      "lastName": "ศรีวงศ์",
+      "email": "69070216@kmitl.ac.th",
+      "sequenceNumber": 21,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-22",
+      "courseId": "c-mock-4",
+      "studentId": "69070219",
+      "firstName": "ศิริพร",
+      "lastName": "ใจเย็น",
+      "email": "69070219@kmitl.ac.th",
+      "sequenceNumber": 22,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-23",
+      "courseId": "c-mock-4",
+      "studentId": "69070221",
+      "firstName": "พิมพ์ชนก",
+      "lastName": "แซ่ลิ้ม",
+      "email": "69070221@kmitl.ac.th",
+      "sequenceNumber": 23,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-24",
+      "courseId": "c-mock-4",
+      "studentId": "69070224",
+      "firstName": "ปิยธิดา",
+      "lastName": "ทองคำ",
+      "email": "69070224@kmitl.ac.th",
+      "sequenceNumber": 24,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-25",
+      "courseId": "c-mock-4",
+      "studentId": "69070226",
+      "firstName": "กัญญาวีร์",
+      "lastName": "อัครพงษ์",
+      "email": "69070226@kmitl.ac.th",
+      "sequenceNumber": 25,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-26",
+      "courseId": "c-mock-4",
+      "studentId": "69070228",
+      "firstName": "นลินี",
+      "lastName": "บุญเลิศ",
+      "email": "69070228@kmitl.ac.th",
+      "sequenceNumber": 26,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-27",
+      "courseId": "c-mock-4",
+      "studentId": "69070231",
+      "firstName": "สุภาพร",
+      "lastName": "ดวงจันทร์",
+      "email": "69070231@kmitl.ac.th",
+      "sequenceNumber": 27,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-28",
+      "courseId": "c-mock-4",
+      "studentId": "69070233",
+      "firstName": "อรอุมา",
+      "lastName": "ชัยมงคล",
+      "email": "69070233@kmitl.ac.th",
+      "sequenceNumber": 28,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-29",
+      "courseId": "c-mock-4",
+      "studentId": "69070236",
+      "firstName": "วารุณี",
+      "lastName": "บุญมี",
+      "email": "69070236@kmitl.ac.th",
+      "sequenceNumber": 29,
+      "enrollmentStatus": "enrolled"
+    },
+    {
+      "id": "s-uxui-30",
+      "courseId": "c-mock-4",
+      "studentId": "69070238",
+      "firstName": "ณัฐริกา",
+      "lastName": "เพชรรัตน์",
+      "email": "69070238@kmitl.ac.th",
+      "sequenceNumber": 30,
+      "enrollmentStatus": "enrolled"
+    }
+  ],
+  "gradingCategories": [
+    {
+      "id": "gcat-seed-c4-1",
+      "courseId": "c-mock-4",
+      "name": "โปรเจกต์ปลายภาค",
+      "weight": 60,
+      "createdAt": "2026-08-12T09:00:00.000Z",
+      "updatedAt": "2026-08-12T09:00:00.000Z"
+    },
+    {
+      "id": "gcat-seed-c4-2",
+      "courseId": "c-mock-4",
+      "name": "สอบปลายภาค",
+      "weight": 40,
+      "createdAt": "2026-08-12T09:00:00.000Z",
+      "updatedAt": "2026-08-12T09:00:00.000Z"
+    }
+  ],
+  "assignments": [
+    {
+      "id": "a-mock-10",
+      "courseId": "c-mock-4",
+      "name": "โปรเจกต์ UX/UI ปลายภาค (Final Project)",
+      "description": "ออกแบบและสร้าง Prototype ของแอปพลิเคชันที่เลือกใน Figma ครบ Core User Flow พร้อม Design System (Color/Typography Styles และ Components) แล้วส่งลิงก์ไฟล์ Figma กับ Prototype",
+      "dueDate": "2026-10-05",
+      "maxPoints": 100,
+      "categoryId": "gcat-seed-c4-1",
+      "acceptsFiles": true,
+      "fileTypes": [
+        "figma",
+        "pdf"
+      ],
+      "submissionType": "individual",
+      "maxGroupSize": null,
+      "rubricIds": [
+        "r-mock-10"
+      ],
+      "gradingFinalized": true,
+      "createdAt": "2026-08-12T09:00:00.000Z",
+      "updatedAt": "2026-10-05T18:00:00.000Z"
+    }
+  ],
+  "rubrics": [
+    {
+      "id": "r-mock-10",
+      "assignmentId": "a-mock-10",
+      "name": "เกณฑ์ตรวจโปรเจกต์ UX/UI ปลายภาค",
+      "criteria": [
+        {
+          "id": "rc-uxui-1",
+          "name": "C1 · Screen Completeness & Content Realism / ความครบถ้วนขององค์ประกอบและความสมจริงของเนื้อหา",
+          "description": "องค์ประกอบของหน้าจอครบถ้วนและเนื้อหาสมจริงเพียงใด",
+          "maxPoints": 15,
+          "weight": 15,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "องค์ประกอบที่จำเป็นตามหน้าจอและงานที่กำหนดครบถ้วน เนื้อหามีความสมจริง ไม่พึ่ง Lorem Ipsum หรือข้อมูลตัวแทนมากเกินไป"
+            },
+            {
+              "label": "พอใช้",
+              "description": "องค์ประกอบส่วนใหญ่ครบ มีรายละเอียดหรือเนื้อหาบางส่วนที่ยังไม่สมบูรณ์"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "มีองค์ประกอบสำคัญขาดหลายส่วน หรือมีเนื้อหาตัวแทน/Placeholder ที่เห็นได้ชัด"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ขาดองค์ประกอบสำคัญจำนวนมาก ทำให้หน้าจอไม่สมบูรณ์หรือไม่สามารถสื่อการใช้งานได้"
+            }
+          ]
+        },
+        {
+          "id": "rc-uxui-2",
+          "name": "C2 · Layout & Balance / การจัดวางและความสมดุลของหน้าจอ",
+          "description": "การจัดวางหน้าจอสมดุลเหมาะกับเนื้อหาเพียงใด",
+          "maxPoints": 15,
+          "weight": 15,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "การจัดวางมีความสมดุล ใช้พื้นที่เหมาะสมกับเนื้อหาและวัตถุประสงค์ของหน้าจอ ไม่มีพื้นที่ว่างหรือความหนาแน่นที่รบกวนการใช้งาน"
+            },
+            {
+              "label": "พอใช้",
+              "description": "โดยรวมสมดุล แต่มีบางบริเวณที่แน่นหรือโล่งเกินไปเล็กน้อย"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "มีปัญหาความสมดุลหลายบริเวณ ทำให้การอ่านหรือการใช้งานบางส่วนไม่สะดวก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "การจัดวางไม่สมดุลอย่างชัดเจน และส่งผลต่อความเข้าใจหรือการใช้งาน"
+            }
+          ]
+        },
+        {
+          "id": "rc-uxui-3",
+          "name": "C3 · Spacing, Alignment & Grid Pattern / ระยะห่าง การจัดแนว และรูปแบบ Grid",
+          "description": "ความสม่ำเสมอของระยะห่าง การจัดแนว และ Grid",
+          "maxPoints": 10,
+          "weight": 10,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "ระยะห่าง การจัดแนว และ Grid มีรูปแบบที่ชัดเจนและสม่ำเสมอ องค์ประกอบต่าง ๆ อยู่ในแนวที่เป็นระบบ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "โดยรวมมีรูปแบบสม่ำเสมอ แต่พบความคลาดเคลื่อนเล็กน้อยบางจุด"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "พบความไม่สม่ำเสมอของระยะห่างหรือการจัดแนวหลายจุด และเริ่มทำให้ UI ดูไม่เป็นระบบ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีรูปแบบของระยะห่าง/การจัดแนวที่ชัดเจน และทำให้ UI ดูไม่เป็นระบบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-uxui-4",
+          "name": "C4 · Component Consistency & Design System / ความสม่ำเสมอของ Component และ Design System",
+          "description": "การใช้ Component, Style และ Design System อย่างสม่ำเสมอ",
+          "maxPoints": 15,
+          "weight": 15,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "ใช้ Color Styles, Typography Styles และ Components/Variants อย่างเป็นระบบ องค์ประกอบที่มีหน้าที่เดียวกันมีรูปแบบสอดคล้องกันทุกหน้าจอ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "โดยรวมมีความสม่ำเสมอ แต่มีความแตกต่างเล็กน้อยบางองค์ประกอบ หรือมีบางส่วนที่ไม่ได้ใช้ Style/Component"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "พบความแตกต่างของ Component, สี หรือ Typography หลายจุดโดยไม่มีเหตุผลที่ชัดเจน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "แต่ละหน้าจอมีรูปแบบแตกต่างกันอย่างชัดเจน ไม่มี Design System หรือรูปแบบร่วมที่สม่ำเสมอ"
+            }
+          ]
+        },
+        {
+          "id": "rc-uxui-5",
+          "name": "C5 · Visual Hierarchy / ลำดับความสำคัญทางสายตา",
+          "description": "หน้าจอบอกชัดเพียงใดว่าอะไรสำคัญที่สุด",
+          "maxPoints": 15,
+          "weight": 15,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "สามารถแยก Primary/Secondary information และ Primary Action ได้ชัดเจน ขนาด สี น้ำหนัก และตำแหน่งช่วยนำสายตาได้เหมาะสม"
+            },
+            {
+              "label": "พอใช้",
+              "description": "ลำดับความสำคัญโดยรวมชัดเจน แต่มีบางส่วนที่แยกความสำคัญได้ไม่ชัด"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "มีหลายส่วนที่มีความสำคัญทางสายตาใกล้เคียงกัน ทำให้ผู้ใช้ไม่รู้ว่าควรสนใจหรือทำสิ่งใดก่อน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีลำดับความสำคัญที่ชัดเจน ทำให้ยากต่อการทำความเข้าใจหน้าจอ"
+            }
+          ]
+        },
+        {
+          "id": "rc-uxui-6",
+          "name": "C6 · Typography, Color & Accessibility / ตัวอักษร สี และ Accessibility",
+          "description": "ตัวอักษรอ่านง่าย สีสม่ำเสมอ และ Contrast เพียงพอ",
+          "maxPoints": 15,
+          "weight": 15,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "ตัวอักษรอ่านง่าย ขนาดและน้ำหนักเหมาะสม สีมีความสม่ำเสมอ Contrast เพียงพอ และไม่ใช้สีเพียงอย่างเดียวในการสื่อความหมาย"
+            },
+            {
+              "label": "พอใช้",
+              "description": "โดยรวมอ่านง่ายและเข้าถึงได้ แต่มีปัญหาเล็กน้อยบางจุด เช่น ขนาดตัวอักษรหรือ Contrast บางส่วน"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "มีปัญหาด้านการอ่านหรือ Accessibility หลายจุด เช่น ตัวอักษรเล็ก Contrast ต่ำ หรือใช้สีที่สื่อความหมายไม่ชัด"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "มีปัญหาด้าน Typography/Color/Contrast อย่างรุนแรงจนกระทบการอ่านหรือการใช้งาน"
+            }
+          ]
+        },
+        {
+          "id": "rc-uxui-7",
+          "name": "C7 · Prototype Flow & Interaction Completeness / การเชื่อมโยง Flow และความสมบูรณ์ของ Interaction",
+          "description": "Core Flow ของ Prototype ทำงานจบตั้งแต่ต้นจนจบหรือไม่",
+          "maxPoints": 15,
+          "weight": 15,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "Core User Flow สามารถทำงานตั้งแต่ต้นจนจบได้ ไม่มี Dead End และ Interaction ที่จำเป็นเชื่อมโยงถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "Core Flow ทำงานได้เกือบครบ แต่มีปัญหาเล็กน้อย เช่น Link หรือ Transition บางจุด"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "มีปัญหาหลายจุดใน Flow เช่น Link ผิด ขาดการเชื่อมต่อ หรือเกิด Dead End"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถทำ Core User Flow ให้สำเร็จได้ หรือ Prototype ขาดการเชื่อมโยงที่จำเป็น"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-08-12T09:00:00.000Z",
+      "updatedAt": "2026-08-12T09:00:00.000Z"
+    }
+  ],
+  "submissions": [
+    {
+      "id": "sub-uxui-66010102",
+      "assignmentId": "a-mock-10",
+      "studentId": "66010102",
+      "studentName": "กมลชนก ศรีวิไล",
+      "email": "66010102@kmitl.ac.th",
+      "submittedAt": "2026-10-04T18:26:00.000Z",
+      "fileUrl": null,
+      "aiScore": 91,
+      "instructorScore": 90,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 10,
+        "rc-uxui-4": 15,
+        "rc-uxui-5": 15,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-66010103",
+      "assignmentId": "a-mock-10",
+      "studentId": "66010103",
+      "studentName": "ปกรณ์ วงศ์ทอง",
+      "email": "66010103@kmitl.ac.th",
+      "submittedAt": "2026-10-01T13:55:00.000Z",
+      "fileUrl": null,
+      "aiScore": 87,
+      "instructorScore": 92,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 7,
+        "rc-uxui-4": 15,
+        "rc-uxui-5": 15,
+        "rc-uxui-6": 15,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-66010104",
+      "assignmentId": "a-mock-10",
+      "studentId": "66010104",
+      "studentName": "พิมพ์ชนก ทองใบ",
+      "email": "66010104@kmitl.ac.th",
+      "submittedAt": "2026-10-02T16:52:00.000Z",
+      "fileUrl": null,
+      "aiScore": 69,
+      "instructorScore": 67,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 7,
+        "rc-uxui-4": 10,
+        "rc-uxui-5": 5,
+        "rc-uxui-6": 15,
+        "rc-uxui-7": 0
+      }
+    },
+    {
+      "id": "sub-uxui-67010201",
+      "assignmentId": "a-mock-10",
+      "studentId": "67010201",
+      "studentName": "พงศกร เพชรรัตน์",
+      "email": "67010201@kmitl.ac.th",
+      "submittedAt": "2026-10-01T13:55:00.000Z",
+      "fileUrl": null,
+      "aiScore": 57,
+      "instructorScore": 57,
+      "instructorComment": "แนวคิดดี แต่ Component ยังไม่สม่ำเสมอระหว่างหน้า และ Prototype ขาดการเชื่อมบางจุด ลองรวม Style ให้เป็นชุดเดียวก่อนส่งรอบหน้า",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 10,
+        "rc-uxui-2": 10,
+        "rc-uxui-3": 7,
+        "rc-uxui-4": 5,
+        "rc-uxui-5": 10,
+        "rc-uxui-6": 5,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-67010202",
+      "assignmentId": "a-mock-10",
+      "studentId": "67010202",
+      "studentName": "ปาริชาต ดอกไม้",
+      "email": "67010202@kmitl.ac.th",
+      "submittedAt": "2026-10-02T16:36:00.000Z",
+      "fileUrl": null,
+      "aiScore": 48,
+      "instructorScore": 52,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 10,
+        "rc-uxui-2": 10,
+        "rc-uxui-3": 7,
+        "rc-uxui-4": 5,
+        "rc-uxui-5": 0,
+        "rc-uxui-6": 5,
+        "rc-uxui-7": 15
+      }
+    },
+    {
+      "id": "sub-uxui-67010203",
+      "assignmentId": "a-mock-10",
+      "studentId": "67010203",
+      "studentName": "อภิสิทธิ์ ทองคำ",
+      "email": "67010203@kmitl.ac.th",
+      "submittedAt": "2026-10-03T19:29:00.000Z",
+      "fileUrl": null,
+      "aiScore": 47,
+      "instructorScore": 48,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 5,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 3,
+        "rc-uxui-4": 10,
+        "rc-uxui-5": 5,
+        "rc-uxui-6": 5,
+        "rc-uxui-7": 5
+      }
+    },
+    {
+      "id": "sub-uxui-67010205",
+      "assignmentId": "a-mock-10",
+      "studentId": "67010205",
+      "studentName": "สุรชัย มีสุข",
+      "email": "67010205@kmitl.ac.th",
+      "submittedAt": "2026-10-01T17:03:00.000Z",
+      "fileUrl": null,
+      "aiScore": 88,
+      "instructorScore": 85,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 10,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 10,
+        "rc-uxui-4": 15,
+        "rc-uxui-5": 15,
+        "rc-uxui-6": 5,
+        "rc-uxui-7": 15
+      }
+    },
+    {
+      "id": "sub-uxui-68020201",
+      "assignmentId": "a-mock-10",
+      "studentId": "68020201",
+      "studentName": "นภัสสร เพ็ชรสุวรรณ",
+      "email": "68020201@kmitl.ac.th",
+      "submittedAt": "2026-10-01T13:59:00.000Z",
+      "fileUrl": null,
+      "aiScore": 48,
+      "instructorScore": 48,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 10,
+        "rc-uxui-2": 5,
+        "rc-uxui-3": 3,
+        "rc-uxui-4": 10,
+        "rc-uxui-5": 5,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 5
+      }
+    },
+    {
+      "id": "sub-uxui-68020202",
+      "assignmentId": "a-mock-10",
+      "studentId": "68020202",
+      "studentName": "เมธัส ประเสริฐสุข",
+      "email": "68020202@kmitl.ac.th",
+      "submittedAt": "2026-10-02T12:12:00.000Z",
+      "fileUrl": null,
+      "aiScore": 78,
+      "instructorScore": 72,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 7,
+        "rc-uxui-4": 5,
+        "rc-uxui-5": 15,
+        "rc-uxui-6": 5,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-68020203",
+      "assignmentId": "a-mock-10",
+      "studentId": "68020203",
+      "studentName": "ฐิติมา ปัญญาดี",
+      "email": "68020203@kmitl.ac.th",
+      "submittedAt": "2026-10-03T15:33:00.000Z",
+      "fileUrl": null,
+      "aiScore": 77,
+      "instructorScore": 77,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 5,
+        "rc-uxui-3": 7,
+        "rc-uxui-4": 15,
+        "rc-uxui-5": 15,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-68020204",
+      "assignmentId": "a-mock-10",
+      "studentId": "68020204",
+      "studentName": "จักรพันธ์ คำแสน",
+      "email": "68020204@kmitl.ac.th",
+      "submittedAt": "2026-10-04T10:18:00.000Z",
+      "fileUrl": null,
+      "aiScore": 52,
+      "instructorScore": 53,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 10,
+        "rc-uxui-2": 5,
+        "rc-uxui-3": 3,
+        "rc-uxui-4": 5,
+        "rc-uxui-5": 10,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-69070101",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070101",
+      "studentName": "สมชาย ใจดี",
+      "email": "69070101@kmitl.ac.th",
+      "submittedAt": "2026-10-02T16:48:00.000Z",
+      "fileUrl": null,
+      "aiScore": 88,
+      "instructorScore": 87,
+      "instructorComment": "Flow ครบและ Design System เป็นระบบดี ควรเพิ่ม Contrast ของตัวอักษรรอง และตรวจ Dead End ในหน้าตั้งค่า",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 7,
+        "rc-uxui-4": 15,
+        "rc-uxui-5": 10,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 15
+      }
+    },
+    {
+      "id": "sub-uxui-69070102",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070102",
+      "studentName": "สุดา วงษ์สา",
+      "email": "69070102@kmitl.ac.th",
+      "submittedAt": "2026-10-01T13:31:00.000Z",
+      "fileUrl": null,
+      "aiScore": 85,
+      "instructorScore": 85,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 10,
+        "rc-uxui-4": 10,
+        "rc-uxui-5": 15,
+        "rc-uxui-6": 5,
+        "rc-uxui-7": 15
+      }
+    },
+    {
+      "id": "sub-uxui-69070203",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070203",
+      "studentName": "คณิน พึ่งบุญ",
+      "email": "69070203@kmitl.ac.th",
+      "submittedAt": "2026-10-03T15:13:00.000Z",
+      "fileUrl": null,
+      "aiScore": 47,
+      "instructorScore": 48,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 10,
+        "rc-uxui-2": 5,
+        "rc-uxui-3": 3,
+        "rc-uxui-4": 5,
+        "rc-uxui-5": 10,
+        "rc-uxui-6": 5,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-69070206",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070206",
+      "studentName": "สุพัตรา บุญมา",
+      "email": "69070206@kmitl.ac.th",
+      "submittedAt": "2026-10-02T16:04:00.000Z",
+      "fileUrl": null,
+      "aiScore": 91,
+      "instructorScore": 90,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 10,
+        "rc-uxui-4": 15,
+        "rc-uxui-5": 5,
+        "rc-uxui-6": 15,
+        "rc-uxui-7": 15
+      }
+    },
+    {
+      "id": "sub-uxui-69070208",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070208",
+      "studentName": "วิภาวี ศรีทอง",
+      "email": "69070208@kmitl.ac.th",
+      "submittedAt": "2026-10-04T14:46:00.000Z",
+      "fileUrl": null,
+      "aiScore": 89,
+      "instructorScore": 85,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 10,
+        "rc-uxui-2": 10,
+        "rc-uxui-3": 10,
+        "rc-uxui-4": 10,
+        "rc-uxui-5": 15,
+        "rc-uxui-6": 15,
+        "rc-uxui-7": 15
+      }
+    },
+    {
+      "id": "sub-uxui-69070212",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070212",
+      "studentName": "ญาดา พิมสอน",
+      "email": "69070212@kmitl.ac.th",
+      "submittedAt": "2026-10-01T17:15:00.000Z",
+      "fileUrl": null,
+      "aiScore": 89,
+      "instructorScore": 90,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 10,
+        "rc-uxui-4": 10,
+        "rc-uxui-5": 15,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 15
+      }
+    },
+    {
+      "id": "sub-uxui-69070214",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070214",
+      "studentName": "ธีรภัทร จันทร์เพ็ญ",
+      "email": "69070214@kmitl.ac.th",
+      "submittedAt": "2026-10-03T11:21:00.000Z",
+      "fileUrl": null,
+      "aiScore": 74,
+      "instructorScore": 77,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 10,
+        "rc-uxui-3": 7,
+        "rc-uxui-4": 15,
+        "rc-uxui-5": 10,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-69070216",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070216",
+      "studentName": "ปุณณวิช ศรีวงศ์",
+      "email": "69070216@kmitl.ac.th",
+      "submittedAt": "2026-10-01T09:03:00.000Z",
+      "fileUrl": null,
+      "aiScore": 80,
+      "instructorScore": 85,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 10,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 10,
+        "rc-uxui-4": 15,
+        "rc-uxui-5": 15,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-69070219",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070219",
+      "studentName": "ศิริพร ใจเย็น",
+      "email": "69070219@kmitl.ac.th",
+      "submittedAt": "2026-10-02T12:48:00.000Z",
+      "fileUrl": null,
+      "aiScore": 87,
+      "instructorScore": 90,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 10,
+        "rc-uxui-4": 15,
+        "rc-uxui-5": 15,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-69070221",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070221",
+      "studentName": "พิมพ์ชนก แซ่ลิ้ม",
+      "email": "69070221@kmitl.ac.th",
+      "submittedAt": "2026-10-03T11:09:00.000Z",
+      "fileUrl": null,
+      "aiScore": 85,
+      "instructorScore": 85,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 10,
+        "rc-uxui-4": 10,
+        "rc-uxui-5": 15,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-69070226",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070226",
+      "studentName": "กัญญาวีร์ อัครพงษ์",
+      "email": "69070226@kmitl.ac.th",
+      "submittedAt": "2026-10-04T10:46:00.000Z",
+      "fileUrl": null,
+      "aiScore": 67,
+      "instructorScore": 67,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 10,
+        "rc-uxui-2": 10,
+        "rc-uxui-3": 7,
+        "rc-uxui-4": 10,
+        "rc-uxui-5": 10,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-69070228",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070228",
+      "studentName": "นลินี บุญเลิศ",
+      "email": "69070228@kmitl.ac.th",
+      "submittedAt": "2026-10-02T20:40:00.000Z",
+      "fileUrl": null,
+      "aiScore": 66,
+      "instructorScore": 62,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 10,
+        "rc-uxui-2": 10,
+        "rc-uxui-3": 7,
+        "rc-uxui-4": 10,
+        "rc-uxui-5": 10,
+        "rc-uxui-6": 5,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-69070231",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070231",
+      "studentName": "สุภาพร ดวงจันทร์",
+      "email": "69070231@kmitl.ac.th",
+      "submittedAt": "2026-10-04T18:14:00.000Z",
+      "fileUrl": null,
+      "aiScore": 76,
+      "instructorScore": 80,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 10,
+        "rc-uxui-4": 10,
+        "rc-uxui-5": 10,
+        "rc-uxui-6": 5,
+        "rc-uxui-7": 15
+      }
+    },
+    {
+      "id": "sub-uxui-69070233",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070233",
+      "studentName": "อรอุมา ชัยมงคล",
+      "email": "69070233@kmitl.ac.th",
+      "submittedAt": "2026-10-02T12:56:00.000Z",
+      "fileUrl": null,
+      "aiScore": 97,
+      "instructorScore": 90,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 15,
+        "rc-uxui-3": 10,
+        "rc-uxui-4": 15,
+        "rc-uxui-5": 15,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-69070236",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070236",
+      "studentName": "วารุณี บุญมี",
+      "email": "69070236@kmitl.ac.th",
+      "submittedAt": "2026-10-03T11:29:00.000Z",
+      "fileUrl": null,
+      "aiScore": 54,
+      "instructorScore": 53,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 15,
+        "rc-uxui-2": 10,
+        "rc-uxui-3": 3,
+        "rc-uxui-4": 0,
+        "rc-uxui-5": 5,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 10
+      }
+    },
+    {
+      "id": "sub-uxui-69070238",
+      "assignmentId": "a-mock-10",
+      "studentId": "69070238",
+      "studentName": "ณัฐริกา เพชรรัตน์",
+      "email": "69070238@kmitl.ac.th",
+      "submittedAt": "2026-10-01T09:03:00.000Z",
+      "fileUrl": null,
+      "aiScore": 71,
+      "instructorScore": 67,
+      "instructorComment": "",
+      "externalUseConsent": true,
+      "status": "graded",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "criterionScores": {
+        "rc-uxui-1": 10,
+        "rc-uxui-2": 10,
+        "rc-uxui-3": 7,
+        "rc-uxui-4": 10,
+        "rc-uxui-5": 10,
+        "rc-uxui-6": 10,
+        "rc-uxui-7": 10
+      }
+    }
+  ]
+}

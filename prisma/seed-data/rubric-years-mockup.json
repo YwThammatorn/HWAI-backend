@@ -1,0 +1,3280 @@
+{
+  "teacherId": "t-mock-1",
+  "courses": [
+    {
+      "id": "c-mock-60",
+      "name": "การเขียนโปรแกรมคอมพิวเตอร์",
+      "description": "พื้นฐานการเขียนโปรแกรมด้วยภาษา Python และ C",
+      "status": "archived",
+      "coverColor": "#0F766E",
+      "icon": "code",
+      "createdAt": "2024-08-01T00:00:00.000Z",
+      "updatedAt": "2024-12-20T00:00:00.000Z",
+      "code": "01076112",
+      "courseTemplateId": "ct-18",
+      "academicYear": 2567,
+      "term": 1,
+      "sectionNumber": "1",
+      "schedule": "จันทร์ 9:00-12:00",
+      "room": "811"
+    },
+    {
+      "id": "c-mock-61",
+      "name": "การเขียนโปรแกรมคอมพิวเตอร์",
+      "description": "พื้นฐานการเขียนโปรแกรมด้วยภาษา Python และ C",
+      "status": "archived",
+      "coverColor": "#0F766E",
+      "icon": "code",
+      "createdAt": "2025-08-01T00:00:00.000Z",
+      "updatedAt": "2025-12-20T00:00:00.000Z",
+      "code": "01076112",
+      "courseTemplateId": "ct-18",
+      "academicYear": 2568,
+      "term": 1,
+      "sectionNumber": "1",
+      "schedule": "จันทร์ 9:00-12:00",
+      "room": "811"
+    }
+  ],
+  "assignments": [
+    {
+      "id": "a-yr-67-1",
+      "courseId": "c-mock-60",
+      "name": "แบบฝึกหัด Python เบื้องต้น",
+      "description": "เขียนโปรแกรม Python แก้โจทย์ 5 ข้อ ตามที่กำหนดใน worksheet ส่งเป็นไฟล์ PDF",
+      "dueDate": "2024-09-06",
+      "maxPoints": 15,
+      "acceptsFiles": true,
+      "fileTypes": [
+        "pdf"
+      ],
+      "submissionType": "individual",
+      "maxGroupSize": null,
+      "rubricIds": [
+        "r-yr-67-1"
+      ],
+      "gradingFinalized": true,
+      "createdAt": "2024-08-20T09:00:00.000Z",
+      "updatedAt": "2024-12-01T09:00:00.000Z"
+    },
+    {
+      "id": "a-yr-67-2",
+      "courseId": "c-mock-60",
+      "name": "โปรเจกต์เล็ก: เครื่องคิดเลข",
+      "description": "สร้างโปรแกรมเครื่องคิดเลขอย่างง่ายด้วย Python รองรับ +, -, *, / และจัดการ error เบื้องต้น",
+      "dueDate": "2024-10-18",
+      "maxPoints": 25,
+      "acceptsFiles": true,
+      "fileTypes": [
+        "pdf"
+      ],
+      "submissionType": "individual",
+      "maxGroupSize": null,
+      "rubricIds": [
+        "r-yr-67-2"
+      ],
+      "gradingFinalized": true,
+      "createdAt": "2024-08-20T09:00:00.000Z",
+      "updatedAt": "2024-12-01T09:00:00.000Z"
+    },
+    {
+      "id": "a-yr-68-1",
+      "courseId": "c-mock-61",
+      "name": "แบบฝึกหัด Python เบื้องต้น",
+      "description": "เขียนโปรแกรม Python แก้โจทย์ 5 ข้อ ตามที่กำหนดใน worksheet ส่งเป็นไฟล์ PDF",
+      "dueDate": "2025-09-05",
+      "maxPoints": 15,
+      "acceptsFiles": true,
+      "fileTypes": [
+        "pdf"
+      ],
+      "submissionType": "individual",
+      "maxGroupSize": null,
+      "rubricIds": [
+        "r-yr-68-1"
+      ],
+      "gradingFinalized": true,
+      "createdAt": "2025-08-20T09:00:00.000Z",
+      "updatedAt": "2025-12-01T09:00:00.000Z"
+    },
+    {
+      "id": "a-yr-68-2",
+      "courseId": "c-mock-61",
+      "name": "โปรเจกต์เล็ก: เครื่องคิดเลข",
+      "description": "สร้างโปรแกรมเครื่องคิดเลขอย่างง่ายด้วย Python รองรับ +, -, *, / และจัดการ error เบื้องต้น",
+      "dueDate": "2025-10-17",
+      "maxPoints": 25,
+      "acceptsFiles": true,
+      "fileTypes": [
+        "pdf"
+      ],
+      "submissionType": "individual",
+      "maxGroupSize": null,
+      "rubricIds": [
+        "r-yr-68-2"
+      ],
+      "gradingFinalized": true,
+      "createdAt": "2025-08-20T09:00:00.000Z",
+      "updatedAt": "2025-12-01T09:00:00.000Z"
+    }
+  ],
+  "rubrics": [
+    {
+      "id": "r-yr-67-1",
+      "assignmentId": "a-yr-67-1",
+      "name": "Grading Rubric: แบบฝึกหัด Python เบื้องต้น",
+      "criteria": [
+        {
+          "id": "rc-yr-67-1-a",
+          "name": "C1 · Program correctness / ความถูกต้องของโปรแกรม",
+          "description": "การทำงานของโปรแกรมให้ผลลัพธ์ถูกต้องตามโจทย์",
+          "maxPoints": 11,
+          "weight": 73,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "โปรแกรมทำงานได้ผลลัพธ์ถูกต้องครบทุกข้อตามโจทย์ รวมถึงกรณีขอบ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "ผลลัพธ์ถูกต้องในโจทย์ส่วนใหญ่ แต่ผิดพลาดบางกรณี เช่น กรณีขอบหรือข้อมูลนำเข้าที่ไม่ปกติ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "ผลลัพธ์ผิดในหลายโจทย์ หรือโปรแกรมทำงานได้เฉพาะกรณีง่าย ๆ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "โปรแกรมรันไม่ได้หรือให้ผลลัพธ์ผิดเกือบทุกข้อ ไม่ตรงกับโจทย์ที่กำหนด"
+            }
+          ]
+        },
+        {
+          "id": "rc-yr-67-1-b",
+          "name": "C2 · Code readability / ความอ่านง่ายของโค้ด",
+          "description": "การตั้งชื่อ การจัดรูปแบบ และ comment ของโค้ด",
+          "maxPoints": 4,
+          "weight": 27,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "ตั้งชื่อสื่อความหมาย จัดรูปแบบสม่ำเสมอ และมี comment เท่าที่จำเป็น"
+            },
+            {
+              "label": "พอใช้",
+              "description": "ตั้งชื่อและจัดรูปแบบอ่านเข้าใจได้เป็นส่วนใหญ่ แต่มีบางจุดที่ชื่อสื่อความหมายไม่พอหรือรูปแบบไม่สม่ำเสมอ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "ชื่อตัวแปรไม่สื่อความหมายหลายจุด การย่อหน้าไม่สม่ำเสมอ และแทบไม่มี comment ทำให้ต้องเดาว่าโค้ดทำอะไร"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "อ่านโค้ดไม่รู้เรื่อง — ตั้งชื่อตามใจ ไม่มีโครงสร้างหรือการจัดรูปแบบเลย"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2024-08-20T09:00:00.000Z",
+      "updatedAt": "2024-08-20T09:00:00.000Z"
+    },
+    {
+      "id": "r-yr-67-2",
+      "assignmentId": "a-yr-67-2",
+      "name": "Grading Rubric: โปรเจกต์เล็ก: เครื่องคิดเลข",
+      "criteria": [
+        {
+          "id": "rc-yr-67-2-a",
+          "name": "C1 · Program correctness / ความถูกต้องของโปรแกรม",
+          "description": "การทำงานของโปรแกรมให้ผลลัพธ์ถูกต้องตามโจทย์",
+          "maxPoints": 14,
+          "weight": 56,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "โปรแกรมทำงานได้ผลลัพธ์ถูกต้องครบทุกข้อตามโจทย์ รวมถึงกรณีขอบ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "ผลลัพธ์ถูกต้องในโจทย์ส่วนใหญ่ แต่ผิดพลาดบางกรณี เช่น กรณีขอบหรือข้อมูลนำเข้าที่ไม่ปกติ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "ผลลัพธ์ผิดในหลายโจทย์ หรือโปรแกรมทำงานได้เฉพาะกรณีง่าย ๆ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "โปรแกรมรันไม่ได้หรือให้ผลลัพธ์ผิดเกือบทุกข้อ ไม่ตรงกับโจทย์ที่กำหนด"
+            }
+          ]
+        },
+        {
+          "id": "rc-yr-67-2-b",
+          "name": "C2 · Code readability / ความอ่านง่ายของโค้ด",
+          "description": "การตั้งชื่อ การจัดรูปแบบ และ comment ของโค้ด",
+          "maxPoints": 5,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "ตั้งชื่อสื่อความหมาย จัดรูปแบบสม่ำเสมอ และมี comment เท่าที่จำเป็น"
+            },
+            {
+              "label": "พอใช้",
+              "description": "ตั้งชื่อและจัดรูปแบบอ่านเข้าใจได้เป็นส่วนใหญ่ แต่มีบางจุดที่ชื่อสื่อความหมายไม่พอหรือรูปแบบไม่สม่ำเสมอ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "ชื่อตัวแปรไม่สื่อความหมายหลายจุด การย่อหน้าไม่สม่ำเสมอ และแทบไม่มี comment ทำให้ต้องเดาว่าโค้ดทำอะไร"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "อ่านโค้ดไม่รู้เรื่อง — ตั้งชื่อตามใจ ไม่มีโครงสร้างหรือการจัดรูปแบบเลย"
+            }
+          ]
+        },
+        {
+          "id": "rc-yr-67-2-c",
+          "name": "C3 · Style and documentation / รูปแบบและเอกสารประกอบ",
+          "description": "docstring และรูปแบบการเขียนของฟังก์ชัน",
+          "maxPoints": 6,
+          "weight": 24,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "มี docstring อธิบายการทำงานของทุกฟังก์ชัน ตั้งชื่อและจัดรูปแบบสม่ำเสมอ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "มี docstring ในฟังก์ชันส่วนใหญ่ แต่บางฟังก์ชันขาดหรืออธิบายไม่ครบ ชื่อและรูปแบบสม่ำเสมอเป็นส่วนใหญ่"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "มี docstring เพียงไม่กี่ฟังก์ชัน และชื่อหรือรูปแบบไม่สม่ำเสมอหลายจุด"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มี docstring และไม่มีรูปแบบการเขียนที่เป็นระบบ"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2024-08-20T09:00:00.000Z",
+      "updatedAt": "2024-08-20T09:00:00.000Z"
+    },
+    {
+      "id": "r-yr-68-1",
+      "assignmentId": "a-yr-68-1",
+      "name": "Grading Rubric: แบบฝึกหัด Python เบื้องต้น",
+      "criteria": [
+        {
+          "id": "rc-yr-68-1-a",
+          "name": "C1 · Program correctness / ความถูกต้องของโปรแกรม",
+          "description": "การทำงานของโปรแกรมให้ผลลัพธ์ถูกต้องตามโจทย์",
+          "maxPoints": 9,
+          "weight": 60,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "โปรแกรมทำงานได้ผลลัพธ์ถูกต้องครบทุกข้อตามโจทย์ รวมถึงกรณีขอบ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "ผลลัพธ์ถูกต้องในโจทย์ส่วนใหญ่ แต่ผิดพลาดบางกรณี เช่น กรณีขอบหรือข้อมูลนำเข้าที่ไม่ปกติ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "ผลลัพธ์ผิดในหลายโจทย์ หรือโปรแกรมทำงานได้เฉพาะกรณีง่าย ๆ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "โปรแกรมรันไม่ได้หรือให้ผลลัพธ์ผิดเกือบทุกข้อ ไม่ตรงกับโจทย์ที่กำหนด"
+            }
+          ]
+        },
+        {
+          "id": "rc-yr-68-1-b",
+          "name": "C2 · Code readability / ความอ่านง่ายของโค้ด",
+          "description": "การตั้งชื่อ การจัดรูปแบบ และ comment ของโค้ด",
+          "maxPoints": 3,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "ตั้งชื่อสื่อความหมาย จัดรูปแบบสม่ำเสมอ และมี comment เท่าที่จำเป็น"
+            },
+            {
+              "label": "พอใช้",
+              "description": "ตั้งชื่อและจัดรูปแบบอ่านเข้าใจได้เป็นส่วนใหญ่ แต่มีบางจุดที่ชื่อสื่อความหมายไม่พอหรือรูปแบบไม่สม่ำเสมอ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "ชื่อตัวแปรไม่สื่อความหมายหลายจุด การย่อหน้าไม่สม่ำเสมอ และแทบไม่มี comment ทำให้ต้องเดาว่าโค้ดทำอะไร"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "อ่านโค้ดไม่รู้เรื่อง — ตั้งชื่อตามใจ ไม่มีโครงสร้างหรือการจัดรูปแบบเลย"
+            }
+          ]
+        },
+        {
+          "id": "rc-yr-68-1-c",
+          "name": "C3 · Error handling / การจัดการ Error",
+          "description": "การรับมือ input ผิดพลาดและกรณีผิดปกติ",
+          "maxPoints": 3,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "จัดการ input ผิดพลาดและกรณีผิดปกติได้อย่างเหมาะสม โปรแกรมไม่หยุดทำงานกะทันหัน"
+            },
+            {
+              "label": "พอใช้",
+              "description": "จัดการ input ผิดพลาดที่พบบ่อยได้ แต่ยังมีกรณีผิดปกติบางกรณีที่ทำให้โปรแกรมหยุดหรือแจ้งข้อผิดพลาดไม่ชัดเจน"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "จัดการ error เฉพาะบางจุด input ผิดรูปแบบยังทำให้โปรแกรมหยุดทำงานได้ง่าย"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีการจัดการ error — input ผิดเพียงเล็กน้อยก็ทำให้โปรแกรมหยุดทำงาน"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2025-08-20T09:00:00.000Z",
+      "updatedAt": "2025-08-20T09:00:00.000Z"
+    },
+    {
+      "id": "r-yr-68-2",
+      "assignmentId": "a-yr-68-2",
+      "name": "Grading Rubric: โปรเจกต์เล็ก: เครื่องคิดเลข",
+      "criteria": [
+        {
+          "id": "rc-yr-68-2-a",
+          "name": "C1 · Program correctness / ความถูกต้องของโปรแกรม",
+          "description": "การทำงานของโปรแกรมให้ผลลัพธ์ถูกต้องตามโจทย์",
+          "maxPoints": 13,
+          "weight": 52,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "โปรแกรมทำงานได้ผลลัพธ์ถูกต้องครบทุกข้อตามโจทย์ รวมถึงกรณีขอบ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "ผลลัพธ์ถูกต้องในโจทย์ส่วนใหญ่ แต่ผิดพลาดบางกรณี เช่น กรณีขอบหรือข้อมูลนำเข้าที่ไม่ปกติ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "ผลลัพธ์ผิดในหลายโจทย์ หรือโปรแกรมทำงานได้เฉพาะกรณีง่าย ๆ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "โปรแกรมรันไม่ได้หรือให้ผลลัพธ์ผิดเกือบทุกข้อ ไม่ตรงกับโจทย์ที่กำหนด"
+            }
+          ]
+        },
+        {
+          "id": "rc-yr-68-2-b",
+          "name": "C2 · Error handling / การจัดการ Error",
+          "description": "การรับมือ input ผิดพลาดและกรณีผิดปกติ",
+          "maxPoints": 7,
+          "weight": 28,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "จัดการ input ผิดพลาดและกรณีผิดปกติได้อย่างเหมาะสม โปรแกรมไม่หยุดทำงานกะทันหัน"
+            },
+            {
+              "label": "พอใช้",
+              "description": "จัดการ input ผิดพลาดที่พบบ่อยได้ แต่ยังมีกรณีผิดปกติบางกรณีที่ทำให้โปรแกรมหยุดหรือแจ้งข้อผิดพลาดไม่ชัดเจน"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "จัดการ error เฉพาะบางจุด input ผิดรูปแบบยังทำให้โปรแกรมหยุดทำงานได้ง่าย"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีการจัดการ error — input ผิดเพียงเล็กน้อยก็ทำให้โปรแกรมหยุดทำงาน"
+            }
+          ]
+        },
+        {
+          "id": "rc-yr-68-2-c",
+          "name": "C3 · Code readability / ความอ่านง่ายของโค้ด",
+          "description": "การตั้งชื่อ การจัดรูปแบบ และ comment ของโค้ด",
+          "maxPoints": 5,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "ตั้งชื่อสื่อความหมาย จัดรูปแบบสม่ำเสมอ และมี comment เท่าที่จำเป็น"
+            },
+            {
+              "label": "พอใช้",
+              "description": "ตั้งชื่อและจัดรูปแบบอ่านเข้าใจได้เป็นส่วนใหญ่ แต่มีบางจุดที่ชื่อสื่อความหมายไม่พอหรือรูปแบบไม่สม่ำเสมอ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "ชื่อตัวแปรไม่สื่อความหมายหลายจุด การย่อหน้าไม่สม่ำเสมอ และแทบไม่มี comment ทำให้ต้องเดาว่าโค้ดทำอะไร"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "อ่านโค้ดไม่รู้เรื่อง — ตั้งชื่อตามใจ ไม่มีโครงสร้างหรือการจัดรูปแบบเลย"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2025-08-20T09:00:00.000Z",
+      "updatedAt": "2025-08-20T09:00:00.000Z"
+    }
+  ],
+  "submissions": [
+    {
+      "id": "sub-yr-67-1-1",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990001",
+      "studentName": "นักศึกษา 67990001",
+      "email": "67990001@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:11:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 8,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 1
+      }
+    },
+    {
+      "id": "sub-yr-67-1-2",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990002",
+      "studentName": "นักศึกษา 67990002",
+      "email": "67990002@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:12:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 7,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 4,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-3",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990003",
+      "studentName": "นักศึกษา 67990003",
+      "email": "67990003@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:13:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-4",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990004",
+      "studentName": "นักศึกษา 67990004",
+      "email": "67990004@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:14:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-5",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990005",
+      "studentName": "นักศึกษา 67990005",
+      "email": "67990005@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:15:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-6",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990006",
+      "studentName": "นักศึกษา 67990006",
+      "email": "67990006@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:16:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 3,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 0,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-7",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990007",
+      "studentName": "นักศึกษา 67990007",
+      "email": "67990007@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:17:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 8,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 1
+      }
+    },
+    {
+      "id": "sub-yr-67-1-8",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990008",
+      "studentName": "นักศึกษา 67990008",
+      "email": "67990008@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:18:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 1,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 0,
+        "rc-yr-67-1-b": 1
+      }
+    },
+    {
+      "id": "sub-yr-67-1-9",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990009",
+      "studentName": "นักศึกษา 67990009",
+      "email": "67990009@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:19:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 11,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-1-10",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990010",
+      "studentName": "นักศึกษา 67990010",
+      "email": "67990010@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:20:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-11",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990011",
+      "studentName": "นักศึกษา 67990011",
+      "email": "67990011@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:21:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 12,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 11,
+        "rc-yr-67-1-b": 1
+      }
+    },
+    {
+      "id": "sub-yr-67-1-12",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990012",
+      "studentName": "นักศึกษา 67990012",
+      "email": "67990012@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:22:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 8,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 4,
+        "rc-yr-67-1-b": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-1-13",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990013",
+      "studentName": "นักศึกษา 67990013",
+      "email": "67990013@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:23:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 5,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 4,
+        "rc-yr-67-1-b": 1
+      }
+    },
+    {
+      "id": "sub-yr-67-1-14",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990014",
+      "studentName": "นักศึกษา 67990014",
+      "email": "67990014@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:24:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-15",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990015",
+      "studentName": "นักศึกษา 67990015",
+      "email": "67990015@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:25:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-16",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990016",
+      "studentName": "นักศึกษา 67990016",
+      "email": "67990016@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:26:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 4,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 0,
+        "rc-yr-67-1-b": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-1-17",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990017",
+      "studentName": "นักศึกษา 67990017",
+      "email": "67990017@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:27:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-18",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990018",
+      "studentName": "นักศึกษา 67990018",
+      "email": "67990018@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:28:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-19",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990019",
+      "studentName": "นักศึกษา 67990019",
+      "email": "67990019@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:29:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-20",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990020",
+      "studentName": "นักศึกษา 67990020",
+      "email": "67990020@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:30:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 8,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 1
+      }
+    },
+    {
+      "id": "sub-yr-67-1-21",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990021",
+      "studentName": "นักศึกษา 67990021",
+      "email": "67990021@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:31:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 8,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 4,
+        "rc-yr-67-1-b": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-1-22",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990022",
+      "studentName": "นักศึกษา 67990022",
+      "email": "67990022@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:32:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-23",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990023",
+      "studentName": "นักศึกษา 67990023",
+      "email": "67990023@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:33:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 15,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 11,
+        "rc-yr-67-1-b": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-1-24",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990024",
+      "studentName": "นักศึกษา 67990024",
+      "email": "67990024@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:34:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 11,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-1-25",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990025",
+      "studentName": "นักศึกษา 67990025",
+      "email": "67990025@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:35:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 7,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 4,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-26",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990026",
+      "studentName": "นักศึกษา 67990026",
+      "email": "67990026@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:36:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 5,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 4,
+        "rc-yr-67-1-b": 1
+      }
+    },
+    {
+      "id": "sub-yr-67-1-27",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990027",
+      "studentName": "นักศึกษา 67990027",
+      "email": "67990027@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:37:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 7,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 4,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-28",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990028",
+      "studentName": "นักศึกษา 67990028",
+      "email": "67990028@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:38:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 11,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-1-29",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990029",
+      "studentName": "นักศึกษา 67990029",
+      "email": "67990029@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:39:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 8,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 1
+      }
+    },
+    {
+      "id": "sub-yr-67-1-30",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990030",
+      "studentName": "นักศึกษา 67990030",
+      "email": "67990030@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:40:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 8,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 1
+      }
+    },
+    {
+      "id": "sub-yr-67-1-31",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990031",
+      "studentName": "นักศึกษา 67990031",
+      "email": "67990031@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:41:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 7,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 4,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-32",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990032",
+      "studentName": "นักศึกษา 67990032",
+      "email": "67990032@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:42:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 5,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 4,
+        "rc-yr-67-1-b": 1
+      }
+    },
+    {
+      "id": "sub-yr-67-1-33",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990033",
+      "studentName": "นักศึกษา 67990033",
+      "email": "67990033@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:43:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 14,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 11,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-1-34",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990034",
+      "studentName": "นักศึกษา 67990034",
+      "email": "67990034@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:44:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 0,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 0,
+        "rc-yr-67-1-b": 0
+      }
+    },
+    {
+      "id": "sub-yr-67-1-35",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990035",
+      "studentName": "นักศึกษา 67990035",
+      "email": "67990035@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:45:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 1,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 0,
+        "rc-yr-67-1-b": 1
+      }
+    },
+    {
+      "id": "sub-yr-67-1-36",
+      "assignmentId": "a-yr-67-1",
+      "studentId": "67990036",
+      "studentName": "นักศึกษา 67990036",
+      "email": "67990036@kmitl.ac.th",
+      "submittedAt": "2024-09-06T09:46:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-09-06T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-1-a": 7,
+        "rc-yr-67-1-b": 3
+      }
+    },
+    {
+      "id": "sub-yr-67-2-1",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990001",
+      "studentName": "นักศึกษา 67990001",
+      "email": "67990001@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:11:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 11,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 2,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-2",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990002",
+      "studentName": "นักศึกษา 67990002",
+      "email": "67990002@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:12:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 16,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 5,
+        "rc-yr-67-2-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-67-2-3",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990003",
+      "studentName": "นักศึกษา 67990003",
+      "email": "67990003@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:13:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 18,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 5,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-4",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990004",
+      "studentName": "นักศึกษา 67990004",
+      "email": "67990004@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:14:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 9,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 2,
+        "rc-yr-67-2-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-67-2-5",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990005",
+      "studentName": "นักศึกษา 67990005",
+      "email": "67990005@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:15:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 18,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 6
+      }
+    },
+    {
+      "id": "sub-yr-67-2-6",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990006",
+      "studentName": "นักศึกษา 67990006",
+      "email": "67990006@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:16:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 13,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 2,
+        "rc-yr-67-2-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-67-2-7",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990007",
+      "studentName": "นักศึกษา 67990007",
+      "email": "67990007@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:17:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 14,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-67-2-8",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990008",
+      "studentName": "นักศึกษา 67990008",
+      "email": "67990008@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:18:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 18,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 5,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-9",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990009",
+      "studentName": "นักศึกษา 67990009",
+      "email": "67990009@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:19:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 14,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 5,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-10",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990010",
+      "studentName": "นักศึกษา 67990010",
+      "email": "67990010@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:20:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 7,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 2,
+        "rc-yr-67-2-c": 0
+      }
+    },
+    {
+      "id": "sub-yr-67-2-11",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990011",
+      "studentName": "นักศึกษา 67990011",
+      "email": "67990011@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:21:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 12,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 5,
+        "rc-yr-67-2-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-67-2-12",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990012",
+      "studentName": "นักศึกษา 67990012",
+      "email": "67990012@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:22:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 16,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-13",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990013",
+      "studentName": "นักศึกษา 67990013",
+      "email": "67990013@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:23:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 18,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 5,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-14",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990014",
+      "studentName": "นักศึกษา 67990014",
+      "email": "67990014@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:24:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 8,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 0
+      }
+    },
+    {
+      "id": "sub-yr-67-2-15",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990015",
+      "studentName": "นักศึกษา 67990015",
+      "email": "67990015@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:25:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 21,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 14,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-16",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990016",
+      "studentName": "นักศึกษา 67990016",
+      "email": "67990016@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:26:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 11,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 2,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-17",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990017",
+      "studentName": "นักศึกษา 67990017",
+      "email": "67990017@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:27:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 14,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-67-2-18",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990018",
+      "studentName": "นักศึกษา 67990018",
+      "email": "67990018@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:28:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-67-2-19",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990019",
+      "studentName": "นักศึกษา 67990019",
+      "email": "67990019@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:29:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 16,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 5,
+        "rc-yr-67-2-c": 6
+      }
+    },
+    {
+      "id": "sub-yr-67-2-20",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990020",
+      "studentName": "นักศึกษา 67990020",
+      "email": "67990020@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:30:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 18,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 6
+      }
+    },
+    {
+      "id": "sub-yr-67-2-21",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990021",
+      "studentName": "นักศึกษา 67990021",
+      "email": "67990021@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:31:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 21,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 14,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-22",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990022",
+      "studentName": "นักศึกษา 67990022",
+      "email": "67990022@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:32:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 19,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 14,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-67-2-23",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990023",
+      "studentName": "นักศึกษา 67990023",
+      "email": "67990023@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:33:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 12,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-24",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990024",
+      "studentName": "นักศึกษา 67990024",
+      "email": "67990024@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:34:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 12,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 0
+      }
+    },
+    {
+      "id": "sub-yr-67-2-25",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990025",
+      "studentName": "นักศึกษา 67990025",
+      "email": "67990025@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:35:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 25,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 14,
+        "rc-yr-67-2-b": 5,
+        "rc-yr-67-2-c": 6
+      }
+    },
+    {
+      "id": "sub-yr-67-2-26",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990026",
+      "studentName": "นักศึกษา 67990026",
+      "email": "67990026@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:36:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 16,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 5,
+        "rc-yr-67-2-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-67-2-27",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990027",
+      "studentName": "นักศึกษา 67990027",
+      "email": "67990027@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:37:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 14,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 5,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-28",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990028",
+      "studentName": "นักศึกษา 67990028",
+      "email": "67990028@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:38:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 16,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-29",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990029",
+      "studentName": "นักศึกษา 67990029",
+      "email": "67990029@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:39:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 25,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 14,
+        "rc-yr-67-2-b": 5,
+        "rc-yr-67-2-c": 6
+      }
+    },
+    {
+      "id": "sub-yr-67-2-30",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990030",
+      "studentName": "นักศึกษา 67990030",
+      "email": "67990030@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:40:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 8,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 0
+      }
+    },
+    {
+      "id": "sub-yr-67-2-31",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990031",
+      "studentName": "นักศึกษา 67990031",
+      "email": "67990031@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:41:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 16,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-32",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990032",
+      "studentName": "นักศึกษา 67990032",
+      "email": "67990032@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:42:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 23,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 14,
+        "rc-yr-67-2-b": 5,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-33",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990033",
+      "studentName": "นักศึกษา 67990033",
+      "email": "67990033@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:43:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 14,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 5,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-34",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990034",
+      "studentName": "นักศึกษา 67990034",
+      "email": "67990034@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:44:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 16,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 9,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 4
+      }
+    },
+    {
+      "id": "sub-yr-67-2-35",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990035",
+      "studentName": "นักศึกษา 67990035",
+      "email": "67990035@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:45:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 19,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 14,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-67-2-36",
+      "assignmentId": "a-yr-67-2",
+      "studentId": "67990036",
+      "studentName": "นักศึกษา 67990036",
+      "email": "67990036@kmitl.ac.th",
+      "submittedAt": "2024-10-18T09:46:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2024-10-18T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-67-2-a": 5,
+        "rc-yr-67-2-b": 3,
+        "rc-yr-67-2-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-1-1",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990001",
+      "studentName": "นักศึกษา 68990001",
+      "email": "68990001@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:11:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 6,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 3,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-2",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990002",
+      "studentName": "นักศึกษา 68990002",
+      "email": "68990002@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:12:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 6,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 3,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-3",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990003",
+      "studentName": "นักศึกษา 68990003",
+      "email": "68990003@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:13:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 9,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-4",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990004",
+      "studentName": "นักศึกษา 68990004",
+      "email": "68990004@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:14:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-5",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990005",
+      "studentName": "นักศึกษา 68990005",
+      "email": "68990005@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:15:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 14,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 9,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-1-6",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990006",
+      "studentName": "นักศึกษา 68990006",
+      "email": "68990006@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:16:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 9,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-7",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990007",
+      "studentName": "นักศึกษา 68990007",
+      "email": "68990007@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:17:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 13,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 9,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-8",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990008",
+      "studentName": "นักศึกษา 68990008",
+      "email": "68990008@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:18:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-9",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990009",
+      "studentName": "นักศึกษา 68990009",
+      "email": "68990009@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:19:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 11,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-1-10",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990010",
+      "studentName": "นักศึกษา 68990010",
+      "email": "68990010@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:20:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 7,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 3,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-11",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990011",
+      "studentName": "นักศึกษา 68990011",
+      "email": "68990011@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:21:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 4,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 3,
+        "rc-yr-68-1-b": 1,
+        "rc-yr-68-1-c": 0
+      }
+    },
+    {
+      "id": "sub-yr-68-1-12",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990012",
+      "studentName": "นักศึกษา 68990012",
+      "email": "68990012@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:22:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 13,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 9,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-1-13",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990013",
+      "studentName": "นักศึกษา 68990013",
+      "email": "68990013@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:23:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-1-14",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990014",
+      "studentName": "นักศึกษา 68990014",
+      "email": "68990014@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:24:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 8,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 0
+      }
+    },
+    {
+      "id": "sub-yr-68-1-15",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990015",
+      "studentName": "นักศึกษา 68990015",
+      "email": "68990015@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:25:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-16",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990016",
+      "studentName": "นักศึกษา 68990016",
+      "email": "68990016@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:26:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 13,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 9,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-17",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990017",
+      "studentName": "นักศึกษา 68990017",
+      "email": "68990017@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:27:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 11,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-1-18",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990018",
+      "studentName": "นักศึกษา 68990018",
+      "email": "68990018@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:28:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 9,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-19",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990019",
+      "studentName": "นักศึกษา 68990019",
+      "email": "68990019@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:29:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-20",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990020",
+      "studentName": "นักศึกษา 68990020",
+      "email": "68990020@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:30:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 8,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 1,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-21",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990021",
+      "studentName": "นักศึกษา 68990021",
+      "email": "68990021@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:31:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 6,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 3,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-22",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990022",
+      "studentName": "นักศึกษา 68990022",
+      "email": "68990022@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:32:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 12,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 9,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-23",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990023",
+      "studentName": "นักศึกษา 68990023",
+      "email": "68990023@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:33:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 11,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-1-24",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990024",
+      "studentName": "นักศึกษา 68990024",
+      "email": "68990024@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:34:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 14,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 9,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-1-25",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990025",
+      "studentName": "นักศึกษา 68990025",
+      "email": "68990025@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:35:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-1-26",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990026",
+      "studentName": "นักศึกษา 68990026",
+      "email": "68990026@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:36:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 9,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-27",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990027",
+      "studentName": "นักศึกษา 68990027",
+      "email": "68990027@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:37:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 3,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 0,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-28",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990028",
+      "studentName": "นักศึกษา 68990028",
+      "email": "68990028@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:38:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 12,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 9,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-29",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990029",
+      "studentName": "นักศึกษา 68990029",
+      "email": "68990029@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:39:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 13,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 9,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-1-30",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990030",
+      "studentName": "นักศึกษา 68990030",
+      "email": "68990030@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:40:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 14,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 9,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-1-31",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990031",
+      "studentName": "นักศึกษา 68990031",
+      "email": "68990031@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:41:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 9,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-32",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990032",
+      "studentName": "นักศึกษา 68990032",
+      "email": "68990032@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:42:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-1-33",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990033",
+      "studentName": "นักศึกษา 68990033",
+      "email": "68990033@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:43:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 13,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 9,
+        "rc-yr-68-1-b": 3,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-34",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990034",
+      "studentName": "นักศึกษา 68990034",
+      "email": "68990034@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:44:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 10,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 6,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-1-35",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990035",
+      "studentName": "นักศึกษา 68990035",
+      "email": "68990035@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:45:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 6,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 3,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-1-36",
+      "assignmentId": "a-yr-68-1",
+      "studentId": "68990036",
+      "studentName": "นักศึกษา 68990036",
+      "email": "68990036@kmitl.ac.th",
+      "submittedAt": "2025-09-05T09:46:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 12,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-09-05T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-1-a": 9,
+        "rc-yr-68-1-b": 2,
+        "rc-yr-68-1-c": 1
+      }
+    },
+    {
+      "id": "sub-yr-68-2-1",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990001",
+      "studentName": "นักศึกษา 68990001",
+      "email": "68990001@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:11:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 19,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 5
+      }
+    },
+    {
+      "id": "sub-yr-68-2-2",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990002",
+      "studentName": "นักศึกษา 68990002",
+      "email": "68990002@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:12:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 16,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 5
+      }
+    },
+    {
+      "id": "sub-yr-68-2-3",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990003",
+      "studentName": "นักศึกษา 68990003",
+      "email": "68990003@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:13:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 23,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 5
+      }
+    },
+    {
+      "id": "sub-yr-68-2-4",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990004",
+      "studentName": "นักศึกษา 68990004",
+      "email": "68990004@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:14:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 19,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 5
+      }
+    },
+    {
+      "id": "sub-yr-68-2-5",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990005",
+      "studentName": "นักศึกษา 68990005",
+      "email": "68990005@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:15:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 23,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 5
+      }
+    },
+    {
+      "id": "sub-yr-68-2-6",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990006",
+      "studentName": "นักศึกษา 68990006",
+      "email": "68990006@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:16:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 17,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-7",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990007",
+      "studentName": "นักศึกษา 68990007",
+      "email": "68990007@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:17:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 18,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-8",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990008",
+      "studentName": "นักศึกษา 68990008",
+      "email": "68990008@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:18:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 16,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 5
+      }
+    },
+    {
+      "id": "sub-yr-68-2-9",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990009",
+      "studentName": "นักศึกษา 68990009",
+      "email": "68990009@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:19:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 25,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 7,
+        "rc-yr-68-2-c": 5
+      }
+    },
+    {
+      "id": "sub-yr-68-2-10",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990010",
+      "studentName": "นักศึกษา 68990010",
+      "email": "68990010@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:20:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 7,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 4,
+        "rc-yr-68-2-b": 0,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-11",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990011",
+      "studentName": "นักศึกษา 68990011",
+      "email": "68990011@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:21:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 17,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-12",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990012",
+      "studentName": "นักศึกษา 68990012",
+      "email": "68990012@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:22:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 18,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-13",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990013",
+      "studentName": "นักศึกษา 68990013",
+      "email": "68990013@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:23:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 6,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 4,
+        "rc-yr-68-2-b": 0,
+        "rc-yr-68-2-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-2-14",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990014",
+      "studentName": "นักศึกษา 68990014",
+      "email": "68990014@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:24:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 17,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-15",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990015",
+      "studentName": "นักศึกษา 68990015",
+      "email": "68990015@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:25:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 18,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-16",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990016",
+      "studentName": "นักศึกษา 68990016",
+      "email": "68990016@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:26:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 9,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 4,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-17",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990017",
+      "studentName": "นักศึกษา 68990017",
+      "email": "68990017@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:27:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 17,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-18",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990018",
+      "studentName": "นักศึกษา 68990018",
+      "email": "68990018@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:28:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 12,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 4,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-19",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990019",
+      "studentName": "นักศึกษา 68990019",
+      "email": "68990019@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:29:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 8,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 4,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 2
+      }
+    },
+    {
+      "id": "sub-yr-68-2-20",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990020",
+      "studentName": "นักศึกษา 68990020",
+      "email": "68990020@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:30:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 23,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 5
+      }
+    },
+    {
+      "id": "sub-yr-68-2-21",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990021",
+      "studentName": "นักศึกษา 68990021",
+      "email": "68990021@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:31:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 21,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-22",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990022",
+      "studentName": "นักศึกษา 68990022",
+      "email": "68990022@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:32:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 21,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-23",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990023",
+      "studentName": "นักศึกษา 68990023",
+      "email": "68990023@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:33:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 23,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 5
+      }
+    },
+    {
+      "id": "sub-yr-68-2-24",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990024",
+      "studentName": "นักศึกษา 68990024",
+      "email": "68990024@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:34:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 17,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-25",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990025",
+      "studentName": "นักศึกษา 68990025",
+      "email": "68990025@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:35:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 18,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 0,
+        "rc-yr-68-2-c": 5
+      }
+    },
+    {
+      "id": "sub-yr-68-2-26",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990026",
+      "studentName": "นักศึกษา 68990026",
+      "email": "68990026@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:36:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 16,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 5
+      }
+    },
+    {
+      "id": "sub-yr-68-2-27",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990027",
+      "studentName": "นักศึกษา 68990027",
+      "email": "68990027@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:37:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 17,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-28",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990028",
+      "studentName": "นักศึกษา 68990028",
+      "email": "68990028@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:38:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 25,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 7,
+        "rc-yr-68-2-c": 5
+      }
+    },
+    {
+      "id": "sub-yr-68-2-29",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990029",
+      "studentName": "นักศึกษา 68990029",
+      "email": "68990029@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:39:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 16,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 5
+      }
+    },
+    {
+      "id": "sub-yr-68-2-30",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990030",
+      "studentName": "นักศึกษา 68990030",
+      "email": "68990030@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:40:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 17,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 5,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-31",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990031",
+      "studentName": "นักศึกษา 68990031",
+      "email": "68990031@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:41:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 18,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-32",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990032",
+      "studentName": "นักศึกษา 68990032",
+      "email": "68990032@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:42:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 14,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-33",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990033",
+      "studentName": "นักศึกษา 68990033",
+      "email": "68990033@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:43:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 14,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-34",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990034",
+      "studentName": "นักศึกษา 68990034",
+      "email": "68990034@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:44:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 14,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 9,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-35",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990035",
+      "studentName": "นักศึกษา 68990035",
+      "email": "68990035@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:45:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 5,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 0,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 3
+      }
+    },
+    {
+      "id": "sub-yr-68-2-36",
+      "assignmentId": "a-yr-68-2",
+      "studentId": "68990036",
+      "studentName": "นักศึกษา 68990036",
+      "email": "68990036@kmitl.ac.th",
+      "submittedAt": "2025-10-17T09:46:00.000Z",
+      "fileUrl": null,
+      "aiScore": null,
+      "instructorScore": 18,
+      "instructorComment": "",
+      "externalUseConsent": false,
+      "status": "graded",
+      "updatedAt": "2025-10-17T12:00:00.000Z",
+      "criterionScores": {
+        "rc-yr-68-2-a": 13,
+        "rc-yr-68-2-b": 2,
+        "rc-yr-68-2-c": 3
+      }
+    }
+  ]
+}

@@ -117,7 +117,7 @@
       "firstName": "พงศกร",
       "lastName": "เพชรรัตน์",
       "email": "67010201@kmitl.ac.th",
-      "sequenceNumber": 22,
+      "sequenceNumber": 5,
       "enrollmentStatus": "enrolled"
     },
     {
@@ -227,7 +227,7 @@
       "firstName": "สมชาย",
       "lastName": "ใจดี",
       "email": "69070101@kmitl.ac.th",
-      "sequenceNumber": 24,
+      "sequenceNumber": 13,
       "enrollmentStatus": "enrolled"
     },
     {
@@ -1360,14 +1360,15 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 38,
+      "instructorScore": 37,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-1-c-mock-38-1-a": 23,
-        "rc-hist-a-hist-66010101-1-c-mock-38-1-b": 15
+        "rc-hist-a-hist-66010101-1-c-mock-38-1-a": 24,
+        "rc-hist-a-hist-66010101-1-c-mock-38-1-b": 5,
+        "rc-hist-a-hist-66010101-1-c-mock-38-1-c": 8
       }
     },
     {
@@ -1379,14 +1380,15 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 19,
+      "instructorScore": 18,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-1-c-mock-38-2-a": 9,
-        "rc-hist-a-hist-66010101-1-c-mock-38-2-b": 10
+        "rc-hist-a-hist-66010101-1-c-mock-38-2-a": 8,
+        "rc-hist-a-hist-66010101-1-c-mock-38-2-b": 4,
+        "rc-hist-a-hist-66010101-1-c-mock-38-2-c": 6
       }
     },
     {
@@ -1398,15 +1400,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 34,
+      "instructorScore": 36,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-1-c-mock-38-3-a": 14,
-        "rc-hist-a-hist-66010101-1-c-mock-38-3-b": 10,
-        "rc-hist-a-hist-66010101-1-c-mock-38-3-c": 10
+        "rc-hist-a-hist-66010101-1-c-mock-38-3-a": 12,
+        "rc-hist-a-hist-66010101-1-c-mock-38-3-b": 16,
+        "rc-hist-a-hist-66010101-1-c-mock-38-3-c": 8
       }
     },
     {
@@ -1424,8 +1426,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-1-c-mock-39-1-a": 21,
-        "rc-hist-a-hist-66010101-1-c-mock-39-1-b": 15
+        "rc-hist-a-hist-66010101-1-c-mock-39-1-a": 20,
+        "rc-hist-a-hist-66010101-1-c-mock-39-1-b": 8,
+        "rc-hist-a-hist-66010101-1-c-mock-39-1-c": 8
       }
     },
     {
@@ -1443,8 +1446,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-1-c-mock-39-2-a": 9,
-        "rc-hist-a-hist-66010101-1-c-mock-39-2-b": 8
+        "rc-hist-a-hist-66010101-1-c-mock-39-2-a": 5,
+        "rc-hist-a-hist-66010101-1-c-mock-39-2-b": 6,
+        "rc-hist-a-hist-66010101-1-c-mock-39-2-c": 6
       }
     },
     {
@@ -1462,9 +1466,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-1-c-mock-39-3-a": 13,
-        "rc-hist-a-hist-66010101-1-c-mock-39-3-b": 9,
-        "rc-hist-a-hist-66010101-1-c-mock-39-3-c": 9
+        "rc-hist-a-hist-66010101-1-c-mock-39-3-a": 12,
+        "rc-hist-a-hist-66010101-1-c-mock-39-3-b": 11,
+        "rc-hist-a-hist-66010101-1-c-mock-39-3-c": 8
       }
     },
     {
@@ -1482,8 +1486,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-2-c-mock-40-1-a": 20,
-        "rc-hist-a-hist-66010101-2-c-mock-40-1-b": 14
+        "rc-hist-a-hist-66010101-2-c-mock-40-1-a": 12,
+        "rc-hist-a-hist-66010101-2-c-mock-40-1-b": 14,
+        "rc-hist-a-hist-66010101-2-c-mock-40-1-c": 8
       }
     },
     {
@@ -1495,14 +1500,15 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 14,
+      "instructorScore": 13,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-2-c-mock-40-2-a": 7,
-        "rc-hist-a-hist-66010101-2-c-mock-40-2-b": 7
+        "rc-hist-a-hist-66010101-2-c-mock-40-2-a": 5,
+        "rc-hist-a-hist-66010101-2-c-mock-40-2-b": 6,
+        "rc-hist-a-hist-66010101-2-c-mock-40-2-c": 2
       }
     },
     {
@@ -1514,15 +1520,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 30,
+      "instructorScore": 31,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
         "rc-hist-a-hist-66010101-2-c-mock-40-3-a": 12,
-        "rc-hist-a-hist-66010101-2-c-mock-40-3-b": 9,
-        "rc-hist-a-hist-66010101-2-c-mock-40-3-c": 9
+        "rc-hist-a-hist-66010101-2-c-mock-40-3-b": 11,
+        "rc-hist-a-hist-66010101-2-c-mock-40-3-c": 8
       }
     },
     {
@@ -1540,8 +1546,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-2-c-mock-41-1-a": 17,
-        "rc-hist-a-hist-66010101-2-c-mock-41-1-b": 11
+        "rc-hist-a-hist-66010101-2-c-mock-41-1-a": 13,
+        "rc-hist-a-hist-66010101-2-c-mock-41-1-b": 12,
+        "rc-hist-a-hist-66010101-2-c-mock-41-1-c": 3
       }
     },
     {
@@ -1559,8 +1566,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-2-c-mock-41-2-a": 6,
-        "rc-hist-a-hist-66010101-2-c-mock-41-2-b": 6
+        "rc-hist-a-hist-66010101-2-c-mock-41-2-a": 0,
+        "rc-hist-a-hist-66010101-2-c-mock-41-2-b": 6,
+        "rc-hist-a-hist-66010101-2-c-mock-41-2-c": 6
       }
     },
     {
@@ -1578,8 +1586,8 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-2-c-mock-41-3-a": 9,
-        "rc-hist-a-hist-66010101-2-c-mock-41-3-b": 8,
+        "rc-hist-a-hist-66010101-2-c-mock-41-3-a": 12,
+        "rc-hist-a-hist-66010101-2-c-mock-41-3-b": 5,
         "rc-hist-a-hist-66010101-2-c-mock-41-3-c": 8
       }
     },
@@ -1598,8 +1606,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-3-c-mock-42-1-a": 16,
-        "rc-hist-a-hist-66010101-3-c-mock-42-1-b": 10
+        "rc-hist-a-hist-66010101-3-c-mock-42-1-a": 12,
+        "rc-hist-a-hist-66010101-3-c-mock-42-1-b": 9,
+        "rc-hist-a-hist-66010101-3-c-mock-42-1-c": 5
       }
     },
     {
@@ -1611,14 +1620,15 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 10,
+      "instructorScore": 9,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
         "rc-hist-a-hist-66010101-3-c-mock-42-2-a": 5,
-        "rc-hist-a-hist-66010101-3-c-mock-42-2-b": 5
+        "rc-hist-a-hist-66010101-3-c-mock-42-2-b": 2,
+        "rc-hist-a-hist-66010101-3-c-mock-42-2-c": 2
       }
     },
     {
@@ -1630,15 +1640,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 22,
+      "instructorScore": 23,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-3-c-mock-42-3-a": 9,
-        "rc-hist-a-hist-66010101-3-c-mock-42-3-b": 7,
-        "rc-hist-a-hist-66010101-3-c-mock-42-3-c": 6
+        "rc-hist-a-hist-66010101-3-c-mock-42-3-a": 4,
+        "rc-hist-a-hist-66010101-3-c-mock-42-3-b": 11,
+        "rc-hist-a-hist-66010101-3-c-mock-42-3-c": 8
       }
     },
     {
@@ -1650,14 +1660,15 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 34,
+      "instructorScore": 35,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-4-c-mock-44-1-a": 20,
-        "rc-hist-a-hist-66010101-4-c-mock-44-1-b": 14
+        "rc-hist-a-hist-66010101-4-c-mock-44-1-a": 14,
+        "rc-hist-a-hist-66010101-4-c-mock-44-1-b": 18,
+        "rc-hist-a-hist-66010101-4-c-mock-44-1-c": 3
       }
     },
     {
@@ -1675,8 +1686,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-4-c-mock-44-2-a": 9,
-        "rc-hist-a-hist-66010101-4-c-mock-44-2-b": 8
+        "rc-hist-a-hist-66010101-4-c-mock-44-2-a": 5,
+        "rc-hist-a-hist-66010101-4-c-mock-44-2-b": 6,
+        "rc-hist-a-hist-66010101-4-c-mock-44-2-c": 6
       }
     },
     {
@@ -1688,15 +1700,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 37,
+      "instructorScore": 36,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-66010101-4-c-mock-44-3-a": 15,
-        "rc-hist-a-hist-66010101-4-c-mock-44-3-b": 11,
-        "rc-hist-a-hist-66010101-4-c-mock-44-3-c": 11
+        "rc-hist-a-hist-66010101-4-c-mock-44-3-a": 8,
+        "rc-hist-a-hist-66010101-4-c-mock-44-3-b": 16,
+        "rc-hist-a-hist-66010101-4-c-mock-44-3-c": 12
       }
     },
     {
@@ -1708,14 +1720,15 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 35,
+      "instructorScore": 34,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-1-c-mock-46-1-a": 21,
-        "rc-hist-a-hist-67010201-1-c-mock-46-1-b": 14
+        "rc-hist-a-hist-67010201-1-c-mock-46-1-a": 24,
+        "rc-hist-a-hist-67010201-1-c-mock-46-1-b": 5,
+        "rc-hist-a-hist-67010201-1-c-mock-46-1-c": 5
       }
     },
     {
@@ -1733,8 +1746,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-1-c-mock-46-2-a": 9,
-        "rc-hist-a-hist-67010201-1-c-mock-46-2-b": 8
+        "rc-hist-a-hist-67010201-1-c-mock-46-2-a": 5,
+        "rc-hist-a-hist-67010201-1-c-mock-46-2-b": 6,
+        "rc-hist-a-hist-67010201-1-c-mock-46-2-c": 6
       }
     },
     {
@@ -1746,15 +1760,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 34,
+      "instructorScore": 35,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-1-c-mock-46-3-a": 14,
-        "rc-hist-a-hist-67010201-1-c-mock-46-3-b": 10,
-        "rc-hist-a-hist-67010201-1-c-mock-46-3-c": 10
+        "rc-hist-a-hist-67010201-1-c-mock-46-3-a": 12,
+        "rc-hist-a-hist-67010201-1-c-mock-46-3-b": 11,
+        "rc-hist-a-hist-67010201-1-c-mock-46-3-c": 12
       }
     },
     {
@@ -1772,8 +1786,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-1-c-mock-47-1-a": 20,
-        "rc-hist-a-hist-67010201-1-c-mock-47-1-b": 13
+        "rc-hist-a-hist-67010201-1-c-mock-47-1-a": 13,
+        "rc-hist-a-hist-67010201-1-c-mock-47-1-b": 12,
+        "rc-hist-a-hist-67010201-1-c-mock-47-1-c": 8
       }
     },
     {
@@ -1791,8 +1806,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-1-c-mock-47-2-a": 8,
-        "rc-hist-a-hist-67010201-1-c-mock-47-2-b": 9
+        "rc-hist-a-hist-67010201-1-c-mock-47-2-a": 5,
+        "rc-hist-a-hist-67010201-1-c-mock-47-2-b": 6,
+        "rc-hist-a-hist-67010201-1-c-mock-47-2-c": 6
       }
     },
     {
@@ -1810,9 +1826,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-1-c-mock-47-3-a": 11,
-        "rc-hist-a-hist-67010201-1-c-mock-47-3-b": 9,
-        "rc-hist-a-hist-67010201-1-c-mock-47-3-c": 9
+        "rc-hist-a-hist-67010201-1-c-mock-47-3-a": 12,
+        "rc-hist-a-hist-67010201-1-c-mock-47-3-b": 5,
+        "rc-hist-a-hist-67010201-1-c-mock-47-3-c": 12
       }
     },
     {
@@ -1830,8 +1846,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-2-c-mock-48-1-a": 11,
-        "rc-hist-a-hist-67010201-2-c-mock-48-1-b": 7
+        "rc-hist-a-hist-67010201-2-c-mock-48-1-a": 18,
+        "rc-hist-a-hist-67010201-2-c-mock-48-1-b": 0,
+        "rc-hist-a-hist-67010201-2-c-mock-48-1-c": 0
       }
     },
     {
@@ -1843,14 +1860,15 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 10,
+      "instructorScore": 9,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-2-c-mock-48-2-a": 5,
-        "rc-hist-a-hist-67010201-2-c-mock-48-2-b": 5
+        "rc-hist-a-hist-67010201-2-c-mock-48-2-a": 3,
+        "rc-hist-a-hist-67010201-2-c-mock-48-2-b": 4,
+        "rc-hist-a-hist-67010201-2-c-mock-48-2-c": 2
       }
     },
     {
@@ -1862,15 +1880,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 19,
+      "instructorScore": 20,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
         "rc-hist-a-hist-67010201-2-c-mock-48-3-a": 8,
-        "rc-hist-a-hist-67010201-2-c-mock-48-3-b": 6,
-        "rc-hist-a-hist-67010201-2-c-mock-48-3-c": 5
+        "rc-hist-a-hist-67010201-2-c-mock-48-3-b": 0,
+        "rc-hist-a-hist-67010201-2-c-mock-48-3-c": 12
       }
     },
     {
@@ -1889,7 +1907,8 @@
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
         "rc-hist-a-hist-67010201-2-c-mock-49-1-a": 13,
-        "rc-hist-a-hist-67010201-2-c-mock-49-1-b": 8
+        "rc-hist-a-hist-67010201-2-c-mock-49-1-b": 8,
+        "rc-hist-a-hist-67010201-2-c-mock-49-1-c": 0
       }
     },
     {
@@ -1908,7 +1927,8 @@
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
         "rc-hist-a-hist-67010201-2-c-mock-49-2-a": 5,
-        "rc-hist-a-hist-67010201-2-c-mock-49-2-b": 6
+        "rc-hist-a-hist-67010201-2-c-mock-49-2-b": 4,
+        "rc-hist-a-hist-67010201-2-c-mock-49-2-c": 2
       }
     },
     {
@@ -1926,9 +1946,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-2-c-mock-49-3-a": 9,
-        "rc-hist-a-hist-67010201-2-c-mock-49-3-b": 7,
-        "rc-hist-a-hist-67010201-2-c-mock-49-3-c": 7
+        "rc-hist-a-hist-67010201-2-c-mock-49-3-a": 8,
+        "rc-hist-a-hist-67010201-2-c-mock-49-3-b": 11,
+        "rc-hist-a-hist-67010201-2-c-mock-49-3-c": 4
       }
     },
     {
@@ -1940,14 +1960,15 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 29,
+      "instructorScore": 28,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-3-c-mock-53-1-a": 17,
-        "rc-hist-a-hist-67010201-3-c-mock-53-1-b": 12
+        "rc-hist-a-hist-67010201-3-c-mock-53-1-a": 11,
+        "rc-hist-a-hist-67010201-3-c-mock-53-1-b": 14,
+        "rc-hist-a-hist-67010201-3-c-mock-53-1-c": 3
       }
     },
     {
@@ -1959,14 +1980,15 @@
       "submittedAt": "2025-11-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 14,
+      "instructorScore": 15,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-3-c-mock-53-2-a": 7,
-        "rc-hist-a-hist-67010201-3-c-mock-53-2-b": 7
+        "rc-hist-a-hist-67010201-3-c-mock-53-2-a": 5,
+        "rc-hist-a-hist-67010201-3-c-mock-53-2-b": 6,
+        "rc-hist-a-hist-67010201-3-c-mock-53-2-c": 4
       }
     },
     {
@@ -1984,9 +2006,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-67010201-3-c-mock-53-3-a": 12,
-        "rc-hist-a-hist-67010201-3-c-mock-53-3-b": 10,
-        "rc-hist-a-hist-67010201-3-c-mock-53-3-c": 10
+        "rc-hist-a-hist-67010201-3-c-mock-53-3-a": 4,
+        "rc-hist-a-hist-67010201-3-c-mock-53-3-b": 16,
+        "rc-hist-a-hist-67010201-3-c-mock-53-3-c": 12
       }
     },
     {
@@ -2004,8 +2026,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-1-c-mock-19-1-a": 21,
-        "rc-hist-a-hist-68020101-1-c-mock-19-1-b": 14
+        "rc-hist-a-hist-68020101-1-c-mock-19-1-a": 18,
+        "rc-hist-a-hist-68020101-1-c-mock-19-1-b": 14,
+        "rc-hist-a-hist-68020101-1-c-mock-19-1-c": 3
       }
     },
     {
@@ -2023,8 +2046,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-1-c-mock-19-2-a": 9,
-        "rc-hist-a-hist-68020101-1-c-mock-19-2-b": 8
+        "rc-hist-a-hist-68020101-1-c-mock-19-2-a": 5,
+        "rc-hist-a-hist-68020101-1-c-mock-19-2-b": 6,
+        "rc-hist-a-hist-68020101-1-c-mock-19-2-c": 6
       }
     },
     {
@@ -2042,9 +2066,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-1-c-mock-19-3-a": 15,
-        "rc-hist-a-hist-68020101-1-c-mock-19-3-b": 11,
-        "rc-hist-a-hist-68020101-1-c-mock-19-3-c": 10
+        "rc-hist-a-hist-68020101-1-c-mock-19-3-a": 8,
+        "rc-hist-a-hist-68020101-1-c-mock-19-3-b": 16,
+        "rc-hist-a-hist-68020101-1-c-mock-19-3-c": 12
       }
     },
     {
@@ -2062,8 +2086,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-1-c-mock-51-1-a": 17,
-        "rc-hist-a-hist-68020101-1-c-mock-51-1-b": 12
+        "rc-hist-a-hist-68020101-1-c-mock-51-1-a": 12,
+        "rc-hist-a-hist-68020101-1-c-mock-51-1-b": 9,
+        "rc-hist-a-hist-68020101-1-c-mock-51-1-c": 8
       }
     },
     {
@@ -2081,8 +2106,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-1-c-mock-51-2-a": 6,
-        "rc-hist-a-hist-68020101-1-c-mock-51-2-b": 6
+        "rc-hist-a-hist-68020101-1-c-mock-51-2-a": 0,
+        "rc-hist-a-hist-68020101-1-c-mock-51-2-b": 6,
+        "rc-hist-a-hist-68020101-1-c-mock-51-2-c": 6
       }
     },
     {
@@ -2100,9 +2126,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-1-c-mock-51-3-a": 9,
-        "rc-hist-a-hist-68020101-1-c-mock-51-3-b": 8,
-        "rc-hist-a-hist-68020101-1-c-mock-51-3-c": 7
+        "rc-hist-a-hist-68020101-1-c-mock-51-3-a": 4,
+        "rc-hist-a-hist-68020101-1-c-mock-51-3-b": 16,
+        "rc-hist-a-hist-68020101-1-c-mock-51-3-c": 4
       }
     },
     {
@@ -2120,8 +2146,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-2-c-mock-52-1-a": 19,
-        "rc-hist-a-hist-68020101-2-c-mock-52-1-b": 13
+        "rc-hist-a-hist-68020101-2-c-mock-52-1-a": 9,
+        "rc-hist-a-hist-68020101-2-c-mock-52-1-b": 18,
+        "rc-hist-a-hist-68020101-2-c-mock-52-1-c": 5
       }
     },
     {
@@ -2139,8 +2166,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-2-c-mock-52-2-a": 8,
-        "rc-hist-a-hist-68020101-2-c-mock-52-2-b": 7
+        "rc-hist-a-hist-68020101-2-c-mock-52-2-a": 5,
+        "rc-hist-a-hist-68020101-2-c-mock-52-2-b": 6,
+        "rc-hist-a-hist-68020101-2-c-mock-52-2-c": 4
       }
     },
     {
@@ -2158,9 +2186,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-2-c-mock-52-3-a": 13,
-        "rc-hist-a-hist-68020101-2-c-mock-52-3-b": 9,
-        "rc-hist-a-hist-68020101-2-c-mock-52-3-c": 9
+        "rc-hist-a-hist-68020101-2-c-mock-52-3-a": 8,
+        "rc-hist-a-hist-68020101-2-c-mock-52-3-b": 11,
+        "rc-hist-a-hist-68020101-2-c-mock-52-3-c": 12
       }
     },
     {
@@ -2172,14 +2200,15 @@
       "submittedAt": "2025-11-11T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 36,
+      "instructorScore": 35,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-69070101-3-c-mock-50-1-a": 21,
-        "rc-hist-a-hist-69070101-3-c-mock-50-1-b": 15
+        "rc-hist-a-hist-69070101-3-c-mock-50-1-a": 18,
+        "rc-hist-a-hist-69070101-3-c-mock-50-1-b": 9,
+        "rc-hist-a-hist-69070101-3-c-mock-50-1-c": 8
       }
     },
     {
@@ -2197,8 +2226,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-69070101-3-c-mock-50-2-a": 9,
-        "rc-hist-a-hist-69070101-3-c-mock-50-2-b": 9
+        "rc-hist-a-hist-69070101-3-c-mock-50-2-a": 8,
+        "rc-hist-a-hist-69070101-3-c-mock-50-2-b": 6,
+        "rc-hist-a-hist-69070101-3-c-mock-50-2-c": 4
       }
     },
     {
@@ -2210,15 +2240,15 @@
       "submittedAt": "2025-11-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 35,
+      "instructorScore": 36,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-69070101-3-c-mock-50-3-a": 14,
-        "rc-hist-a-hist-69070101-3-c-mock-50-3-b": 11,
-        "rc-hist-a-hist-69070101-3-c-mock-50-3-c": 10
+        "rc-hist-a-hist-69070101-3-c-mock-50-3-a": 12,
+        "rc-hist-a-hist-69070101-3-c-mock-50-3-b": 16,
+        "rc-hist-a-hist-69070101-3-c-mock-50-3-c": 8
       }
     },
     {
@@ -2236,8 +2266,9 @@
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-2-c-mock-52-1-a": 18,
-        "rc-hist-a-hist-68020101-2-c-mock-52-1-b": 12
+        "rc-hist-a-hist-68020101-2-c-mock-52-1-a": 9,
+        "rc-hist-a-hist-68020101-2-c-mock-52-1-b": 18,
+        "rc-hist-a-hist-68020101-2-c-mock-52-1-c": 3
       }
     },
     {
@@ -2249,14 +2280,15 @@
       "submittedAt": "2025-12-12T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 14,
+      "instructorScore": 13,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
-        "rc-hist-a-hist-68020101-2-c-mock-52-2-a": 7,
-        "rc-hist-a-hist-68020101-2-c-mock-52-2-b": 7
+        "rc-hist-a-hist-68020101-2-c-mock-52-2-a": 3,
+        "rc-hist-a-hist-68020101-2-c-mock-52-2-b": 4,
+        "rc-hist-a-hist-68020101-2-c-mock-52-2-c": 6
       }
     },
     {
@@ -2268,15 +2300,15 @@
       "submittedAt": "2025-12-13T10:00:00.000Z",
       "fileUrl": null,
       "aiScore": null,
-      "instructorScore": 30,
+      "instructorScore": 31,
       "instructorComment": "",
       "externalUseConsent": true,
       "status": "graded",
       "updatedAt": "2025-12-20T09:00:00.000Z",
       "criterionScores": {
         "rc-hist-a-hist-68020101-2-c-mock-52-3-a": 12,
-        "rc-hist-a-hist-68020101-2-c-mock-52-3-b": 9,
-        "rc-hist-a-hist-68020101-2-c-mock-52-3-c": 9
+        "rc-hist-a-hist-68020101-2-c-mock-52-3-b": 11,
+        "rc-hist-a-hist-68020101-2-c-mock-52-3-c": 8
       }
     }
   ],
@@ -2288,43 +2320,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
+          "name": "C1 · Program correctness / ความถูกต้องของโปรแกรม",
+          "description": "การทำงานของโปรแกรมให้ผลลัพธ์ถูกต้องตามโจทย์",
           "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "โปรแกรมทำงานได้ผลลัพธ์ถูกต้องครบทุกข้อตามโจทย์ รวมถึงกรณีขอบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ผลลัพธ์ถูกต้องในโจทย์ส่วนใหญ่ แต่ผิดพลาดบางกรณี เช่น กรณีขอบหรือข้อมูลนำเข้าที่ไม่ปกติ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ผลลัพธ์ผิดในหลายโจทย์ หรือโปรแกรมทำงานได้เฉพาะกรณีง่าย ๆ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "โปรแกรมรันไม่ได้หรือให้ผลลัพธ์ผิดเกือบทุกข้อ ไม่ตรงกับโจทย์ที่กำหนด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · Code readability / ความอ่านง่ายของโค้ด",
+          "description": "การตั้งชื่อ การจัดรูปแบบ และ comment ของโค้ด",
+          "maxPoints": 8,
+          "weight": 20,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตั้งชื่อสื่อความหมาย จัดรูปแบบสม่ำเสมอ และมี comment เท่าที่จำเป็น"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตั้งชื่อและจัดรูปแบบอ่านเข้าใจได้เป็นส่วนใหญ่ แต่มีบางจุดที่ชื่อสื่อความหมายไม่พอหรือรูปแบบไม่สม่ำเสมอ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ชื่อตัวแปรไม่สื่อความหมายหลายจุด การย่อหน้าไม่สม่ำเสมอ และแทบไม่มี comment ทำให้ต้องเดาว่าโค้ดทำอะไร"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "อ่านโค้ดไม่รู้เรื่อง — ตั้งชื่อตามใจ ไม่มีโครงสร้างหรือการจัดรูปแบบเลย"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-66010101-1-c-mock-38-1-c",
+          "name": "C3 · Error handling / การจัดการ Error",
+          "description": "การรับมือ input ผิดพลาดและกรณีผิดปกติ",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "จัดการ input ผิดพลาดและกรณีผิดปกติได้อย่างเหมาะสม โปรแกรมไม่หยุดทำงานกะทันหัน"
+            },
+            {
+              "label": "พอใช้",
+              "description": "จัดการ input ผิดพลาดที่พบบ่อยได้ แต่ยังมีกรณีผิดปกติบางกรณีที่ทำให้โปรแกรมหยุดหรือแจ้งข้อผิดพลาดไม่ชัดเจน"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "จัดการ error เฉพาะบางจุด input ผิดรูปแบบยังทำให้โปรแกรมหยุดทำงานได้ง่าย"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีการจัดการ error — input ผิดเพียงเล็กน้อยก็ทำให้โปรแกรมหยุดทำงาน"
             }
           ]
         }
@@ -2339,43 +2404,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of programming / ความเข้าใจแนวคิดการเขียนโปรแกรม",
+          "description": "ความเข้าใจแนวคิดเรื่องการเขียนโปรแกรม",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องการเขียนโปรแกรมได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องการเขียนโปรแกรมได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องการเขียนโปรแกรมเพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องการเขียนโปรแกรมที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-66010101-1-c-mock-38-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -2390,64 +2488,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of programming theory / ความเข้าใจทฤษฎีการเขียนโปรแกรม",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องการเขียนโปรแกรม",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องการเขียนโปรแกรมได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องการเขียนโปรแกรมได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องการเขียนโปรแกรมผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องการเขียนโปรแกรมที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-38-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -2462,43 +2572,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 24,
-          "weight": 60,
+          "name": "C1 · Correctness of answers and proofs / ความถูกต้องของคำตอบและการพิสูจน์",
+          "description": "ความถูกต้องของคำตอบและการพิสูจน์",
+          "maxPoints": 20,
+          "weight": 50,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบและการพิสูจน์ถูกต้องครบทุกข้อ ไม่มีช่องว่างทางตรรกะ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบและการพิสูจน์ถูกต้องเป็นส่วนใหญ่ แต่มีช่องว่างทางตรรกะเล็กน้อยในบางข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "การพิสูจน์มีช่องว่างทางตรรกะหรือข้ามขั้นตอนสำคัญหลายข้อ และคำตอบผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบและการพิสูจน์ผิดเป็นส่วนใหญ่ หรือสิ่งที่เขียนไม่ใช่การพิสูจน์"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · Reasoning steps / ขั้นตอนการให้เหตุผล",
+          "description": "ความชัดเจนของขั้นตอนการให้เหตุผล",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงขั้นตอนการให้เหตุผลเรียงลำดับ ชัดเจน และอ้างอิงทฤษฎีบทที่ใช้"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงขั้นตอนเรียงลำดับเป็นส่วนใหญ่ แต่บางขั้นไม่ได้อ้างทฤษฎีบทที่ใช้"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ขั้นตอนข้ามไปมาหรือขาดหายหลายจุด ผู้อ่านตามไม่ทัน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงขั้นตอนการให้เหตุผล ให้เพียงคำตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-66010101-1-c-mock-39-1-c",
+          "name": "C3 · Mathematical notation / การใช้สัญลักษณ์ทางคณิตศาสตร์",
+          "description": "การใช้สัญลักษณ์และการเขียนทางคณิตศาสตร์",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "ใช้สัญลักษณ์และรูปแบบการเขียนถูกต้องสม่ำเสมอ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "ใช้สัญลักษณ์ถูกต้องเป็นส่วนใหญ่ มีการสลับหรือใช้ไม่สม่ำเสมอบางจุด"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "ใช้สัญลักษณ์ผิดหรือไม่สม่ำเสมอหลายจุดจนต้องเดาความหมาย"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "สัญลักษณ์ผิดจนอ่านความหมายทางคณิตศาสตร์ไม่ได้"
             }
           ]
         }
@@ -2513,43 +2656,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of discrete structures / ความเข้าใจแนวคิดโครงสร้างไม่ต่อเนื่อง",
+          "description": "ความเข้าใจแนวคิดเรื่องโครงสร้างไม่ต่อเนื่อง",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องโครงสร้างไม่ต่อเนื่องได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องโครงสร้างไม่ต่อเนื่องได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องโครงสร้างไม่ต่อเนื่องเพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องโครงสร้างไม่ต่อเนื่องที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-66010101-1-c-mock-39-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -2564,64 +2740,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of discrete structures theory / ความเข้าใจทฤษฎีโครงสร้างไม่ต่อเนื่อง",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องโครงสร้างไม่ต่อเนื่อง",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องโครงสร้างไม่ต่อเนื่องได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องโครงสร้างไม่ต่อเนื่องได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องโครงสร้างไม่ต่อเนื่องผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องโครงสร้างไม่ต่อเนื่องที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-1-c-mock-39-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -2636,43 +2824,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 24,
-          "weight": 60,
+          "name": "C1 · Algorithm correctness / ความถูกต้องของอัลกอริทึม",
+          "description": "ความถูกต้องของอัลกอริทึมที่เขียน",
+          "maxPoints": 18,
+          "weight": 45,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อัลกอริทึมให้ผลถูกต้องกับทุกชุดทดสอบ รวมถึงกรณีขอบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ผ่านชุดทดสอบส่วนใหญ่ แต่ล้มเหลวในบางกรณีขอบ เช่น ข้อมูลว่างหรือค่าซ้ำ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ผ่านเฉพาะชุดทดสอบง่าย ๆ และผิดในหลายกรณี"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "อัลกอริทึมให้ผลผิดเกือบทุกชุดทดสอบ หรือรันไม่ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · Data-structure choice and complexity analysis / การเลือกโครงสร้างข้อมูลและวิเคราะห์ความซับซ้อน",
+          "description": "การเลือกโครงสร้างข้อมูลและการวิเคราะห์ความซับซ้อน",
+          "maxPoints": 14,
+          "weight": 35,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกโครงสร้างข้อมูลได้เหมาะสมและวิเคราะห์ความซับซ้อนของเวลา/หน่วยความจำได้ถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "เลือกโครงสร้างข้อมูลได้เหมาะสม แต่วิเคราะห์ความซับซ้อนคลาดเคลื่อนบางส่วน"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "โครงสร้างข้อมูลที่เลือกไม่เหมาะกับโจทย์ หรือวิเคราะห์ความซับซ้อนผิดหลายจุด"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่ได้เลือกโครงสร้างข้อมูลอย่างมีเหตุผล และไม่วิเคราะห์ความซับซ้อน"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-66010101-2-c-mock-40-1-c",
+          "name": "C3 · Code quality and testing / คุณภาพโค้ดและการทดสอบ",
+          "description": "ความอ่านง่ายของโค้ดและชุดทดสอบ",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "โค้ดอ่านง่าย มีชุดทดสอบครอบคลุมกรณีสำคัญ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "โค้ดอ่านได้และมีชุดทดสอบ แต่ครอบคลุมกรณีสำคัญไม่ครบ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "โค้ดอ่านยาก และมีชุดทดสอบเพียงไม่กี่กรณี"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "โค้ดอ่านไม่ได้ และไม่มีชุดทดสอบ"
             }
           ]
         }
@@ -2687,43 +2908,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of data structures and algorithms / ความเข้าใจแนวคิดโครงสร้างข้อมูลและอัลกอริทึม",
+          "description": "ความเข้าใจแนวคิดเรื่องโครงสร้างข้อมูลและอัลกอริทึม",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องโครงสร้างข้อมูลและอัลกอริทึมได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องโครงสร้างข้อมูลและอัลกอริทึมได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องโครงสร้างข้อมูลและอัลกอริทึมเพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องโครงสร้างข้อมูลและอัลกอริทึมที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-66010101-2-c-mock-40-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -2738,64 +2992,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of data structures and algorithms theory / ความเข้าใจทฤษฎีโครงสร้างข้อมูลและอัลกอริทึม",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องโครงสร้างข้อมูลและอัลกอริทึม",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องโครงสร้างข้อมูลและอัลกอริทึมได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องโครงสร้างข้อมูลและอัลกอริทึมได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องโครงสร้างข้อมูลและอัลกอริทึมผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องโครงสร้างข้อมูลและอัลกอริทึมที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-40-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -2810,43 +3076,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 24,
-          "weight": 60,
+          "name": "C1 · Circuit correctness / ความถูกต้องของวงจร",
+          "description": "ความถูกต้องของวงจรที่ออกแบบ",
+          "maxPoints": 20,
+          "weight": 50,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "วงจรทำงานตรงตาม truth table / ข้อกำหนดทุกกรณี"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "วงจรทำงานถูกต้องในส่วนใหญ่ของ truth table แต่ผิดในบางกรณี"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "วงจรให้ output ผิดหลายแถวของ truth table"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "วงจรไม่ทำงานตามข้อกำหนด หรือออกแบบไม่สมบูรณ์"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · Simplification and design efficiency / การลดรูปและประสิทธิภาพของการออกแบบ",
+          "description": "การลดรูปสมการและความประหยัดของวงจร",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ลดรูปสมการได้เหมาะสม ใช้เกตและอุปกรณ์อย่างประหยัด"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ลดรูปสมการได้ แต่ยังเหลือเกตที่ลดได้อีกบางส่วน"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ลดรูปไม่ครบหรือผิดบางขั้น ใช้เกตมากกว่าที่จำเป็นอย่างชัดเจน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่ได้ลดรูป หรือการลดรูปทำให้วงจรผิด"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-66010101-2-c-mock-41-1-c",
+          "name": "C3 · Simulation and verification / การจำลองและตรวจสอบผล",
+          "description": "การจำลองวงจรและการตรวจสอบผล",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "จำลองวงจรและตรวจสอบผลกับกรณีทดสอบครบถ้วน พร้อมบันทึกผล"
+            },
+            {
+              "label": "พอใช้",
+              "description": "จำลองและตรวจผลกับกรณีส่วนใหญ่ แต่บันทึกผลไม่ครบ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "จำลองเพียงบางกรณีและไม่ได้เทียบกับ truth table"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีการจำลองหรือบันทึกผลการตรวจสอบ"
             }
           ]
         }
@@ -2861,43 +3160,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of digital logic / ความเข้าใจแนวคิดตรรกะดิจิทัล",
+          "description": "ความเข้าใจแนวคิดเรื่องตรรกะดิจิทัล",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องตรรกะดิจิทัลได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องตรรกะดิจิทัลได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องตรรกะดิจิทัลเพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องตรรกะดิจิทัลที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-66010101-2-c-mock-41-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -2912,64 +3244,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of digital logic theory / ความเข้าใจทฤษฎีตรรกะดิจิทัล",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องตรรกะดิจิทัล",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องตรรกะดิจิทัลได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องตรรกะดิจิทัลได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องตรรกะดิจิทัลผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องตรรกะดิจิทัลที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-2-c-mock-41-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -2984,43 +3328,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 24,
-          "weight": 60,
+          "name": "C1 · Correctness of the design / assembly program / ความถูกต้องของการออกแบบ/โปรแกรมแอสเซมบลี",
+          "description": "ความถูกต้องของการออกแบบหรือโปรแกรมแอสเซมบลี",
+          "maxPoints": 18,
+          "weight": 45,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "การออกแบบหรือโปรแกรมแอสเซมบลีทำงานถูกต้องตามที่กำหนดทุกคำสั่ง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ทำงานถูกต้องกับคำสั่งส่วนใหญ่ แต่ผิดในบางคำสั่งหรือบางกรณี"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "หลายคำสั่งทำงานผิด หรือ datapath/โปรแกรมไม่ครบตามที่กำหนด"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "การออกแบบหรือโปรแกรมทำงานไม่ได้ตามที่กำหนด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · Performance analysis / การวิเคราะห์ประสิทธิภาพ",
+          "description": "การวิเคราะห์ประสิทธิภาพของสิ่งที่ออกแบบ",
+          "maxPoints": 14,
+          "weight": 35,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "วิเคราะห์ประสิทธิภาพ (เช่น CPI, จำนวนรอบ) ได้ถูกต้องและเปรียบเทียบทางเลือกได้"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำนวณ CPI หรือจำนวนรอบได้ แต่เปรียบเทียบทางเลือกไม่ครบหรือคำนวณผิดเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "วิเคราะห์ประสิทธิภาพผิดหลายจุดหรือไม่ได้เปรียบเทียบทางเลือก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีการวิเคราะห์ประสิทธิภาพ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-66010101-3-c-mock-42-1-c",
+          "name": "C3 · Explanation and lab report / การอธิบายและรายงานผลการทดลอง",
+          "description": "ความชัดเจนของรายงานผลการทดลอง",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "รายงานอธิบายแนวคิด ผลการทดลอง และข้อสรุปได้ชัดเจน"
+            },
+            {
+              "label": "พอใช้",
+              "description": "รายงานอธิบายแนวคิดและผลการทดลองได้ แต่ข้อสรุปไม่ชัดเจนในบางส่วน"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "รายงานขาดผลการทดลองหรือข้อสรุป และอธิบายแนวคิดไม่ครบ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีรายงาน หรือรายงานอ่านไม่เข้าใจ"
             }
           ]
         }
@@ -3035,43 +3412,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of computer architecture / ความเข้าใจแนวคิดสถาปัตยกรรมคอมพิวเตอร์",
+          "description": "ความเข้าใจแนวคิดเรื่องสถาปัตยกรรมคอมพิวเตอร์",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องสถาปัตยกรรมคอมพิวเตอร์ได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องสถาปัตยกรรมคอมพิวเตอร์ได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องสถาปัตยกรรมคอมพิวเตอร์เพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องสถาปัตยกรรมคอมพิวเตอร์ที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-66010101-3-c-mock-42-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -3086,64 +3496,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of computer architecture theory / ความเข้าใจทฤษฎีสถาปัตยกรรมคอมพิวเตอร์",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องสถาปัตยกรรมคอมพิวเตอร์",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องสถาปัตยกรรมคอมพิวเตอร์ได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องสถาปัตยกรรมคอมพิวเตอร์ได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องสถาปัตยกรรมคอมพิวเตอร์ผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องสถาปัตยกรรมคอมพิวเตอร์ที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-3-c-mock-42-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -3158,43 +3580,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 24,
-          "weight": 60,
+          "name": "C1 · Data-model correctness / ความถูกต้องของแบบจำลองข้อมูล",
+          "description": "ความถูกต้องของแผนภาพ ER และ schema",
+          "maxPoints": 14,
+          "weight": 35,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แบบจำลอง ER และ schema ถูกต้อง ครอบคลุมข้อกำหนด และผ่านการทำ normalization"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ER และ schema ครอบคลุมข้อกำหนดเป็นส่วนใหญ่ แต่ normalization ยังไม่ครบหรือมีความสัมพันธ์ที่ผิดบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ขาดเอนทิตีหรือความสัมพันธ์สำคัญหลายส่วน และมีข้อมูลซ้ำซ้อน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "แบบจำลองข้อมูลไม่สอดคล้องกับข้อกำหนด หรือไม่มี schema"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · SQL correctness and efficiency / ความถูกต้องและประสิทธิภาพของคำสั่ง SQL",
+          "description": "ความถูกต้องและประสิทธิภาพของคำสั่ง SQL",
+          "maxPoints": 18,
+          "weight": 45,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำสั่ง SQL ให้ผลถูกต้องทุกข้อ และเขียนอย่างมีประสิทธิภาพ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "SQL ถูกต้องในข้อส่วนใหญ่ แต่บางข้อได้ผลไม่ครบหรือเขียนไม่มีประสิทธิภาพ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "SQL ผิดหลายข้อ หรือได้ผลที่ไม่ตรงกับโจทย์"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "SQL รันไม่ได้หรือผิดเกือบทุกข้อ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-66010101-4-c-mock-44-1-c",
+          "name": "C3 · Documentation and test data / เอกสารและข้อมูลทดสอบ",
+          "description": "เอกสารประกอบและข้อมูลทดสอบ",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "มีเอกสารอธิบายและข้อมูลทดสอบที่ครอบคลุมกรณีสำคัญ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "มีเอกสารและข้อมูลทดสอบ แต่ไม่ครอบคลุมกรณีสำคัญทั้งหมด"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "เอกสารสั้นมากและข้อมูลทดสอบน้อยจนตรวจผลไม่ได้"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเอกสารและข้อมูลทดสอบ"
             }
           ]
         }
@@ -3209,43 +3664,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of database systems / ความเข้าใจแนวคิดระบบฐานข้อมูล",
+          "description": "ความเข้าใจแนวคิดเรื่องระบบฐานข้อมูล",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องระบบฐานข้อมูลได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องระบบฐานข้อมูลได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องระบบฐานข้อมูลเพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องระบบฐานข้อมูลที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-66010101-4-c-mock-44-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -3260,64 +3748,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of database systems theory / ความเข้าใจทฤษฎีระบบฐานข้อมูล",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องระบบฐานข้อมูล",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องระบบฐานข้อมูลได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องระบบฐานข้อมูลได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องระบบฐานข้อมูลผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องระบบฐานข้อมูลที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-66010101-4-c-mock-44-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -3332,43 +3832,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
+          "name": "C1 · Program correctness / ความถูกต้องของโปรแกรม",
+          "description": "การทำงานของโปรแกรมให้ผลลัพธ์ถูกต้องตามโจทย์",
           "maxPoints": 24,
           "weight": 60,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "โปรแกรมทำงานได้ผลลัพธ์ถูกต้องครบทุกข้อตามโจทย์ รวมถึงกรณีขอบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ผลลัพธ์ถูกต้องในโจทย์ส่วนใหญ่ แต่ผิดพลาดบางกรณี เช่น กรณีขอบหรือข้อมูลนำเข้าที่ไม่ปกติ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ผลลัพธ์ผิดในหลายโจทย์ หรือโปรแกรมทำงานได้เฉพาะกรณีง่าย ๆ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "โปรแกรมรันไม่ได้หรือให้ผลลัพธ์ผิดเกือบทุกข้อ ไม่ตรงกับโจทย์ที่กำหนด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · Code readability / ความอ่านง่ายของโค้ด",
+          "description": "การตั้งชื่อ การจัดรูปแบบ และ comment ของโค้ด",
+          "maxPoints": 8,
+          "weight": 20,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตั้งชื่อสื่อความหมาย จัดรูปแบบสม่ำเสมอ และมี comment เท่าที่จำเป็น"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตั้งชื่อและจัดรูปแบบอ่านเข้าใจได้เป็นส่วนใหญ่ แต่มีบางจุดที่ชื่อสื่อความหมายไม่พอหรือรูปแบบไม่สม่ำเสมอ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ชื่อตัวแปรไม่สื่อความหมายหลายจุด การย่อหน้าไม่สม่ำเสมอ และแทบไม่มี comment ทำให้ต้องเดาว่าโค้ดทำอะไร"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "อ่านโค้ดไม่รู้เรื่อง — ตั้งชื่อตามใจ ไม่มีโครงสร้างหรือการจัดรูปแบบเลย"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-67010201-1-c-mock-46-1-c",
+          "name": "C3 · Error handling / การจัดการ Error",
+          "description": "การรับมือ input ผิดพลาดและกรณีผิดปกติ",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "จัดการ input ผิดพลาดและกรณีผิดปกติได้อย่างเหมาะสม โปรแกรมไม่หยุดทำงานกะทันหัน"
+            },
+            {
+              "label": "พอใช้",
+              "description": "จัดการ input ผิดพลาดที่พบบ่อยได้ แต่ยังมีกรณีผิดปกติบางกรณีที่ทำให้โปรแกรมหยุดหรือแจ้งข้อผิดพลาดไม่ชัดเจน"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "จัดการ error เฉพาะบางจุด input ผิดรูปแบบยังทำให้โปรแกรมหยุดทำงานได้ง่าย"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีการจัดการ error — input ผิดเพียงเล็กน้อยก็ทำให้โปรแกรมหยุดทำงาน"
             }
           ]
         }
@@ -3383,43 +3916,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of programming / ความเข้าใจแนวคิดการเขียนโปรแกรม",
+          "description": "ความเข้าใจแนวคิดเรื่องการเขียนโปรแกรม",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องการเขียนโปรแกรมได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องการเขียนโปรแกรมได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องการเขียนโปรแกรมเพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องการเขียนโปรแกรมที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-67010201-1-c-mock-46-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -3434,64 +4000,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of programming theory / ความเข้าใจทฤษฎีการเขียนโปรแกรม",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องการเขียนโปรแกรม",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องการเขียนโปรแกรมได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องการเขียนโปรแกรมได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องการเขียนโปรแกรมผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องการเขียนโปรแกรมที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-46-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -3506,43 +4084,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 24,
-          "weight": 60,
+          "name": "C1 · Correctness of answers and proofs / ความถูกต้องของคำตอบและการพิสูจน์",
+          "description": "ความถูกต้องของคำตอบและการพิสูจน์",
+          "maxPoints": 20,
+          "weight": 50,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบและการพิสูจน์ถูกต้องครบทุกข้อ ไม่มีช่องว่างทางตรรกะ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบและการพิสูจน์ถูกต้องเป็นส่วนใหญ่ แต่มีช่องว่างทางตรรกะเล็กน้อยในบางข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "การพิสูจน์มีช่องว่างทางตรรกะหรือข้ามขั้นตอนสำคัญหลายข้อ และคำตอบผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบและการพิสูจน์ผิดเป็นส่วนใหญ่ หรือสิ่งที่เขียนไม่ใช่การพิสูจน์"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · Reasoning steps / ขั้นตอนการให้เหตุผล",
+          "description": "ความชัดเจนของขั้นตอนการให้เหตุผล",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงขั้นตอนการให้เหตุผลเรียงลำดับ ชัดเจน และอ้างอิงทฤษฎีบทที่ใช้"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงขั้นตอนเรียงลำดับเป็นส่วนใหญ่ แต่บางขั้นไม่ได้อ้างทฤษฎีบทที่ใช้"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ขั้นตอนข้ามไปมาหรือขาดหายหลายจุด ผู้อ่านตามไม่ทัน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงขั้นตอนการให้เหตุผล ให้เพียงคำตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-67010201-1-c-mock-47-1-c",
+          "name": "C3 · Mathematical notation / การใช้สัญลักษณ์ทางคณิตศาสตร์",
+          "description": "การใช้สัญลักษณ์และการเขียนทางคณิตศาสตร์",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "ใช้สัญลักษณ์และรูปแบบการเขียนถูกต้องสม่ำเสมอ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "ใช้สัญลักษณ์ถูกต้องเป็นส่วนใหญ่ มีการสลับหรือใช้ไม่สม่ำเสมอบางจุด"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "ใช้สัญลักษณ์ผิดหรือไม่สม่ำเสมอหลายจุดจนต้องเดาความหมาย"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "สัญลักษณ์ผิดจนอ่านความหมายทางคณิตศาสตร์ไม่ได้"
             }
           ]
         }
@@ -3557,43 +4168,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of discrete structures / ความเข้าใจแนวคิดโครงสร้างไม่ต่อเนื่อง",
+          "description": "ความเข้าใจแนวคิดเรื่องโครงสร้างไม่ต่อเนื่อง",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องโครงสร้างไม่ต่อเนื่องได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องโครงสร้างไม่ต่อเนื่องได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องโครงสร้างไม่ต่อเนื่องเพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องโครงสร้างไม่ต่อเนื่องที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-67010201-1-c-mock-47-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -3608,64 +4252,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of discrete structures theory / ความเข้าใจทฤษฎีโครงสร้างไม่ต่อเนื่อง",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องโครงสร้างไม่ต่อเนื่อง",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องโครงสร้างไม่ต่อเนื่องได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องโครงสร้างไม่ต่อเนื่องได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องโครงสร้างไม่ต่อเนื่องผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องโครงสร้างไม่ต่อเนื่องที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-1-c-mock-47-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -3680,43 +4336,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 24,
-          "weight": 60,
+          "name": "C1 · Algorithm correctness / ความถูกต้องของอัลกอริทึม",
+          "description": "ความถูกต้องของอัลกอริทึมที่เขียน",
+          "maxPoints": 18,
+          "weight": 45,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อัลกอริทึมให้ผลถูกต้องกับทุกชุดทดสอบ รวมถึงกรณีขอบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ผ่านชุดทดสอบส่วนใหญ่ แต่ล้มเหลวในบางกรณีขอบ เช่น ข้อมูลว่างหรือค่าซ้ำ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ผ่านเฉพาะชุดทดสอบง่าย ๆ และผิดในหลายกรณี"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "อัลกอริทึมให้ผลผิดเกือบทุกชุดทดสอบ หรือรันไม่ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · Data-structure choice and complexity analysis / การเลือกโครงสร้างข้อมูลและวิเคราะห์ความซับซ้อน",
+          "description": "การเลือกโครงสร้างข้อมูลและการวิเคราะห์ความซับซ้อน",
+          "maxPoints": 14,
+          "weight": 35,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกโครงสร้างข้อมูลได้เหมาะสมและวิเคราะห์ความซับซ้อนของเวลา/หน่วยความจำได้ถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "เลือกโครงสร้างข้อมูลได้เหมาะสม แต่วิเคราะห์ความซับซ้อนคลาดเคลื่อนบางส่วน"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "โครงสร้างข้อมูลที่เลือกไม่เหมาะกับโจทย์ หรือวิเคราะห์ความซับซ้อนผิดหลายจุด"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่ได้เลือกโครงสร้างข้อมูลอย่างมีเหตุผล และไม่วิเคราะห์ความซับซ้อน"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-67010201-2-c-mock-48-1-c",
+          "name": "C3 · Code quality and testing / คุณภาพโค้ดและการทดสอบ",
+          "description": "ความอ่านง่ายของโค้ดและชุดทดสอบ",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "โค้ดอ่านง่าย มีชุดทดสอบครอบคลุมกรณีสำคัญ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "โค้ดอ่านได้และมีชุดทดสอบ แต่ครอบคลุมกรณีสำคัญไม่ครบ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "โค้ดอ่านยาก และมีชุดทดสอบเพียงไม่กี่กรณี"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "โค้ดอ่านไม่ได้ และไม่มีชุดทดสอบ"
             }
           ]
         }
@@ -3731,43 +4420,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of data structures and algorithms / ความเข้าใจแนวคิดโครงสร้างข้อมูลและอัลกอริทึม",
+          "description": "ความเข้าใจแนวคิดเรื่องโครงสร้างข้อมูลและอัลกอริทึม",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องโครงสร้างข้อมูลและอัลกอริทึมได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องโครงสร้างข้อมูลและอัลกอริทึมได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องโครงสร้างข้อมูลและอัลกอริทึมเพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องโครงสร้างข้อมูลและอัลกอริทึมที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-67010201-2-c-mock-48-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -3782,64 +4504,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of data structures and algorithms theory / ความเข้าใจทฤษฎีโครงสร้างข้อมูลและอัลกอริทึม",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องโครงสร้างข้อมูลและอัลกอริทึม",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องโครงสร้างข้อมูลและอัลกอริทึมได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องโครงสร้างข้อมูลและอัลกอริทึมได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องโครงสร้างข้อมูลและอัลกอริทึมผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องโครงสร้างข้อมูลและอัลกอริทึมที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-48-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -3854,43 +4588,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 24,
-          "weight": 60,
+          "name": "C1 · Circuit correctness / ความถูกต้องของวงจร",
+          "description": "ความถูกต้องของวงจรที่ออกแบบ",
+          "maxPoints": 20,
+          "weight": 50,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "วงจรทำงานตรงตาม truth table / ข้อกำหนดทุกกรณี"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "วงจรทำงานถูกต้องในส่วนใหญ่ของ truth table แต่ผิดในบางกรณี"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "วงจรให้ output ผิดหลายแถวของ truth table"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "วงจรไม่ทำงานตามข้อกำหนด หรือออกแบบไม่สมบูรณ์"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · Simplification and design efficiency / การลดรูปและประสิทธิภาพของการออกแบบ",
+          "description": "การลดรูปสมการและความประหยัดของวงจร",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ลดรูปสมการได้เหมาะสม ใช้เกตและอุปกรณ์อย่างประหยัด"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ลดรูปสมการได้ แต่ยังเหลือเกตที่ลดได้อีกบางส่วน"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ลดรูปไม่ครบหรือผิดบางขั้น ใช้เกตมากกว่าที่จำเป็นอย่างชัดเจน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่ได้ลดรูป หรือการลดรูปทำให้วงจรผิด"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-67010201-2-c-mock-49-1-c",
+          "name": "C3 · Simulation and verification / การจำลองและตรวจสอบผล",
+          "description": "การจำลองวงจรและการตรวจสอบผล",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "จำลองวงจรและตรวจสอบผลกับกรณีทดสอบครบถ้วน พร้อมบันทึกผล"
+            },
+            {
+              "label": "พอใช้",
+              "description": "จำลองและตรวจผลกับกรณีส่วนใหญ่ แต่บันทึกผลไม่ครบ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "จำลองเพียงบางกรณีและไม่ได้เทียบกับ truth table"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีการจำลองหรือบันทึกผลการตรวจสอบ"
             }
           ]
         }
@@ -3905,43 +4672,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of digital logic / ความเข้าใจแนวคิดตรรกะดิจิทัล",
+          "description": "ความเข้าใจแนวคิดเรื่องตรรกะดิจิทัล",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องตรรกะดิจิทัลได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องตรรกะดิจิทัลได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องตรรกะดิจิทัลเพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องตรรกะดิจิทัลที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-67010201-2-c-mock-49-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -3956,64 +4756,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of digital logic theory / ความเข้าใจทฤษฎีตรรกะดิจิทัล",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องตรรกะดิจิทัล",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องตรรกะดิจิทัลได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องตรรกะดิจิทัลได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องตรรกะดิจิทัลผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องตรรกะดิจิทัลที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-2-c-mock-49-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -4028,43 +4840,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 24,
-          "weight": 60,
+          "name": "C1 · Completeness of requirements and design documents / ความครบถ้วนของ requirement และเอกสารออกแบบ",
+          "description": "ความครบถ้วนของ requirement และเอกสารออกแบบ",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "requirement ครบถ้วน ตรวจสอบย้อนกลับได้ และเอกสารออกแบบสอดคล้องกัน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "requirement ครบเป็นส่วนใหญ่ แต่ตรวจสอบย้อนกลับไม่ครบหรือเอกสารออกแบบบางส่วนไม่สอดคล้อง"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "requirement ขาดหลายข้อ และเอกสารออกแบบขัดแย้งกันเอง"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มี requirement ที่ชัดเจน หรือเอกสารออกแบบไม่เกี่ยวข้องกับงาน"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · UML diagram quality / คุณภาพของแผนภาพ UML",
+          "description": "ความถูกต้องและอ่านง่ายของแผนภาพ UML",
+          "maxPoints": 14,
+          "weight": 35,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แผนภาพ UML ถูกต้องตามมาตรฐาน อ่านง่าย และสื่อการออกแบบได้ครบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แผนภาพส่วนใหญ่ถูกต้อง มีสัญลักษณ์ผิดเล็กน้อยหรือบางส่วนอ่านยาก"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "สัญลักษณ์ UML ผิดหลายจุดหรือขาดแผนภาพสำคัญ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีแผนภาพ UML หรือไม่เป็นไปตามมาตรฐาน"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-67010201-3-c-mock-53-1-c",
+          "name": "C3 · Teamwork and Git use / การทำงานร่วมกันและการใช้ Git",
+          "description": "การแบ่งงานและการใช้ Git ในทีม",
+          "maxPoints": 10,
+          "weight": 25,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "แบ่งงานชัดเจน ใช้ branch/commit อย่างเป็นระบบ และทุกคนมีส่วนร่วม"
+            },
+            {
+              "label": "พอใช้",
+              "description": "แบ่งงานและใช้ Git ได้ แต่ commit message หรือ branch ไม่เป็นระบบ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "ส่วนใหญ่ commit ตรงเข้า main โดยไม่ใช้ branch และสมาชิกบางคนแทบไม่มีส่วนร่วม"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่ได้ใช้ Git อย่างมีความหมาย หรืองานทำโดยคนเดียว"
             }
           ]
         }
@@ -4079,43 +4924,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of software engineering / ความเข้าใจแนวคิดวิศวกรรมซอฟต์แวร์",
+          "description": "ความเข้าใจแนวคิดเรื่องวิศวกรรมซอฟต์แวร์",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องวิศวกรรมซอฟต์แวร์ได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องวิศวกรรมซอฟต์แวร์ได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องวิศวกรรมซอฟต์แวร์เพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องวิศวกรรมซอฟต์แวร์ที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-67010201-3-c-mock-53-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -4130,64 +5008,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of software engineering theory / ความเข้าใจทฤษฎีวิศวกรรมซอฟต์แวร์",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องวิศวกรรมซอฟต์แวร์",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องวิศวกรรมซอฟต์แวร์ได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องวิศวกรรมซอฟต์แวร์ได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องวิศวกรรมซอฟต์แวร์ผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องวิศวกรรมซอฟต์แวร์ที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-67010201-3-c-mock-53-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -4202,43 +5092,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 24,
-          "weight": 60,
+          "name": "C1 · Algorithm correctness / ความถูกต้องของอัลกอริทึม",
+          "description": "ความถูกต้องของอัลกอริทึมที่เขียน",
+          "maxPoints": 18,
+          "weight": 45,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อัลกอริทึมให้ผลถูกต้องกับทุกชุดทดสอบ รวมถึงกรณีขอบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ผ่านชุดทดสอบส่วนใหญ่ แต่ล้มเหลวในบางกรณีขอบ เช่น ข้อมูลว่างหรือค่าซ้ำ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ผ่านเฉพาะชุดทดสอบง่าย ๆ และผิดในหลายกรณี"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "อัลกอริทึมให้ผลผิดเกือบทุกชุดทดสอบ หรือรันไม่ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · Data-structure choice and complexity analysis / การเลือกโครงสร้างข้อมูลและวิเคราะห์ความซับซ้อน",
+          "description": "การเลือกโครงสร้างข้อมูลและการวิเคราะห์ความซับซ้อน",
+          "maxPoints": 14,
+          "weight": 35,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกโครงสร้างข้อมูลได้เหมาะสมและวิเคราะห์ความซับซ้อนของเวลา/หน่วยความจำได้ถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "เลือกโครงสร้างข้อมูลได้เหมาะสม แต่วิเคราะห์ความซับซ้อนคลาดเคลื่อนบางส่วน"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "โครงสร้างข้อมูลที่เลือกไม่เหมาะกับโจทย์ หรือวิเคราะห์ความซับซ้อนผิดหลายจุด"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่ได้เลือกโครงสร้างข้อมูลอย่างมีเหตุผล และไม่วิเคราะห์ความซับซ้อน"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-68020101-1-c-mock-19-1-c",
+          "name": "C3 · Code quality and testing / คุณภาพโค้ดและการทดสอบ",
+          "description": "ความอ่านง่ายของโค้ดและชุดทดสอบ",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "โค้ดอ่านง่าย มีชุดทดสอบครอบคลุมกรณีสำคัญ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "โค้ดอ่านได้และมีชุดทดสอบ แต่ครอบคลุมกรณีสำคัญไม่ครบ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "โค้ดอ่านยาก และมีชุดทดสอบเพียงไม่กี่กรณี"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "โค้ดอ่านไม่ได้ และไม่มีชุดทดสอบ"
             }
           ]
         }
@@ -4253,43 +5176,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of data structures and algorithms / ความเข้าใจแนวคิดโครงสร้างข้อมูลและอัลกอริทึม",
+          "description": "ความเข้าใจแนวคิดเรื่องโครงสร้างข้อมูลและอัลกอริทึม",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องโครงสร้างข้อมูลและอัลกอริทึมได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องโครงสร้างข้อมูลและอัลกอริทึมได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องโครงสร้างข้อมูลและอัลกอริทึมเพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องโครงสร้างข้อมูลและอัลกอริทึมที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-68020101-1-c-mock-19-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -4304,64 +5260,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of data structures and algorithms theory / ความเข้าใจทฤษฎีโครงสร้างข้อมูลและอัลกอริทึม",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องโครงสร้างข้อมูลและอัลกอริทึม",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องโครงสร้างข้อมูลและอัลกอริทึมได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องโครงสร้างข้อมูลและอัลกอริทึมได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องโครงสร้างข้อมูลและอัลกอริทึมผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องโครงสร้างข้อมูลและอัลกอริทึมที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-19-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -4376,43 +5344,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 24,
-          "weight": 60,
+          "name": "C1 · System-program correctness / ความถูกต้องของโปรแกรมระบบ",
+          "description": "ความถูกต้องของโปรแกรมที่เกี่ยวกับ process/thread",
+          "maxPoints": 18,
+          "weight": 45,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "โปรแกรมจัดการ process/thread ทำงานถูกต้องตามที่กำหนดในทุกสถานการณ์ทดสอบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "โปรแกรมทำงานถูกต้องในสถานการณ์ทดสอบส่วนใหญ่ แต่ล้มเหลวในบางสถานการณ์"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ล้มเหลวในหลายสถานการณ์ทดสอบ เช่น การสร้างหรือการจบ process"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "โปรแกรมไม่ทำงานตามที่กำหนด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · Resource management and synchronization / การจัดการทรัพยากรและ synchronization",
+          "description": "การจัดการทรัพยากรและการประสานงานระหว่าง process",
+          "maxPoints": 14,
+          "weight": 35,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "จัดการทรัพยากรและ synchronization ได้ถูกต้อง ไม่เกิด race condition หรือ deadlock"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "synchronization ถูกต้องเป็นส่วนใหญ่ แต่ยังพบ race condition ในบางสถานการณ์"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เกิด race condition หรือ deadlock ได้ง่ายหลายจุด"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีการ synchronize หรือจัดการทรัพยากรเลย"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-68020101-1-c-mock-51-1-c",
+          "name": "C3 · Analysis of results / การวิเคราะห์ผลการทดลอง",
+          "description": "การวิเคราะห์และอธิบายผลการทดลอง",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "วิเคราะห์ผลการทดลองและอธิบายพฤติกรรมของระบบได้ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "วิเคราะห์ผลและอธิบายพฤติกรรมของระบบได้บางส่วน แต่ยังขาดเหตุผลรองรับ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายผลผิด หรือเพียงคัดลอกผลลัพธ์โดยไม่วิเคราะห์"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีการวิเคราะห์ผล"
             }
           ]
         }
@@ -4427,43 +5428,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of operating systems / ความเข้าใจแนวคิดระบบปฏิบัติการ",
+          "description": "ความเข้าใจแนวคิดเรื่องระบบปฏิบัติการ",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องระบบปฏิบัติการได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องระบบปฏิบัติการได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องระบบปฏิบัติการเพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องระบบปฏิบัติการที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-68020101-1-c-mock-51-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -4478,64 +5512,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of operating systems theory / ความเข้าใจทฤษฎีระบบปฏิบัติการ",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องระบบปฏิบัติการ",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องระบบปฏิบัติการได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องระบบปฏิบัติการได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องระบบปฏิบัติการผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องระบบปฏิบัติการที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-68020101-1-c-mock-51-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -4550,43 +5596,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 24,
-          "weight": 60,
+          "name": "C1 · Data-model correctness / ความถูกต้องของแบบจำลองข้อมูล",
+          "description": "ความถูกต้องของแผนภาพ ER และ schema",
+          "maxPoints": 14,
+          "weight": 35,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แบบจำลอง ER และ schema ถูกต้อง ครอบคลุมข้อกำหนด และผ่านการทำ normalization"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ER และ schema ครอบคลุมข้อกำหนดเป็นส่วนใหญ่ แต่ normalization ยังไม่ครบหรือมีความสัมพันธ์ที่ผิดบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ขาดเอนทิตีหรือความสัมพันธ์สำคัญหลายส่วน และมีข้อมูลซ้ำซ้อน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "แบบจำลองข้อมูลไม่สอดคล้องกับข้อกำหนด หรือไม่มี schema"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · SQL correctness and efficiency / ความถูกต้องและประสิทธิภาพของคำสั่ง SQL",
+          "description": "ความถูกต้องและประสิทธิภาพของคำสั่ง SQL",
+          "maxPoints": 18,
+          "weight": 45,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำสั่ง SQL ให้ผลถูกต้องทุกข้อ และเขียนอย่างมีประสิทธิภาพ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "SQL ถูกต้องในข้อส่วนใหญ่ แต่บางข้อได้ผลไม่ครบหรือเขียนไม่มีประสิทธิภาพ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "SQL ผิดหลายข้อ หรือได้ผลที่ไม่ตรงกับโจทย์"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "SQL รันไม่ได้หรือผิดเกือบทุกข้อ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-68020101-2-c-mock-52-1-c",
+          "name": "C3 · Documentation and test data / เอกสารและข้อมูลทดสอบ",
+          "description": "เอกสารประกอบและข้อมูลทดสอบ",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "มีเอกสารอธิบายและข้อมูลทดสอบที่ครอบคลุมกรณีสำคัญ"
+            },
+            {
+              "label": "พอใช้",
+              "description": "มีเอกสารและข้อมูลทดสอบ แต่ไม่ครอบคลุมกรณีสำคัญทั้งหมด"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "เอกสารสั้นมากและข้อมูลทดสอบน้อยจนตรวจผลไม่ได้"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเอกสารและข้อมูลทดสอบ"
             }
           ]
         }
@@ -4601,43 +5680,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of database systems / ความเข้าใจแนวคิดระบบฐานข้อมูล",
+          "description": "ความเข้าใจแนวคิดเรื่องระบบฐานข้อมูล",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องระบบฐานข้อมูลได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องระบบฐานข้อมูลได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องระบบฐานข้อมูลเพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องระบบฐานข้อมูลที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-68020101-2-c-mock-52-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -4652,64 +5764,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of database systems theory / ความเข้าใจทฤษฎีระบบฐานข้อมูล",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องระบบฐานข้อมูล",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องระบบฐานข้อมูลได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องระบบฐานข้อมูลได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องระบบฐานข้อมูลผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องระบบฐานข้อมูลที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-68020101-2-c-mock-52-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }
@@ -4724,43 +5848,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-1-a",
-          "name": "ความถูกต้องของผลลัพธ์",
-          "description": "โปรแกรม/ผลลัพธ์ตรงตามโจทย์ที่กำหนด",
-          "maxPoints": 24,
-          "weight": 60,
+          "name": "C1 · Correctness of the design / assembly program / ความถูกต้องของการออกแบบ/โปรแกรมแอสเซมบลี",
+          "description": "ความถูกต้องของการออกแบบหรือโปรแกรมแอสเซมบลี",
+          "maxPoints": 18,
+          "weight": 45,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "การออกแบบหรือโปรแกรมแอสเซมบลีทำงานถูกต้องตามที่กำหนดทุกคำสั่ง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ทำงานถูกต้องกับคำสั่งส่วนใหญ่ แต่ผิดในบางคำสั่งหรือบางกรณี"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "หลายคำสั่งทำงานผิด หรือ datapath/โปรแกรมไม่ครบตามที่กำหนด"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "การออกแบบหรือโปรแกรมทำงานไม่ได้ตามที่กำหนด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-1-b",
-          "name": "ความสมบูรณ์ของการส่งงาน",
-          "description": "ส่งงานครบทุกข้อ มีเอกสารประกอบ",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C2 · Performance analysis / การวิเคราะห์ประสิทธิภาพ",
+          "description": "การวิเคราะห์ประสิทธิภาพของสิ่งที่ออกแบบ",
+          "maxPoints": 14,
+          "weight": 35,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "วิเคราะห์ประสิทธิภาพ (เช่น CPI, จำนวนรอบ) ได้ถูกต้องและเปรียบเทียบทางเลือกได้"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำนวณ CPI หรือจำนวนรอบได้ แต่เปรียบเทียบทางเลือกไม่ครบหรือคำนวณผิดเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "วิเคราะห์ประสิทธิภาพผิดหลายจุดหรือไม่ได้เปรียบเทียบทางเลือก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีการวิเคราะห์ประสิทธิภาพ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-69070101-3-c-mock-50-1-c",
+          "name": "C3 · Explanation and lab report / การอธิบายและรายงานผลการทดลอง",
+          "description": "ความชัดเจนของรายงานผลการทดลอง",
+          "maxPoints": 8,
+          "weight": 20,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "รายงานอธิบายแนวคิด ผลการทดลอง และข้อสรุปได้ชัดเจน"
+            },
+            {
+              "label": "พอใช้",
+              "description": "รายงานอธิบายแนวคิดและผลการทดลองได้ แต่ข้อสรุปไม่ชัดเจนในบางส่วน"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "รายงานขาดผลการทดลองหรือข้อสรุป และอธิบายแนวคิดไม่ครบ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีรายงาน หรือรายงานอ่านไม่เข้าใจ"
             }
           ]
         }
@@ -4775,43 +5932,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-2-a",
-          "name": "ความเข้าใจเนื้อหา",
-          "description": "ตอบคำถามแสดงความเข้าใจแนวคิดหลัก",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C1 · Understanding of computer architecture / ความเข้าใจแนวคิดสถาปัตยกรรมคอมพิวเตอร์",
+          "description": "ความเข้าใจแนวคิดเรื่องสถาปัตยกรรมคอมพิวเตอร์",
+          "maxPoints": 8,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "ตอบคำถามเรื่องสถาปัตยกรรมคอมพิวเตอร์ได้ถูกต้องครบถ้วน แสดงความเข้าใจแนวคิดอย่างชัดเจน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "ตอบเรื่องสถาปัตยกรรมคอมพิวเตอร์ได้ถูกต้องเป็นส่วนใหญ่ แต่ยังมีบางประเด็นที่ตอบไม่ครบหรือเข้าใจคลาดเคลื่อนเล็กน้อย"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "เข้าใจแนวคิดเรื่องสถาปัตยกรรมคอมพิวเตอร์เพียงบางส่วน ตอบผิดหรือสับสนในหลายประเด็นหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่เข้าใจแนวคิดเรื่องสถาปัตยกรรมคอมพิวเตอร์ที่ถามเกือบทั้งหมด"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-2-b",
-          "name": "ความแม่นยำของคำตอบ",
-          "description": "คำตอบถูกต้องตรงประเด็น",
-          "maxPoints": 10,
-          "weight": 50,
+          "name": "C2 · Answer accuracy / ความถูกต้องของคำตอบ",
+          "description": "ความถูกต้องของคำตอบแต่ละข้อ",
+          "maxPoints": 6,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "คำตอบถูกต้องเกือบทุกข้อ ไม่มีข้อผิดพลาดสำคัญ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "คำตอบถูกต้องเป็นส่วนใหญ่ มีข้อผิดพลาดเล็กน้อยไม่กี่ข้อ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "คำตอบผิดหลายข้อ รวมถึงข้อพื้นฐาน"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "คำตอบส่วนใหญ่ผิดหรือไม่ได้ตอบ"
+            }
+          ]
+        },
+        {
+          "id": "rc-hist-a-hist-69070101-3-c-mock-50-2-c",
+          "name": "C3 · Reasoning and explanation / การให้เหตุผลและอธิบายคำตอบ",
+          "description": "การอธิบายเหตุผลประกอบคำตอบ",
+          "maxPoints": 6,
+          "weight": 30,
+          "levels": [
+            {
+              "label": "ดีมาก",
+              "description": "อธิบายเหตุผลประกอบคำตอบได้ชัดเจน เป็นลำดับ และอ้างอิงหลักการที่ถูกต้อง"
+            },
+            {
+              "label": "พอใช้",
+              "description": "อธิบายเหตุผลได้เป็นส่วนใหญ่ แต่บางข้อข้ามขั้นตอนหรือไม่อ้างหลักการ"
+            },
+            {
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายเหตุผลเพียงบางข้อ และเหตุผลที่ให้ไม่ชัดเจนหรือไม่ถูกหลักการ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่มีเหตุผลประกอบคำตอบ — ตอบเฉพาะผลลัพธ์"
             }
           ]
         }
@@ -4826,64 +6016,76 @@
       "criteria": [
         {
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-3-a",
-          "name": "ความเข้าใจภาพรวมของรายวิชา",
-          "description": "ครอบคลุมเนื้อหาตลอดภาคการศึกษา",
-          "maxPoints": 16,
-          "weight": 40,
+          "name": "C1 · Understanding of computer architecture theory / ความเข้าใจทฤษฎีสถาปัตยกรรมคอมพิวเตอร์",
+          "description": "ความเข้าใจทฤษฎีและหลักการเรื่องสถาปัตยกรรมคอมพิวเตอร์",
+          "maxPoints": 12,
+          "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "อธิบายทฤษฎีและหลักการเรื่องสถาปัตยกรรมคอมพิวเตอร์ได้ถูกต้อง ครบถ้วน และเชื่อมโยงกันเป็นระบบ"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "อธิบายทฤษฎีเรื่องสถาปัตยกรรมคอมพิวเตอร์ได้ถูกต้องเป็นส่วนใหญ่ แต่ยังขาดบางหัวข้อหรือเชื่อมโยงแนวคิดไม่ครบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "อธิบายทฤษฎีเรื่องสถาปัตยกรรมคอมพิวเตอร์ผิดหรือไม่ครบในหลายหัวข้อหลัก"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถอธิบายทฤษฎีเรื่องสถาปัตยกรรมคอมพิวเตอร์ที่ถามได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-3-b",
-          "name": "การประยุกต์ใช้ความรู้",
-          "description": "นำหลักการไปใช้แก้โจทย์ใหม่ได้",
-          "maxPoints": 12,
-          "weight": 30,
+          "name": "C2 · Applying and solving problems / การประยุกต์และการแก้โจทย์",
+          "description": "การนำหลักการไปแก้โจทย์ปัญหา",
+          "maxPoints": 16,
+          "weight": 40,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "เลือกวิธีและนำหลักการไปแก้โจทย์ได้เหมาะสม ครอบคลุมโจทย์ทั้งง่ายและซับซ้อน"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แก้โจทย์ง่ายได้ถูกต้อง แต่โจทย์ที่ซับซ้อนเลือกวิธีไม่เหมาะหรือทำไม่จบ"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "แก้ได้เฉพาะโจทย์ง่ายบางข้อ และเลือกวิธีผิดในโจทย์ส่วนใหญ่"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่สามารถนำหลักการไปแก้โจทย์ได้"
             }
           ]
         },
         {
           "id": "rc-hist-a-hist-69070101-3-c-mock-50-3-c",
-          "name": "การวิเคราะห์และแก้ปัญหา",
-          "description": "แสดงวิธีคิดและเหตุผลประกอบคำตอบ",
+          "name": "C3 · Accuracy of working and written answers / ความถูกต้องของการคำนวณและการเขียนตอบ",
+          "description": "ความถูกต้องของขั้นตอนและคำตอบสุดท้าย",
           "maxPoints": 12,
           "weight": 30,
           "levels": [
             {
-              "label": "Excellent",
-              "description": "ทำได้ดีมาก"
+              "label": "ดีมาก",
+              "description": "แสดงวิธีทำครบถ้วน ขั้นตอนถูกต้อง และคำตอบสุดท้ายถูกต้อง"
             },
             {
-              "label": "Good",
-              "description": "ทำได้ดี"
+              "label": "พอใช้",
+              "description": "แสดงวิธีทำครบเป็นส่วนใหญ่ มีความผิดพลาดเล็กน้อยในการคำนวณหรือขั้นตอนบางจุด"
             },
             {
-              "label": "Needs Improvement",
-              "description": "ควรปรับปรุง"
+              "label": "ต้องปรับปรุง",
+              "description": "ข้ามขั้นตอนหลายข้อ หรือคำนวณผิดจนคำตอบสุดท้ายผิดหลายข้อ"
+            },
+            {
+              "label": "ไม่ผ่าน",
+              "description": "ไม่แสดงวิธีทำ และคำตอบสุดท้ายส่วนใหญ่ผิด"
             }
           ]
         }

@@ -9,6 +9,9 @@
     "courseIds": [
       "c-mock-1",
       "c-mock-2",
+      "c-mock-7",
+      "c-mock-8",
+      "c-mock-9",
       "c-mock-10",
       "c-mock-17",
       "c-mock-18",
@@ -26,7 +29,6 @@
     "status": "active",
     "courseIds": [
       "c-mock-3",
-      "c-mock-7",
       "c-mock-11",
       "c-mock-19",
       "c-mock-39",
@@ -63,14 +65,12 @@
     "role": "teacher",
     "status": "active",
     "courseIds": [
-      "c-mock-9",
       "c-mock-21",
       "c-mock-22",
       "c-mock-30",
       "c-mock-31",
       "c-mock-35",
       "c-mock-36",
-      "c-mock-12",
       "c-mock-41",
       "c-mock-47"
     ]
@@ -87,6 +87,7 @@
       "c-mock-14",
       "c-mock-23",
       "c-mock-27",
+      "c-mock-37",
       "c-mock-42",
       "c-mock-48"
     ]
@@ -99,6 +100,7 @@
     "role": "teacher",
     "status": "active",
     "courseIds": [
+      "c-mock-6",
       "c-mock-16",
       "c-mock-20",
       "c-mock-24",

@@ -12,6 +12,7 @@ import { gradingCategoriesRouter } from "./routes/grading-categories.js";
 import { assignmentsRouter } from "./routes/assignments.js";
 import { studentGroupsRouter } from "./routes/student-groups.js";
 import { courseStaffRouter } from "./routes/course-staff.js";
+import { rubricToolsRouter } from "./routes/rubric-tools.js";
 import { filesRouter } from "./routes/files.js";
 
 export function createApp() {
@@ -44,6 +45,7 @@ export function createApp() {
     assignmentsRouter,
     studentGroupsRouter,
     courseStaffRouter,
+    rubricToolsRouter,
   );
 
   app.use("/api", (_req, res) => {

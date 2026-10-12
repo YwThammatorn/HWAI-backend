@@ -85,15 +85,16 @@ model CurriculumVersion {
 
 // รายวิชาในหลักสูตร — the abstract subject a curriculum offers.
 model CourseTemplate {
-  id                  String            @id @default(uuid())
-  curriculumVersionId String            @map("curriculum_version_id")
-  curriculumVersion   CurriculumVersion @relation(fields: [curriculumVersionId], references: [id], onDelete: Cascade)
+  id                  String               @id @default(uuid())
+  curriculumVersionId String               @map("curriculum_version_id")
+  curriculumVersion   CurriculumVersion    @relation(fields: [curriculumVersionId], references: [id], onDelete: Cascade)
   code                String
   name                String
   description         String?
-  createdAt           DateTime          @default(now()) @map("created_at")
-  updatedAt           DateTime          @updatedAt @map("updated_at")
+  createdAt           DateTime             @default(now()) @map("created_at")
+  updatedAt           DateTime             @updatedAt @map("updated_at")
   courses             Course[]
+  rubricLibrary       RubricLibraryEntry[]
 
   @@index([curriculumVersionId])
   @@map("course_templates")
@@ -239,6 +240,14 @@ enum SubmissionType {
   @@map("submission_type")
 }
 
+// How the teacher grades an assignment: start the AI on every waiting submission, or grade by hand.
+enum GradingMode {
+  ai
+  manual
+
+  @@map("grading_mode")
+}
+
 model Assignment {
   id               String               @id @default(uuid())
   courseId         String               @map("course_id")
@@ -259,11 +268,14 @@ model Assignment {
   rubricIds        String[]             @map("rubric_ids")
   gradingFinalized Boolean              @default(false) @map("grading_finalized") // "Finish & announce"
   isExam           Boolean              @default(false) @map("is_exam")
+  gradingMode      GradingMode?         @map("grading_mode") // null = not chosen yet
   createdAt        DateTime             @default(now()) @map("created_at")
   updatedAt        DateTime             @updatedAt @map("updated_at")
   rubrics          Rubric[]
   submissions      Submission[]
   studentGroups    StudentGroup[]
+  calibrationRuns  CalibrationRun[]
+  libraryEntries   RubricLibraryEntry[]
 
   @@index([courseId])
   @@index([categoryId])
@@ -277,6 +289,8 @@ model Rubric {
   name         String
   /// RubricCriterion[] with their levels (see src/lib/content.ts).
   criteria     Json
+  /// How the AI is corrected on this rubric, from the Calibration page: { [criterionId]: levels to move }.
+  aiOffsets    Json?      @map("ai_offsets")
   createdAt    DateTime   @default(now()) @map("created_at")
   updatedAt    DateTime   @updatedAt @map("updated_at")
 
@@ -308,6 +322,7 @@ model Submission {
   instructorComment  String           @default("") @map("instructor_comment")
   criterionComments  Json?            @map("criterion_comments") // { [criterionId]: string }
   criterionScores    Json?            @map("criterion_scores") // { [criterionId]: number }
+  aiCriterionScores  Json?            @map("ai_criterion_scores") // the AI's own { [criterionId]: number }
   externalUseConsent Boolean          @default(false) @map("external_use_consent")
   status             SubmissionStatus @default(notGraded)
   groupId            String?          @map("group_id") // not a FK: kept even if the team is later dissolved
@@ -396,4 +411,47 @@ model Clo {
 
   @@index([courseId])
   @@map("clos")
+}
+
+// ── Rubric tools: the reuse library and AI calibration ───────────────────────
+
+// A rubric the teacher saved for reuse (RubricLibraryEntry in HWAI-frontend/src/lib/rubricLibrary.ts), per subject
+// so next year's section of the same subject finds it. No subject = offered for every course; deleting the subject
+// deletes its entries (rather than turning them into "every course" ones).
+model RubricLibraryEntry {
+  id                 String          @id @default(uuid())
+  name               String
+  courseTemplateId   String?         @map("course_template_id")
+  courseTemplate     CourseTemplate? @relation(fields: [courseTemplateId], references: [id], onDelete: Cascade)
+  /// RubricCriterion[] as in a rubric, without grading data.
+  criteria           Json
+  /// Where it was saved from — provenance only, kept as null if that assignment goes.
+  sourceAssignmentId String?         @map("source_assignment_id")
+  sourceAssignment   Assignment?     @relation(fields: [sourceAssignmentId], references: [id], onDelete: SetNull)
+  createdAt          DateTime        @default(now()) @map("created_at")
+  updatedAt          DateTime        @updatedAt @map("updated_at")
+
+  @@index([courseTemplateId])
+  @@map("rubric_library_entries")
+}
+
+// One calibration of the AI on an assignment (CalibrationRun in HWAI-frontend/src/lib/calibration.ts): the teacher
+// grades sample work blind, then compares with the AI per criterion.
+model CalibrationRun {
+  id             String     @id @default(uuid())
+  assignmentId   String     @map("assignment_id")
+  assignment     Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  /// One work item per entry — a submission id, or a team's key for a group assignment.
+  sampleIds      String[]   @map("sample_ids")
+  /// sample id → criterion id → level (0 = best).
+  teacherLevels  Json       @map("teacher_levels")
+  completedAt    DateTime?  @map("completed_at")
+  /// "Use these values" was pressed: when, and the offsets saved on the rubric.
+  appliedAt      DateTime?  @map("applied_at")
+  appliedOffsets Json?      @map("applied_offsets")
+  createdAt      DateTime   @map("created_at") // set by the client, kept as given
+  updatedAt      DateTime   @updatedAt @map("updated_at")
+
+  @@index([assignmentId])
+  @@map("calibration_runs")
 }

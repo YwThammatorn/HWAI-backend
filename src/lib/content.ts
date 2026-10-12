@@ -97,6 +97,7 @@ export function toAssignment(a: Assignment) {
       rubricIds: a.rubricIds,
       gradingFinalized: a.gradingFinalized,
       isExam: a.isExam,
+      gradingMode: a.gradingMode,
       createdAt: iso(a.createdAt),
       updatedAt: iso(a.updatedAt),
     }),
@@ -110,6 +111,7 @@ export function toRubric(r: Rubric) {
     assignmentId: r.assignmentId,
     name: r.name,
     criteria: r.criteria,
+    ...(r.aiOffsets !== null && { aiOffsets: r.aiOffsets }),
     createdAt: iso(r.createdAt),
     updatedAt: iso(r.updatedAt),
   };
@@ -128,6 +130,7 @@ export function toSubmission(s: Submission) {
       instructorComment: s.instructorComment,
       criterionComments: s.criterionComments,
       criterionScores: s.criterionScores,
+      aiCriterionScores: s.aiCriterionScores,
       externalUseConsent: s.externalUseConsent,
       status: submissionStatus.toApi(s.status),
       groupId: s.groupId,

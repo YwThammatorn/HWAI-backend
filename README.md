@@ -106,6 +106,11 @@ Response shape ตรงกับ type ใน `HWAI-frontend/src/lib/*.ts` (fiel
 | ทีม | `GET /student-groups` | `GET /assignments/:id/groups` | `POST` ที่เดียวกัน (ไม่เกิน `maxGroupSize`) | `PATCH`/`DELETE /student-groups/:id` |
 | ผู้ร่วมสอน (section roles) | `GET /section-roles` | `GET /courses/:courseId/roles` | `POST` ที่เดียวกัน (`accountId` = id นักศึกษาสำหรับ TA / id อาจารย์สำหรับ co-teacher, 1 role ต่อคนต่อวิชา) | `PATCH /section-roles/:id/permissions`, `DELETE /section-roles/:id` |
 | CLO | `GET /clos` | `GET /courses/:courseId/clos` | `POST` ที่เดียวกัน | `PATCH`/`DELETE /clos/:id` |
+| คลัง rubric | `GET /rubric-library` | `GET /rubric-library?courseTemplateId=` (วิชานั้น + ที่ใช้ได้ทุกวิชา) | `POST /rubric-library` | `PATCH` (เปลี่ยนชื่อ) / `DELETE /rubric-library/:id` |
+| Calibration | `GET /calibration-runs` | `GET /calibration-runs?assignmentId=` | `PUT /calibration-runs/:id` (สร้างหรือแทนที่ทั้ง run) | `DELETE /calibration-runs/:id` |
+
+field เกี่ยวกับ AI: งานมี `gradingMode` (`"ai"`/`"manual"` — อาจารย์เลือกตอนเริ่มตรวจ), งานที่ส่งมี `aiCriterionScores` (คะแนนรายเกณฑ์ที่ AI ให้),
+rubric มี `aiOffsets` (ค่าปรับ AI จากหน้า Calibration) และเกณฑ์แต่ละข้อมี `cloIds` (CLO ที่เกณฑ์นั้นวัด)
 
 ลบงาน → rubric, งานที่ส่ง และทีมของงานนั้นถูกลบตาม · ลบรายวิชา → เนื้อหาทั้งหมดของรายวิชาถูกลบตาม · ลบหมวดคะแนน → งานยังอยู่แค่ไม่มีหมวด
 
@@ -160,6 +165,8 @@ src/
 | `files` | `StoredFile` | `/files` | ไฟล์ที่อัปโหลด |
 | `section_roles` | `SectionRole` | `/section-roles` | ผู้ร่วมสอนในรายวิชา — `teacher_id` หรือ `student_id` อย่างใดอย่างหนึ่ง (CHECK) ลบอาจารย์/นักศึกษาแล้ว role หายตาม |
 | `clos` | `Clo` | `/clos` | ผลลัพธ์การเรียนรู้ของรายวิชา (CLO) |
+| `rubric_library_entries` | `RubricLibraryEntry` | `/rubric-library` | คลัง rubric ต่อวิชา — ลบวิชา (course template) แล้วหายตาม, งานต้นทางเป็นแค่ที่มา |
+| `calibration_runs` | `CalibrationRun` | `/calibration-runs` | ผล Calibration ของ AI ต่องาน — ลบงานแล้วหายตาม |
 
 `courses.term` เก็บเป็น `'1'` / `'2'` / `'3'` / `'summer'` ·
 `enrollments.student_id`, `submissions.student_id`, `student_groups.member_student_ids` เก็บ**รหัสนักศึกษา** (เช่น `69070101`) เป็นข้อความ ไม่ใช่ FK — ตรงกับที่ frontend ใช้

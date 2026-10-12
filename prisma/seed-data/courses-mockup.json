@@ -218,21 +218,6 @@
     "sectionNumber": "2"
   },
   {
-    "id": "c-mock-15",
-    "name": "การเรียนรู้ของเครื่อง",
-    "description": "Machine Learning",
-    "status": "active",
-    "coverColor": "#92400E",
-    "icon": "flask",
-    "createdAt": "2026-08-01T00:00:00.000Z",
-    "updatedAt": "2026-08-01T00:00:00.000Z",
-    "code": "01076362",
-    "courseTemplateId": "ct-25",
-    "academicYear": 2569,
-    "term": 2,
-    "sectionNumber": "1"
-  },
-  {
     "id": "c-mock-16",
     "name": "สถาปัตยกรรมคอมพิวเตอร์",
     "description": "Computer Architecture",
@@ -413,21 +398,6 @@
     "sectionNumber": "1"
   },
   {
-    "id": "c-mock-28",
-    "name": "ปัญญาประดิษฐ์และการเรียนรู้ของเครื่อง",
-    "description": "Artificial Intelligence and Machine Learning",
-    "status": "active",
-    "coverColor": "#92400E",
-    "icon": "globe",
-    "createdAt": "2026-08-01T00:00:00.000Z",
-    "updatedAt": "2026-08-01T00:00:00.000Z",
-    "code": "01077332",
-    "courseTemplateId": "ct-34",
-    "academicYear": 2569,
-    "term": 2,
-    "sectionNumber": "1"
-  },
-  {
     "id": "c-mock-29",
     "name": "การปฏิสัมพันธ์ระหว่างมนุษย์และคอมพิวเตอร์",
     "description": "Human-Computer Interaction",
@@ -485,21 +455,6 @@
     "courseTemplateId": "ct-50",
     "academicYear": 2569,
     "term": 1,
-    "sectionNumber": "1"
-  },
-  {
-    "id": "c-mock-33",
-    "name": "Machine Learning",
-    "description": "Machine Learning",
-    "status": "active",
-    "coverColor": "#4A6478",
-    "icon": "laptop",
-    "createdAt": "2026-08-01T00:00:00.000Z",
-    "updatedAt": "2026-08-01T00:00:00.000Z",
-    "code": "01078362",
-    "courseTemplateId": "ct-49",
-    "academicYear": 2569,
-    "term": 2,
     "sectionNumber": "1"
   },
   {
