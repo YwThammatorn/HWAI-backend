@@ -1,7 +1,9 @@
 import { Router } from "express";
 import { z } from "zod";
 import { prisma } from "../lib/prisma.js";
-import { parse } from "../lib/http.js";
+import { HttpError, parse } from "../lib/http.js";
+import { requireAdmin, requireStaff } from "../lib/access.js";
+import { principalOf } from "../lib/auth.js";
 import { termFromApi, toCourse, toManagedTeacher } from "../lib/serialize.js";
 
 export const coursesRouter = Router();
@@ -29,6 +31,10 @@ export const courseCreate = courseFields.extend({
 });
 export const courseUpdate = courseFields.partial();
 
+// What a course's own staff may change (with canEditSettings) — the teacher's course and settings
+// pages. Which subject / year / term / section a course is stays with admins.
+const STAFF_FIELDS = new Set(["name", "description", "status", "coverColor", "icon", "schedule", "room"]);
+
 function mapTerm<T extends { term?: 1 | 2 | 3 | "summer" | null }>(data: T) {
   const { term, ...rest } = data;
   if (term === undefined) return rest;
@@ -46,6 +52,7 @@ coursesRouter.get("/courses/:id", async (req, res) => {
 });
 
 coursesRouter.post("/courses", async (req, res) => {
+  requireAdmin(req);
   const data = parse(courseCreate, req.body);
   const row = await prisma.course.create({ data: mapTerm(data) });
   res.status(201).json(toCourse(row));
@@ -53,12 +60,18 @@ coursesRouter.post("/courses", async (req, res) => {
 
 coursesRouter.patch("/courses/:id", async (req, res) => {
   const data = parse(courseUpdate, req.body);
+  if (!principalOf(req).admin) {
+    await requireStaff(req, req.params.id, "canEditSettings");
+    const adminOnly = Object.keys(data).filter((k) => !STAFF_FIELDS.has(k));
+    if (adminOnly.length > 0) throw new HttpError(403, `Only an admin can change: ${adminOnly.join(", ")}`);
+  }
   const row = await prisma.course.update({ where: { id: req.params.id }, data: mapTerm(data) });
   res.json(toCourse(row));
 });
 
 // Teacher assignments (teacher_courses) cascade-delete via the FK.
 coursesRouter.delete("/courses/:id", async (req, res) => {
+  requireAdmin(req);
   await prisma.course.delete({ where: { id: req.params.id } });
   res.status(204).end();
 });

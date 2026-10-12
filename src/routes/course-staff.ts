@@ -6,6 +6,15 @@ import type { Clo, SectionRole } from "../generated/prisma/client.js";
 import { Prisma } from "../generated/prisma/client.js";
 import { prisma } from "../lib/prisma.js";
 import { HttpError, parse } from "../lib/http.js";
+import {
+  courseFilter,
+  permissionsOf,
+  requireMember,
+  requireStaff,
+  visibleCourses,
+  type Permissions,
+} from "../lib/access.js";
+import { principalOf } from "../lib/auth.js";
 
 export const courseStaffRouter = Router();
 
@@ -59,19 +68,42 @@ async function resolveAccount(accountId: string, role: ApiRole) {
   throw new HttpError(400, "accountId is neither a teacher nor a student");
 }
 
-courseStaffRouter.get("/section-roles", async (_req, res) => {
-  const rows = await prisma.sectionRole.findMany({ orderBy: { createdAt: "asc" } });
+/** Nobody hands out (or takes away) more than they hold: `caller` must have every permission in `perms`. */
+function assertCovers(caller: Permissions, perms: Permissions) {
+  const missing = (Object.keys(perms) as (keyof Permissions)[]).filter((k) => perms[k] && !caller[k]);
+  if (missing.length > 0) throw new HttpError(403, `You'd need ${missing.join(", ")} yourself`);
+}
+
+async function findRole(id: string) {
+  const row = await prisma.sectionRole.findUnique({ where: { id } });
+  if (!row) throw new HttpError(404, "Section role not found");
+  return row;
+}
+
+/** Is this role row the caller's own? */
+function isOwn(req: Parameters<typeof principalOf>[0], row: SectionRole) {
+  const p = principalOf(req);
+  return (!!p.teacher && row.teacherId === p.teacher.id) || (!!p.student && row.studentId === p.student.id);
+}
+
+// Reading needs membership in the course; adding, changing and removing roles needs canManageRoster.
+courseStaffRouter.get("/section-roles", async (req, res) => {
+  const courseId = courseFilter(await visibleCourses(principalOf(req)));
+  const rows = await prisma.sectionRole.findMany({ where: courseId && { courseId }, orderBy: { createdAt: "asc" } });
   res.json(rows.map(toSectionRole));
 });
 
 courseStaffRouter.get("/courses/:courseId/roles", async (req, res) => {
+  await requireMember(req, req.params.courseId);
   const rows = await prisma.sectionRole.findMany({ where: { courseId: req.params.courseId }, orderBy: { createdAt: "asc" } });
   res.json(rows.map(toSectionRole));
 });
 
 // One role per person per course (409 on a second).
 courseStaffRouter.post("/courses/:courseId/roles", async (req, res) => {
+  const caller = await requireStaff(req, req.params.courseId, "canManageRoster");
   const { id, accountId, role } = parse(sectionRoleCreate, req.body);
+  assertCovers(caller, permissionsOf(ROLE_TO_DB[role], null));
   const account = await resolveAccount(accountId, role);
   const row = await prisma.sectionRole.create({
     data: { ...(id && { id }), courseId: req.params.courseId, role: ROLE_TO_DB[role], ...account },
@@ -81,6 +113,11 @@ courseStaffRouter.post("/courses/:courseId/roles", async (req, res) => {
 
 courseStaffRouter.patch("/section-roles/:id/permissions", async (req, res) => {
   const permissions = parse(permissionsSchema.nullable(), req.body);
+  const current = await findRole(req.params.id);
+  const caller = await requireStaff(req, current.courseId, "canManageRoster");
+  if (!principalOf(req).admin && isOwn(req, current)) throw new HttpError(403, "You can't change your own permissions");
+  assertCovers(caller, permissionsOf(current.role, current.permissions));
+  assertCovers(caller, permissions ?? permissionsOf(current.role, null));
   const row = await prisma.sectionRole.update({
     where: { id: req.params.id },
     data: { permissions: permissions === null ? Prisma.DbNull : permissions },
@@ -89,6 +126,9 @@ courseStaffRouter.patch("/section-roles/:id/permissions", async (req, res) => {
 });
 
 courseStaffRouter.delete("/section-roles/:id", async (req, res) => {
+  const current = await findRole(req.params.id);
+  const caller = await requireStaff(req, current.courseId, "canManageRoster");
+  assertCovers(caller, permissionsOf(current.role, current.permissions));
   await prisma.sectionRole.delete({ where: { id: req.params.id } });
   res.status(204).end();
 });
@@ -106,29 +146,41 @@ function toClo(c: Clo) {
   return { id: c.id, courseId: c.courseId, code: c.code, text: c.text, createdAt: iso(c.createdAt), updatedAt: iso(c.updatedAt) };
 }
 
-courseStaffRouter.get("/clos", async (_req, res) => {
-  const rows = await prisma.clo.findMany({ orderBy: [{ courseId: "asc" }, { createdAt: "asc" }] });
+async function courseOfClo(id: string) {
+  const c = await prisma.clo.findUnique({ where: { id }, select: { courseId: true } });
+  if (!c) throw new HttpError(404, "CLO not found");
+  return c.courseId;
+}
+
+// CLOs are course settings: reading needs membership, changing them canEditSettings.
+courseStaffRouter.get("/clos", async (req, res) => {
+  const courseId = courseFilter(await visibleCourses(principalOf(req)));
+  const rows = await prisma.clo.findMany({ where: courseId && { courseId }, orderBy: [{ courseId: "asc" }, { createdAt: "asc" }] });
   res.json(rows.map(toClo));
 });
 
 courseStaffRouter.get("/courses/:courseId/clos", async (req, res) => {
+  await requireMember(req, req.params.courseId);
   const rows = await prisma.clo.findMany({ where: { courseId: req.params.courseId }, orderBy: { createdAt: "asc" } });
   res.json(rows.map(toClo));
 });
 
 courseStaffRouter.post("/courses/:courseId/clos", async (req, res) => {
+  await requireStaff(req, req.params.courseId, "canEditSettings");
   const { courseId: _ignored, ...data } = parse(cloCreate, req.body);
   const row = await prisma.clo.create({ data: { ...data, courseId: req.params.courseId } });
   res.status(201).json(toClo(row));
 });
 
 courseStaffRouter.patch("/clos/:id", async (req, res) => {
+  await requireStaff(req, await courseOfClo(req.params.id), "canEditSettings");
   const data = parse(cloUpdate, req.body);
   const row = await prisma.clo.update({ where: { id: req.params.id }, data });
   res.json(toClo(row));
 });
 
 courseStaffRouter.delete("/clos/:id", async (req, res) => {
+  await requireStaff(req, await courseOfClo(req.params.id), "canEditSettings");
   await prisma.clo.delete({ where: { id: req.params.id } });
   res.status(204).end();
 });

@@ -63,12 +63,24 @@ async function main() {
     await prisma.student.upsert({ where: { studentId: s.studentId }, create: s, update: changes });
   }
 
+  await seedDemoAccounts();
   const content = await seedCourseContent();
 
   console.log(
     `Seeded ${curriculum.curriculumVersions.length} curriculum versions, ${curriculum.courseTemplates.length} course templates, ` +
       `${courses.length} courses, ${teachers.length} teachers, ${students.length} students; ${content}.`,
   );
+}
+
+// The demo admin: ผศ.ดร. สมศักดิ์ (teacher t-mock-1) is also an admin — but only while demo sign-in is on;
+// real (Google) sign-in never makes him one. A teacher is never also a student.
+async function seedDemoAccounts() {
+  const email = "somsak.c@kmitl.ac.th";
+  await prisma.admin.upsert({
+    where: { email },
+    create: { email, name: "สมศักดิ์ เจริญสุข", demo: true },
+    update: { name: "สมศักดิ์ เจริญสุข", demo: true },
+  });
 }
 
 // Course content = seed-commands [5]/[15] (student-flow) + [14] (student-history) + [16] (the UX/UI class) +

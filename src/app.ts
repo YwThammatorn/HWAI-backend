@@ -3,6 +3,8 @@ import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import { openapiSpec } from "./openapi.js";
 import { errorHandler } from "./lib/http.js";
+import { loadPrincipal, originGuard, requireSignIn } from "./lib/auth.js";
+import { authRouter } from "./routes/auth.js";
 import { curriculumRouter } from "./routes/curriculum.js";
 import { coursesRouter } from "./routes/courses.js";
 import { managedTeachersRouter } from "./routes/managed-teachers.js";
@@ -19,14 +21,22 @@ export function createApp() {
   const app = express();
 
   const origins = (process.env.CORS_ORIGIN ?? "http://localhost:3000").split(",").map((o) => o.trim());
-  app.use(cors({ origin: origins }));
-  // Before express.json(): an upload's body is the raw file, whatever its Content-Type (even JSON).
-  app.use("/api", filesRouter);
-  app.use(express.json({ limit: "5mb" })); // CSV imports post whole arrays
+  app.set("trust proxy", process.env.TRUST_PROXY === "true"); // real client IPs in the demo sign-in log
+  // credentials: the session cookie comes along on the frontend's cross-origin fetches.
+  app.use(cors({ origin: origins, credentials: true }));
+  app.use("/api", originGuard(origins), loadPrincipal);
 
+  // Open without signing in: health and the sign-in endpoints.
   app.get("/api/health", (_req, res) => {
     res.json({ ok: true });
   });
+  app.use("/api", authRouter);
+
+  // Everything else needs a session. Each route then checks what the caller may do (lib/access.ts).
+  app.use("/api", requireSignIn);
+  // Before express.json(): an upload's body is the raw file, whatever its Content-Type (even JSON).
+  app.use("/api", filesRouter);
+  app.use(express.json({ limit: "5mb" })); // CSV imports post whole arrays
 
   // API playground: Swagger UI at /docs, raw spec at /openapi.json
   app.get("/openapi.json", (_req, res) => {

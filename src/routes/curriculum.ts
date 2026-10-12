@@ -2,6 +2,7 @@ import { Router } from "express";
 import { z } from "zod";
 import { prisma } from "../lib/prisma.js";
 import { parse } from "../lib/http.js";
+import { requireAdmin } from "../lib/access.js";
 import { toCourseTemplate, toCurriculumVersion } from "../lib/serialize.js";
 
 export const curriculumRouter = Router();
@@ -37,12 +38,14 @@ curriculumRouter.get("/curriculum-versions", async (_req, res) => {
 });
 
 curriculumRouter.post("/curriculum-versions", async (req, res) => {
+  requireAdmin(req);
   const data = parse(versionCreate, req.body);
   const row = await prisma.curriculumVersion.create({ data });
   res.status(201).json(toCurriculumVersion(row));
 });
 
 curriculumRouter.patch("/curriculum-versions/:id", async (req, res) => {
+  requireAdmin(req);
   const data = parse(versionUpdate, req.body);
   const row = await prisma.curriculumVersion.update({ where: { id: req.params.id }, data });
   res.json(toCurriculumVersion(row));
@@ -50,6 +53,7 @@ curriculumRouter.patch("/curriculum-versions/:id", async (req, res) => {
 
 // Course templates cascade-delete via the FK (onDelete: Cascade).
 curriculumRouter.delete("/curriculum-versions/:id", async (req, res) => {
+  requireAdmin(req);
   await prisma.curriculumVersion.delete({ where: { id: req.params.id } });
   res.status(204).end();
 });
@@ -71,18 +75,21 @@ curriculumRouter.get("/curriculum-versions/:id/course-templates", async (req, re
 });
 
 curriculumRouter.post("/curriculum-versions/:id/course-templates", async (req, res) => {
+  requireAdmin(req);
   const { curriculumVersionId: _ignored, ...data } = parse(templateCreate, req.body);
   const row = await prisma.courseTemplate.create({ data: { ...data, curriculumVersionId: req.params.id } });
   res.status(201).json(toCourseTemplate(row));
 });
 
 curriculumRouter.patch("/course-templates/:id", async (req, res) => {
+  requireAdmin(req);
   const data = parse(templateUpdate, req.body);
   const row = await prisma.courseTemplate.update({ where: { id: req.params.id }, data });
   res.json(toCourseTemplate(row));
 });
 
 curriculumRouter.delete("/course-templates/:id", async (req, res) => {
+  requireAdmin(req);
   await prisma.courseTemplate.delete({ where: { id: req.params.id } });
   res.status(204).end();
 });

@@ -35,6 +35,37 @@ NEXT_PUBLIC_API_URL=http://localhost:4000
 แล้ว `npm run dev` ฝั่ง frontend ใหม่ ถ้าไม่ตั้งค่านี้ frontend จะใช้ localStorage เหมือนเดิม (Playwright tests ใช้โหมดนี้)
 frontend ต้องรันที่ origin ที่อยู่ใน `CORS_ORIGIN` (ค่าเริ่มต้น `http://localhost:3000`, ใส่หลายค่าคั่นด้วย `,`)
 
+ตอนนี้ยังไม่มี Google sign-in — จะเข้าระบบได้ต้องเปิด demo sign-in (`DEMO_LOGIN=true` ใน `.env`) แล้วกดปุ่ม
+**Demo sign-in** ในหน้า login (Admin / Teacher = ผศ.ดร. สมศักดิ์ `somsak.c@kmitl.ac.th`, Student = `69070101`)
+
+## การเข้าสู่ระบบและสิทธิ์
+
+- **Session** — cookie `hwai_session` (HttpOnly, SameSite=Lax, Secure ตอน production) เก็บ token สุ่ม ฐานข้อมูลเก็บแค่ SHA-256
+  ของ token (ตาราง `sessions`) ทุก endpoint ต้องเข้าสู่ระบบ (ไม่งั้น 401) ยกเว้น `/api/health` และ `/api/auth/*`
+  และ request ที่แก้ข้อมูลต้องมาจาก origin ใน `CORS_ORIGIN` (กัน CSRF)
+- **ใครเป็นใคร** — หาจากอีเมลของ session: แถวใน `admins` → admin, แถวใน `teachers` ที่ active → อาจารย์ / TA,
+  แถวใน `students` ที่ active → นักศึกษา (หนึ่งอีเมลมีได้หลายบทบาท) บัญชีที่ถูกปิด (inactive) หรือลบไป session ใช้ไม่ได้ทันที
+  ไม่มีการสมัครเอง — บัญชีต้องมีอยู่ก่อน (admin เพิ่ม)
+- **Google sign-in** (เฉพาะ @kmitl.ac.th) — ยังไม่ได้ทำ รอ Client ID; ฝั่ง backend จะตรวจ `hd` เองด้วย
+- **Demo sign-in** — `POST /api/auth/demo-login { email }` เข้าเป็นบัญชีที่มีอยู่จริงโดยไม่ต้องยืนยันตัวตน
+  *ข้ามแค่การยืนยันตัวตน สิทธิ์เท่าบัญชีนั้นทุกอย่าง* — เปิดเมื่อ `DEMO_LOGIN=true` เท่านั้น, ปิดเสมอเมื่อ `NODE_ENV=production`,
+  ใช้ได้เฉพาะอีเมลใน `DEMO_ACCOUNTS`, session อยู่ 8 ชม., log ทุกครั้งที่ใช้ และ session เดโมใช้ไม่ได้ทันทีที่ปิด `DEMO_LOGIN`
+  (frontend แสดงแถบ "Demo mode" ตลอดที่เข้าแบบนี้)
+- **Demo admin** — `admins.demo = true` เป็น admin เฉพาะตอนเปิด demo sign-in (seed ให้ `somsak.c` เป็นแบบนี้)
+  — เพิ่ม admin จริงด้วยการเพิ่มแถวใน `admins` (`demo = false`) · อาจารย์เป็นนักศึกษาไม่ได้ จะดูหน้านักศึกษาให้ login เป็นนักศึกษา
+
+| ใคร | ทำอะไรได้ |
+|---|---|
+| admin | ทุกอย่าง |
+| ทุกคนที่เข้าสู่ระบบ | อ่านรายวิชา, หลักสูตร, รายชื่ออาจารย์; อัปโหลด / เปิดไฟล์; ลบไฟล์ที่ตัวเองอัปโหลด |
+| อาจารย์หลักของวิชา (`course_teachers`) / co-teacher | ทุกอย่างในวิชานั้น (TA-role ที่ admin assign เป็นอาจารย์หลัก ได้สิทธิ์แบบ TA) |
+| TA (`section_roles`) | ตรวจงาน, เลือกโหมดตรวจ, Calibration + ตาม `permissions`: `canManageRoster` รายชื่อ + ผู้ร่วมสอน, `canEditSettings` ตั้งค่าวิชา / งาน / rubric / หมวดคะแนน / CLO, `canPublishScores` ประกาศคะแนน — ให้สิทธิ์คนอื่นเกินที่ตัวเองมีไม่ได้ และแก้สิทธิ์ตัวเองไม่ได้ |
+| อาจารย์ (ทุกคน) | ใช้คลัง rubric; เห็นรายชื่อนักศึกษาทั้งหมด (ไว้เพิ่มเข้าวิชา / เลือก TA) |
+| นักศึกษา | อ่านข้อมูลวิชาที่ลงทะเบียน (รายชื่อเพื่อน, งาน, rubric, ทีม, CLO); ส่ง / ส่งซ้ำงานของตัวเอง หรือของเพื่อนร่วมทีมในงานกลุ่ม — ผู้ส่ง, ชื่อ, เวลา, คะแนน, สถานะ เซิร์ฟเวอร์กำหนดเอง ส่งซ้ำได้แค่ไฟล์/ลิงก์ และส่งซ้ำงานที่ตรวจแล้วไม่ได้; ตั้งทีมที่ตัวเองอยู่ / ออกจากทีม; เห็นข้อมูลนักศึกษาของตัวเองเท่านั้น |
+
+นักศึกษาเห็นงานที่ส่งของตัวเองและเพื่อนร่วมทีม — คะแนนและ feedback ถูกซ่อนจนกว่าอาจารย์จะประกาศ (`gradingFinalized`) —
+และหลังประกาศจะเห็นคะแนนของคนอื่นแบบไม่ระบุตัวตน (ไว้คำนวณ min / ค่าเฉลี่ย / max ของห้อง)
+
 ## Scripts
 
 | Script | |
@@ -50,13 +81,14 @@ frontend ต้องรันที่ origin ที่อยู่ใน `CORS
 ## ลองเล่น API
 
 - **Swagger UI** — http://localhost:4000/docs กดที่ endpoint → *Try it out* → *Execute* ยิงจริงได้เลย (spec ดิบอยู่ที่ `/openapi.json` เอาไป import เข้า Postman/Insomnia ได้)
+  เรียก `POST /auth/demo-login` ก่อน (เช่น `{ "email": "somsak.c@kmitl.ac.th" }`) แล้ว cookie จะติดไปกับทุก request
 - **Prisma Studio** — `npm run db:studio` ดู/แก้ข้อมูลในตารางตรง ๆ แบบ spreadsheet
 
 request body ใน Swagger สร้างจาก zod schema ตัวเดียวกับที่ route ใช้ validate (`src/openapi.ts`) เลยตรงกับของจริงเสมอ
 
 ## API
 
-Base path `/api`. Error ทุกตัวตอบเป็น `{ "error": "..." }` — 400 validation, 404 not found, 409 ข้อมูลซ้ำ (unique)
+Base path `/api`. Error ทุกตัวตอบเป็น `{ "error": "..." }` — 400 validation, 401 ยังไม่ได้เข้าสู่ระบบ, 403 ไม่มีสิทธิ์, 404 not found, 409 ข้อมูลซ้ำ (unique)
 Response shape ตรงกับ type ใน `HWAI-frontend/src/lib/*.ts` (field ที่ไม่มีค่าจะไม่ถูกส่งมา แทนที่จะเป็น `null`)
 ทุก `POST` ที่สร้างข้อมูลรับ `id` จาก client ได้ (frontend สร้าง id เองเพื่อทำ optimistic update) และ `PATCH` ส่ง `null` เพื่อล้างค่า field ที่ optional
 
@@ -127,7 +159,7 @@ rubric มี `aiOffsets` (ค่าปรับ AI จากหน้า Calibr
 |---|---|---|
 | POST | `/files` | body = ตัวไฟล์, `Content-Type` = ชนิดไฟล์, `X-File-Name` = ชื่อไฟล์ (URI-encoded) → `{ id, name, mimeType, size }` |
 | GET | `/files/:id` | รูป (ยกเว้น SVG) และ PDF เปิดในเบราว์เซอร์ ที่เหลือบังคับดาวน์โหลด และทุกไฟล์ส่งพร้อม `Content-Security-Policy: sandbox` เพื่อไม่ให้ไฟล์ที่อัปโหลดรันสคริปต์ได้ |
-| DELETE | `/files/:id` | เรียกซ้ำได้ |
+| DELETE | `/files/:id` | เฉพาะคนที่อัปโหลด (หรือ admin) — เรียกซ้ำได้ |
 
 ## โครงสร้าง
 
@@ -167,14 +199,16 @@ src/
 | `clos` | `Clo` | `/clos` | ผลลัพธ์การเรียนรู้ของรายวิชา (CLO) |
 | `rubric_library_entries` | `RubricLibraryEntry` | `/rubric-library` | คลัง rubric ต่อวิชา — ลบวิชา (course template) แล้วหายตาม, งานต้นทางเป็นแค่ที่มา |
 | `calibration_runs` | `CalibrationRun` | `/calibration-runs` | ผล Calibration ของ AI ต่องาน — ลบงานแล้วหายตาม |
+| `admins` | `Admin` | — | รายชื่อ admin (`demo = true` = admin เฉพาะตอนเปิด demo sign-in) |
+| `sessions` | `Session` | `/auth/*` | session ที่เข้าสู่ระบบอยู่ (id = SHA-256 ของ token ใน cookie) |
 
 `courses.term` เก็บเป็น `'1'` / `'2'` / `'3'` / `'summer'` ·
 `enrollments.student_id`, `submissions.student_id`, `student_groups.member_student_ids` เก็บ**รหัสนักศึกษา** (เช่น `69070101`) เป็นข้อความ ไม่ใช่ FK — ตรงกับที่ frontend ใช้
 
 ## ยังไม่ได้ทำ
 
-- **Auth** — API ยังไม่มีการยืนยันตัวตน ใครเรียกก็ได้ (frontend ยังไม่มี login จริง/ไม่มี token)
-  ผลที่ตามมา: การซ่อนคะแนนก่อนอาจารย์ "ประกาศ" (`studentVisibleSubmission`) ยังทำแค่ฝั่ง frontend — ถ้าเรียก API ตรง ๆ จะเห็นคะแนนได้
+- **Google sign-in** — รอ Client ID (ตอนนี้เข้าได้แค่ demo sign-in)
+- ไฟล์ที่อัปโหลด ใครที่เข้าสู่ระบบแล้วและรู้ id ก็เปิดได้ (id สุ่ม และจะรู้ได้จากงาน / งานที่ส่งที่ตัวเองเห็นเท่านั้น) — ยังไม่ได้ผูกสิทธิ์อ่านกับงานที่อ้างถึง
 - การแบ่งงานตรวจ (grading assignments) ยังอยู่ใน localStorage ของ frontend (หน้าถูกซ่อนอยู่) — ตอนลบ TA การล้างข้อมูลส่วนนี้ยังทำฝั่ง client
 - AI ตรวจงาน / AI Rubric Assistant ยังเป็นของจำลองในฝั่ง frontend
 - ไฟล์ที่ไม่มีใครอ้างถึงแล้ว (เช่น ไฟล์ในงานที่ส่งของงานที่ถูกลบ) ยังไม่ถูกเก็บกวาดอัตโนมัติ

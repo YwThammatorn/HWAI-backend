@@ -2,6 +2,7 @@ import { Router } from "express";
 import { z } from "zod";
 import { prisma } from "../lib/prisma.js";
 import { parse } from "../lib/http.js";
+import { requireAdmin } from "../lib/access.js";
 import { toManagedTeacher } from "../lib/serialize.js";
 
 export const managedTeachersRouter = Router();
@@ -27,6 +28,7 @@ managedTeachersRouter.get("/managed-teachers", async (_req, res) => {
 });
 
 managedTeachersRouter.post("/managed-teachers", async (req, res) => {
+  requireAdmin(req);
   const data = parse(teacherCreate, req.body);
   const row = await prisma.teacher.create({ data, include });
   res.status(201).json(toManagedTeacher(row));
@@ -34,12 +36,14 @@ managedTeachersRouter.post("/managed-teachers", async (req, res) => {
 
 // All-or-nothing: one duplicate email rejects the whole batch with 409.
 managedTeachersRouter.post("/managed-teachers/import", async (req, res) => {
+  requireAdmin(req);
   const items = parse(z.array(teacherCreate), req.body);
   const rows = await prisma.$transaction(items.map((data) => prisma.teacher.create({ data, include })));
   res.status(201).json(rows.map(toManagedTeacher));
 });
 
 managedTeachersRouter.patch("/managed-teachers/:id", async (req, res) => {
+  requireAdmin(req);
   const { courseIds, ...data } = parse(teacherUpdate, req.body);
   const row = await prisma.teacher.update({
     where: { id: req.params.id },
@@ -55,6 +59,7 @@ managedTeachersRouter.patch("/managed-teachers/:id", async (req, res) => {
 });
 
 managedTeachersRouter.patch("/managed-teachers/:id/status", async (req, res) => {
+  requireAdmin(req);
   const body = parse(z.object({ status }), req.body);
   await prisma.teacher.update({ where: { id: req.params.id }, data: { status: body.status } });
   res.status(204).end();
@@ -63,12 +68,14 @@ managedTeachersRouter.patch("/managed-teachers/:id/status", async (req, res) => 
 // Course assignments (course_teachers) cascade-delete via the FK. Section roles / grading assignments still live in
 // frontend localStorage and are cascaded there.
 managedTeachersRouter.delete("/managed-teachers/:id", async (req, res) => {
+  requireAdmin(req);
   await prisma.teacher.delete({ where: { id: req.params.id } });
   res.status(204).end();
 });
 
 // Idempotent — assigning twice is a no-op.
 managedTeachersRouter.post("/managed-teachers/:id/courses/:courseId", async (req, res) => {
+  requireAdmin(req);
   const { id: teacherId, courseId } = req.params;
   await prisma.courseTeacher.upsert({
     where: { courseId_teacherId: { courseId, teacherId } },
@@ -79,6 +86,7 @@ managedTeachersRouter.post("/managed-teachers/:id/courses/:courseId", async (req
 });
 
 managedTeachersRouter.delete("/managed-teachers/:id/courses/:courseId", async (req, res) => {
+  requireAdmin(req);
   await prisma.courseTeacher.deleteMany({ where: { teacherId: req.params.id, courseId: req.params.courseId } });
   res.status(204).end();
 });

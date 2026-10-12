@@ -166,7 +166,7 @@ model Student {
   title               String?
   firstName           String             @map("first_name")
   lastName            String             @map("last_name")
-  email               String
+  email               String             @unique // how sign-in finds the student (always studentId@kmitl.ac.th)
   program             String
   status              AccountStatus      @default(active)
   curriculumVersionId String?            @map("curriculum_version_id")
@@ -354,12 +354,14 @@ model StudentGroup {
 // Uploaded files (assignment attachments and submissions). An attachment with source "upload"
 // stores this id as its `ref`; the file is served at GET /api/files/:id.
 model StoredFile {
-  id        String   @id @default(uuid())
-  name      String
-  mimeType  String   @map("mime_type")
-  size      Int
-  data      Bytes
-  createdAt DateTime @default(now()) @map("created_at")
+  id         String   @id @default(uuid())
+  name       String
+  mimeType   String   @map("mime_type")
+  size       Int
+  data       Bytes
+  /// Email of whoever uploaded it — only they (or an admin) may delete it. Null for files from before sign-in.
+  uploadedBy String?  @map("uploaded_by")
+  createdAt  DateTime @default(now()) @map("created_at")
 
   @@map("files")
 }
@@ -454,4 +456,34 @@ model CalibrationRun {
 
   @@index([assignmentId])
   @@map("calibration_runs")
+}
+
+// ── Sign-in ──────────────────────────────────────────────────────────────────
+
+// Who may use the admin pages. A person's other roles come from the account tables by email:
+// teachers (teacher / TA), students, and section_roles for TAs / co-teachers.
+model Admin {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  /// A demo admin is only an admin while demo sign-in is on — real (Google) sign-in never gets it.
+  demo      Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("admins")
+}
+
+// A signed-in browser. The cookie holds a random token; only its SHA-256 is stored, so a leaked
+// database can't be used to sign in. Deleting the row signs that browser out.
+model Session {
+  id         String   @id // sha256(token), hex
+  email      String
+  /// Signed in through the demo shortcut (no password / Google) — only possible while DEMO_LOGIN is on.
+  demo       Boolean  @default(false)
+  expiresAt  DateTime @map("expires_at")
+  createdAt  DateTime @default(now()) @map("created_at")
+  lastSeenAt DateTime @default(now()) @map("last_seen_at")
+
+  @@index([email])
+  @@map("sessions")
 }

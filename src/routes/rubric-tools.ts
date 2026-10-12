@@ -5,10 +5,18 @@ import { z } from "zod";
 import type { CalibrationRun, RubricLibraryEntry } from "../generated/prisma/client.js";
 import { Prisma } from "../generated/prisma/client.js";
 import { prisma } from "../lib/prisma.js";
-import { parse } from "../lib/http.js";
+import { HttpError, parse } from "../lib/http.js";
+import { courseOfAssignment, isStaffAnywhere, requireStaff, visibleCourses } from "../lib/access.js";
+import { principalOf } from "../lib/auth.js";
 import { criterionSchema } from "../lib/content.js";
 
 export const rubricToolsRouter = Router();
+
+// The library is shared by all teaching staff (anyone who teaches or assists somewhere); students never
+// see it. Calibration runs belong to an assignment and its course's staff.
+async function requireTeachingStaff(req: Parameters<typeof principalOf>[0]) {
+  if (!(await isStaffAnywhere(principalOf(req)))) throw new HttpError(403, "Teaching staff only");
+}
 
 const iso = (d: Date) => d.toISOString();
 const json = <T>(v: T | null | undefined) =>
@@ -38,6 +46,7 @@ function toLibraryEntry(e: RubricLibraryEntry) {
 }
 
 rubricToolsRouter.get("/rubric-library", async (req, res) => {
+  await requireTeachingStaff(req);
   // ?courseTemplateId=… → that subject's entries plus the ones offered for every course
   const tpl = typeof req.query.courseTemplateId === "string" ? req.query.courseTemplateId : undefined;
   const rows = await prisma.rubricLibraryEntry.findMany({
@@ -48,18 +57,21 @@ rubricToolsRouter.get("/rubric-library", async (req, res) => {
 });
 
 rubricToolsRouter.post("/rubric-library", async (req, res) => {
+  await requireTeachingStaff(req);
   const { criteria, ...data } = parse(libraryEntryCreate, req.body);
   const row = await prisma.rubricLibraryEntry.create({ data: { ...data, criteria: criteria as Prisma.InputJsonValue } });
   res.status(201).json(toLibraryEntry(row));
 });
 
 rubricToolsRouter.patch("/rubric-library/:id", async (req, res) => {
+  await requireTeachingStaff(req);
   const data = parse(libraryEntryUpdate, req.body);
   const row = await prisma.rubricLibraryEntry.update({ where: { id: req.params.id }, data });
   res.json(toLibraryEntry(row));
 });
 
 rubricToolsRouter.delete("/rubric-library/:id", async (req, res) => {
+  await requireTeachingStaff(req);
   await prisma.rubricLibraryEntry.delete({ where: { id: req.params.id } });
   res.status(204).end();
 });
@@ -94,7 +106,12 @@ function toCalibrationRun(r: CalibrationRun) {
 
 rubricToolsRouter.get("/calibration-runs", async (req, res) => {
   const assignmentId = typeof req.query.assignmentId === "string" ? req.query.assignmentId : undefined;
-  const rows = await prisma.calibrationRun.findMany({ where: assignmentId ? { assignmentId } : undefined, orderBy: { createdAt: "asc" } });
+  const v = await visibleCourses(principalOf(req));
+  const courseId = v === "all" ? undefined : { in: [...v.staff.keys()] };
+  const rows = await prisma.calibrationRun.findMany({
+    where: { ...(assignmentId && { assignmentId }), ...(courseId && { assignment: { courseId } }) },
+    orderBy: { createdAt: "asc" },
+  });
   res.json(rows.map(toCalibrationRun));
 });
 
@@ -109,12 +126,17 @@ rubricToolsRouter.put("/calibration-runs/:id", async (req, res) => {
     completedAt: date(completedAt),
     appliedAt: date(appliedAt),
   };
-  const existed = await prisma.calibrationRun.findUnique({ where: { id: req.params.id }, select: { id: true } });
+  const existed = await prisma.calibrationRun.findUnique({ where: { id: req.params.id }, select: { assignmentId: true } });
+  await requireStaff(req, await courseOfAssignment(rest.assignmentId));
+  if (existed && existed.assignmentId !== rest.assignmentId) await requireStaff(req, await courseOfAssignment(existed.assignmentId));
   const row = await prisma.calibrationRun.upsert({ where: { id: req.params.id }, create: { id: req.params.id, ...data }, update: data });
   res.status(existed ? 200 : 201).json(toCalibrationRun(row));
 });
 
 rubricToolsRouter.delete("/calibration-runs/:id", async (req, res) => {
+  const run = await prisma.calibrationRun.findUnique({ where: { id: req.params.id }, select: { assignmentId: true } });
+  if (!run) throw new HttpError(404, "Calibration run not found");
+  await requireStaff(req, await courseOfAssignment(run.assignmentId));
   await prisma.calibrationRun.delete({ where: { id: req.params.id } });
   res.status(204).end();
 });

@@ -19,6 +19,7 @@ import { groupCreate, groupUpdate } from "./routes/student-groups.js";
 import { MAX_FILE_BYTES } from "./routes/files.js";
 import { cloCreate, cloUpdate, sectionRoleCreate } from "./routes/course-staff.js";
 import { calibrationRunPut, libraryEntryCreate, libraryEntryUpdate } from "./routes/rubric-tools.js";
+import { demoLoginBody } from "./routes/auth.js";
 
 const json = (schema: z.ZodType) => z.toJSONSchema(schema, { io: "input", unrepresentable: "any" });
 
@@ -101,6 +102,16 @@ const responses = {
     ...timestamps,
   }),
   StoredFile: z.object({ id: z.string(), name: z.string(), mimeType: z.string(), size: z.number().int() }),
+  Me: z.object({
+    email: z.string(),
+    name: z.string(),
+    demo: z.boolean().describe("เข้าสู่ระบบแบบเดโม"),
+    roles: z.array(z.enum(["admin", "teacher", "ta", "student"])),
+    defaultRole: z.enum(["admin", "teacher", "ta", "student"]),
+    teacher: z.object({ id: z.string(), role: z.enum(["teacher", "ta"]), name: z.string() }).nullable(),
+    student: z.object({ id: z.string(), studentId: z.string(), name: z.string(), email: z.string() }).nullable(),
+  }),
+  AuthConfig: z.object({ demoLogin: z.boolean(), demoAccounts: z.array(z.string()), google: z.boolean() }),
   SectionRole: z.object({
     id: z.string(),
     accountId: z.string(),
@@ -232,7 +243,11 @@ type Op = {
   body?: object;
   res: object;
   errors?: Record<string, string>;
+  /** Open without signing in (no cookie needed, no 401/403). */
+  open?: boolean;
 };
+
+const AUTH_ERRORS = { "401": "ยังไม่ได้เข้าสู่ระบบ (ไม่มี / หมดอายุ session cookie)", "403": "ไม่มีสิทธิ์ทำรายการนี้" };
 
 function op(tag: string, o: Op) {
   return {
@@ -240,9 +255,12 @@ function op(tag: string, o: Op) {
     summary: o.summary,
     parameters: [...(o.params ?? []), ...(o.query ?? [])],
     ...(o.body && { requestBody: o.body }),
+    ...(o.open && { security: [] }),
     responses: {
       ...o.res,
-      ...Object.fromEntries(Object.entries(o.errors ?? {}).map(([code, d]) => [code, errorResponse(d)])),
+      ...Object.fromEntries(
+        Object.entries({ ...(o.open ? {} : AUTH_ERRORS), ...o.errors }).map(([code, d]) => [code, errorResponse(d)]),
+      ),
     },
   };
 }
@@ -262,7 +280,14 @@ export const openapiSpec = {
       "Backend สำหรับหน้า admin ของ HWAI-frontend (users / courses / curriculum).\n\n" +
       "- POST ที่สร้างข้อมูลรับ `id` จาก client ได้ (ไม่ส่งจะสร้าง uuid ให้)\n" +
       "- PATCH ส่งเฉพาะ field ที่จะแก้ และส่ง `null` เพื่อล้างค่า field ที่ optional\n" +
-      "- Error ตอบเป็น `{ error: string }` — 400 validation, 404 not found, 409 ข้อมูลซ้ำ",
+      "- Error ตอบเป็น `{ error: string }` — 400 validation, 401 ยังไม่ได้เข้าสู่ระบบ, 403 ไม่มีสิทธิ์, 404 not found, 409 ข้อมูลซ้ำ\n\n" +
+      "**การเข้าสู่ระบบ** — session อยู่ใน cookie `hwai_session` (HttpOnly) ทุก endpoint ต้องเข้าสู่ระบบก่อน ยกเว้น /health และ /auth/*. " +
+      "ลองใน Swagger: เรียก `POST /auth/demo-login` ก่อน (ต้องรันด้วย DEMO_LOGIN=true) แล้ว cookie จะติดไปกับทุก request\n\n" +
+      "**สิทธิ์** — admin ทำได้ทุกอย่าง · หลักสูตร / บัญชีอาจารย์-นักศึกษา / สร้าง-ลบรายวิชา: admin เท่านั้น · " +
+      "ในรายวิชา: อาจารย์หลักและ co-teacher ทำได้ทุกอย่าง, TA ตาม permissions (canManageRoster = รายชื่อ + ผู้ร่วมสอน, " +
+      "canEditSettings = ตั้งค่ารายวิชา / งาน / rubric / หมวดคะแนน / CLO, canPublishScores = ประกาศคะแนน), staff ทุกคนตรวจงานได้ · " +
+      "นักศึกษา: อ่านข้อมูลรายวิชาที่ลงทะเบียน, ส่งงานของตัวเอง (หรือของเพื่อนร่วมทีม) โดยเซิร์ฟเวอร์กำหนดผู้ส่ง เวลา และคะแนนเอง, " +
+      "เห็นคะแนนตัวเองหลังประกาศ และคะแนนคนอื่นแบบไม่ระบุตัวตน",
   },
   servers: [{ url: "/api" }],
   tags: [
@@ -279,13 +304,33 @@ export const openapiSpec = {
     { name: "CLOs", description: "ผลลัพธ์การเรียนรู้ของรายวิชา" },
     { name: "Rubric tools", description: "คลัง rubric สำหรับใช้ซ้ำ และผล Calibration ของ AI" },
     { name: "Files", description: "ไฟล์แนบ (เก็บใน PostgreSQL)" },
+    { name: "Auth", description: "เข้าสู่ระบบ (Google — เร็วๆ นี้; ตอนนี้มีแค่ demo sign-in)" },
     { name: "System" },
   ],
   components: {
     schemas: Object.fromEntries(Object.entries(responses).map(([k, s]) => [k, json(s)])),
+    securitySchemes: { session: { type: "apiKey", in: "cookie", name: "hwai_session" } },
   },
+  security: [{ session: [] }],
   paths: {
-    "/health": { get: op("System", { summary: "Health check", res: ok({ type: "object", properties: { ok: { type: "boolean" } } }) }) },
+    "/health": { get: op("System", { summary: "Health check", open: true, res: ok({ type: "object", properties: { ok: { type: "boolean" } } }) }) },
+
+    "/auth/config": {
+      get: op("Auth", { summary: "วิธีเข้าสู่ระบบที่เปิดอยู่ (หน้า login ใช้)", open: true, res: ok(ref("AuthConfig")) }),
+    },
+    "/auth/demo-login": {
+      post: op("Auth", {
+        summary: "เข้าสู่ระบบแบบเดโม — ข้ามแค่การยืนยันตัวตน สิทธิ์เท่าบัญชีนั้นจริงๆ (DEMO_LOGIN=true, ไม่ใช่ production, เฉพาะอีเมลใน DEMO_ACCOUNTS; session 8 ชม.)",
+        open: true,
+        body: body(json(demoLoginBody), { email: "somsak.c@kmitl.ac.th" }),
+        res: ok(ref("Me")),
+        errors: { ...V400, "403": "อีเมลนี้ใช้ demo sign-in ไม่ได้ / ไม่มีบัญชีที่ active", "404": "ปิด demo sign-in อยู่" },
+      }),
+    },
+    "/auth/logout": { post: op("Auth", { summary: "ออกจากระบบ (ลบ session)", open: true, res: noContent }) },
+    "/auth/me": {
+      get: op("Auth", { summary: "ผู้ที่เข้าสู่ระบบอยู่ และทุกบทบาทที่มี", res: ok(ref("Me")), errors: { "401": AUTH_ERRORS["401"] } }),
+    },
 
     "/curriculum-versions": {
       get: op("Curriculum", { summary: "รายการหลักสูตรทั้งหมด", res: ok({ type: "array", items: ref("CurriculumVersion") }) }),

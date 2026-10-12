@@ -6,6 +6,7 @@
 import express, { Router } from "express";
 import { prisma } from "../lib/prisma.js";
 import { HttpError } from "../lib/http.js";
+import { principalOf } from "../lib/auth.js";
 
 export const MAX_FILE_BYTES = 10 * 1024 * 1024;
 
@@ -25,7 +26,7 @@ filesRouter.post(
     }
     const mimeType = req.get("content-type")?.split(";")[0].trim() || "application/octet-stream";
     const row = await prisma.storedFile.create({
-      data: { name, mimeType, size: data.length, data: new Uint8Array(data) },
+      data: { name, mimeType, size: data.length, data: new Uint8Array(data), uploadedBy: principalOf(req).email },
       select: { id: true, name: true, mimeType: true, size: true },
     });
     res.status(201).json(row);
@@ -51,8 +52,13 @@ filesRouter.get("/files/:id", async (req, res) => {
   res.end(Buffer.from(file.data));
 });
 
+// Any signed-in user can open a file by its id (ids are random and only reach people who can see the
+// assignment or submission that references them). Only whoever uploaded it — or an admin — may delete it.
 // Idempotent: deleting a file that is already gone is fine (the frontend frees files best-effort).
 filesRouter.delete("/files/:id", async (req, res) => {
+  const p = principalOf(req);
+  const file = await prisma.storedFile.findUnique({ where: { id: req.params.id }, select: { uploadedBy: true } });
+  if (file && !p.admin && file.uploadedBy !== p.email) throw new HttpError(403, "Only whoever uploaded a file can delete it");
   await prisma.storedFile.deleteMany({ where: { id: req.params.id } });
   res.status(204).end();
 });

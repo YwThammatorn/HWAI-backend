@@ -5,6 +5,8 @@ import { prisma } from "../lib/prisma.js";
 import { HttpError, parse } from "../lib/http.js";
 import type { Prisma } from "../generated/prisma/client.js";
 import { enrollmentStatus, idOverride, toEnrollment } from "../lib/content.js";
+import { courseFilter, requireMember, requireStaff, visibleCourses } from "../lib/access.js";
+import { principalOf } from "../lib/auth.js";
 
 export const enrollmentsRouter = Router();
 
@@ -28,13 +30,16 @@ function mapStatus<T extends { enrollmentStatus?: z.infer<typeof statusSchema> |
 
 const order = [{ courseId: "asc" as const }, { sequenceNumber: "asc" as const }, { createdAt: "asc" as const }];
 
-// Every roster — the frontend's StudentProvider keeps one flat list.
-enrollmentsRouter.get("/students", async (_req, res) => {
-  const rows = await prisma.enrollment.findMany({ orderBy: order });
+// Every roster the caller can see (their courses' — classmates included, for forming teams); the
+// frontend's StudentProvider keeps one flat list.
+enrollmentsRouter.get("/students", async (req, res) => {
+  const courseId = courseFilter(await visibleCourses(principalOf(req)));
+  const rows = await prisma.enrollment.findMany({ where: courseId && { courseId }, orderBy: order });
   res.json(rows.map(toEnrollment));
 });
 
 enrollmentsRouter.get("/courses/:courseId/students", async (req, res) => {
+  await requireMember(req, req.params.courseId);
   const rows = await prisma.enrollment.findMany({ where: { courseId: req.params.courseId }, orderBy: order });
   res.json(rows.map(toEnrollment));
 });
@@ -82,6 +87,7 @@ async function sectionProgram(tx: Tx, courseId: string): Promise<string | null> 
 // nobody could be enrolled. A duplicate still rejects the whole batch (409).
 enrollmentsRouter.post("/courses/:courseId/students", async (req, res) => {
   const courseId = req.params.courseId;
+  await requireStaff(req, courseId, "canManageRoster");
   const items = parse(z.array(enrollmentCreate), req.body);
   const { created, rejected } = await prisma.$transaction(async (tx) => {
     let pinned = await sectionProgram(tx, courseId);
@@ -122,13 +128,21 @@ enrollmentsRouter.post("/courses/:courseId/students", async (req, res) => {
   res.status(201).json({ enrolled: created.map(toEnrollment), rejected });
 });
 
+async function courseOfEnrollment(id: string) {
+  const e = await prisma.enrollment.findUnique({ where: { id }, select: { courseId: true } });
+  if (!e) throw new HttpError(404, "Enrollment not found");
+  return e.courseId;
+}
+
 enrollmentsRouter.patch("/students/:id", async (req, res) => {
+  await requireStaff(req, await courseOfEnrollment(req.params.id), "canManageRoster");
   const data = parse(enrollmentUpdate, req.body);
   const row = await prisma.enrollment.update({ where: { id: req.params.id }, data: mapStatus(data) });
   res.json(toEnrollment(row));
 });
 
 enrollmentsRouter.delete("/students/:id", async (req, res) => {
+  await requireStaff(req, await courseOfEnrollment(req.params.id), "canManageRoster");
   await prisma.enrollment.delete({ where: { id: req.params.id } });
   res.status(204).end();
 });

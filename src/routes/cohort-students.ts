@@ -2,6 +2,8 @@ import { Router } from "express";
 import { z } from "zod";
 import { prisma } from "../lib/prisma.js";
 import { HttpError, parse } from "../lib/http.js";
+import { isStaffAnywhere, requireAdmin } from "../lib/access.js";
+import { principalOf } from "../lib/auth.js";
 import { toCohortStudent } from "../lib/serialize.js";
 
 export const cohortStudentsRouter = Router();
@@ -25,14 +27,22 @@ export const studentBulkUpdate = z.object({
   data: studentUpdate.omit({ studentId: true }),
 });
 
-cohortStudentsRouter.get("/cohort-students", async (_req, res) => {
-  const rows = await prisma.student.findMany({ orderBy: { studentId: "asc" } });
+// Staff (and admins) see the whole cohort — they enrol students and pick TAs from it. A student
+// sees only their own record.
+cohortStudentsRouter.get("/cohort-students", async (req, res) => {
+  const p = principalOf(req);
+  const everyone = await isStaffAnywhere(p);
+  const rows = await prisma.student.findMany({
+    where: everyone ? undefined : { id: p.student?.id ?? "" },
+    orderBy: { studentId: "asc" },
+  });
   res.json(rows.map(toCohortStudent));
 });
 
 // Takes an array (single add and CSV import share this endpoint). All-or-nothing: one duplicate
 // studentId rejects the whole batch with 409.
 cohortStudentsRouter.post("/cohort-students", async (req, res) => {
+  requireAdmin(req);
   const items = parse(z.array(studentCreate), req.body);
   const rows = await prisma.$transaction(items.map((data) => prisma.student.create({ data })));
   res.status(201).json(rows.map(toCohortStudent));
@@ -40,6 +50,7 @@ cohortStudentsRouter.post("/cohort-students", async (req, res) => {
 
 // All-or-nothing: if any id doesn't exist, nothing is changed and the response is 404.
 cohortStudentsRouter.patch("/cohort-students", async (req, res) => {
+  requireAdmin(req);
   const { ids, data } = parse(studentBulkUpdate, req.body);
   const unique = [...new Set(ids)];
   const rows = await prisma.$transaction(async (tx) => {
@@ -51,12 +62,14 @@ cohortStudentsRouter.patch("/cohort-students", async (req, res) => {
 });
 
 cohortStudentsRouter.patch("/cohort-students/:id", async (req, res) => {
+  requireAdmin(req);
   const data = parse(studentUpdate, req.body);
   const row = await prisma.student.update({ where: { id: req.params.id }, data });
   res.json(toCohortStudent(row));
 });
 
 cohortStudentsRouter.delete("/cohort-students/:id", async (req, res) => {
+  requireAdmin(req);
   await prisma.student.delete({ where: { id: req.params.id } });
   res.status(204).end();
 });
