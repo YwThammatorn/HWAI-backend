@@ -19,7 +19,7 @@ import { groupCreate, groupUpdate } from "./routes/student-groups.js";
 import { MAX_FILE_BYTES } from "./routes/files.js";
 import { cloCreate, cloUpdate, sectionRoleCreate } from "./routes/course-staff.js";
 import { calibrationRunPut, libraryEntryCreate, libraryEntryUpdate } from "./routes/rubric-tools.js";
-import { demoLoginBody } from "./routes/auth.js";
+import { demoLoginBody, googleLoginBody } from "./routes/auth.js";
 
 const json = (schema: z.ZodType) => z.toJSONSchema(schema, { io: "input", unrepresentable: "any" });
 
@@ -111,7 +111,13 @@ const responses = {
     teacher: z.object({ id: z.string(), role: z.enum(["teacher", "ta"]), name: z.string() }).nullable(),
     student: z.object({ id: z.string(), studentId: z.string(), name: z.string(), email: z.string() }).nullable(),
   }),
-  AuthConfig: z.object({ demoLogin: z.boolean(), demoAccounts: z.array(z.string()), google: z.boolean() }),
+  AuthConfig: z.object({
+    demoLogin: z.boolean(),
+    demoAccounts: z.array(z.string()),
+    google: z.boolean(),
+    googleClientId: opt(z.string()),
+    googleDomain: opt(z.string()),
+  }),
   SectionRole: z.object({
     id: z.string(),
     accountId: z.string(),
@@ -304,7 +310,7 @@ export const openapiSpec = {
     { name: "CLOs", description: "ผลลัพธ์การเรียนรู้ของรายวิชา" },
     { name: "Rubric tools", description: "คลัง rubric สำหรับใช้ซ้ำ และผล Calibration ของ AI" },
     { name: "Files", description: "ไฟล์แนบ (เก็บใน PostgreSQL)" },
-    { name: "Auth", description: "เข้าสู่ระบบ (Google — เร็วๆ นี้; ตอนนี้มีแค่ demo sign-in)" },
+    { name: "Auth", description: "เข้าสู่ระบบ (Google สำหรับ @kmitl.ac.th และ demo sign-in)" },
     { name: "System" },
   ],
   components: {
@@ -317,6 +323,15 @@ export const openapiSpec = {
 
     "/auth/config": {
       get: op("Auth", { summary: "วิธีเข้าสู่ระบบที่เปิดอยู่ (หน้า login ใช้)", open: true, res: ok(ref("AuthConfig")) }),
+    },
+    "/auth/google": {
+      post: op("Auth", {
+        summary: "เข้าสู่ระบบด้วย Google — ส่ง ID token (credential) จากปุ่ม Sign in with Google; ตรวจลายเซ็น, aud, email_verified และ hd = kmitl.ac.th แล้วต้องมีบัญชีที่ active (session 7 วัน)",
+        open: true,
+        body: body(json(googleLoginBody)),
+        res: ok(ref("Me")),
+        errors: { ...V400, "401": "token ใช้ไม่ได้", "403": "ไม่ใช่บัญชี @kmitl.ac.th / ไม่มีบัญชีในระบบ", "404": "ยังไม่ได้ตั้ง GOOGLE_CLIENT_ID" },
+      }),
     },
     "/auth/demo-login": {
       post: op("Auth", {

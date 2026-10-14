@@ -35,8 +35,8 @@ NEXT_PUBLIC_API_URL=http://localhost:4000
 แล้ว `npm run dev` ฝั่ง frontend ใหม่ ถ้าไม่ตั้งค่านี้ frontend จะใช้ localStorage เหมือนเดิม (Playwright tests ใช้โหมดนี้)
 frontend ต้องรันที่ origin ที่อยู่ใน `CORS_ORIGIN` (ค่าเริ่มต้น `http://localhost:3000`, ใส่หลายค่าคั่นด้วย `,`)
 
-ตอนนี้ยังไม่มี Google sign-in — จะเข้าระบบได้ต้องเปิด demo sign-in (`DEMO_LOGIN=true` ใน `.env`) แล้วกดปุ่ม
-**Demo sign-in** ในหน้า login (Admin / Teacher = ผศ.ดร. สมศักดิ์ `somsak.c@kmitl.ac.th`, Student = `69070101`)
+เข้าระบบได้สองทาง: ปุ่ม **Sign in with Google** (บัญชี @kmitl.ac.th ที่มีอยู่ในระบบ) หรือ — ถ้าเปิด `DEMO_LOGIN=true` —
+ปุ่ม **Demo sign-in** (Admin / Teacher = ผศ.ดร. สมศักดิ์ `somsak.c@kmitl.ac.th`, Student = `69070101`)
 
 ## การเข้าสู่ระบบและสิทธิ์
 
@@ -46,7 +46,12 @@ frontend ต้องรันที่ origin ที่อยู่ใน `CORS
 - **ใครเป็นใคร** — หาจากอีเมลของ session: แถวใน `admins` → admin, แถวใน `teachers` ที่ active → อาจารย์ / TA,
   แถวใน `students` ที่ active → นักศึกษา (หนึ่งอีเมลมีได้หลายบทบาท) บัญชีที่ถูกปิด (inactive) หรือลบไป session ใช้ไม่ได้ทันที
   ไม่มีการสมัครเอง — บัญชีต้องมีอยู่ก่อน (admin เพิ่ม)
-- **Google sign-in** (เฉพาะ @kmitl.ac.th) — ยังไม่ได้ทำ รอ Client ID; ฝั่ง backend จะตรวจ `hd` เองด้วย
+- **Google sign-in** — `POST /api/auth/google { credential }` รับ ID token จากปุ่ม Sign in with Google ของหน้า login แล้วตรวจเองทั้งหมด:
+  ลายเซ็นและวันหมดอายุของ Google, `aud` = `GOOGLE_CLIENT_ID`, `email_verified`, `hd = kmitl.ac.th` และอีเมลลงท้าย @kmitl.ac.th
+  จากนั้นอีเมลต้องเป็นบัญชีที่ active อยู่แล้ว (session 7 วัน) — เปิดเมื่อตั้ง `GOOGLE_CLIENT_ID`;
+  OAuth client ต้องมี origin ของ frontend ใน *Authorized JavaScript origins* (ตอนนี้ `http://localhost:3000`)
+- **ขึ้นจริง** — ใช้ HTTPS + `NODE_ENV=production` (cookie เป็น Secure และปิด demo sign-in) และให้ frontend กับ API อยู่ site เดียวกัน
+  (เช่น `hwai.example.com` กับ `api.hwai.example.com`) ไม่งั้น browser ไม่ส่ง cookie (SameSite=Lax)
 - **Demo sign-in** — `POST /api/auth/demo-login { email }` เข้าเป็นบัญชีที่มีอยู่จริงโดยไม่ต้องยืนยันตัวตน
   *ข้ามแค่การยืนยันตัวตน สิทธิ์เท่าบัญชีนั้นทุกอย่าง* — เปิดเมื่อ `DEMO_LOGIN=true` เท่านั้น, ปิดเสมอเมื่อ `NODE_ENV=production`,
   ใช้ได้เฉพาะอีเมลใน `DEMO_ACCOUNTS`, session อยู่ 8 ชม., log ทุกครั้งที่ใช้ และ session เดโมใช้ไม่ได้ทันทีที่ปิด `DEMO_LOGIN`
@@ -207,7 +212,6 @@ src/
 
 ## ยังไม่ได้ทำ
 
-- **Google sign-in** — รอ Client ID (ตอนนี้เข้าได้แค่ demo sign-in)
 - ไฟล์ที่อัปโหลด ใครที่เข้าสู่ระบบแล้วและรู้ id ก็เปิดได้ (id สุ่ม และจะรู้ได้จากงาน / งานที่ส่งที่ตัวเองเห็นเท่านั้น) — ยังไม่ได้ผูกสิทธิ์อ่านกับงานที่อ้างถึง
 - การแบ่งงานตรวจ (grading assignments) ยังอยู่ใน localStorage ของ frontend (หน้าถูกซ่อนอยู่) — ตอนลบ TA การล้างข้อมูลส่วนนี้ยังทำฝั่ง client
 - AI ตรวจงาน / AI Rubric Assistant ยังเป็นของจำลองในฝั่ง frontend
