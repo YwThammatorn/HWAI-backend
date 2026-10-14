@@ -109,7 +109,7 @@ const responses = {
     roles: z.array(z.enum(["admin", "teacher", "ta", "student"])),
     defaultRole: z.enum(["admin", "teacher", "ta", "student"]),
     teacher: z.object({ id: z.string(), role: z.enum(["teacher", "ta"]), name: z.string() }).nullable(),
-    student: z.object({ id: z.string(), studentId: z.string(), name: z.string(), email: z.string() }).nullable(),
+    student: z.object({ id: z.string(), studentId: z.string(), name: z.string(), email: z.string(), ta: z.boolean().describe("เป็น TA ในวิชาใดวิชาหนึ่ง") }).nullable(),
   }),
   AuthConfig: z.object({
     demoLogin: z.boolean(),

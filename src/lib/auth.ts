@@ -22,8 +22,8 @@ export interface Principal {
   demo: boolean;
   admin: boolean;
   teacher: { id: string; role: "teacher" | "ta"; name: string } | null;
-  /** The student this account is. */
-  student: { id: string; studentId: string; name: string; email: string } | null;
+  /** The student this account is. `ta`: they are a TA (section role) in at least one course. */
+  student: { id: string; studentId: string; name: string; email: string; ta: boolean } | null;
 }
 
 declare module "express-serve-static-core" {
@@ -62,6 +62,7 @@ export async function resolvePrincipal(email: string, demo: boolean): Promise<Pr
   const activeStudent = student?.status === "active" ? student : null;
   if (!isAdmin && !activeTeacher && !activeStudent) return null;
   const studentName = activeStudent ? `${activeStudent.firstName} ${activeStudent.lastName}` : "";
+  const studentTa = activeStudent ? (await prisma.sectionRole.count({ where: { studentId: activeStudent.id } })) > 0 : false;
   return {
     email,
     name: activeTeacher?.name ?? admin?.name ?? studentName,
@@ -73,6 +74,7 @@ export async function resolvePrincipal(email: string, demo: boolean): Promise<Pr
       studentId: activeStudent.studentId,
       name: studentName,
       email: activeStudent.email,
+      ta: studentTa,
     },
   };
 }
@@ -168,6 +170,9 @@ export function toMe(p: Principal) {
   if (p.admin) roles.push("admin");
   if (p.teacher) roles.push(p.teacher.role);
   if (p.student) roles.push("student");
+  // A student who assists in a course also gets the TA role (the TA pages); what they may do there
+  // is still decided per course by their section role.
+  if (p.student?.ta && !roles.includes("ta")) roles.push("ta");
   return {
     email: p.email,
     name: p.name,
