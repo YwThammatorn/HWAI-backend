@@ -6,6 +6,7 @@ import type {
   Enrollment,
   GradingCategory,
   Rubric,
+  Student,
   StudentGroup,
   Submission,
 } from "../generated/prisma/client.js";
@@ -56,14 +57,17 @@ function compact<T extends Record<string, unknown>>(obj: T) {
 const iso = (d: Date) => d.toISOString();
 const ymd = (d: Date) => d.toISOString().slice(0, 10);
 
-export function toEnrollment(e: Enrollment) {
+/** `include` for an enrollment query: a roster row's name and email are the student's own. */
+export const withStudent = { student: { select: { firstName: true, lastName: true, email: true } } } as const;
+
+export function toEnrollment(e: Enrollment & { student: Pick<Student, "firstName" | "lastName" | "email"> }) {
   return compact({
     id: e.id,
     courseId: e.courseId,
     studentId: e.studentId,
-    firstName: e.firstName,
-    lastName: e.lastName,
-    email: e.email,
+    firstName: e.student.firstName,
+    lastName: e.student.lastName,
+    email: e.student.email,
     sequenceNumber: e.sequenceNumber,
     enrollmentStatus: e.enrollmentStatus ? enrollmentStatus.toApi(e.enrollmentStatus) : null,
   });
@@ -80,7 +84,10 @@ export function toGradingCategory(c: GradingCategory) {
   };
 }
 
-export function toAssignment(a: Assignment) {
+/** `include` for an assignment query: `rubricIds` is the assignment's rubrics, oldest first. */
+export const withRubricIds = { rubrics: { select: { id: true }, orderBy: { createdAt: "asc" } } } as const;
+
+export function toAssignment(a: Assignment & { rubrics: { id: string }[] }) {
   return {
     ...compact({
       id: a.id,
@@ -94,7 +101,7 @@ export function toAssignment(a: Assignment) {
       acceptsFiles: a.acceptsFiles,
       fileTypes: a.fileTypes,
       submissionType: a.submissionType,
-      rubricIds: a.rubricIds,
+      rubricIds: a.rubrics.map((r) => r.id),
       gradingFinalized: a.gradingFinalized,
       isExam: a.isExam,
       gradingMode: a.gradingMode,

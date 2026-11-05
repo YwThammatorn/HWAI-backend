@@ -74,7 +74,7 @@ const responses = {
     firstName: z.string(),
     lastName: z.string(),
     email: z.string(),
-    program: z.string(),
+    program: z.enum(["CECS", "CEI", "CE"]),
     status: z.enum(["active", "inactive"]),
     curriculumVersionId: opt(z.string()),
   }),
@@ -128,12 +128,15 @@ const responses = {
   CLO: z.object({ id: z.string(), courseId: z.string(), code: z.string(), text: z.string(), ...timestamps }),
   RubricLibraryEntry: libraryEntryCreate.omit({ id: true }).extend({ id: z.string(), createdAt: z.iso.datetime() }),
   CalibrationRun: calibrationRunPut.omit({ id: true }).extend({ id: z.string() }),
-  RejectedEnrollment: z.object({
-    studentId: z.string(),
-    program: z.string(),
-    sectionProgram: z.string(),
-    reason: z.literal("wrong_program"),
-  }),
+  RejectedEnrollment: z.union([
+    z.object({ studentId: z.string(), reason: z.literal("not_in_system") }).describe("ไม่มีบัญชีนักศึกษารหัสนี้"),
+    z.object({
+      studentId: z.string(),
+      program: z.string(),
+      sectionProgram: z.string(),
+      reason: z.literal("wrong_program"),
+    }).describe("คนละสาขากับ section"),
+  ]),
 };
 
 type Model = keyof typeof responses;
@@ -183,7 +186,7 @@ const examples = {
   ],
   studentUpdate: { status: "inactive" },
   studentBulkUpdate: { ids: ["cs-mock-1", "cs-mock-2"], data: { status: "inactive" } },
-  enrollmentCreate: [{ studentId: "69070104", firstName: "ทดลอง", lastName: "ลงทะเบียน", email: "69070104@kmitl.ac.th" }],
+  enrollmentCreate: [{ studentId: "69070104" }],
   enrollmentUpdate: { enrollmentStatus: "withdrawn" },
   categoryCreate: { name: "งานกลุ่ม", weight: 10 },
   categoryUpdate: { weight: 30 },
@@ -409,7 +412,7 @@ export const openapiSpec = {
     },
     "/cohort-students/{id}": {
       patch: op("Students", { summary: "แก้ไขนักศึกษา", params: [id], body: body(json(studentUpdate), examples.studentUpdate), res: ok(ref("CohortStudent")), errors: { ...V400, ...N404 } }),
-      delete: op("Students", { summary: "ลบนักศึกษา", params: [id], res: noContent, errors: N404 }),
+      delete: op("Students", { summary: "ลบนักศึกษาถาวร — ออกจากทุกรายวิชา และลบงานที่ส่ง คะแนน และไฟล์ที่อัปโหลดในงานเหล่านั้นด้วย (ยกเว้นไฟล์ที่เพื่อนร่วมทีมยังใช้); จะเก็บไว้ให้ PATCH status: inactive แทน", params: [id], res: noContent, errors: N404 }),
     },
 
     // ── Course content ─────────────────────────────────────────────────────────
@@ -419,7 +422,7 @@ export const openapiSpec = {
     "/courses/{courseId}/students": {
       get: op("Rosters", { summary: "รายชื่อนักศึกษาในรายวิชา", params: [courseId], res: ok(list("Enrollment")) }),
       post: op("Rosters", {
-        summary: "เพิ่มนักศึกษาเข้ารายวิชา (array) — ลำดับต่อท้าย, คนที่เพิ่มทีหลัง = added-midterm. 1 section = 1 สาขา: คนต่างสาขาจะไม่ถูกเพิ่มและอยู่ใน rejected",
+        summary: "เพิ่มนักศึกษาเข้ารายวิชา (array) — ต้องมีบัญชีนักศึกษาอยู่แล้ว (ชื่อ/อีเมลมาจากบัญชี; ส่ง firstName/lastName/email มาได้แต่ไม่ใช้), ลำดับต่อจากเลขสูงสุด, คนที่เพิ่มทีหลัง = added-midterm. คนที่ไม่มีบัญชี (not_in_system) หรือต่างสาขา (wrong_program, 1 section = 1 สาขา) จะไม่ถูกเพิ่มและอยู่ใน rejected",
         params: [courseId], body: body({ type: "array", items: json(enrollmentCreate) }, examples.enrollmentCreate),
         res: ok({
           type: "object",
@@ -428,11 +431,11 @@ export const openapiSpec = {
             rejected: { type: "array", items: ref("RejectedEnrollment") },
           },
         }, "201"),
-        errors: { ...V400, "404": "ไม่พบรายวิชา", "409": "นักศึกษาอยู่ในรายวิชานี้แล้ว", "422": "ทุกคนอยู่คนละสาขากับ section (มี rejected แนบมา)" },
+        errors: { ...V400, "404": "ไม่พบรายวิชา", "409": "นักศึกษาอยู่ในรายวิชานี้แล้ว / เลขลำดับซ้ำ", "422": "เพิ่มไม่ได้เลยสักคน (มี rejected แนบมา)" },
       }),
     },
     "/students/{id}": {
-      patch: op("Rosters", { summary: "แก้ไข / ถอนรายวิชา (enrollmentStatus)", params: [id], body: body(json(enrollmentUpdate), examples.enrollmentUpdate), res: ok(ref("Enrollment")), errors: { ...V400, ...N404 } }),
+      patch: op("Rosters", { summary: "แก้ไขเลขลำดับ / ถอนรายวิชา (sequenceNumber, enrollmentStatus — field อื่นรับไว้แต่ไม่ใช้; เลขซ้ำ = 409)", params: [id], body: body(json(enrollmentUpdate), examples.enrollmentUpdate), res: ok(ref("Enrollment")), errors: { ...V400, ...N404 } }),
       delete: op("Rosters", { summary: "ลบออกจากรายวิชา", params: [id], res: noContent, errors: N404 }),
     },
 

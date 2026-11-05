@@ -94,6 +94,8 @@ export async function startSession(res: Response, email: string, demo: boolean) 
   const token = randomBytes(32).toString("base64url");
   const hours = demo ? DEMO_SESSION_HOURS : SESSION_HOURS;
   const expiresAt = new Date(Date.now() + hours * 3600_000);
+  // Sweep sessions that have run out (indexed by expires_at) — signing in is rare enough to pay for it.
+  await prisma.session.deleteMany({ where: { expiresAt: { lt: new Date() } } });
   await prisma.session.create({ data: { id: hash(token), email, demo, expiresAt } });
   res.cookie(SESSION_COOKIE, token, cookieOptions(hours * 3600_000));
 }

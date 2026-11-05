@@ -127,7 +127,7 @@ Response shape ตรงกับ type ใน `HWAI-frontend/src/lib/*.ts` (fiel
 | POST | `/cohort-students` | array ของ `CohortStudent` (ซ้ำตัวเดียว = reject ทั้งชุด) | `CohortStudent[]` |
 | PATCH | `/cohort-students` | `{ ids, data }` แก้หลายคนพร้อมกัน เช่น ปิดใช้งานทั้งรุ่น (ไม่เจอคนใด = ไม่แก้เลย, 404) | `CohortStudent[]` |
 | PATCH | `/cohort-students/:id` | partial | `CohortStudent` |
-| DELETE | `/cohort-students/:id` | | 204 |
+| DELETE | `/cohort-students/:id` | ลบถาวร: ออกจากทุกรายวิชา + **งานที่ส่งและคะแนนทั้งหมด** + ไฟล์ที่อัปโหลดในงานนั้น (ยกเว้นไฟล์ที่เพื่อนร่วมทีมยังใช้) — ถ้าจะเก็บไว้ให้ปิดใช้งาน (`status: inactive`) แทน | 204 |
 
 ### เนื้อหารายวิชา (หน้านักศึกษา + หน้าสร้างงาน)
 
@@ -153,8 +153,10 @@ rubric มี `aiOffsets` (ค่าปรับ AI จากหน้า Calibr
 
 **1 section = 1 สาขา** (CE / CECS / CEI) — กติกาเดียวกับ `HWAI-frontend/src/lib/sectionProgram.ts`: สาขาของ section คือสาขาของหลักสูตรที่วิชานั้นสังกัด
 ถ้าวิชาไม่ผูกหลักสูตร ใช้สาขาของนักศึกษาคนแรกในรายชื่อที่ยังไม่ถอน (ถ้ายังไม่มีใคร คนแรกในชุดที่ส่งมาจะเป็นตัวกำหนด)
-`POST /courses/:courseId/students` เพิ่มเฉพาะคนที่สาขาตรง แล้วตอบ `201 { enrolled, rejected }` — ถ้าไม่มีใครเพิ่มได้เลยตอบ `422 { error, rejected }`
-นักศึกษาที่ไม่มีในรายชื่อนักศึกษากลาง (ไม่รู้สาขา) เพิ่มได้ เหมือนฝั่ง frontend
+`POST /courses/:courseId/students` เพิ่มเฉพาะคนที่**มีบัญชีนักศึกษาอยู่แล้ว**และสาขาตรง แล้วตอบ `201 { enrolled, rejected }` — คนที่ไม่ถูกเพิ่ม
+อยู่ใน `rejected` พร้อม `reason`: `"not_in_system"` (ไม่มีบัญชี) หรือ `"wrong_program"` (มี `program`, `sectionProgram`); ถ้าไม่มีใครเพิ่มได้เลยตอบ `422 { error, rejected }`
+รายชื่อในวิชาเก็บแค่ว่าใครอยู่วิชาไหน — ชื่อและอีเมลอ่านจากบัญชีนักศึกษา (แก้ชื่อที่บัญชีแล้วทุกวิชาเปลี่ยนตาม; ลบบัญชีแล้วหายจากทุกวิชา)
+เลขลำดับไม่ซ้ำในวิชาเดียวกัน คนใหม่ได้เลขสูงสุด + 1
 
 ### ไฟล์
 
@@ -193,11 +195,11 @@ src/
 | `teachers` | `Teacher` | `/managed-teachers` | อาจารย์ / TA |
 | `course_teachers` | `CourseTeacher` | `/managed-teachers/:id/courses/:courseId` | อาจารย์ที่ assign ในแต่ละรายวิชา |
 | `students` | `Student` | `/cohort-students` | นักศึกษา |
-| `enrollments` | `Enrollment` | `/students`, `/courses/:courseId/students` | นักศึกษาในแต่ละรายวิชา (roster) |
+| `enrollments` | `Enrollment` | `/students`, `/courses/:courseId/students` | นักศึกษาในแต่ละรายวิชา (roster) — `student_id` เป็น FK ไป `students.student_id` (แก้รหัส/ลบบัญชีแล้วตามไปด้วย), เลขลำดับไม่ซ้ำในวิชา |
 | `grading_categories` | `GradingCategory` | `/grading-categories` | หมวดคะแนน |
 | `assignments` | `Assignment` | `/assignments` | งาน |
 | `rubrics` | `Rubric` | `/rubrics` | เกณฑ์ให้คะแนน (criteria เก็บเป็น JSON) |
-| `submissions` | `Submission` | `/submissions` | งานที่นักศึกษาส่ง + คะแนน |
+| `submissions` | `Submission` | `/submissions` | งานที่นักศึกษาส่ง + คะแนน — `student_id` เป็น FK ไป `students.student_id` (แก้รหัสแล้วตามไป, ลบบัญชีแล้วงานหายด้วย) |
 | `student_groups` | `StudentGroup` | `/student-groups` | ทีมของงานกลุ่ม |
 | `files` | `StoredFile` | `/files` | ไฟล์ที่อัปโหลด |
 | `section_roles` | `SectionRole` | `/section-roles` | ผู้ร่วมสอนในรายวิชา — `teacher_id` หรือ `student_id` อย่างใดอย่างหนึ่ง (CHECK) ลบอาจารย์/นักศึกษาแล้ว role หายตาม |
@@ -207,8 +209,21 @@ src/
 | `admins` | `Admin` | — | รายชื่อ admin (`demo = true` = admin เฉพาะตอนเปิด demo sign-in) |
 | `sessions` | `Session` | `/auth/*` | session ที่เข้าสู่ระบบอยู่ (id = SHA-256 ของ token ใน cookie) |
 
+**กติกาที่ฐานข้อมูลบังคับเอง** (ชนแล้วตอบ 409 / 400 พร้อมข้อความอ่านเข้าใจ):
+- ไม่ซ้ำ: หลักสูตรต่อ (สาขา, ปีที่เริ่มใช้) · รหัสวิชาในหลักสูตรเดียวกัน (ไม่สนตัวพิมพ์ — index บน `lower(code)` ที่สร้างใน SQL ของ migration)
+  · section ที่ยังไม่ archive ต่อ (วิชา, ปีการศึกษา, ภาค, เลข section) — unarchive แล้วชนก็ 409 · เลขลำดับในรายชื่อวิชา
+- CHECK: น้ำหนักหมวดคะแนน > 0 และ ≤ 100 · คะแนนเต็มงาน > 0 · ขนาดทีม 2–20 · หลักสูตรสิ้นสุดไม่ก่อนเริ่ม · คะแนนไม่ติดลบ
+  · อีเมลของ students / teachers / admins เป็นตัวเล็ก (API แปลงให้ก่อนบันทึก)
+- `students.program` เป็น enum `program` (CE / CECS / CEI — API รับตัวเล็ก/มีช่องว่างได้แล้วแปลงให้)
+- เวลาทุกคอลัมน์เป็น `timestamptz` ยกเว้น `assignments.due_date` (วันที่อย่างเดียว)
+- `rubricIds` ของงานไม่ได้เก็บ — คำนวณจาก rubric ของงานนั้นเรียงตามเวลาที่สร้าง (PATCH ส่งมาได้แต่ไม่มีผล)
+
 `courses.term` เก็บเป็น `'1'` / `'2'` / `'3'` / `'summer'` ·
-`enrollments.student_id`, `submissions.student_id`, `student_groups.member_student_ids` เก็บ**รหัสนักศึกษา** (เช่น `69070101`) เป็นข้อความ ไม่ใช่ FK — ตรงกับที่ frontend ใช้
+นักศึกษารุ่นเก่าในข้อมูลตัวอย่าง [21] (รหัส 6499xxxx / 6599xxxx — รุ่น 64–65 ที่จบไปแล้ว รุ่น 66–69 ยังเรียนอยู่) ถูก seed เป็นบัญชี inactive เพราะงานที่ส่งต้องมีเจ้าของ —
+ฐานข้อมูลที่ seed ไว้ก่อนหน้านี้ให้รัน `npm run db:seed` ก่อน `migrate deploy` (ไม่งั้น migration `20261106100000_submissions_student_fk` จะหยุด)
+
+`enrollments.student_id`, `submissions.student_id`, `student_groups.member_student_ids` เก็บ**รหัสนักศึกษา** (เช่น `69070101`) ตรงกับที่ frontend ใช้ —
+สองอันแรกเป็น FK ไป `students.student_id`; `member_student_ids` เป็น array จึงไม่มี FK (ลบนักศึกษาแล้วรหัสยังค้างในทีม)
 
 ## ยังไม่ได้ทำ
 

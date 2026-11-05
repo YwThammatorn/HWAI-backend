@@ -8,8 +8,9 @@
 // updates and the mock data uses readable ids like "cv-ce-2569".
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider        = "prisma-client"
+  output          = "../src/generated/prisma"
+  previewFeatures = ["partialIndexes"]
 }
 
 datasource db {
@@ -75,11 +76,12 @@ model CurriculumVersion {
   label         String
   effectiveFrom Int              @map("effective_from") // พ.ศ.
   effectiveTo   Int?             @map("effective_to") // null = still in use
-  createdAt     DateTime         @default(now()) @map("created_at")
-  updatedAt     DateTime         @updatedAt @map("updated_at")
+  createdAt     DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt     DateTime         @updatedAt @map("updated_at") @db.Timestamptz(3)
   templates     CourseTemplate[]
   students      Student[]
 
+  @@unique([program, effectiveFrom])
   @@map("curriculum_versions")
 }
 
@@ -91,11 +93,13 @@ model CourseTemplate {
   code                String
   name                String
   description         String?
-  createdAt           DateTime             @default(now()) @map("created_at")
-  updatedAt           DateTime             @updatedAt @map("updated_at")
+  createdAt           DateTime             @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt           DateTime             @updatedAt @map("updated_at") @db.Timestamptz(3)
   courses             Course[]
   rubricLibrary       RubricLibraryEntry[]
 
+  // Also unique: (curriculum_version_id, lower(code)) — index course_templates_version_code_key, created in
+  // SQL by migration 20261105100000_db_design (Prisma can't express an index on lower()).
   @@index([curriculumVersionId])
   @@map("course_templates")
 }
@@ -116,8 +120,8 @@ model Course {
   sectionNumber     String?           @map("section_number")
   schedule          String?
   room              String?
-  createdAt         DateTime          @default(now()) @map("created_at")
-  updatedAt         DateTime          @updatedAt @map("updated_at")
+  createdAt         DateTime          @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt         DateTime          @updatedAt @map("updated_at") @db.Timestamptz(3)
   teachers          CourseTeacher[]
   enrollments       Enrollment[]
   gradingCategories GradingCategory[]
@@ -126,6 +130,7 @@ model Course {
   sectionRoles      SectionRole[]
   clos              Clo[]
 
+  @@unique([courseTemplateId, academicYear, term, sectionNumber], map: "courses_active_section_key", where: raw("status = 'active'"))
   @@index([courseTemplateId])
   @@map("courses")
 }
@@ -138,8 +143,8 @@ model Teacher {
   email        String          @unique
   role         TeacherRole     @default(teacher)
   status       AccountStatus   @default(active)
-  createdAt    DateTime        @default(now()) @map("created_at")
-  updatedAt    DateTime        @updatedAt @map("updated_at")
+  createdAt    DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt    DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
   courses      CourseTeacher[]
   sectionRoles SectionRole[]
 
@@ -152,7 +157,7 @@ model CourseTeacher {
   teacherId  String   @map("teacher_id")
   course     Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
   teacher    Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
-  assignedAt DateTime @default(now()) @map("assigned_at")
+  assignedAt DateTime @default(now()) @map("assigned_at") @db.Timestamptz(3)
 
   @@id([courseId, teacherId])
   @@index([teacherId])
@@ -167,13 +172,15 @@ model Student {
   firstName           String             @map("first_name")
   lastName            String             @map("last_name")
   email               String             @unique // how sign-in finds the student (always studentId@kmitl.ac.th)
-  program             String
+  program             Program
   status              AccountStatus      @default(active)
   curriculumVersionId String?            @map("curriculum_version_id")
   curriculumVersion   CurriculumVersion? @relation(fields: [curriculumVersionId], references: [id], onDelete: SetNull)
-  createdAt           DateTime           @default(now()) @map("created_at")
-  updatedAt           DateTime           @updatedAt @map("updated_at")
+  createdAt           DateTime           @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt           DateTime           @updatedAt @map("updated_at") @db.Timestamptz(3)
   sectionRoles        SectionRole[]
+  enrollments         Enrollment[]
+  submissions         Submission[]
 
   @@map("students")
 }
@@ -197,15 +204,16 @@ model Enrollment {
   courseId         String            @map("course_id")
   course           Course            @relation(fields: [courseId], references: [id], onDelete: Cascade)
   studentId        String            @map("student_id")
-  firstName        String            @map("first_name")
-  lastName         String            @map("last_name")
-  email            String
+  /// Must be an existing student: name and email are read from there. Changing a student's id carries
+  /// over; deleting the student removes them from every roster.
+  student          Student           @relation(fields: [studentId], references: [studentId], onDelete: Cascade, onUpdate: Cascade)
   sequenceNumber   Int?              @map("sequence_number") // ลำดับในวิชา — new students continue the numbering
   enrollmentStatus EnrollmentStatus? @map("enrollment_status")
-  createdAt        DateTime          @default(now()) @map("created_at")
-  updatedAt        DateTime          @updatedAt @map("updated_at")
+  createdAt        DateTime          @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt        DateTime          @updatedAt @map("updated_at") @db.Timestamptz(3)
 
   @@unique([courseId, studentId])
+  @@unique([courseId, sequenceNumber])
   @@index([studentId])
   @@map("enrollments")
 }
@@ -217,8 +225,8 @@ model GradingCategory {
   course      Course       @relation(fields: [courseId], references: [id], onDelete: Cascade)
   name        String
   weight      Float
-  createdAt   DateTime     @default(now()) @map("created_at")
-  updatedAt   DateTime     @updatedAt @map("updated_at")
+  createdAt   DateTime     @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt   DateTime     @updatedAt @map("updated_at") @db.Timestamptz(3)
   assignments Assignment[]
 
   @@index([courseId])
@@ -265,12 +273,11 @@ model Assignment {
   submissionType   SubmissionType       @default(individual) @map("submission_type")
   maxGroupSize     Int?                 @map("max_group_size")
   /// Kept as the frontend manages it (its rubric list, in order); rubrics also point back via assignment_id.
-  rubricIds        String[]             @map("rubric_ids")
   gradingFinalized Boolean              @default(false) @map("grading_finalized") // "Finish & announce"
   isExam           Boolean              @default(false) @map("is_exam")
   gradingMode      GradingMode?         @map("grading_mode") // null = not chosen yet
-  createdAt        DateTime             @default(now()) @map("created_at")
-  updatedAt        DateTime             @updatedAt @map("updated_at")
+  createdAt        DateTime             @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt        DateTime             @updatedAt @map("updated_at") @db.Timestamptz(3)
   rubrics          Rubric[]
   submissions      Submission[]
   studentGroups    StudentGroup[]
@@ -291,8 +298,8 @@ model Rubric {
   criteria     Json
   /// How the AI is corrected on this rubric, from the Calibration page: { [criterionId]: levels to move }.
   aiOffsets    Json?      @map("ai_offsets")
-  createdAt    DateTime   @default(now()) @map("created_at")
-  updatedAt    DateTime   @updatedAt @map("updated_at")
+  createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt    DateTime   @updatedAt @map("updated_at") @db.Timestamptz(3)
 
   @@index([assignmentId])
   @@map("rubrics")
@@ -312,9 +319,12 @@ model Submission {
   assignmentId       String           @map("assignment_id")
   assignment         Assignment       @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
   studentId          String           @map("student_id")
+  /// The student who handed it in. Changing their student ID carries over; deleting the account deletes
+  /// their submissions (an admin deactivates instead of deleting to keep them).
+  student            Student          @relation(fields: [studentId], references: [studentId], onDelete: Cascade, onUpdate: Cascade)
   studentName        String           @map("student_name") // denormalized for display, as on the frontend
   email              String
-  submittedAt        DateTime         @map("submitted_at")
+  submittedAt        DateTime         @map("submitted_at") @db.Timestamptz(3)
   fileUrl            String?          @map("file_url") // legacy single link
   attachments        Json?
   aiScore            Float?           @map("ai_score")
@@ -326,8 +336,8 @@ model Submission {
   externalUseConsent Boolean          @default(false) @map("external_use_consent")
   status             SubmissionStatus @default(notGraded)
   groupId            String?          @map("group_id") // not a FK: kept even if the team is later dissolved
-  createdAt          DateTime         @default(now()) @map("created_at")
-  updatedAt          DateTime         @updatedAt @map("updated_at")
+  createdAt          DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt          DateTime         @updatedAt @map("updated_at") @db.Timestamptz(3)
 
   @@unique([assignmentId, studentId])
   @@index([studentId])
@@ -343,8 +353,8 @@ model StudentGroup {
   course           Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
   name             String
   memberStudentIds String[]   @map("member_student_ids")
-  createdAt        DateTime   @default(now()) @map("created_at")
-  updatedAt        DateTime   @updatedAt @map("updated_at")
+  createdAt        DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt        DateTime   @updatedAt @map("updated_at") @db.Timestamptz(3)
 
   @@index([assignmentId])
   @@index([courseId])
@@ -361,7 +371,7 @@ model StoredFile {
   data       Bytes
   /// Email of whoever uploaded it — only they (or an admin) may delete it. Null for files from before sign-in.
   uploadedBy String?  @map("uploaded_by")
-  createdAt  DateTime @default(now()) @map("created_at")
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
 
   @@map("files")
 }
@@ -391,8 +401,8 @@ model SectionRole {
   role        SectionRoleType
   /// Overrides the role's default permissions when set: { canManageRoster, canEditSettings, canPublishScores }.
   permissions Json?
-  createdAt   DateTime        @default(now()) @map("created_at")
-  updatedAt   DateTime        @updatedAt @map("updated_at")
+  createdAt   DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt   DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
 
   @@unique([courseId, teacherId])
   @@unique([courseId, studentId])
@@ -408,8 +418,8 @@ model Clo {
   course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
   code      String
   text      String
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
 
   @@index([courseId])
   @@map("clos")
@@ -430,8 +440,8 @@ model RubricLibraryEntry {
   /// Where it was saved from — provenance only, kept as null if that assignment goes.
   sourceAssignmentId String?         @map("source_assignment_id")
   sourceAssignment   Assignment?     @relation(fields: [sourceAssignmentId], references: [id], onDelete: SetNull)
-  createdAt          DateTime        @default(now()) @map("created_at")
-  updatedAt          DateTime        @updatedAt @map("updated_at")
+  createdAt          DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt          DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
 
   @@index([courseTemplateId])
   @@map("rubric_library_entries")
@@ -447,12 +457,12 @@ model CalibrationRun {
   sampleIds      String[]   @map("sample_ids")
   /// sample id → criterion id → level (0 = best).
   teacherLevels  Json       @map("teacher_levels")
-  completedAt    DateTime?  @map("completed_at")
+  completedAt    DateTime?  @map("completed_at") @db.Timestamptz(3)
   /// "Use these values" was pressed: when, and the offsets saved on the rubric.
-  appliedAt      DateTime?  @map("applied_at")
+  appliedAt      DateTime?  @map("applied_at") @db.Timestamptz(3)
   appliedOffsets Json?      @map("applied_offsets")
-  createdAt      DateTime   @map("created_at") // set by the client, kept as given
-  updatedAt      DateTime   @updatedAt @map("updated_at")
+  createdAt      DateTime   @map("created_at") @db.Timestamptz(3) // set by the client, kept as given
+  updatedAt      DateTime   @updatedAt @map("updated_at") @db.Timestamptz(3)
 
   @@index([assignmentId])
   @@map("calibration_runs")
@@ -468,7 +478,7 @@ model Admin {
   name      String
   /// A demo admin is only an admin while demo sign-in is on — real (Google) sign-in never gets it.
   demo      Boolean  @default(false)
-  createdAt DateTime @default(now()) @map("created_at")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
 
   @@map("admins")
 }
@@ -480,10 +490,11 @@ model Session {
   email      String
   /// Signed in through the demo shortcut (no password / Google) — only possible while DEMO_LOGIN is on.
   demo       Boolean  @default(false)
-  expiresAt  DateTime @map("expires_at")
-  createdAt  DateTime @default(now()) @map("created_at")
-  lastSeenAt DateTime @default(now()) @map("last_seen_at")
+  expiresAt  DateTime @map("expires_at") @db.Timestamptz(3)
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  lastSeenAt DateTime @default(now()) @map("last_seen_at") @db.Timestamptz(3)
 
   @@index([email])
+  @@index([expiresAt])
   @@map("sessions")
 }

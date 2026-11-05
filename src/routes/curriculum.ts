@@ -10,14 +10,19 @@ export const curriculumRouter = Router();
 const programSchema = z.enum(["CECS", "CEI", "CE"]);
 const year = z.number().int();
 
-export const versionCreate = z.object({
+const versionFields = z.object({
   id: z.string().min(1).optional(),
   program: programSchema,
   label: z.string().trim().min(1),
   effectiveFrom: year,
-  effectiveTo: year.nullish(),
+  effectiveTo: year.nullish(), // null = still in use
 });
-export const versionUpdate = versionCreate.omit({ id: true }).partial();
+const endsAfterStart = (v: { effectiveFrom?: number; effectiveTo?: number | null }) =>
+  v.effectiveFrom === undefined || v.effectiveTo == null || v.effectiveTo >= v.effectiveFrom;
+const endsAfterStartIssue = { message: "effectiveTo can't be before effectiveFrom", path: ["effectiveTo"] };
+// One version per program and start year (409); a PATCH that only moves one end is checked by the database.
+export const versionCreate = versionFields.refine(endsAfterStart, endsAfterStartIssue);
+export const versionUpdate = versionFields.omit({ id: true }).partial().refine(endsAfterStart, endsAfterStartIssue);
 
 const templateFields = z.object({
   code: z.string().trim().min(1),

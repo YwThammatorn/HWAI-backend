@@ -22,6 +22,7 @@ import {
   toAssignment,
   toRubric,
   toSubmission,
+  withRubricIds,
 } from "../lib/content.js";
 
 export const assignmentsRouter = Router();
@@ -37,12 +38,13 @@ const assignmentFields = z.object({
   description: z.string(),
   attachments: z.array(attachmentSchema).nullish(),
   dueDate: isoDate.nullish(), // exams have none
-  maxPoints: z.number().min(0),
+  maxPoints: z.number().positive(),
   categoryId: z.string().min(1).nullish(),
   acceptsFiles: z.boolean(),
   fileTypes: z.array(z.enum(["figma", "pdf", "image"])),
   submissionType: z.enum(["individual", "group"]),
-  maxGroupSize: z.number().int().positive().nullable(),
+  maxGroupSize: z.number().int().min(2).max(20).nullable(),
+  // Accepted and ignored: the API derives rubricIds from the assignment's rubrics (oldest first).
   rubricIds: z.array(z.string().min(1)),
   gradingFinalized: z.boolean().optional(),
   isExam: z.boolean().optional(),
@@ -56,12 +58,12 @@ export const assignmentCreate = assignmentFields.extend({
   fileTypes: assignmentFields.shape.fileTypes.default([]),
   submissionType: assignmentFields.shape.submissionType.default("individual"),
   maxGroupSize: assignmentFields.shape.maxGroupSize.default(null),
-  rubricIds: assignmentFields.shape.rubricIds.default([]),
+  rubricIds: assignmentFields.shape.rubricIds.optional(),
 });
 export const assignmentUpdate = assignmentFields.partial();
 
-function assignmentData<T extends { attachments?: unknown; dueDate?: string | null }>(data: T) {
-  const { attachments, dueDate, ...rest } = data;
+function assignmentData<T extends { attachments?: unknown; dueDate?: string | null; rubricIds?: string[] }>(data: T) {
+  const { attachments, dueDate, rubricIds: _derived, ...rest } = data;
   return {
     ...rest,
     attachments: json(attachments),
@@ -74,18 +76,18 @@ function assignmentData<T extends { attachments?: unknown; dueDate?: string | nu
 // needs canPublishScores.
 assignmentsRouter.get("/assignments", async (req, res) => {
   const courseId = courseFilter(await visibleCourses(principalOf(req)));
-  const rows = await prisma.assignment.findMany({ where: courseId && { courseId }, orderBy: { createdAt: "asc" } });
+  const rows = await prisma.assignment.findMany({ where: courseId && { courseId }, include: withRubricIds, orderBy: { createdAt: "asc" } });
   res.json(rows.map(toAssignment));
 });
 
 assignmentsRouter.get("/courses/:courseId/assignments", async (req, res) => {
   await requireMember(req, req.params.courseId);
-  const rows = await prisma.assignment.findMany({ where: { courseId: req.params.courseId }, orderBy: { createdAt: "asc" } });
+  const rows = await prisma.assignment.findMany({ where: { courseId: req.params.courseId }, include: withRubricIds, orderBy: { createdAt: "asc" } });
   res.json(rows.map(toAssignment));
 });
 
 assignmentsRouter.get("/assignments/:id", async (req, res) => {
-  const row = await prisma.assignment.findUniqueOrThrow({ where: { id: req.params.id } });
+  const row = await prisma.assignment.findUniqueOrThrow({ where: { id: req.params.id }, include: withRubricIds });
   await requireMember(req, row.courseId);
   res.json(toAssignment(row));
 });
@@ -93,7 +95,7 @@ assignmentsRouter.get("/assignments/:id", async (req, res) => {
 assignmentsRouter.post("/courses/:courseId/assignments", async (req, res) => {
   await requireStaff(req, req.params.courseId, "canEditSettings");
   const { courseId: _ignored, ...data } = parse(assignmentCreate, req.body);
-  const row = await prisma.assignment.create({ data: { ...assignmentData(data), courseId: req.params.courseId } });
+  const row = await prisma.assignment.create({ data: { ...assignmentData(data), courseId: req.params.courseId }, include: withRubricIds });
   res.status(201).json(toAssignment(row));
 });
 
@@ -103,9 +105,9 @@ assignmentsRouter.patch("/assignments/:id", async (req, res) => {
   const perms = await requireStaff(req, current.courseId);
   const announcing = data.gradingFinalized !== undefined && data.gradingFinalized !== current.gradingFinalized;
   if (announcing && !perms.canPublishScores) throw new HttpError(403, "You need the canPublishScores permission in this course");
-  const settings = Object.keys(data).filter((k) => k !== "gradingFinalized" && k !== "gradingMode");
+  const settings = Object.keys(data).filter((k) => !["gradingFinalized", "gradingMode", "rubricIds"].includes(k));
   if (settings.length > 0 && !perms.canEditSettings) throw new HttpError(403, "You need the canEditSettings permission in this course");
-  const row = await prisma.assignment.update({ where: { id: req.params.id }, data: assignmentData(data) });
+  const row = await prisma.assignment.update({ where: { id: req.params.id }, data: assignmentData(data), include: withRubricIds });
   res.json(toAssignment(row));
 });
 
@@ -332,7 +334,7 @@ assignmentsRouter.post("/assignments/:id/submissions", async (req, res) => {
   const team = await assertMayHandIn(me, req.params.id, data.studentId);
   const enrolled = await prisma.enrollment.findUnique({
     where: { courseId_studentId: { courseId, studentId: data.studentId } },
-    select: { firstName: true, lastName: true, email: true, enrollmentStatus: true },
+    select: { enrollmentStatus: true, student: { select: { firstName: true, lastName: true, email: true } } },
   });
   if (!enrolled || enrolled.enrollmentStatus === "withdrawn") throw new HttpError(403, "That student isn't enrolled in this course");
   const row = await prisma.submission.create({
@@ -340,8 +342,8 @@ assignmentsRouter.post("/assignments/:id/submissions", async (req, res) => {
       ...(data.id && { id: data.id }),
       assignmentId: req.params.id,
       studentId: data.studentId,
-      studentName: `${enrolled.firstName} ${enrolled.lastName}`,
-      email: enrolled.email,
+      studentName: `${enrolled.student.firstName} ${enrolled.student.lastName}`,
+      email: enrolled.student.email,
       submittedAt: new Date(),
       fileUrl: data.fileUrl,
       attachments: json(data.attachments),

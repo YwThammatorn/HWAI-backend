@@ -21,7 +21,12 @@ type SeedTeacher = Prisma.TeacherCreateManyInput & { courseIds: string[] };
 async function main() {
   const curriculum = load<Curriculum>("curriculum-mockup.json");
   // [21] adds earlier years' sections of a subject (for Rubrics > compare years), taught by years.teacherId.
-  const years = load<{ teacherId: string; courses: (SeedCourse & { id: string })[] }>("rubric-years-mockup.json");
+  const years = load<{
+    teacherId: string;
+    courses: (SeedCourse & { id: string })[];
+    assignments: { id: string; courseId: string }[];
+    submissions: { assignmentId: string; studentId: string; studentName: string; email: string }[];
+  }>("rubric-years-mockup.json");
   const courses = [...load<SeedCourse[]>("courses-mockup.json"), ...years.courses];
   const teachers = load<SeedTeacher[]>("teachers-mockup.json");
   const students = load<Prisma.StudentCreateManyInput[]>("students-mockup.json");
@@ -62,6 +67,7 @@ async function main() {
     void _id;
     await prisma.student.upsert({ where: { studentId: s.studentId }, create: s, update: changes });
   }
+  await seedPastStudents(curriculum, years, new Set(students.map((s) => s.studentId)));
 
   await seedDemoAccounts();
   const content = await seedCourseContent();
@@ -70,6 +76,44 @@ async function main() {
     `Seeded ${curriculum.curriculumVersions.length} curriculum versions, ${curriculum.courseTemplates.length} course templates, ` +
       `${courses.length} courses, ${teachers.length} teachers, ${students.length} students; ${content}.`,
   );
+}
+
+// [21]'s earlier offerings were taken by synthetic students (6499xxxx / 6599xxxx: classes 64 and 65 —
+// 66 to 69 are still studying) the cohort mock doesn't have.
+// Every submission belongs to a student (FK), so they become inactive accounts — a cohort that has graduated —
+// named as on their submissions, in the program of their section's curriculum (CE when it has none). An account
+// that already exists is left as it is.
+async function seedPastStudents(
+  curriculum: Curriculum,
+  years: { courses: { id: string; courseTemplateId?: string | null }[]; assignments: { id: string; courseId: string }[]; submissions: { assignmentId: string; studentId: string; studentName: string; email: string }[] },
+  known: Set<string>,
+) {
+  const courseOf = new Map(years.assignments.map((a) => [a.id, a.courseId]));
+  const templateOf = new Map(years.courses.map((c) => [c.id, c.courseTemplateId ?? null]));
+  const programOf = (courseId: string | undefined) => {
+    const template = curriculum.courseTemplates.find((t) => t.id === templateOf.get(courseId ?? ""));
+    const version = curriculum.curriculumVersions.find((v) => v.id === template?.curriculumVersionId);
+    return version?.program ?? "CE";
+  };
+  const seen = new Set<string>();
+  for (const s of years.submissions) {
+    if (known.has(s.studentId) || seen.has(s.studentId)) continue;
+    seen.add(s.studentId);
+    const [firstName, ...rest] = s.studentName.trim().split(/\s+/);
+    await prisma.student.upsert({
+      where: { studentId: s.studentId },
+      create: {
+        studentId: s.studentId,
+        firstName,
+        lastName: rest.join(" ") || "-",
+        email: s.email.toLowerCase(),
+        program: programOf(courseOf.get(s.assignmentId)),
+        status: "inactive",
+      },
+      update: {},
+    });
+  }
+  if (seen.size) console.log(`Past students for [21]: ${seen.size} inactive accounts.`);
 }
 
 // The demo admin: ผศ.ดร. สมศักดิ์ (teacher t-mock-1) is also an admin — but only while demo sign-in is on;
@@ -114,10 +158,28 @@ async function seedCourseContent() {
   const json = (v: unknown) => (v === undefined || v === null ? undefined : (v as Prisma.InputJsonValue));
   const date = (v: unknown) => (typeof v === "string" ? new Date(v.length === 10 ? `${v}T00:00:00Z` : v) : undefined);
 
+  // [15] / [16] replace a course's whole roster (c-mock-1, c-mock-4) — drop what earlier seeds (or older mock data)
+  // left behind there first, so their numbers are free.
+  const ownedCourses = new Set([...flow.courseStudents, ...(uxui.courseStudents ?? [])].map((x) => x.courseId as string));
+  for (const courseId of ownedCourses) {
+    const keep = roster.filter((x) => x.courseId === courseId).map((x) => x.studentId as string);
+    await prisma.enrollment.deleteMany({ where: { courseId, studentId: { notIn: keep } } });
+  }
+  // A number is unique per course: clear the mock students' old numbers first, so moving one onto a number
+  // another mock student is leaving never collides.
   for (const e of roster) {
-    const { id, courseId, studentId, enrollmentStatus: s, ...rest } = e as Row & { courseId: string; studentId: string; enrollmentStatus?: string };
+    await prisma.enrollment.updateMany({
+      where: { courseId: e.courseId as string, studentId: e.studentId as string },
+      data: { sequenceNumber: null },
+    });
+  }
+  for (const e of roster) {
+    // Name and email in the mock are the student's own — a roster row only links course and student.
+    const { id, courseId, studentId, sequenceNumber, enrollmentStatus: s } = e as Row & {
+      courseId: string; studentId: string; sequenceNumber?: number; enrollmentStatus?: string;
+    };
     const data = {
-      ...(rest as Omit<Prisma.EnrollmentCreateManyInput, "id" | "courseId" | "studentId">),
+      sequenceNumber: sequenceNumber ?? null,
       enrollmentStatus: s === undefined ? undefined : enrollmentStatus.toDb(s as "enrolled" | "withdrawn" | "added-midterm"),
     };
     await prisma.enrollment.upsert({
@@ -131,7 +193,8 @@ async function seedCourseContent() {
     await prisma.gradingCategory.upsert({ where: { id: c.id }, create: data, update: data });
   }
   for (const a of assignments) {
-    const { attachments, dueDate, createdAt, updatedAt, ...rest } = a;
+    // rubricIds isn't stored: the API derives it from the rubrics
+    const { attachments, dueDate, createdAt, updatedAt, rubricIds: _derived, ...rest } = a;
     const data = {
       ...(rest as unknown as Prisma.AssignmentCreateManyInput),
       attachments: json(attachments),
@@ -164,13 +227,7 @@ async function seedCourseContent() {
     });
     void id;
   }
-  // [15] / [16] replace a course's whole roster (c-mock-1, c-mock-4), and [15] / [16] / [21] every submission of their
-  // assignments — drop what earlier seeds (or older mock data) left behind there.
-  const ownedCourses = new Set([...flow.courseStudents, ...(uxui.courseStudents ?? [])].map((x) => x.courseId as string));
-  for (const courseId of ownedCourses) {
-    const keep = roster.filter((x) => x.courseId === courseId).map((x) => x.studentId as string);
-    await prisma.enrollment.deleteMany({ where: { courseId, studentId: { notIn: keep } } });
-  }
+  // [15] / [16] / [21] replace every submission of their assignments — drop what earlier seeds left behind there.
   const ownedAssignments = new Set([...flow.assignments, ...(uxui.assignments ?? []), ...(years.assignments ?? [])].map((a) => a.id));
   for (const assignmentId of ownedAssignments) {
     const keep = submissions.filter((x) => x.assignmentId === assignmentId).map((x) => x.studentId as string);

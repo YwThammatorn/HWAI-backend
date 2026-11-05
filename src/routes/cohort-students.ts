@@ -13,8 +13,9 @@ const studentFields = z.object({
   title: z.string().trim().nullish(),
   firstName: z.string().trim().min(1),
   lastName: z.string().trim().min(1),
-  email: z.string().trim().min(1),
-  program: z.string().trim().min(1),
+  email: z.string().trim().toLowerCase().pipe(z.email()),
+  // CE / CECS / CEI — spacing and case are forgiven (CSV imports), anything else is a 400
+  program: z.preprocess((v) => (typeof v === "string" ? v.trim().toUpperCase() : v), z.enum(["CE", "CECS", "CEI"])),
   status: z.enum(["active", "inactive"]).optional(),
   curriculumVersionId: z.string().nullish(),
 });
@@ -68,8 +69,36 @@ cohortStudentsRouter.patch("/cohort-students/:id", async (req, res) => {
   res.json(toCohortStudent(row));
 });
 
+/** The uploaded file ids (attachments with source "upload") of some submissions' stored JSON. */
+function uploadRefs(attachments: unknown): string[] {
+  if (!Array.isArray(attachments)) return [];
+  return attachments.flatMap((a) =>
+    a && typeof a === "object" && a.source === "upload" && typeof a.ref === "string" ? [a.ref] : [],
+  );
+}
+
+// Deleting an account is for good (admins deactivate to keep someone's work): the database removes them
+// from every roster and deletes their submissions (FK cascades), and their uploaded files go too — except a
+// file a teammate's submission still points at (a team hands in the same files). One transaction.
 cohortStudentsRouter.delete("/cohort-students/:id", async (req, res) => {
   requireAdmin(req);
-  await prisma.student.delete({ where: { id: req.params.id } });
+  await prisma.$transaction(async (tx) => {
+    const student = await tx.student.findUniqueOrThrow({ where: { id: req.params.id }, select: { studentId: true } });
+    const theirs = await tx.submission.findMany({
+      where: { studentId: student.studentId },
+      select: { assignmentId: true, attachments: true },
+    });
+    const refs = new Set(theirs.flatMap((s) => uploadRefs(s.attachments)));
+    if (refs.size > 0) {
+      // Files are only shared within an assignment (teammates), so that's where to look for other users.
+      const others = await tx.submission.findMany({
+        where: { assignmentId: { in: [...new Set(theirs.map((s) => s.assignmentId))] }, studentId: { not: student.studentId } },
+        select: { attachments: true },
+      });
+      for (const s of others) for (const ref of uploadRefs(s.attachments)) refs.delete(ref);
+    }
+    await tx.student.delete({ where: { id: req.params.id } });
+    if (refs.size > 0) await tx.storedFile.deleteMany({ where: { id: { in: [...refs] } } });
+  });
   res.status(204).end();
 });

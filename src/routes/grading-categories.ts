@@ -10,7 +10,7 @@ export const gradingCategoriesRouter = Router();
 
 const fields = z.object({
   name: z.string().trim().min(1),
-  weight: z.number().min(0).max(100),
+  weight: z.number().positive().max(100), // percent of the course grade, more than 0
 });
 export const categoryCreate = fields.extend({ ...idOverride, courseId: z.string().optional() }); // path wins
 export const categoryUpdate = fields.partial();
