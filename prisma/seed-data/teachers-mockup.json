@@ -4,7 +4,6 @@
     "title": "ผศ.ดร.",
     "name": "สมศักดิ์ เจริญสุข",
     "email": "somsak.c@kmitl.ac.th",
-    "role": "teacher",
     "status": "active",
     "courseIds": [
       "c-mock-1",
@@ -25,7 +24,6 @@
     "title": "รศ.ดร.",
     "name": "ประเสริฐ ดีเลิศ",
     "email": "prasert.d@kmitl.ac.th",
-    "role": "teacher",
     "status": "active",
     "courseIds": [
       "c-mock-3",
@@ -42,7 +40,6 @@
     "title": "อ.",
     "name": "กานต์ ศรีสุวรรณ",
     "email": "karn.s@kmitl.ac.th",
-    "role": "teacher",
     "status": "active",
     "courseIds": [
       "c-mock-4",
@@ -62,7 +59,6 @@
     "title": "ผศ.ดร.",
     "name": "วรรณา ใจดี",
     "email": "wanna.j@kmitl.ac.th",
-    "role": "teacher",
     "status": "active",
     "courseIds": [
       "c-mock-21",
@@ -80,7 +76,6 @@
     "title": "รศ.",
     "name": "ธนากร พงษ์ไทย",
     "email": "thanakorn.p@kmitl.ac.th",
-    "role": "teacher",
     "status": "active",
     "courseIds": [
       "c-mock-13",
@@ -97,7 +92,6 @@
     "title": "อ.ดร.",
     "name": "ปิยะ รักเรียน",
     "email": "piya.r@kmitl.ac.th",
-    "role": "teacher",
     "status": "active",
     "courseIds": [
       "c-mock-6",

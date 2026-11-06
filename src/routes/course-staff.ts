@@ -35,38 +35,37 @@ const permissionsSchema = z.object({
 export const sectionRoleCreate = z.object({
   id: z.string().min(1).optional(),
   courseId: z.string().optional(), // the path's courseId wins
-  /** A students.id (TA) or teachers.id (co-teacher) — the frontend's CohortStudent.id / ManagedTeacher.id. */
+  /** A user id: a student's (TA) or a teacher's (co-teacher) — the frontend's CohortStudent.id / ManagedTeacher.id. */
   accountId: z.string().min(1),
   role: z.enum(["teacher", "ta", "co-teacher"]),
 });
 
-/** `accountId` on the way out: whichever of teacher_id / student_id is set. */
+/** `accountId` on the way out: the user id. */
 function toSectionRole(r: SectionRole) {
   return {
     id: r.id,
-    accountId: (r.teacherId ?? r.studentId)!,
+    accountId: r.userId,
     courseId: r.courseId,
     role: ROLE_TO_API[r.role],
     ...(r.permissions !== null && { permissions: r.permissions }),
   };
 }
 
-/** Which table `accountId` lives in, and whether that kind of account can hold `role`. */
+/** Whether the user `accountId` can hold `role` (the database doesn't check it): a TA is a student, a co-teacher a teacher. */
 async function resolveAccount(accountId: string, role: ApiRole) {
-  const teacher = await prisma.teacher.findUnique({ where: { id: accountId }, select: { role: true } });
-  if (teacher) {
-    // A co-teacher gets full access, so only a teacher-role account may be one; a TA-role teacher
-    // account can still be a TA (with TA's restricted defaults).
-    if (role !== "ta" && teacher.role !== "teacher") throw new HttpError(400, "Only a teacher account can be a co-teacher");
-    return { teacherId: accountId };
+  const user = await prisma.user.findUnique({ where: { id: accountId }, select: { teacher: { select: { userId: true } }, student: { select: { userId: true } } } });
+  if (!user) throw new HttpError(400, "accountId is neither a teacher nor a student");
+  if (role === "ta") {
+    if (!user.student) throw new HttpError(400, "A TA must be a student");
+  } else if (!user.teacher) {
+    throw new HttpError(400, user.student ? "A student can only be a TA" : "Only a teacher account can be a co-teacher");
   }
-  const student = await prisma.student.findUnique({ where: { id: accountId }, select: { id: true } });
-  if (student) {
-    if (role !== "ta") throw new HttpError(400, "A student can only be a TA");
-    return { studentId: accountId };
-  }
-  throw new HttpError(400, "accountId is neither a teacher nor a student");
+  return { userId: accountId };
 }
+
+/** A course's own teacher (role "teacher") is an admin's assignment — /managed-teachers, not this API. */
+const ASSIGNED_BY_ADMIN = "A course's teacher is assigned by an admin (managed teachers), not as a section role";
+const onlyCollaborators = { role: { not: "teacher" as const } };
 
 /** Nobody hands out (or takes away) more than they hold: `caller` must have every permission in `perms`. */
 function assertCovers(caller: Permissions, perms: Permissions) {
@@ -83,19 +82,21 @@ async function findRole(id: string) {
 /** Is this role row the caller's own? */
 function isOwn(req: Parameters<typeof principalOf>[0], row: SectionRole) {
   const p = principalOf(req);
-  return (!!p.teacher && row.teacherId === p.teacher.id) || (!!p.student && row.studentId === p.student.id);
+  return row.userId === p.userId;
 }
 
-// Reading needs membership in the course; adding, changing and removing roles needs canManageRoster.
+// This API is about collaborators — TAs and co-teachers; a course's teacher rows are left out (the frontend
+// shows them from ManagedTeacher.courseIds). Reading needs membership in the course; adding, changing and
+// removing roles needs canManageRoster.
 courseStaffRouter.get("/section-roles", async (req, res) => {
   const courseId = courseFilter(await visibleCourses(principalOf(req)));
-  const rows = await prisma.sectionRole.findMany({ where: courseId && { courseId }, orderBy: { createdAt: "asc" } });
+  const rows = await prisma.sectionRole.findMany({ where: { ...(courseId && { courseId }), ...onlyCollaborators }, orderBy: { createdAt: "asc" } });
   res.json(rows.map(toSectionRole));
 });
 
 courseStaffRouter.get("/courses/:courseId/roles", async (req, res) => {
   await requireMember(req, req.params.courseId);
-  const rows = await prisma.sectionRole.findMany({ where: { courseId: req.params.courseId }, orderBy: { createdAt: "asc" } });
+  const rows = await prisma.sectionRole.findMany({ where: { courseId: req.params.courseId, ...onlyCollaborators }, orderBy: { createdAt: "asc" } });
   res.json(rows.map(toSectionRole));
 });
 
@@ -103,6 +104,7 @@ courseStaffRouter.get("/courses/:courseId/roles", async (req, res) => {
 courseStaffRouter.post("/courses/:courseId/roles", async (req, res) => {
   const caller = await requireStaff(req, req.params.courseId, "canManageRoster");
   const { id, accountId, role } = parse(sectionRoleCreate, req.body);
+  if (role === "teacher") throw new HttpError(400, ASSIGNED_BY_ADMIN);
   assertCovers(caller, permissionsOf(ROLE_TO_DB[role], null));
   const account = await resolveAccount(accountId, role);
   const row = await prisma.sectionRole.create({
@@ -114,6 +116,7 @@ courseStaffRouter.post("/courses/:courseId/roles", async (req, res) => {
 courseStaffRouter.patch("/section-roles/:id/permissions", async (req, res) => {
   const permissions = parse(permissionsSchema.nullable(), req.body);
   const current = await findRole(req.params.id);
+  if (current.role === "teacher") throw new HttpError(400, ASSIGNED_BY_ADMIN);
   const caller = await requireStaff(req, current.courseId, "canManageRoster");
   if (!principalOf(req).admin && isOwn(req, current)) throw new HttpError(403, "You can't change your own permissions");
   assertCovers(caller, permissionsOf(current.role, current.permissions));
@@ -127,6 +130,7 @@ courseStaffRouter.patch("/section-roles/:id/permissions", async (req, res) => {
 
 courseStaffRouter.delete("/section-roles/:id", async (req, res) => {
   const current = await findRole(req.params.id);
+  if (current.role === "teacher") throw new HttpError(400, ASSIGNED_BY_ADMIN);
   const caller = await requireStaff(req, current.courseId, "canManageRoster");
   assertCovers(caller, permissionsOf(current.role, current.permissions));
   await prisma.sectionRole.delete({ where: { id: req.params.id } });

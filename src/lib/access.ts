@@ -1,10 +1,9 @@
 // What a signed-in caller may do, per course.
 //
 // - Admin: everything.
-// - Staff of a course: its primary teacher (course_teachers, admin-assigned) or anyone holding a
-//   section role in it. Permissions follow HWAI-frontend/src/lib/section-roles.ts: a teacher-role
-//   primary teacher and a co-teacher get everything, a TA (section role, or a TA-role account assigned
-//   as primary) gets only what its permissions say. Any staff may grade.
+// - Staff of a course: anyone with a section role in it. Permissions follow HWAI-frontend/src/lib/section-roles.ts:
+//   its teacher (role "teacher", admin-assigned) gets everything, a co-teacher everything unless their stored
+//   permissions say otherwise, a TA only what their permissions say. Any staff may grade.
 // - Member of a course: staff, or a student enrolled in it (not withdrawn).
 import type { Request } from "express";
 import { prisma } from "./prisma.js";
@@ -31,6 +30,7 @@ const merge = (a: Permissions | null, b: Permissions): Permissions =>
     : b;
 
 export function permissionsOf(role: "teacher" | "ta" | "coTeacher", stored: unknown): Permissions {
+  if (role === "teacher") return FULL; // the course's own teacher
   if (stored && typeof stored === "object") return { ...TA, ...(stored as Partial<Permissions>) };
   return role === "ta" ? TA : FULL;
 }
@@ -45,19 +45,9 @@ export interface CourseAccess {
 /** Staff permissions per course, for every course the caller is staff of. */
 async function staffCourses(p: Principal, courseId?: string): Promise<Map<string, Permissions>> {
   const out = new Map<string, Permissions>();
-  if (p.teacher) {
-    const links = await prisma.courseTeacher.findMany({
-      where: { teacherId: p.teacher.id, ...(courseId && { courseId }) },
-      select: { courseId: true },
-    });
-    for (const l of links) out.set(l.courseId, merge(out.get(l.courseId) ?? null, p.teacher.role === "teacher" ? FULL : TA));
-  }
-  const accountIds = [p.teacher && { teacherId: p.teacher.id }, p.student && { studentId: p.student.id }].filter(
-    (x): x is { teacherId: string } | { studentId: string } => !!x,
-  );
-  if (accountIds.length > 0) {
+  if (p.teacher || p.student) {
     const roles = await prisma.sectionRole.findMany({
-      where: { OR: accountIds, ...(courseId && { courseId }) },
+      where: { userId: p.userId, ...(courseId && { courseId }) },
       select: { courseId: true, role: true, permissions: true },
     });
     for (const r of roles) out.set(r.courseId, merge(out.get(r.courseId) ?? null, permissionsOf(r.role, r.permissions)));

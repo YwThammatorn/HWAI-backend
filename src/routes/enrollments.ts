@@ -15,6 +15,7 @@ export const enrollmentsRouter = Router();
 const statusSchema = z.enum(["enrolled", "withdrawn", "added-midterm"]);
 // Accepted for older clients and ignored: a roster row shows the student's own name and email.
 const ignored = {
+  name: z.string().optional(),
   firstName: z.string().optional(),
   lastName: z.string().optional(),
   email: z.string().optional(),

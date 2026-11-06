@@ -63,7 +63,6 @@ const responses = {
     title: opt(z.string()),
     name: z.string(),
     email: z.string(),
-    role: z.enum(["teacher", "ta"]),
     status: z.enum(["active", "inactive"]),
     courseIds: z.array(z.string()),
   }),
@@ -71,20 +70,17 @@ const responses = {
     id: z.string(),
     studentId: z.string(),
     title: opt(z.string()),
-    firstName: z.string(),
-    lastName: z.string(),
+    name: z.string(),
     email: z.string(),
     program: z.enum(["CECS", "CEI", "CE"]),
     status: z.enum(["active", "inactive"]),
-    curriculumVersionId: opt(z.string()),
   }),
   // ── Course content (see src/lib/content.ts) ──
   Enrollment: z.object({
     id: z.string(),
     courseId: z.string(),
     studentId: z.string(),
-    firstName: z.string(),
-    lastName: z.string(),
+    name: z.string(),
     email: z.string(),
     sequenceNumber: opt(z.number().int()),
     enrollmentStatus: opt(z.enum(["enrolled", "withdrawn", "added-midterm"])),
@@ -108,7 +104,7 @@ const responses = {
     demo: z.boolean().describe("เข้าสู่ระบบแบบเดโม"),
     roles: z.array(z.enum(["admin", "teacher", "ta", "student"])),
     defaultRole: z.enum(["admin", "teacher", "ta", "student"]),
-    teacher: z.object({ id: z.string(), role: z.enum(["teacher", "ta"]), name: z.string() }).nullable(),
+    teacher: z.object({ id: z.string(), name: z.string() }).nullable(),
     student: z.object({ id: z.string(), studentId: z.string(), name: z.string(), email: z.string(), ta: z.boolean().describe("เป็น TA ในวิชาใดวิชาหนึ่ง") }).nullable(),
   }),
   AuthConfig: z.object({
@@ -175,14 +171,14 @@ const examples = {
     room: "811",
   },
   courseUpdate: { status: "archived", room: null },
-  teacherCreate: { title: "ดร.", name: "ทดลอง ใช้งาน", email: "trial.user@kmitl.ac.th", role: "teacher" },
+  teacherCreate: { title: "ดร.", name: "ทดลอง ใช้งาน", email: "trial.user@kmitl.ac.th" },
   teacherImport: [
-    { name: "ผู้ช่วย หนึ่ง", email: "ta.one@kmitl.ac.th", role: "ta" },
-    { title: "อ.", name: "อาจารย์ สอง", email: "teacher.two@kmitl.ac.th", role: "teacher" },
+    { name: "อาจารย์ หนึ่ง", email: "teacher.one@kmitl.ac.th" },
+    { title: "อ.", name: "อาจารย์ สอง", email: "teacher.two@kmitl.ac.th" },
   ],
   teacherUpdate: { title: null, courseIds: ["c-mock-1"] },
   studentCreate: [
-    { studentId: "69070999", title: "นาย", firstName: "ทดลอง", lastName: "ระบบ", email: "69070999@kmitl.ac.th", program: "CE" },
+    { studentId: "69070999", title: "นาย", name: "ทดลอง ระบบ", email: "69070999@kmitl.ac.th", program: "CE" },
   ],
   studentUpdate: { status: "inactive" },
   studentBulkUpdate: { ids: ["cs-mock-1", "cs-mock-2"], data: { status: "inactive" } },
@@ -392,10 +388,10 @@ export const openapiSpec = {
     },
     "/managed-teachers/{id}": {
       patch: op("Teachers", { summary: "แก้ไขอาจารย์ (courseIds = แทนที่รายวิชาที่ assign ทั้งหมด)", params: [id], body: body(json(teacherUpdate), examples.teacherUpdate), res: ok(ref("ManagedTeacher")), errors: { ...V400, ...N404, "409": "Email ซ้ำ" } }),
-      delete: op("Teachers", { summary: "ลบอาจารย์", params: [id], res: noContent, errors: N404 }),
+      delete: op("Teachers", { summary: "เอาบทบาทอาจารย์ออก — รายวิชาที่ assign และ co-teacher role หายตาม; ถ้าไม่ได้เป็นอย่างอื่น (เช่น admin) บัญชีถูกลบด้วย", params: [id], res: noContent, errors: N404 }),
     },
     "/managed-teachers/{id}/status": {
-      patch: op("Teachers", { summary: "เปิด/ปิดใช้งานอาจารย์", params: [id], body: body({ type: "object", required: ["status"], properties: { status: { type: "string", enum: ["active", "inactive"] } } }), res: noContent, errors: { ...V400, ...N404 } }),
+      patch: op("Teachers", { summary: "เปิด/ปิดใช้งานบัญชี (เข้าระบบได้หรือไม่ — มีผลกับทุกบทบาทของคนนั้น รวมถึง admin)", params: [id], body: body({ type: "object", required: ["status"], properties: { status: { type: "string", enum: ["active", "inactive"] } } }), res: noContent, errors: { ...V400, ...N404 } }),
     },
     "/managed-teachers/{id}/courses/{courseId}": {
       post: op("Teachers", { summary: "Assign อาจารย์เข้ารายวิชา (เรียกซ้ำได้)", params: [id, pathParam("courseId")], res: noContent, errors: { "400": "อาจารย์หรือรายวิชาไม่มีอยู่" } }),
@@ -412,7 +408,7 @@ export const openapiSpec = {
     },
     "/cohort-students/{id}": {
       patch: op("Students", { summary: "แก้ไขนักศึกษา", params: [id], body: body(json(studentUpdate), examples.studentUpdate), res: ok(ref("CohortStudent")), errors: { ...V400, ...N404 } }),
-      delete: op("Students", { summary: "ลบนักศึกษาถาวร — ออกจากทุกรายวิชา และลบงานที่ส่ง คะแนน และไฟล์ที่อัปโหลดในงานเหล่านั้นด้วย (ยกเว้นไฟล์ที่เพื่อนร่วมทีมยังใช้); จะเก็บไว้ให้ PATCH status: inactive แทน", params: [id], res: noContent, errors: N404 }),
+      delete: op("Students", { summary: "ลบนักศึกษาถาวร — ออกจากทุกรายวิชาและทีม ลบงานที่ส่ง คะแนน TA role และไฟล์ที่อัปโหลดในงานเหล่านั้นด้วย (ยกเว้นไฟล์ที่เพื่อนร่วมทีมยังใช้); ถ้าไม่ได้เป็นอย่างอื่น (เช่น admin) บัญชีถูกลบด้วย; จะเก็บไว้ให้ PATCH status: inactive แทน", params: [id], res: noContent, errors: N404 }),
     },
 
     // ── Course content ─────────────────────────────────────────────────────────
@@ -422,7 +418,7 @@ export const openapiSpec = {
     "/courses/{courseId}/students": {
       get: op("Rosters", { summary: "รายชื่อนักศึกษาในรายวิชา", params: [courseId], res: ok(list("Enrollment")) }),
       post: op("Rosters", {
-        summary: "เพิ่มนักศึกษาเข้ารายวิชา (array) — ต้องมีบัญชีนักศึกษาอยู่แล้ว (ชื่อ/อีเมลมาจากบัญชี; ส่ง firstName/lastName/email มาได้แต่ไม่ใช้), ลำดับต่อจากเลขสูงสุด, คนที่เพิ่มทีหลัง = added-midterm. คนที่ไม่มีบัญชี (not_in_system) หรือต่างสาขา (wrong_program, 1 section = 1 สาขา) จะไม่ถูกเพิ่มและอยู่ใน rejected",
+        summary: "เพิ่มนักศึกษาเข้ารายวิชา (array) — ต้องมีบัญชีนักศึกษาอยู่แล้ว (ชื่อ/อีเมลมาจากบัญชี; ส่ง name / firstName / lastName / email มาได้แต่ไม่ใช้), ลำดับต่อจากเลขสูงสุด, คนที่เพิ่มทีหลัง = added-midterm. คนที่ไม่มีบัญชี (not_in_system) หรือต่างสาขา (wrong_program, 1 section = 1 สาขา) จะไม่ถูกเพิ่มและอยู่ใน rejected",
         params: [courseId], body: body({ type: "array", items: json(enrollmentCreate) }, examples.enrollmentCreate),
         res: ok({
           type: "object",
@@ -504,7 +500,7 @@ export const openapiSpec = {
     "/courses/{courseId}/roles": {
       get: op("Collaborators", { summary: "ผู้ร่วมสอนของรายวิชา", params: [courseId], res: ok(list("SectionRole")) }),
       post: op("Collaborators", {
-        summary: "เพิ่มผู้ร่วมสอน — accountId = id ของนักศึกษา (TA) หรืออาจารย์ (co-teacher)",
+        summary: "เพิ่มผู้ร่วมสอน — accountId = id ของนักศึกษา (TA ต้องเป็นนักศึกษา) หรืออาจารย์ (co-teacher ต้องเป็นอาจารย์ role teacher); 1 role ต่อคนต่อวิชา",
         params: [courseId], body: body(json(sectionRoleCreate), examples.roleCreateTa), res: ok(ref("SectionRole"), "201"),
         errors: { "400": "Validation error / role ไม่เข้ากับบัญชี (นักศึกษาเป็นได้แค่ TA) / ไม่พบบัญชี", "409": "คนนี้มี role ในรายวิชานี้แล้ว" },
       }),

@@ -16,12 +16,14 @@ const SESSION_HOURS = 7 * 24; // real (Google) sign-in
 const DEMO_SESSION_HOURS = 8;
 
 export interface Principal {
+  /** users.id — also the teacher's / student's id when they are one. */
+  userId: string;
   email: string;
   name: string;
   /** Signed in through demo sign-in. */
   demo: boolean;
   admin: boolean;
-  teacher: { id: string; role: "teacher" | "ta"; name: string } | null;
+  teacher: { id: string; name: string } | null;
   /** The student this account is. `ta`: they are a TA (section role) in at least one course. */
   student: { id: string; studentId: string; name: string; email: string; ta: boolean } | null;
 }
@@ -49,33 +51,25 @@ export function demoAccounts() {
 
 const hash = (token: string) => createHash("sha256").update(token).digest("hex");
 
-/** Who `email` is, or null when no active account has it. */
-export async function resolvePrincipal(email: string, demo: boolean): Promise<Principal | null> {
-  const demoMode = demoLoginEnabled();
-  const [admin, teacher, student] = await Promise.all([
-    prisma.admin.findUnique({ where: { email } }),
-    prisma.teacher.findUnique({ where: { email } }),
-    prisma.student.findUnique({ where: { email } }),
-  ]);
-  const isAdmin = !!admin && (!admin.demo || demoMode);
-  const activeTeacher = teacher?.status === "active" ? teacher : null;
-  const activeStudent = student?.status === "active" ? student : null;
-  if (!isAdmin && !activeTeacher && !activeStudent) return null;
-  const studentName = activeStudent ? `${activeStudent.firstName} ${activeStudent.lastName}` : "";
-  const studentTa = activeStudent ? (await prisma.sectionRole.count({ where: { studentId: activeStudent.id } })) > 0 : false;
+/**
+ * Who the user with this email (or id) is: one users row, then what they are — admin / teacher / student.
+ * Null when there is no such user, they are inactive (users.status: may they sign in at all), or they are
+ * nothing that can sign in (e.g. only a demo admin while demo sign-in is off).
+ */
+export async function resolvePrincipal(by: { email: string } | { id: string }, demo: boolean): Promise<Principal | null> {
+  const user = await prisma.user.findUnique({ where: by, include: { admin: true, teacher: true, student: true } });
+  if (!user || user.status !== "active") return null;
+  const isAdmin = !!user.admin && (!user.admin.demo || demoLoginEnabled());
+  if (!isAdmin && !user.teacher && !user.student) return null;
+  const ta = user.student ? (await prisma.sectionRole.count({ where: { userId: user.id, role: "ta" } })) > 0 : false;
   return {
-    email,
-    name: activeTeacher?.name ?? admin?.name ?? studentName,
+    userId: user.id,
+    email: user.email,
+    name: user.name,
     demo,
     admin: isAdmin,
-    teacher: activeTeacher && { id: activeTeacher.id, role: activeTeacher.role, name: activeTeacher.name },
-    student: activeStudent && {
-      id: activeStudent.id,
-      studentId: activeStudent.studentId,
-      name: studentName,
-      email: activeStudent.email,
-      ta: studentTa,
-    },
+    teacher: user.teacher && { id: user.id, name: user.name },
+    student: user.student && { id: user.id, studentId: user.student.studentId, name: user.name, email: user.email, ta },
   };
 }
 
@@ -89,14 +83,14 @@ function cookieOptions(maxAgeMs?: number) {
   };
 }
 
-/** Starts a session for `email` and sets its cookie. */
-export async function startSession(res: Response, email: string, demo: boolean) {
+/** Starts a session for the user and sets its cookie. */
+export async function startSession(res: Response, userId: string, demo: boolean) {
   const token = randomBytes(32).toString("base64url");
   const hours = demo ? DEMO_SESSION_HOURS : SESSION_HOURS;
   const expiresAt = new Date(Date.now() + hours * 3600_000);
   // Sweep sessions that have run out (indexed by expires_at) — signing in is rare enough to pay for it.
   await prisma.session.deleteMany({ where: { expiresAt: { lt: new Date() } } });
-  await prisma.session.create({ data: { id: hash(token), email, demo, expiresAt } });
+  await prisma.session.create({ data: { id: hash(token), userId, demo, expiresAt } });
   res.cookie(SESSION_COOKIE, token, cookieOptions(hours * 3600_000));
 }
 
@@ -126,7 +120,7 @@ export const loadPrincipal: RequestHandler = async (req, res, next) => {
     res.clearCookie(SESSION_COOKIE, cookieOptions());
     return next();
   }
-  const principal = await resolvePrincipal(session.email, session.demo);
+  const principal = await resolvePrincipal({ id: session.userId }, session.demo);
   if (!principal) {
     // The account was removed or deactivated after signing in.
     await prisma.session.delete({ where: { id: session.id } }).catch(() => {});
@@ -134,9 +128,6 @@ export const loadPrincipal: RequestHandler = async (req, res, next) => {
     return next();
   }
   req.principal = principal;
-  if (Date.now() - session.lastSeenAt.getTime() > 5 * 60_000) {
-    await prisma.session.update({ where: { id: session.id }, data: { lastSeenAt: new Date() } }).catch(() => {});
-  }
   next();
 };
 
@@ -170,7 +161,7 @@ export function originGuard(origins: string[]): RequestHandler {
 export function toMe(p: Principal) {
   const roles: ("admin" | "teacher" | "ta" | "student")[] = [];
   if (p.admin) roles.push("admin");
-  if (p.teacher) roles.push(p.teacher.role);
+  if (p.teacher) roles.push("teacher");
   if (p.student) roles.push("student");
   // A student who assists in a course also gets the TA role (the TA pages); what they may do there
   // is still decided per course by their section role.
@@ -180,7 +171,7 @@ export function toMe(p: Principal) {
     name: p.name,
     demo: p.demo,
     roles,
-    defaultRole: p.teacher?.role ?? (p.admin ? "admin" : "student"),
+    defaultRole: p.teacher ? "teacher" : p.admin ? "admin" : "student",
     teacher: p.teacher,
     student: p.student,
   };

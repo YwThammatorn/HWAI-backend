@@ -22,7 +22,9 @@ import {
   toAssignment,
   toRubric,
   toSubmission,
+  withMembers,
   withRubricIds,
+  withStudent,
 } from "../lib/content.js";
 
 export const assignmentsRouter = Router();
@@ -185,10 +187,10 @@ export const submissionCreate = z.object({
   ...idOverride,
   assignmentId: z.string().optional(), // the path's assignmentId wins
   studentId: z.string().trim().min(1),
-  studentName: z.string(),
-  email: z.string(),
+  // Accepted for older clients and ignored: the name and email shown are the student's own.
+  studentName: z.string().optional(),
+  email: z.string().optional(),
   submittedAt: z.iso.datetime(),
-  fileUrl: z.string().nullable().default(null),
   attachments: z.array(attachmentSchema).nullish(),
   aiScore: score.default(null),
   instructorScore: score.default(null),
@@ -209,15 +211,14 @@ export const submissionUpdate = z.object({
   criterionScores: z.record(z.string(), z.number()).nullable(),
   aiCriterionScores: z.record(z.string(), z.number()).nullable(),
   status: statusSchema,
-  fileUrl: z.string().nullable(),
   attachments: z.array(attachmentSchema).nullable(),
 }).partial();
 
 function submissionData<T extends {
   attachments?: unknown; criterionComments?: unknown; criterionScores?: unknown; aiCriterionScores?: unknown;
-  status?: z.infer<typeof statusSchema>; submittedAt?: string;
+  status?: z.infer<typeof statusSchema>; submittedAt?: string; studentName?: string; email?: string;
 }>(data: T) {
-  const { attachments, criterionComments, criterionScores, aiCriterionScores, status, submittedAt, ...rest } = data;
+  const { attachments, criterionComments, criterionScores, aiCriterionScores, status, submittedAt, studentName: _n, email: _e, ...rest } = data;
   return {
     ...rest,
     attachments: json(attachments),
@@ -236,15 +237,19 @@ function submissionData<T extends {
 //   announced, everyone else's graded score with nothing that says whose it is (for the class
 //   min / average / max on the student's page).
 
-type SubmissionWithAssignment = Submission & { assignment: { courseId: string; gradingFinalized: boolean } };
+type SubmissionWithAssignment = Submission & {
+  assignment: { courseId: string; gradingFinalized: boolean };
+  student: { user: { name: string; email: string } };
+};
 type Team = { id: string; assignmentId: string; memberStudentIds: string[] };
 
 /** The teams `me` is on (for `assignmentIds`, or every assignment). */
-function teamsOf(me: string, assignmentIds?: string[]): Promise<Team[]> {
-  return prisma.studentGroup.findMany({
-    where: { memberStudentIds: { has: me }, ...(assignmentIds && { assignmentId: { in: assignmentIds } }) },
-    select: { id: true, assignmentId: true, memberStudentIds: true },
+async function teamsOf(me: string, assignmentIds?: string[]): Promise<Team[]> {
+  const rows = await prisma.studentGroup.findMany({
+    where: { members: { some: { studentId: me } }, ...(assignmentIds && { assignmentId: { in: assignmentIds } }) },
+    select: { id: true, assignmentId: true, ...withMembers },
   });
+  return rows.map((g) => ({ id: g.id, assignmentId: g.assignmentId, memberStudentIds: g.members.map((m) => m.studentId) }));
 }
 
 function isTeammates(me: string, sub: { assignmentId: string; studentId: string; groupId: string | null }, teams: Team[]) {
@@ -265,10 +270,13 @@ function forStudent(me: string, teams: Team[], s: SubmissionWithAssignment) {
     });
   }
   if (!announced || sub.status !== "graded") return null;
-  return toSubmission({
-    ...sub, studentId: "", studentName: "", email: "", fileUrl: null, attachments: null, instructorComment: "",
-    criterionComments: null, criterionScores: null, aiCriterionScores: null, externalUseConsent: false, groupId: null,
-  });
+  return {
+    ...toSubmission({
+      ...sub, attachments: null, instructorComment: "",
+      criterionComments: null, criterionScores: null, aiCriterionScores: null, externalUseConsent: false, groupId: null,
+    }),
+    studentId: "", studentName: "", email: "", // nothing that says whose it is
+  };
 }
 
 async function listSubmissions(p: Principal, where: { assignmentId?: string }) {
@@ -276,7 +284,7 @@ async function listSubmissions(p: Principal, where: { assignmentId?: string }) {
   const courseId = courseFilter(v);
   const rows = await prisma.submission.findMany({
     where: { ...(where.assignmentId && { assignmentId: where.assignmentId }), ...(courseId && { assignment: { courseId } }) },
-    include: { assignment: { select: { courseId: true, gradingFinalized: true } } },
+    include: { assignment: { select: { courseId: true, gradingFinalized: true } }, ...withStudent },
     orderBy: { submittedAt: "asc" },
   });
   if (v === "all") return rows.map(({ assignment: _a, ...s }) => toSubmission(s));
@@ -326,6 +334,7 @@ assignmentsRouter.post("/assignments/:id/submissions", async (req, res) => {
   if (access.staff) {
     const row = await prisma.submission.create({
       data: { ...submissionData(data), submittedAt: new Date(data.submittedAt), assignmentId: req.params.id },
+      include: withStudent,
     });
     res.status(201).json(toSubmission(row));
     return;
@@ -334,7 +343,7 @@ assignmentsRouter.post("/assignments/:id/submissions", async (req, res) => {
   const team = await assertMayHandIn(me, req.params.id, data.studentId);
   const enrolled = await prisma.enrollment.findUnique({
     where: { courseId_studentId: { courseId, studentId: data.studentId } },
-    select: { enrollmentStatus: true, student: { select: { firstName: true, lastName: true, email: true } } },
+    select: { enrollmentStatus: true },
   });
   if (!enrolled || enrolled.enrollmentStatus === "withdrawn") throw new HttpError(403, "That student isn't enrolled in this course");
   const row = await prisma.submission.create({
@@ -342,21 +351,35 @@ assignmentsRouter.post("/assignments/:id/submissions", async (req, res) => {
       ...(data.id && { id: data.id }),
       assignmentId: req.params.id,
       studentId: data.studentId,
-      studentName: `${enrolled.student.firstName} ${enrolled.student.lastName}`,
-      email: enrolled.student.email,
       submittedAt: new Date(),
-      fileUrl: data.fileUrl,
       attachments: json(data.attachments),
       externalUseConsent: data.studentId === me && data.externalUseConsent, // only for your own work
       status: "notGraded",
       groupId: team?.id ?? null,
     },
+    include: withStudent,
   });
   res.status(201).json(toSubmission(row));
 });
 
 // What a student may change when resubmitting.
-const STUDENT_RESUBMIT = new Set(["fileUrl", "attachments", "status"]);
+const STUDENT_RESUBMIT = new Set(["attachments", "status"]);
+
+/**
+ * A student's resubmission (new attachments) replaces the earlier work, so its result goes with it
+ * (API_CONTRACT "Submit / grading window"): new submittedAt, not graded, no scores or comments.
+ */
+const resubmission = (attachments: unknown) => ({
+  attachments: json(attachments),
+  submittedAt: new Date(),
+  status: "notGraded" as const,
+  aiScore: null,
+  instructorScore: null,
+  instructorComment: "",
+  criterionScores: Prisma.DbNull,
+  aiCriterionScores: Prisma.DbNull,
+  criterionComments: Prisma.DbNull,
+});
 
 assignmentsRouter.patch("/submissions/:id", async (req, res) => {
   const data = parse(submissionUpdate, req.body);
@@ -373,6 +396,8 @@ assignmentsRouter.patch("/submissions/:id", async (req, res) => {
     if (data.status !== undefined && data.status !== "not_graded") throw new HttpError(403, "Only staff can grade");
     if (current.status === "graded") throw new HttpError(409, "This submission has already been graded");
   }
-  const row = await prisma.submission.update({ where: { id: req.params.id }, data: submissionData(data) });
+  // A student sending attachments is resubmitting: the server sets the time and clears the earlier result.
+  const update = !access.staff && data.attachments !== undefined ? resubmission(data.attachments) : submissionData(data);
+  const row = await prisma.submission.update({ where: { id: req.params.id }, data: update, include: withStudent });
   res.json(toSubmission(row));
 });

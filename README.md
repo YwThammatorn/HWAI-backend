@@ -43,8 +43,9 @@ frontend ต้องรันที่ origin ที่อยู่ใน `CORS
 - **Session** — cookie `hwai_session` (HttpOnly, SameSite=Lax, Secure ตอน production) เก็บ token สุ่ม ฐานข้อมูลเก็บแค่ SHA-256
   ของ token (ตาราง `sessions`) ทุก endpoint ต้องเข้าสู่ระบบ (ไม่งั้น 401) ยกเว้น `/api/health` และ `/api/auth/*`
   และ request ที่แก้ข้อมูลต้องมาจาก origin ใน `CORS_ORIGIN` (กัน CSRF)
-- **ใครเป็นใคร** — หาจากอีเมลของ session: แถวใน `admins` → admin, แถวใน `teachers` ที่ active → อาจารย์ / TA,
-  แถวใน `students` ที่ active → นักศึกษา (หนึ่งอีเมลมีได้หลายบทบาท) บัญชีที่ถูกปิด (inactive) หรือลบไป session ใช้ไม่ได้ทันที
+- **ใครเป็นใคร** — ทุกคนที่เข้าระบบเป็นแถวเดียวใน `users` (อีเมล, คำนำหน้า, ชื่อ, `status`) แล้วเป็นอะไรดูจากแถวย่อย:
+  `admins` → admin, `teachers` → อาจารย์, `students` → นักศึกษา (คนเดียวเป็นได้หลายอย่าง แต่อาจารย์เป็นนักศึกษาไม่ได้)
+  `users.status` = เข้าระบบได้หรือไม่ (มีผลกับทุกบทบาทของคนนั้น) — ปิด (inactive) หรือลบไปแล้ว session ใช้ไม่ได้ทันที (session ผูกกับ user ลบ user แล้ว session หายตาม)
   ไม่มีการสมัครเอง — บัญชีต้องมีอยู่ก่อน (admin เพิ่ม)
 - **Google sign-in** — `POST /api/auth/google { credential }` รับ ID token จากปุ่ม Sign in with Google ของหน้า login แล้วตรวจเองทั้งหมด:
   ลายเซ็นและวันหมดอายุของ Google, `aud` = `GOOGLE_CLIENT_ID`, `email_verified`, `hd = kmitl.ac.th` และอีเมลลงท้าย @kmitl.ac.th
@@ -57,13 +58,16 @@ frontend ต้องรันที่ origin ที่อยู่ใน `CORS
   ใช้ได้เฉพาะอีเมลใน `DEMO_ACCOUNTS`, session อยู่ 8 ชม., log ทุกครั้งที่ใช้ และ session เดโมใช้ไม่ได้ทันทีที่ปิด `DEMO_LOGIN`
   (frontend แสดงแถบ "Demo mode" ตลอดที่เข้าแบบนี้)
 - **Demo admin** — `admins.demo = true` เป็น admin เฉพาะตอนเปิด demo sign-in (seed ให้ `somsak.c` เป็นแบบนี้)
-  — เพิ่ม admin จริงด้วยการเพิ่มแถวใน `admins` (`demo = false`) · อาจารย์เป็นนักศึกษาไม่ได้ จะดูหน้านักศึกษาให้ login เป็นนักศึกษา
+  — เพิ่ม admin จริงด้วยการเพิ่มแถวใน `admins` (`user_id` ของ user คนนั้น, `demo = false`) · อาจารย์เป็นนักศึกษาไม่ได้ จะดูหน้านักศึกษาให้ login เป็นนักศึกษา
+- **เพิ่ม / ลบอาจารย์และนักศึกษา** — `id` ที่ API ใช้คือ `users.id`; เพิ่มด้วยอีเมลที่เป็น user อยู่แล้ว (เช่น admin) = user เดิมได้บทบาทเพิ่ม
+  (ชื่อ/สถานะของ user เดิมไม่เปลี่ยน; เป็นอยู่แล้ว หรืออาจารย์↔นักศึกษา = 409) · ลบ = เอาบทบาทนั้นออก (รายวิชาที่ assign / roster งานที่ส่ง ทีม
+  และ section role ที่ต้องเป็นบทบาทนั้นหายตาม) แล้วถ้าไม่เหลือบทบาทไหนก็ลบ user ด้วย
 
 | ใคร | ทำอะไรได้ |
 |---|---|
 | admin | ทุกอย่าง |
 | ทุกคนที่เข้าสู่ระบบ | อ่านรายวิชา, หลักสูตร, รายชื่ออาจารย์; อัปโหลด / เปิดไฟล์; ลบไฟล์ที่ตัวเองอัปโหลด |
-| อาจารย์หลักของวิชา (`course_teachers`) / co-teacher | ทุกอย่างในวิชานั้น (TA-role ที่ admin assign เป็นอาจารย์หลัก ได้สิทธิ์แบบ TA) |
+| อาจารย์ของวิชา (section role `teacher` ที่ admin assign) / co-teacher | ทุกอย่างในวิชานั้น (co-teacher ถูกจำกัดสิทธิ์ได้ด้วย `permissions`) |
 | TA (`section_roles`) | ตรวจงาน, เลือกโหมดตรวจ, Calibration + ตาม `permissions`: `canManageRoster` รายชื่อ + ผู้ร่วมสอน, `canEditSettings` ตั้งค่าวิชา / งาน / rubric / หมวดคะแนน / CLO, `canPublishScores` ประกาศคะแนน — ให้สิทธิ์คนอื่นเกินที่ตัวเองมีไม่ได้ และแก้สิทธิ์ตัวเองไม่ได้ |
 | อาจารย์ (ทุกคน) | ใช้คลัง rubric; เห็นรายชื่อนักศึกษาทั้งหมด (ไว้เพิ่มเข้าวิชา / เลือก TA) |
 | นักศึกษา | อ่านข้อมูลวิชาที่ลงทะเบียน (รายชื่อเพื่อน, งาน, rubric, ทีม, CLO); ส่ง / ส่งซ้ำงานของตัวเอง หรือของเพื่อนร่วมทีมในงานกลุ่ม — ผู้ส่ง, ชื่อ, เวลา, คะแนน, สถานะ เซิร์ฟเวอร์กำหนดเอง ส่งซ้ำได้แค่ไฟล์/ลิงก์ และส่งซ้ำงานที่ตรวจแล้วไม่ได้; ตั้งทีมที่ตัวเองอยู่ / ออกจากทีม; เห็นข้อมูลนักศึกษาของตัวเองเท่านั้น |
@@ -192,22 +196,23 @@ src/
 | `curriculum_versions` | `CurriculumVersion` | `/curriculum-versions` | หลักสูตร |
 | `course_templates` | `CourseTemplate` | `/course-templates` | รายวิชาในหลักสูตร |
 | `courses` | `Course` | `/courses` | รายวิชาที่เปิดสอน (section) |
-| `teachers` | `Teacher` | `/managed-teachers` | อาจารย์ / TA |
-| `course_teachers` | `CourseTeacher` | `/managed-teachers/:id/courses/:courseId` | อาจารย์ที่ assign ในแต่ละรายวิชา |
-| `students` | `Student` | `/cohort-students` | นักศึกษา |
+| `users` | `User` | (`id`, `title`, `name`, `email`, `status` ของอาจารย์ / นักศึกษา) | ทุกคนที่เข้าระบบ — อีเมลไม่ซ้ำและเป็นตัวเล็ก, ชื่อห้ามว่าง (CHECK) |
+| `teachers` | `Teacher` | `/managed-teachers` | อาจารย์ — `user_id` (PK, FK ไป `users`); วิชาที่สอน (`courseIds`) คือ section role `teacher` ของคนนั้น |
+| `students` | `Student` | `/cohort-students` | นักศึกษา — `user_id` (PK, FK ไป `users`) + `student_id` (ที่ roster / งานที่ส่ง / ทีม ชี้มา), `program`, หลักสูตร |
 | `enrollments` | `Enrollment` | `/students`, `/courses/:courseId/students` | นักศึกษาในแต่ละรายวิชา (roster) — `student_id` เป็น FK ไป `students.student_id` (แก้รหัส/ลบบัญชีแล้วตามไปด้วย), เลขลำดับไม่ซ้ำในวิชา |
 | `grading_categories` | `GradingCategory` | `/grading-categories` | หมวดคะแนน |
 | `assignments` | `Assignment` | `/assignments` | งาน |
 | `rubrics` | `Rubric` | `/rubrics` | เกณฑ์ให้คะแนน (criteria เก็บเป็น JSON) |
 | `submissions` | `Submission` | `/submissions` | งานที่นักศึกษาส่ง + คะแนน — `student_id` เป็น FK ไป `students.student_id` (แก้รหัสแล้วตามไป, ลบบัญชีแล้วงานหายด้วย) |
 | `student_groups` | `StudentGroup` | `/student-groups` | ทีมของงานกลุ่ม |
+| `student_group_members` | `StudentGroupMember` | (`memberStudentIds` ของทีม) | สมาชิกทีม 1 แถวต่อคน (API ส่ง `memberStudentIds` เรียงตามรหัส) — 1 คนอยู่ได้ทีมเดียวต่องาน (ชน = 409), FK ไปทีม (`group_id` + `assignment_id`) และไป `students.student_id`; PATCH `memberStudentIds` แทนที่สมาชิกทั้งชุด |
 | `files` | `StoredFile` | `/files` | ไฟล์ที่อัปโหลด |
-| `section_roles` | `SectionRole` | `/section-roles` | ผู้ร่วมสอนในรายวิชา — `teacher_id` หรือ `student_id` อย่างใดอย่างหนึ่ง (CHECK) ลบอาจารย์/นักศึกษาแล้ว role หายตาม |
+| `section_roles` | `SectionRole` | `/section-roles`, `/managed-teachers/:id/courses/:courseId` | staff ของรายวิชา 1 แถวต่อคนต่อวิชา (`user_id` = `accountId`): `teacher` = อาจารย์ของวิชา (admin assign ผ่าน managed-teachers — API `/section-roles` ไม่แสดงและไม่ให้แก้), `co-teacher` ต้องเป็นอาจารย์, `ta` ต้องเป็นนักศึกษา (API ตรวจ) |
 | `clos` | `Clo` | `/clos` | ผลลัพธ์การเรียนรู้ของรายวิชา (CLO) |
 | `rubric_library_entries` | `RubricLibraryEntry` | `/rubric-library` | คลัง rubric ต่อวิชา — ลบวิชา (course template) แล้วหายตาม, งานต้นทางเป็นแค่ที่มา |
 | `calibration_runs` | `CalibrationRun` | `/calibration-runs` | ผล Calibration ของ AI ต่องาน — ลบงานแล้วหายตาม |
-| `admins` | `Admin` | — | รายชื่อ admin (`demo = true` = admin เฉพาะตอนเปิด demo sign-in) |
-| `sessions` | `Session` | `/auth/*` | session ที่เข้าสู่ระบบอยู่ (id = SHA-256 ของ token ใน cookie) |
+| `admins` | `Admin` | — | admin — `user_id` (PK, FK ไป `users`); `demo = true` = admin เฉพาะตอนเปิด demo sign-in |
+| `sessions` | `Session` | `/auth/*` | session ที่เข้าสู่ระบบอยู่ (id = SHA-256 ของ token ใน cookie) ของ `user_id` |
 
 **กติกาที่ฐานข้อมูลบังคับเอง** (ชนแล้วตอบ 409 / 400 พร้อมข้อความอ่านเข้าใจ):
 - ไม่ซ้ำ: หลักสูตรต่อ (สาขา, ปีที่เริ่มใช้) · รหัสวิชาในหลักสูตรเดียวกัน (ไม่สนตัวพิมพ์ — index บน `lower(code)` ที่สร้างใน SQL ของ migration)
@@ -222,8 +227,9 @@ src/
 นักศึกษารุ่นเก่าในข้อมูลตัวอย่าง [21] (รหัส 6499xxxx / 6599xxxx — รุ่น 64–65 ที่จบไปแล้ว รุ่น 66–69 ยังเรียนอยู่) ถูก seed เป็นบัญชี inactive เพราะงานที่ส่งต้องมีเจ้าของ —
 ฐานข้อมูลที่ seed ไว้ก่อนหน้านี้ให้รัน `npm run db:seed` ก่อน `migrate deploy` (ไม่งั้น migration `20261106100000_submissions_student_fk` จะหยุด)
 
-`enrollments.student_id`, `submissions.student_id`, `student_groups.member_student_ids` เก็บ**รหัสนักศึกษา** (เช่น `69070101`) ตรงกับที่ frontend ใช้ —
-สองอันแรกเป็น FK ไป `students.student_id`; `member_student_ids` เป็น array จึงไม่มี FK (ลบนักศึกษาแล้วรหัสยังค้างในทีม)
+`enrollments.student_id`, `submissions.student_id`, `student_group_members.student_id` เก็บ**รหัสนักศึกษา** (เช่น `69070101`) ตรงกับที่ frontend ใช้
+และเป็น FK ไป `students.student_id` ทั้งหมด (แก้รหัสแล้วตามไป, ลบบัญชีแล้วหายตาม) — ชื่อและอีเมลที่ API ส่งใน roster และงานที่ส่ง (`studentName`, `email`)
+อ่านจากบัญชีนักศึกษา ไม่ได้เก็บซ้ำ (2NF); POST / PATCH ที่ยังส่งสองค่านี้มารับไว้แต่ไม่ใช้
 
 ## ยังไม่ได้ทำ
 

@@ -4,20 +4,23 @@ import { prisma } from "../lib/prisma.js";
 import { HttpError, parse } from "../lib/http.js";
 import { isStaffAnywhere, requireAdmin } from "../lib/access.js";
 import { principalOf } from "../lib/auth.js";
+import { removeKind, splitUserFields, userFor } from "../lib/accounts.js";
 import { toCohortStudent } from "../lib/serialize.js";
+
+// A CohortStudent is a user (title, name, email, status) who is a student (studentId, program, curriculum);
+// its id is the user id.
+const include = { user: true } as const;
 
 export const cohortStudentsRouter = Router();
 
 const studentFields = z.object({
   studentId: z.string().trim().min(1),
   title: z.string().trim().nullish(),
-  firstName: z.string().trim().min(1),
-  lastName: z.string().trim().min(1),
+  name: z.string().trim().min(1), // full name
   email: z.string().trim().toLowerCase().pipe(z.email()),
   // CE / CECS / CEI — spacing and case are forgiven (CSV imports), anything else is a 400
   program: z.preprocess((v) => (typeof v === "string" ? v.trim().toUpperCase() : v), z.enum(["CE", "CECS", "CEI"])),
   status: z.enum(["active", "inactive"]).optional(),
-  curriculumVersionId: z.string().nullish(),
 });
 export const studentCreate = studentFields.extend({ id: z.string().min(1).optional() });
 export const studentUpdate = studentFields.partial();
@@ -34,18 +37,32 @@ cohortStudentsRouter.get("/cohort-students", async (req, res) => {
   const p = principalOf(req);
   const everyone = await isStaffAnywhere(p);
   const rows = await prisma.student.findMany({
-    where: everyone ? undefined : { id: p.student?.id ?? "" },
+    where: everyone ? undefined : { userId: p.student?.id ?? "" },
+    include,
     orderBy: { studentId: "asc" },
   });
   res.json(rows.map(toCohortStudent));
 });
 
 // Takes an array (single add and CSV import share this endpoint). All-or-nothing: one duplicate
-// studentId rejects the whole batch with 409.
+// studentId (or a student / teacher already using the email) rejects the whole batch with 409. An email that
+// is already a user (e.g. an admin) makes that user a student.
 cohortStudentsRouter.post("/cohort-students", async (req, res) => {
   requireAdmin(req);
   const items = parse(z.array(studentCreate), req.body);
-  const rows = await prisma.$transaction(items.map((data) => prisma.student.create({ data })));
+  const rows = await prisma.$transaction(async (tx) => {
+    const out = [];
+    for (const data of items) {
+      const userId = await userFor(tx, "student", data);
+      out.push(
+        await tx.student.create({
+          data: { userId, studentId: data.studentId, program: data.program },
+          include,
+        }),
+      );
+    }
+    return out;
+  });
   res.status(201).json(rows.map(toCohortStudent));
 });
 
@@ -54,18 +71,26 @@ cohortStudentsRouter.patch("/cohort-students", async (req, res) => {
   requireAdmin(req);
   const { ids, data } = parse(studentBulkUpdate, req.body);
   const unique = [...new Set(ids)];
+  const { user, rest } = splitUserFields(data);
   const rows = await prisma.$transaction(async (tx) => {
-    const { count } = await tx.student.updateMany({ where: { id: { in: unique } }, data });
+    const count = await tx.student.count({ where: { userId: { in: unique } } });
     if (count !== unique.length) throw new HttpError(404, `${unique.length - count} student(s) not found`);
-    return tx.student.findMany({ where: { id: { in: unique } }, orderBy: { studentId: "asc" } });
+    if (Object.keys(user).length > 0) await tx.user.updateMany({ where: { id: { in: unique } }, data: user });
+    if (Object.keys(rest).length > 0) await tx.student.updateMany({ where: { userId: { in: unique } }, data: rest });
+    return tx.student.findMany({ where: { userId: { in: unique } }, include, orderBy: { studentId: "asc" } });
   });
   res.json(rows.map(toCohortStudent));
 });
 
 cohortStudentsRouter.patch("/cohort-students/:id", async (req, res) => {
   requireAdmin(req);
-  const data = parse(studentUpdate, req.body);
-  const row = await prisma.student.update({ where: { id: req.params.id }, data });
+  // title / name / email / status are the user's; studentId, program and curriculum the student's.
+  const { user, rest } = splitUserFields(parse(studentUpdate, req.body));
+  const row = await prisma.$transaction(async (tx) => {
+    await tx.student.findUniqueOrThrow({ where: { userId: req.params.id }, select: { userId: true } });
+    if (Object.keys(user).length > 0) await tx.user.update({ where: { id: req.params.id }, data: user });
+    return tx.student.update({ where: { userId: req.params.id }, data: rest, include });
+  });
   res.json(toCohortStudent(row));
 });
 
@@ -77,13 +102,14 @@ function uploadRefs(attachments: unknown): string[] {
   );
 }
 
-// Deleting an account is for good (admins deactivate to keep someone's work): the database removes them
-// from every roster and deletes their submissions (FK cascades), and their uploaded files go too — except a
-// file a teammate's submission still points at (a team hands in the same files). One transaction.
+// Deleting a student is for good (admins deactivate to keep someone's work): the database removes them from
+// every roster and team and deletes their submissions (FK cascades on students.student_id), their TA roles go,
+// and their uploaded files too — except a file a teammate's submission still points at (a team hands in the
+// same files). The user goes as well unless they are something else (an admin). One transaction.
 cohortStudentsRouter.delete("/cohort-students/:id", async (req, res) => {
   requireAdmin(req);
   await prisma.$transaction(async (tx) => {
-    const student = await tx.student.findUniqueOrThrow({ where: { id: req.params.id }, select: { studentId: true } });
+    const student = await tx.student.findUniqueOrThrow({ where: { userId: req.params.id }, select: { studentId: true } });
     const theirs = await tx.submission.findMany({
       where: { studentId: student.studentId },
       select: { assignmentId: true, attachments: true },
@@ -97,7 +123,7 @@ cohortStudentsRouter.delete("/cohort-students/:id", async (req, res) => {
       });
       for (const s of others) for (const ref of uploadRefs(s.attachments)) refs.delete(ref);
     }
-    await tx.student.delete({ where: { id: req.params.id } });
+    await removeKind(tx, "student", req.params.id);
     if (refs.size > 0) await tx.storedFile.deleteMany({ where: { id: { in: [...refs] } } });
   });
   res.status(204).end();

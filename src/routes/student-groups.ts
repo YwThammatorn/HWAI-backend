@@ -3,7 +3,8 @@ import { Router } from "express";
 import { z } from "zod";
 import { prisma } from "../lib/prisma.js";
 import { HttpError, parse } from "../lib/http.js";
-import { idOverride, toStudentGroup } from "../lib/content.js";
+import { idOverride, toStudentGroup, withMembers } from "../lib/content.js";
+import type { Prisma } from "../generated/prisma/client.js";
 import { courseFilter, courseOfAssignment, requireMember, visibleCourses } from "../lib/access.js";
 import { principalOf } from "../lib/auth.js";
 
@@ -40,29 +41,33 @@ async function assertStudentTeam(
   const ok = new Set(enrolled.map((e) => e.studentId));
   const outsiders = members.filter((id) => !ok.has(id));
   if (outsiders.length > 0) throw new HttpError(400, `Not enrolled in this course: ${outsiders.join(", ")}`);
-  const taken = await prisma.studentGroup.findMany({
-    where: { assignmentId, memberStudentIds: { hasSome: members }, ...(opts.groupId && { id: { not: opts.groupId } }) },
-    select: { memberStudentIds: true },
+  const taken = await prisma.studentGroupMember.findMany({
+    where: { assignmentId, studentId: { in: members }, ...(opts.groupId && { groupId: { not: opts.groupId } }) },
+    select: { studentId: true },
   });
-  const busy = members.filter((id) => taken.some((g) => g.memberStudentIds.includes(id)));
-  if (busy.length > 0) throw new HttpError(409, `Already on another team: ${busy.join(", ")}`);
+  if (taken.length > 0) throw new HttpError(409, `Already on another team: ${taken.map((m) => m.studentId).join(", ")}`);
 }
 
+/** A team with its members' student IDs (sorted). */
 async function findGroup(id: string) {
-  const g = await prisma.studentGroup.findUnique({ where: { id } });
+  const g = await prisma.studentGroup.findUnique({ where: { id }, include: withMembers });
   if (!g) throw new HttpError(404, "Team not found");
-  return g;
+  return { ...g, memberStudentIds: g.members.map((m) => m.studentId) };
 }
+
+/** The member rows for `studentIds`. */
+const memberRows = (groupId: string, assignmentId: string, studentIds: string[]): Prisma.StudentGroupMemberCreateManyInput[] =>
+  studentIds.map((studentId) => ({ groupId, assignmentId, studentId }));
 
 studentGroupsRouter.get("/student-groups", async (req, res) => {
   const courseId = courseFilter(await visibleCourses(principalOf(req)));
-  const rows = await prisma.studentGroup.findMany({ where: courseId && { courseId }, orderBy: { createdAt: "asc" } });
+  const rows = await prisma.studentGroup.findMany({ where: courseId && { courseId }, include: withMembers, orderBy: { createdAt: "asc" } });
   res.json(rows.map(toStudentGroup));
 });
 
 studentGroupsRouter.get("/assignments/:id/groups", async (req, res) => {
   await requireMember(req, await courseOfAssignment(req.params.id));
-  const rows = await prisma.studentGroup.findMany({ where: { assignmentId: req.params.id }, orderBy: { createdAt: "asc" } });
+  const rows = await prisma.studentGroup.findMany({ where: { assignmentId: req.params.id }, include: withMembers, orderBy: { createdAt: "asc" } });
   res.json(rows.map(toStudentGroup));
 });
 
@@ -78,7 +83,13 @@ studentGroupsRouter.post("/assignments/:id/groups", async (req, res) => {
   if (!access.staff) {
     await assertStudentTeam(principalOf(req).student!.studentId, assignment.courseId, req.params.id, data.memberStudentIds, {});
   }
-  const row = await prisma.studentGroup.create({ data: { ...data, assignmentId: req.params.id, courseId: assignment.courseId } });
+  // Someone already on another team of this assignment → 409 (student_group_members_assignment_id_student_id_key)
+  const { memberStudentIds, ...fields } = data;
+  const row = await prisma.$transaction(async (tx) => {
+    const g = await tx.studentGroup.create({ data: { ...fields, assignmentId: req.params.id, courseId: assignment.courseId } });
+    await tx.studentGroupMember.createMany({ data: memberRows(g.id, g.assignmentId, memberStudentIds) });
+    return tx.studentGroup.findUniqueOrThrow({ where: { id: g.id }, include: withMembers });
+  });
   res.status(201).json(toStudentGroup(row));
 });
 
@@ -105,7 +116,16 @@ studentGroupsRouter.patch("/student-groups/:id", async (req, res) => {
       await assertStudentTeam(me, group.courseId, group.assignmentId, data.memberStudentIds, { groupId: group.id, leaving });
     }
   }
-  const row = await prisma.studentGroup.update({ where: { id: req.params.id }, data });
+  // A new member list replaces the whole team, in one transaction.
+  const { memberStudentIds, ...fields } = data;
+  const row = await prisma.$transaction(async (tx) => {
+    if (memberStudentIds) {
+      await tx.studentGroupMember.deleteMany({ where: { groupId: group.id } });
+      await tx.studentGroupMember.createMany({ data: memberRows(group.id, group.assignmentId, memberStudentIds) });
+    }
+    // Always touches updated_at, so a members-only change is dated too.
+    return tx.studentGroup.update({ where: { id: group.id }, data: { ...fields, updatedAt: new Date() }, include: withMembers });
+  });
   res.json(toStudentGroup(row));
 });
 

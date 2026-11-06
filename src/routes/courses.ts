@@ -4,7 +4,7 @@ import { prisma } from "../lib/prisma.js";
 import { HttpError, parse } from "../lib/http.js";
 import { requireAdmin, requireStaff } from "../lib/access.js";
 import { principalOf } from "../lib/auth.js";
-import { termFromApi, toCourse, toManagedTeacher } from "../lib/serialize.js";
+import { teacherInclude, termFromApi, toCourse, toManagedTeacher } from "../lib/serialize.js";
 
 export const coursesRouter = Router();
 
@@ -78,9 +78,9 @@ coursesRouter.delete("/courses/:id", async (req, res) => {
 
 coursesRouter.get("/courses/:id/teachers", async (req, res) => {
   const rows = await prisma.teacher.findMany({
-    where: { courses: { some: { courseId: req.params.id } } },
-    include: { courses: { select: { courseId: true } } },
-    orderBy: { createdAt: "asc" },
+    where: { user: { sectionRoles: { some: { courseId: req.params.id, role: "teacher" } } } },
+    include: teacherInclude,
+    orderBy: { user: { createdAt: "asc" } },
   });
   res.json(rows.map(toManagedTeacher));
 });

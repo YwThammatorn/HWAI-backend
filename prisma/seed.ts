@@ -5,7 +5,7 @@ import { readFileSync } from "node:fs";
 import { prisma } from "../src/lib/prisma.js";
 import { termFromApi, type ApiTerm } from "../src/lib/serialize.js";
 import { enrollmentStatus, submissionStatus } from "../src/lib/content.js";
-import type { Prisma } from "../src/generated/prisma/client.js";
+import { Prisma } from "../src/generated/prisma/client.js";
 
 function load<T>(file: string): T {
   return JSON.parse(readFileSync(new URL(`./seed-data/${file}`, import.meta.url), "utf8")) as T;
@@ -16,7 +16,9 @@ type Curriculum = {
   courseTemplates: Prisma.CourseTemplateCreateManyInput[];
 };
 type SeedCourse = Omit<Prisma.CourseCreateManyInput, "term"> & { term?: ApiTerm };
-type SeedTeacher = Prisma.TeacherCreateManyInput & { courseIds: string[] };
+type SeedAccount = { id: string; email: string; title?: string | null; name: string; status?: "active" | "inactive" };
+type SeedTeacher = SeedAccount & { role?: string; courseIds: string[] }; // role: older mocks — ignored, a teacher is a teacher
+type SeedStudent = SeedAccount & { studentId: string; program: "CE" | "CECS" | "CEI" };
 
 async function main() {
   const curriculum = load<Curriculum>("curriculum-mockup.json");
@@ -29,7 +31,7 @@ async function main() {
   }>("rubric-years-mockup.json");
   const courses = [...load<SeedCourse[]>("courses-mockup.json"), ...years.courses];
   const teachers = load<SeedTeacher[]>("teachers-mockup.json");
-  const students = load<Prisma.StudentCreateManyInput[]>("students-mockup.json");
+  const students = load<SeedStudent[]>("students-mockup.json");
 
   for (const v of curriculum.curriculumVersions) {
     await prisma.curriculumVersion.upsert({ where: { id: v.id }, create: v, update: v });
@@ -41,31 +43,25 @@ async function main() {
     const data = { ...c, term: term === undefined ? undefined : termFromApi(term) };
     await prisma.course.upsert({ where: { id: c.id }, create: data, update: data });
   }
-  for (const { courseIds, ...t } of teachers) {
-    const courses = { deleteMany: {}, create: courseIds.map((courseId) => ({ courseId })) };
-    await prisma.teacher.upsert({
-      where: { id: t.id },
-      create: { ...t, courses: { create: courses.create } },
-      update: { ...t, courses },
-    });
+  for (const { courseIds, role: _ignored, ...account } of teachers) {
+    const userId = await seedUser(account);
+    await prisma.teacher.upsert({ where: { userId }, create: { userId }, update: {} });
+    // The sections they teach (role "teacher") are exactly the mock's courseIds
+    await prisma.sectionRole.deleteMany({ where: { userId, role: "teacher", courseId: { notIn: courseIds } } });
+    for (const courseId of courseIds) await seedTeaches(userId, courseId);
   }
   // Mock courses the mock data no longer has (seed-commands [2]/[18] replace the whole list). Only the mock's own
   // "c-mock-…" ids — courses people created themselves (uuid ids) are never touched.
   const mockIds = courses.map((c) => c.id as string);
   const stale = await prisma.course.deleteMany({ where: { id: { startsWith: "c-mock-", notIn: mockIds } } });
   if (stale.count) console.log(`Removed ${stale.count} mock course(s) no longer in the mock data.`);
-  for (const c of years.courses) {
-    await prisma.courseTeacher.upsert({
-      where: { courseId_teacherId: { courseId: c.id, teacherId: years.teacherId } },
-      create: { courseId: c.id, teacherId: years.teacherId },
-      update: {},
-    });
-  }
-  for (const s of students) {
+  for (const c of years.courses) await seedTeaches(years.teacherId, c.id);
+  for (const { studentId, program, ...account } of students) {
     // Keyed on the student ID (unique), so one added through the admin page under another id is updated, not duplicated.
-    const { id: _id, ...changes } = s;
-    void _id;
-    await prisma.student.upsert({ where: { studentId: s.studentId }, create: s, update: changes });
+    const existing = await prisma.student.findUnique({ where: { studentId }, select: { userId: true } });
+    const userId = await seedUser({ ...account, id: existing?.userId ?? account.id });
+    const data = { studentId, program };
+    await prisma.student.upsert({ where: { userId }, create: { userId, ...data }, update: data });
   }
   await seedPastStudents(curriculum, years, new Set(students.map((s) => s.studentId)));
 
@@ -99,19 +95,15 @@ async function seedPastStudents(
   for (const s of years.submissions) {
     if (known.has(s.studentId) || seen.has(s.studentId)) continue;
     seen.add(s.studentId);
-    const [firstName, ...rest] = s.studentName.trim().split(/\s+/);
-    await prisma.student.upsert({
-      where: { studentId: s.studentId },
-      create: {
-        studentId: s.studentId,
-        firstName,
-        lastName: rest.join(" ") || "-",
-        email: s.email.toLowerCase(),
-        program: programOf(courseOf.get(s.assignmentId)),
-        status: "inactive",
-      },
+    if (await prisma.student.findUnique({ where: { studentId: s.studentId }, select: { userId: true } })) continue;
+    const email = s.email.toLowerCase();
+    const user = await prisma.user.upsert({
+      where: { email },
+      create: { email, name: s.studentName.trim(), status: "inactive" },
       update: {},
+      select: { id: true },
     });
+    await prisma.student.create({ data: { userId: user.id, studentId: s.studentId, program: programOf(courseOf.get(s.assignmentId)) } });
   }
   if (seen.size) console.log(`Past students for [21]: ${seen.size} inactive accounts.`);
 }
@@ -119,12 +111,33 @@ async function seedPastStudents(
 // The demo admin: ผศ.ดร. สมศักดิ์ (teacher t-mock-1) is also an admin — but only while demo sign-in is on;
 // real (Google) sign-in never makes him one. A teacher is never also a student.
 async function seedDemoAccounts() {
-  const email = "somsak.c@kmitl.ac.th";
-  await prisma.admin.upsert({
-    where: { email },
-    create: { email, name: "สมศักดิ์ เจริญสุข", demo: true },
-    update: { name: "สมศักดิ์ เจริญสุข", demo: true },
+  const user = await prisma.user.findUniqueOrThrow({ where: { email: "somsak.c@kmitl.ac.th" }, select: { id: true } });
+  await prisma.admin.upsert({ where: { userId: user.id }, create: { userId: user.id, demo: true }, update: { demo: true } });
+}
+
+/** Makes the user the teacher of a course (over a co-teacher role they may have had there). */
+async function seedTeaches(userId: string, courseId: string) {
+  await prisma.sectionRole.upsert({
+    where: { courseId_userId: { courseId, userId } },
+    create: { courseId, userId, role: "teacher" },
+    update: { role: "teacher", permissions: Prisma.DbNull },
   });
+}
+
+/**
+ * The user a mock account is: the one with its id, else the one with its email (someone added it through the
+ * admin pages), else a new one with the mock's id. Name, title, email and status are refreshed from the mock.
+ */
+async function seedUser(a: SeedAccount): Promise<string> {
+  const existing =
+    (await prisma.user.findUnique({ where: { id: a.id }, select: { id: true } })) ??
+    (await prisma.user.findUnique({ where: { email: a.email }, select: { id: true } }));
+  const data = { email: a.email, title: a.title ?? null, name: a.name, ...(a.status && { status: a.status }) };
+  if (existing) {
+    await prisma.user.update({ where: { id: existing.id }, data });
+    return existing.id;
+  }
+  return (await prisma.user.create({ data: { id: a.id, ...data }, select: { id: true } })).id;
 }
 
 // Course content = seed-commands [5]/[15] (student-flow) + [14] (student-history) + [16] (the UX/UI class) +
@@ -209,7 +222,8 @@ async function seedCourseContent() {
     await prisma.rubric.upsert({ where: { id: r.id }, create: data, update: data });
   }
   for (const s of submissions) {
-    const { status, attachments, criterionComments, criterionScores, ...rest } = s;
+    // studentName / email in the mock are the student's own — the API reads them from the account
+    const { status, attachments, criterionComments, criterionScores, studentName: _n, email: _e, ...rest } = s;
     const data = {
       ...(rest as unknown as Prisma.SubmissionCreateManyInput),
       status: submissionStatus.toDb(status as "not_graded" | "need_review" | "graded"),

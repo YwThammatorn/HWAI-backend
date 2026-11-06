@@ -54,9 +54,9 @@ authRouter.post("/auth/google", async (req, res) => {
   if (payload.hd !== GOOGLE_DOMAIN || !email.endsWith(`@${GOOGLE_DOMAIN}`)) {
     throw new HttpError(403, `Sign in with your @${GOOGLE_DOMAIN} account`);
   }
-  const principal = await resolvePrincipal(email, false);
+  const principal = await resolvePrincipal({ email }, false);
   if (!principal) throw new HttpError(403, `${email} has no active account in HWAI — ask an admin to add you`);
-  await startSession(res, email, false);
+  await startSession(res, principal.userId, false);
   res.json(toMe(principal));
 });
 
@@ -68,9 +68,9 @@ authRouter.post("/auth/demo-login", async (req, res) => {
   if (!demoLoginEnabled()) throw new HttpError(404, "Not found");
   const { email } = parse(demoLoginBody, req.body);
   if (!demoAccounts().includes(email)) throw new HttpError(403, "This account can't use demo sign-in");
-  const principal = await resolvePrincipal(email, true);
+  const principal = await resolvePrincipal({ email }, true);
   if (!principal) throw new HttpError(403, "No active account with this email");
-  await startSession(res, email, true);
+  await startSession(res, principal.userId, true);
   console.warn(`[auth] demo sign-in as ${email} from ${req.ip} at ${new Date().toISOString()}`);
   res.json(toMe(principal));
 });

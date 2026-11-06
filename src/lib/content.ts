@@ -6,9 +6,9 @@ import type {
   Enrollment,
   GradingCategory,
   Rubric,
-  Student,
   StudentGroup,
   Submission,
+  User,
 } from "../generated/prisma/client.js";
 
 // ── Enum mapping (API values that aren't valid identifiers) ──────────────────
@@ -57,17 +57,17 @@ function compact<T extends Record<string, unknown>>(obj: T) {
 const iso = (d: Date) => d.toISOString();
 const ymd = (d: Date) => d.toISOString().slice(0, 10);
 
-/** `include` for an enrollment query: a roster row's name and email are the student's own. */
-export const withStudent = { student: { select: { firstName: true, lastName: true, email: true } } } as const;
+/** `include` for a roster row or a submission: the name and email shown are the student's own. */
+export const withStudent = { student: { select: { user: { select: { name: true, email: true } } } } } as const;
+type WithStudentName = { student: { user: Pick<User, "name" | "email"> } };
 
-export function toEnrollment(e: Enrollment & { student: Pick<Student, "firstName" | "lastName" | "email"> }) {
+export function toEnrollment(e: Enrollment & WithStudentName) {
   return compact({
     id: e.id,
     courseId: e.courseId,
     studentId: e.studentId,
-    firstName: e.student.firstName,
-    lastName: e.student.lastName,
-    email: e.student.email,
+    name: e.student.user.name,
+    email: e.student.user.email,
     sequenceNumber: e.sequenceNumber,
     enrollmentStatus: e.enrollmentStatus ? enrollmentStatus.toApi(e.enrollmentStatus) : null,
   });
@@ -124,14 +124,14 @@ export function toRubric(r: Rubric) {
   };
 }
 
-export function toSubmission(s: Submission) {
+export function toSubmission(s: Submission & WithStudentName) {
   return {
     ...compact({
       id: s.id,
       assignmentId: s.assignmentId,
       studentId: s.studentId,
-      studentName: s.studentName,
-      email: s.email,
+      studentName: s.student.user.name,
+      email: s.student.user.email,
       submittedAt: iso(s.submittedAt),
       attachments: s.attachments,
       instructorComment: s.instructorComment,
@@ -144,19 +144,21 @@ export function toSubmission(s: Submission) {
       updatedAt: iso(s.updatedAt),
     }),
     // `number | null` / `string | null` on the frontend, which checks `!== null` — keep the nulls.
-    fileUrl: s.fileUrl,
     aiScore: s.aiScore,
     instructorScore: s.instructorScore,
   };
 }
 
-export function toStudentGroup(g: StudentGroup) {
+/** `include` for a team query: its members, by student ID. */
+export const withMembers = { members: { select: { studentId: true }, orderBy: { studentId: "asc" } } } as const;
+
+export function toStudentGroup(g: StudentGroup & { members: { studentId: string }[] }) {
   return {
     id: g.id,
     assignmentId: g.assignmentId,
     courseId: g.courseId,
     name: g.name,
-    memberStudentIds: g.memberStudentIds,
+    memberStudentIds: g.members.map((m) => m.studentId),
     createdAt: iso(g.createdAt),
     updatedAt: iso(g.updatedAt),
   };

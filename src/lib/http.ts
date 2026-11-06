@@ -30,9 +30,10 @@ const UNIQUE_MESSAGES: Record<string, string> = {
   enrollments_course_id_student_id_key: "This student is already on this course's roster",
   enrollments_course_id_sequence_number_key: "That number is already taken on this course's roster",
   students_student_id_key: "A student with this student ID already exists",
-  students_email_key: "A student with this email already exists",
-  teachers_email_key: "A teacher with this email already exists",
+  users_email_key: "An account with this email already exists",
+  section_roles_course_id_user_id_key: "This person already has a role in this course",
   submissions_assignment_id_student_id_key: "This student has already handed in this assignment",
+  student_group_members_assignment_id_student_id_key: "This student is already in another team for this assignment",
 };
 
 /** A readable 400 for each CHECK constraint (the routes validate the same rules first). */
@@ -42,9 +43,8 @@ const CHECK_MESSAGES: Record<string, string> = {
   assignments_max_group_size_check: "A team size must be between 2 and 20",
   curriculum_versions_effective_range_check: "A curriculum version can't end before it starts",
   submissions_scores_check: "A score can't be negative",
-  students_email_lower_check: "Emails are stored in lower case",
-  teachers_email_lower_check: "Emails are stored in lower case",
-  admins_email_lower_check: "Emails are stored in lower case",
+  users_name_check: "A name can't be blank",
+  users_email_lower_check: "Emails are stored in lower case",
 };
 
 type AdapterCause = {

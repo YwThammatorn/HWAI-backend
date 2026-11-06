@@ -9,6 +9,7 @@ import type {
   Student,
   Teacher,
   Term,
+  User,
 } from "../generated/prisma/client.js";
 
 export type ApiTerm = 1 | 2 | 3 | "summer";
@@ -66,28 +67,35 @@ export function toCourse(c: Course) {
   });
 }
 
-export function toManagedTeacher(t: Teacher & { courses: { courseId: string }[] }) {
+/** `include` for a teacher query: their user row with the courses they teach (role "teacher", oldest first). */
+export const teacherInclude = {
+  user: {
+    include: {
+      sectionRoles: { where: { role: "teacher" }, select: { courseId: true }, orderBy: { createdAt: "asc" } },
+    },
+  },
+} as const;
+
+// A teacher / student as the API shows them: their user row's common fields + their subtype's. id = users.id.
+export function toManagedTeacher(t: Teacher & { user: User & { sectionRoles: { courseId: string }[] } }) {
   return compact({
-    id: t.id,
-    title: t.title,
-    name: t.name,
-    email: t.email,
-    role: t.role,
-    status: t.status,
-    courseIds: t.courses.map((c) => c.courseId),
+    id: t.userId,
+    title: t.user.title,
+    name: t.user.name,
+    email: t.user.email,
+    status: t.user.status,
+    courseIds: t.user.sectionRoles.map((r) => r.courseId),
   });
 }
 
-export function toCohortStudent(s: Student) {
+export function toCohortStudent(s: Student & { user: User }) {
   return compact({
-    id: s.id,
+    id: s.userId,
     studentId: s.studentId,
-    title: s.title,
-    firstName: s.firstName,
-    lastName: s.lastName,
-    email: s.email,
+    title: s.user.title,
+    name: s.user.name,
+    email: s.user.email,
     program: s.program,
-    status: s.status,
-    curriculumVersionId: s.curriculumVersionId,
+    status: s.user.status,
   });
 }

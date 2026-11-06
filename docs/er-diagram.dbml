@@ -1,0 +1,506 @@
+// HWAI — ER diagram (PostgreSQL), for https://dbdiagram.io
+//
+// Source: prisma/schema.prisma + prisma/migrations up to 20261109100000_users.
+// Table / column / enum names are the real PostgreSQL ones (@@map / @map), not the Prisma model names.
+//
+// Conventions:
+// - ids are text; Prisma fills uuid() on the client, so there is no database default on id.
+// - updated_at is set by Prisma (@updatedAt) on every write; the database has no default for it.
+// - Every FK is ON UPDATE CASCADE (Prisma's default); ON DELETE is shown per ref.
+// - jsonb columns hold JSON documents on purpose (not normalised); each has a note saying what is inside.
+// - What DBML cannot express (CHECK constraints, partial / expression indexes) is written in each
+//   table's Note.
+
+Project HWAI {
+  database_type: 'PostgreSQL'
+  Note: 'HWAI — AI-assisted grading for KMITL Computer Engineering. Schema as of migration 20261109100000_users.'
+}
+
+// ───────────────────────────── Enums ─────────────────────────────
+
+Enum program {
+  CECS
+  CEI
+  CE
+}
+
+Enum account_status {
+  active
+  inactive
+}
+
+Enum course_status {
+  active
+  archived
+}
+
+Enum course_icon {
+  book
+  chart
+  flask
+  code
+  palette
+  laptop
+  graduation
+  globe
+}
+
+Enum term {
+  "1"
+  "2"
+  "3"
+  summer
+}
+
+Enum enrollment_status {
+  enrolled
+  withdrawn
+  "added-midterm"
+}
+
+Enum submission_file_type {
+  figma
+  pdf
+  image
+}
+
+Enum submission_type {
+  individual
+  group
+}
+
+Enum grading_mode {
+  ai
+  manual
+}
+
+Enum submission_status {
+  not_graded
+  need_review
+  graded
+}
+
+Enum section_role_type {
+  teacher
+  ta
+  "co-teacher"
+}
+
+// ───────────────────── หลักสูตรและวิชา ─────────────────────
+
+Table curriculum_versions {
+  id text [pk]
+  program program [not null]
+  label text [not null]
+  effective_from int [not null, note: 'ปี พ.ศ. ที่เริ่มใช้']
+  effective_to int [note: 'null = ยังใช้อยู่']
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamptz [not null]
+
+  indexes {
+    (program, effective_from) [unique, name: 'curriculum_versions_program_effective_from_key']
+  }
+
+  Note: '''
+  หลักสูตร (ฉบับปี) ของแต่ละ program
+  CHECK curriculum_versions_effective_range_check: effective_to IS NULL OR effective_to >= effective_from
+  '''
+}
+
+Table course_templates {
+  id text [pk]
+  curriculum_version_id text [not null]
+  code text [not null]
+  name text [not null]
+  description text
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamptz [not null]
+
+  indexes {
+    curriculum_version_id [name: 'course_templates_curriculum_version_id_idx']
+  }
+
+  Note: '''
+  รายวิชาในหลักสูตร (วิชาแบบนามธรรม)
+  UNIQUE INDEX course_templates_version_code_key ON (curriculum_version_id, lower(code))
+  — รหัสวิชาไม่ซ้ำในหลักสูตรเดียวกันโดยไม่สนตัวพิมพ์ (expression index: DBML เขียนไม่ได้)
+  '''
+}
+
+Table courses {
+  id text [pk]
+  name text [not null]
+  description text [not null, default: '']
+  status course_status [not null, default: 'active']
+  cover_color text [not null]
+  icon course_icon [not null, default: 'book']
+  code text
+  course_template_id text
+  academic_year int
+  term term
+  section_number text
+  schedule text
+  room text
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamptz [not null]
+
+  indexes {
+    course_template_id [name: 'courses_course_template_id_idx']
+  }
+
+  Note: '''
+  รายวิชาที่เปิดสอน — หนึ่ง section ของวิชาในเทอมหนึ่ง
+  UNIQUE INDEX courses_active_section_key ON (course_template_id, academic_year, term, section_number)
+  WHERE status = 'active' — section ที่ active ไม่ซ้ำกัน (partial index: DBML เขียนไม่ได้)
+  '''
+}
+
+Table clos {
+  id text [pk]
+  course_id text [not null]
+  code text [not null, note: 'ซ้ำได้ — หน้า CLO อนุญาต']
+  text text [not null]
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamptz [not null]
+
+  indexes {
+    course_id [name: 'clos_course_id_idx']
+  }
+
+  Note: 'Course Learning Outcome ของแต่ละ section'
+}
+
+// ───────────────── บัญชีผู้ใช้และการเข้าระบบ ─────────────────
+
+Table users {
+  id text [pk, note: 'id ที่ API ใช้ของอาจารย์/นักศึกษา (ManagedTeacher.id, CohortStudent.id, accountId ของ section role)']
+  email text [not null, unique, note: 'ตัวพิมพ์เล็ก — ใช้หาบัญชีตอน sign-in (นักศึกษา: <student_id>@kmitl.ac.th)']
+  title text [note: 'คำนำหน้า']
+  name text [not null, note: 'ชื่อเต็มไม่มีคำนำหน้า']
+  status account_status [not null, default: 'active', note: 'sign-in ได้หรือไม่']
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamptz [not null]
+
+  Note: '''
+  ทุกคนที่ sign-in ได้ — supertype ของ admins / teachers / students (subtype ใช้ user_id = users.id เป็น PK)
+  อาจารย์ไม่เป็นนักศึกษาพร้อมกัน (โค้ดเช็ค); admin อาจเป็นอาจารย์หรือนักศึกษาด้วยก็ได้
+  CHECK users_email_lower_check: email = lower(email)
+  CHECK users_name_check: btrim(name) <> ''
+  '''
+}
+
+Table admins {
+  user_id text [pk, note: 'FK ไป users.id']
+  demo boolean [not null, default: false, note: 'เป็น admin เฉพาะตอนเปิด demo sign-in']
+
+  Note: 'subtype ของ users: ผู้ที่เข้าหน้า admin ได้'
+}
+
+Table teachers {
+  user_id text [pk, note: 'FK ไป users.id']
+
+  Note: 'subtype ของ users: อาจารย์ (ManagedTeacher ฝั่ง frontend) — บัญชีอาจารย์เป็นอาจารย์อย่างเดียว ไม่มี role'
+}
+
+Table students {
+  user_id text [pk, note: 'FK ไป users.id']
+  student_id text [not null, unique, note: 'รหัสนักศึกษา เช่น 69070101 — เป้าหมายของ FK จาก enrollments / submissions / student_group_members']
+  program program [not null]
+
+  Note: 'subtype ของ users: นักศึกษา (CohortStudent ฝั่ง frontend)'
+}
+
+Table sessions {
+  id text [pk, note: 'sha256(token) แบบ hex — cookie เก็บ token จริง']
+  user_id text [not null, note: 'ลบบัญชี = sign out ทุก browser']
+  demo boolean [not null, default: false]
+  expires_at timestamptz [not null]
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+
+  indexes {
+    user_id [name: 'sessions_user_id_idx']
+    expires_at [name: 'sessions_expires_at_idx']
+  }
+
+  Note: 'browser ที่ sign-in อยู่ ลบแถว = sign out'
+}
+
+// ───────────────────── roster และทีม ─────────────────────
+
+Table section_roles {
+  id text [pk]
+  course_id text [not null]
+  user_id text [not null, note: 'TA = นักศึกษา, co-teacher / teacher = อาจารย์']
+  role section_role_type [not null]
+  permissions jsonb [note: 'override สิทธิ์: { canManageRoster, canEditSettings, canPublishScores }']
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamptz [not null]
+
+  indexes {
+    (course_id, user_id) [unique, name: 'section_roles_course_id_user_id_key']
+    user_id [name: 'section_roles_user_id_idx']
+  }
+
+  Note: '''
+  staff ของ section ทั้งหมดในตารางเดียว: role = 'teacher' คืออาจารย์ผู้สอนหลัก (แอดมินกำหนด สิทธิ์เต็มเสมอ, permissions = null), 'co-teacher' / 'ta' คือผู้ร่วมดูแลที่อาจารย์เพิ่ม
+  โค้ด (API) เช็คเอง ไม่ใช่ฐานข้อมูล: role = 'ta' ต้องเป็นนักศึกษา (มีแถวใน students), role = 'co-teacher' / 'teacher' ต้องเป็นอาจารย์ (มีแถวใน teachers)
+  '''
+}
+
+Table enrollments {
+  id text [pk]
+  course_id text [not null]
+  student_id text [not null, note: 'FK ไป students.student_id']
+  sequence_number int [note: 'ลำดับในวิชา']
+  enrollment_status enrollment_status
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamptz [not null]
+
+  indexes {
+    (course_id, student_id) [unique, name: 'enrollments_course_id_student_id_key']
+    (course_id, sequence_number) [unique, name: 'enrollments_course_id_sequence_number_key']
+    student_id [name: 'enrollments_student_id_idx']
+  }
+
+  Note: 'รายชื่อนักศึกษาใน section (ชื่อ/อีเมลอ่านจาก students)'
+}
+
+Table student_groups {
+  id text [pk]
+  assignment_id text [not null]
+  course_id text [not null]
+  name text [not null]
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamptz [not null]
+
+  indexes {
+    (id, assignment_id) [unique, name: 'student_groups_id_assignment_id_key', note: 'เป้าหมายของ composite FK จาก student_group_members']
+    assignment_id [name: 'student_groups_assignment_id_idx']
+    course_id [name: 'student_groups_course_id_idx']
+  }
+
+  Note: 'ทีมของงานกลุ่มหนึ่งงาน'
+}
+
+Table student_group_members {
+  group_id text [not null]
+  assignment_id text [not null, note: 'คัดลอกมาจากทีม (composite FK) เพื่อบังคับ 1 ทีมต่องาน']
+  student_id text [not null, note: 'FK ไป students.student_id']
+
+  indexes {
+    (group_id, student_id) [pk]
+    (assignment_id, student_id) [unique, name: 'student_group_members_assignment_id_student_id_key', note: 'นักศึกษาอยู่ได้ทีมเดียวต่องาน']
+    student_id [name: 'student_group_members_student_id_idx']
+  }
+
+  Note: 'สมาชิกทีม หนึ่งแถวต่อหนึ่งคน'
+}
+
+// ──────────────────── งาน คะแนน และ rubric ────────────────────
+
+Table grading_categories {
+  id text [pk]
+  course_id text [not null]
+  name text [not null]
+  weight "double precision" [not null]
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamptz [not null]
+
+  indexes {
+    course_id [name: 'grading_categories_course_id_idx']
+  }
+
+  Note: '''
+  หมวดคะแนน — น้ำหนักรวมของวิชาควรเป็น 100 (ตรวจใน API)
+  CHECK grading_categories_weight_check: weight > 0 AND weight <= 100
+  '''
+}
+
+Table assignments {
+  id text [pk]
+  course_id text [not null]
+  name text [not null]
+  description text [not null, default: '']
+  attachments jsonb [note: 'AssignmentAttachment[]: ไฟล์/รูป/ลิงก์อ้างอิงของอาจารย์ (source "upload" เก็บ files.id ใน ref)']
+  due_date date [note: 'null สำหรับข้อสอบ']
+  max_points "double precision" [not null]
+  category_id text
+  accepts_files boolean [not null, default: true]
+  file_types "submission_file_type[]" [not null]
+  submission_type submission_type [not null, default: 'individual']
+  max_group_size int
+  grading_finalized boolean [not null, default: false, note: '"Finish & announce"']
+  is_exam boolean [not null, default: false]
+  grading_mode grading_mode [note: 'null = ยังไม่เลือก']
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamptz [not null]
+
+  indexes {
+    course_id [name: 'assignments_course_id_idx']
+    category_id [name: 'assignments_category_id_idx']
+  }
+
+  Note: '''
+  งานของ section
+  CHECK assignments_max_points_check: max_points > 0
+  CHECK assignments_max_group_size_check: max_group_size IS NULL OR max_group_size BETWEEN 2 AND 20
+  '''
+}
+
+Table rubrics {
+  id text [pk]
+  assignment_id text [not null]
+  name text [not null]
+  criteria jsonb [not null, note: 'RubricCriterion[] พร้อม levels ของแต่ละเกณฑ์']
+  ai_offsets jsonb [note: 'การปรับ AI จากหน้า Calibration: { [criterionId]: จำนวน level ที่เลื่อน }']
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamptz [not null]
+
+  indexes {
+    assignment_id [name: 'rubrics_assignment_id_idx']
+  }
+}
+
+Table submissions {
+  id text [pk]
+  assignment_id text [not null]
+  student_id text [not null, note: 'FK ไป students.student_id']
+  submitted_at timestamptz [not null]
+  attachments jsonb [note: 'AssignmentAttachment[]: ไฟล์/ลิงก์ที่ส่ง']
+  ai_score "double precision"
+  instructor_score "double precision"
+  instructor_comment text [not null, default: '']
+  criterion_comments jsonb [note: '{ [criterionId]: string }']
+  criterion_scores jsonb [note: '{ [criterionId]: number } — คะแนนสุดท้าย']
+  ai_criterion_scores jsonb [note: '{ [criterionId]: number } — คะแนนของ AI เอง']
+  external_use_consent boolean [not null, default: false]
+  status submission_status [not null, default: 'not_graded']
+  group_id text [note: 'ไม่ใช่ FK: เก็บไว้แม้ทีมถูกยุบภายหลัง']
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamptz [not null]
+
+  indexes {
+    (assignment_id, student_id) [unique, name: 'submissions_assignment_id_student_id_key']
+    student_id [name: 'submissions_student_id_idx']
+  }
+
+  Note: '''
+  งานที่นักศึกษาหนึ่งคนส่งในงานหนึ่ง (งานกลุ่ม: สมาชิกทุกคนมีแถวของตัวเอง ใช้ group_id ร่วมกัน)
+  CHECK submissions_scores_check: (ai_score IS NULL OR ai_score >= 0) AND (instructor_score IS NULL OR instructor_score >= 0)
+  '''
+}
+
+Table rubric_library_entries {
+  id text [pk]
+  name text [not null]
+  course_template_id text [note: 'null = ใช้ได้ทุกวิชา']
+  criteria jsonb [not null, note: 'RubricCriterion[] แบบเดียวกับ rubric แต่ไม่มีข้อมูลการตรวจ']
+  source_assignment_id text [note: 'ที่มา (provenance) เท่านั้น']
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamptz [not null]
+
+  indexes {
+    course_template_id [name: 'rubric_library_entries_course_template_id_idx']
+  }
+
+  Note: 'คลัง rubric สำหรับใช้ซ้ำ ผูกกับวิชาในหลักสูตร'
+}
+
+Table calibration_runs {
+  id text [pk]
+  assignment_id text [not null]
+  sample_ids "text[]" [not null, note: 'งานตัวอย่าง: submission id หรือ key ของทีม (ไม่ใช่ FK)']
+  teacher_levels jsonb [not null, note: '{ [sampleId]: { [criterionId]: level } } — 0 = ดีที่สุด']
+  completed_at timestamptz
+  applied_at timestamptz [note: 'เวลาที่กด "Use these values"']
+  applied_offsets jsonb [note: 'offsets ที่บันทึกลง rubrics.ai_offsets: { [criterionId]: number }']
+  created_at timestamptz [not null, note: 'client เป็นผู้กำหนด (ไม่มี default)']
+  updated_at timestamptz [not null]
+
+  indexes {
+    assignment_id [name: 'calibration_runs_assignment_id_idx']
+  }
+
+  Note: 'การ calibrate AI: อาจารย์ตรวจตัวอย่างแบบ blind แล้วเทียบกับ AI ทีละเกณฑ์'
+}
+
+// ─────────────────────────── ไฟล์ ───────────────────────────
+
+Table files {
+  id text [pk, note: 'attachment ที่ source = "upload" เก็บ id นี้เป็น ref; เสิร์ฟที่ GET /api/files/:id']
+  name text [not null]
+  mime_type text [not null]
+  size int [not null]
+  data bytea [not null]
+  uploaded_by text [note: 'email ผู้อัปโหลด (ไม่ใช่ FK) — null สำหรับไฟล์ก่อนมีระบบ sign-in']
+  created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
+
+  Note: 'ไฟล์ที่อัปโหลด (แนบในงานและในการส่งงาน) — ถูกอ้างจาก jsonb attachments ไม่มี FK'
+}
+
+// ─────────────────────────── Refs ───────────────────────────
+
+Ref: course_templates.curriculum_version_id > curriculum_versions.id [delete: cascade, update: cascade]
+Ref: courses.course_template_id > course_templates.id [delete: set null, update: cascade]
+Ref: clos.course_id > courses.id [delete: cascade, update: cascade]
+
+Ref: users.id - admins.user_id [delete: cascade, update: cascade]
+Ref: users.id - teachers.user_id [delete: cascade, update: cascade]
+Ref: users.id - students.user_id [delete: cascade, update: cascade]
+Ref: sessions.user_id > users.id [delete: cascade, update: cascade]
+
+Ref: section_roles.course_id > courses.id [delete: cascade, update: cascade]
+Ref: section_roles.user_id > users.id [delete: cascade, update: cascade]
+Ref: enrollments.course_id > courses.id [delete: cascade, update: cascade]
+Ref: enrollments.student_id > students.student_id [delete: cascade, update: cascade]
+Ref: student_groups.assignment_id > assignments.id [delete: cascade, update: cascade]
+Ref: student_groups.course_id > courses.id [delete: cascade, update: cascade]
+Ref: student_group_members.(group_id, assignment_id) > student_groups.(id, assignment_id) [delete: cascade, update: cascade]
+Ref: student_group_members.student_id > students.student_id [delete: cascade, update: cascade]
+
+Ref: grading_categories.course_id > courses.id [delete: cascade, update: cascade]
+Ref: assignments.course_id > courses.id [delete: cascade, update: cascade]
+Ref: assignments.category_id > grading_categories.id [delete: set null, update: cascade]
+Ref: rubrics.assignment_id > assignments.id [delete: cascade, update: cascade]
+Ref: submissions.assignment_id > assignments.id [delete: cascade, update: cascade]
+Ref: submissions.student_id > students.student_id [delete: cascade, update: cascade]
+Ref: rubric_library_entries.course_template_id > course_templates.id [delete: cascade, update: cascade]
+Ref: rubric_library_entries.source_assignment_id > assignments.id [delete: set null, update: cascade]
+Ref: calibration_runs.assignment_id > assignments.id [delete: cascade, update: cascade]
+
+// ───────────────────────── TableGroups ─────────────────────────
+
+TableGroup "หลักสูตรและวิชา" {
+  curriculum_versions
+  course_templates
+  courses
+  clos
+}
+
+TableGroup "บัญชีผู้ใช้และการเข้าระบบ" {
+  users
+  teachers
+  students
+  admins
+  sessions
+}
+
+TableGroup "roster และทีม" {
+  section_roles
+  enrollments
+  student_groups
+  student_group_members
+}
+
+TableGroup "งาน คะแนน และ rubric" {
+  grading_categories
+  assignments
+  rubrics
+  submissions
+  rubric_library_entries
+  calibration_runs
+}
+
+TableGroup "ไฟล์" {
+  files
+}
