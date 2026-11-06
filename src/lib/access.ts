@@ -1,9 +1,9 @@
 // What a signed-in caller may do, per course.
 //
 // - Admin: everything.
-// - Staff of a course: anyone with a section role in it. Permissions follow HWAI-frontend/src/lib/section-roles.ts:
-//   its teacher (role "teacher", admin-assigned) gets everything, a co-teacher everything unless their stored
-//   permissions say otherwise, a TA only what their permissions say. Any staff may grade.
+// - Staff of a course: anyone with a section role in it. What they may do comes from the role alone
+//   (HWAI-frontend/src/lib/section-roles.ts): its teacher (admin-assigned) and a co-teacher everything, a TA
+//   none of the three permissions (roster, settings, publishing scores). Any staff may grade.
 // - Member of a course: staff, or a student enrolled in it (not withdrawn).
 import type { Request } from "express";
 import { prisma } from "./prisma.js";
@@ -29,9 +29,7 @@ const merge = (a: Permissions | null, b: Permissions): Permissions =>
       }
     : b;
 
-export function permissionsOf(role: "teacher" | "ta" | "coTeacher", stored: unknown): Permissions {
-  if (role === "teacher") return FULL; // the course's own teacher
-  if (stored && typeof stored === "object") return { ...TA, ...(stored as Partial<Permissions>) };
+export function permissionsOf(role: "teacher" | "ta" | "coTeacher"): Permissions {
   return role === "ta" ? TA : FULL;
 }
 
@@ -48,9 +46,9 @@ async function staffCourses(p: Principal, courseId?: string): Promise<Map<string
   if (p.teacher || p.student) {
     const roles = await prisma.sectionRole.findMany({
       where: { userId: p.userId, ...(courseId && { courseId }) },
-      select: { courseId: true, role: true, permissions: true },
+      select: { courseId: true, role: true },
     });
-    for (const r of roles) out.set(r.courseId, merge(out.get(r.courseId) ?? null, permissionsOf(r.role, r.permissions)));
+    for (const r of roles) out.set(r.courseId, merge(out.get(r.courseId) ?? null, permissionsOf(r.role)));
   }
   return out;
 }

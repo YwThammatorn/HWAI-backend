@@ -104,7 +104,6 @@ model Course {
   status            CourseStatus      @default(active)
   coverColor        String            @map("cover_color")
   icon              CourseIcon        @default(book)
-  code              String?
   courseTemplateId  String?           @map("course_template_id")
   courseTemplate    CourseTemplate?   @relation(fields: [courseTemplateId], references: [id], onDelete: SetNull)
   academicYear      Int?              @map("academic_year")
@@ -240,32 +239,37 @@ enum GradingMode {
 }
 
 model Assignment {
-  id               String               @id @default(uuid())
-  courseId         String               @map("course_id")
-  course           Course               @relation(fields: [courseId], references: [id], onDelete: Cascade)
-  name             String
-  description      String               @default("")
+  id                String               @id @default(uuid())
+  courseId          String               @map("course_id")
+  course            Course               @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  name              String
+  description       String               @default("")
   /// Teacher reference files/images/links: AssignmentAttachment[] (see src/lib/content.ts).
-  attachments      Json?
-  dueDate          DateTime?            @map("due_date") @db.Date // none for an exam
-  maxPoints        Float                @map("max_points")
-  categoryId       String?              @map("category_id")
-  category         GradingCategory?     @relation(fields: [categoryId], references: [id], onDelete: SetNull)
-  acceptsFiles     Boolean              @default(true) @map("accepts_files")
-  fileTypes        SubmissionFileType[] @map("file_types")
-  submissionType   SubmissionType       @default(individual) @map("submission_type")
-  maxGroupSize     Int?                 @map("max_group_size")
+  attachments       Json?
+  dueDate           DateTime?            @map("due_date") @db.Date // none for an exam
+  maxPoints         Float                @map("max_points")
+  categoryId        String?              @map("category_id")
+  category          GradingCategory?     @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  acceptsFiles      Boolean              @default(true) @map("accepts_files")
+  fileTypes         SubmissionFileType[] @map("file_types")
+  submissionType    SubmissionType       @default(individual) @map("submission_type")
+  maxGroupSize      Int?                 @map("max_group_size")
   /// Kept as the frontend manages it (its rubric list, in order); rubrics also point back via assignment_id.
-  gradingFinalized Boolean              @default(false) @map("grading_finalized") // "Finish & announce"
-  isExam           Boolean              @default(false) @map("is_exam")
-  gradingMode      GradingMode?         @map("grading_mode") // null = not chosen yet
-  createdAt        DateTime             @default(now()) @map("created_at") @db.Timestamptz(3)
-  updatedAt        DateTime             @updatedAt @map("updated_at") @db.Timestamptz(3)
-  rubrics          Rubric[]
-  submissions      Submission[]
-  studentGroups    StudentGroup[]
-  calibrationRuns  CalibrationRun[]
-  libraryEntries   RubricLibraryEntry[]
+  gradingFinalized  Boolean              @default(false) @map("grading_finalized") // "Finish & announce"
+  isExam            Boolean              @default(false) @map("is_exam")
+  gradingMode       GradingMode?         @map("grading_mode") // null = not chosen yet
+  /// What late work costs, and until when it is accepted (frontend LatePolicy) — null: none, closes at the deadline.
+  latePolicy        Json?                @map("late_policy")
+  /// Set when the rubric's scoring changed after grading had started (scores cleared); the frontend clears it
+  /// once its AI has scored the waiting work again.
+  rubricRestartedAt DateTime?            @map("rubric_restarted_at") @db.Timestamptz(3)
+  createdAt         DateTime             @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt         DateTime             @updatedAt @map("updated_at") @db.Timestamptz(3)
+  rubrics           Rubric[]
+  submissions       Submission[]
+  studentGroups     StudentGroup[]
+  calibrationRuns   CalibrationRun[]
+  libraryEntries    RubricLibraryEntry[]
 
   @@index([courseId])
   @@index([categoryId])
@@ -386,17 +390,15 @@ enum SectionRoleType {
 // admin — ManagedTeacher.courseIds), co-teachers and TAs (SectionRole in HWAI-frontend/src/lib/section-roles.ts).
 // A teacher or co-teacher is a teacher, a TA is a student — checked by the API. accountId = user_id.
 model SectionRole {
-  id          String          @id @default(uuid())
-  courseId    String          @map("course_id")
-  course      Course          @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  id        String          @id @default(uuid())
+  courseId  String          @map("course_id")
+  course    Course          @relation(fields: [courseId], references: [id], onDelete: Cascade)
   /// A TA is a student; a co-teacher (or teacher) is a teacher — checked by the API, not the database.
-  userId      String          @map("user_id")
-  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  role        SectionRoleType
-  /// Overrides the role's default permissions when set: { canManageRoster, canEditSettings, canPublishScores }.
-  permissions Json?
-  createdAt   DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
-  updatedAt   DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
+  userId    String          @map("user_id")
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role      SectionRoleType
+  createdAt DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
 
   @@unique([courseId, userId])
   @@index([userId])

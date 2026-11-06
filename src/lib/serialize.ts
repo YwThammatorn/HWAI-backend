@@ -47,7 +47,10 @@ export function toCourseTemplate(t: CourseTemplate) {
   });
 }
 
-export function toCourse(c: Course) {
+/** `include` for a course query: its subject's code (a section has none of its own). */
+export const courseInclude = { courseTemplate: { select: { code: true } } } as const;
+
+export function toCourse(c: Course & { courseTemplate: { code: string } | null }) {
   return compact({
     id: c.id,
     name: c.name,
@@ -57,7 +60,7 @@ export function toCourse(c: Course) {
     icon: c.icon,
     createdAt: c.createdAt.toISOString(),
     updatedAt: c.updatedAt.toISOString(),
-    code: c.code,
+    code: c.courseTemplate?.code, // the subject's code — none without a template
     courseTemplateId: c.courseTemplateId,
     academicYear: c.academicYear,
     term: c.term ? TERM_TO_API[c.term] : null,

@@ -50,7 +50,7 @@ const responses = {
     icon: z.enum(["book", "chart", "flask", "code", "palette", "laptop", "graduation", "globe"]),
     createdAt: z.iso.datetime(),
     updatedAt: z.iso.datetime(),
-    code: opt(z.string()),
+    code: opt(z.string()).describe("รหัสวิชาของ course template (ไม่ได้เก็บที่ section; ไม่ผูก template = ไม่มี) — ส่งมาตอนสร้าง/แก้ได้แต่ไม่ใช้"),
     courseTemplateId: opt(z.string()),
     academicYear: opt(z.number().int()),
     term: opt(z.union([z.literal(1), z.literal(2), z.literal(3), z.literal("summer")])),
@@ -119,7 +119,6 @@ const responses = {
     accountId: z.string(),
     courseId: z.string(),
     role: z.enum(["teacher", "ta", "co-teacher"]),
-    permissions: opt(z.object({ canManageRoster: z.boolean(), canEditSettings: z.boolean(), canPublishScores: z.boolean() })),
   }),
   CLO: z.object({ id: z.string(), courseId: z.string(), code: z.string(), text: z.string(), ...timestamps }),
   RubricLibraryEntry: libraryEntryCreate.omit({ id: true }).extend({ id: z.string(), createdAt: z.iso.datetime() }),
@@ -163,7 +162,6 @@ const examples = {
     coverColor: "#0F766E",
     icon: "code",
     courseTemplateId: "ct-18",
-    code: "01076112",
     academicYear: 2569,
     term: 2,
     sectionNumber: "2",
@@ -215,7 +213,6 @@ const examples = {
   groupCreate: { name: "ทีม A", memberStudentIds: ["69070101", "69070102"] },
   groupUpdate: { memberStudentIds: ["69070101"] },
   roleCreateTa: { accountId: "cs-mock-14", role: "ta" },
-  rolePermissions: { canManageRoster: false, canEditSettings: false, canPublishScores: true },
   cloCreate: { code: "CLO5", text: "นักศึกษาสามารถทดสอบโปรแกรมด้วย unit test ได้" },
   cloUpdate: { text: "นักศึกษาสามารถเขียน unit test ครอบคลุมกรณีขอบได้" },
   libraryEntryCreate: {
@@ -289,8 +286,8 @@ export const openapiSpec = {
       "**การเข้าสู่ระบบ** — session อยู่ใน cookie `hwai_session` (HttpOnly) ทุก endpoint ต้องเข้าสู่ระบบก่อน ยกเว้น /health และ /auth/*. " +
       "ลองใน Swagger: เรียก `POST /auth/demo-login` ก่อน (ต้องรันด้วย DEMO_LOGIN=true) แล้ว cookie จะติดไปกับทุก request\n\n" +
       "**สิทธิ์** — admin ทำได้ทุกอย่าง · หลักสูตร / บัญชีอาจารย์-นักศึกษา / สร้าง-ลบรายวิชา: admin เท่านั้น · " +
-      "ในรายวิชา: อาจารย์หลักและ co-teacher ทำได้ทุกอย่าง, TA ตาม permissions (canManageRoster = รายชื่อ + ผู้ร่วมสอน, " +
-      "canEditSettings = ตั้งค่ารายวิชา / งาน / rubric / หมวดคะแนน / CLO, canPublishScores = ประกาศคะแนน), staff ทุกคนตรวจงานได้ · " +
+      "ในรายวิชา (ตาม role): อาจารย์ของวิชาและ co-teacher ทำได้ทุกอย่าง, TA ไม่มีสิทธิ์จัดการรายชื่อ + ผู้ร่วมสอน / ตั้งค่ารายวิชา งาน rubric หมวดคะแนน CLO / ประกาศคะแนน, " +
+      "staff ทุกคนตรวจงานได้ · " +
       "นักศึกษา: อ่านข้อมูลรายวิชาที่ลงทะเบียน, ส่งงานของตัวเอง (หรือของเพื่อนร่วมทีม) โดยเซิร์ฟเวอร์กำหนดผู้ส่ง เวลา และคะแนนเอง, " +
       "เห็นคะแนนตัวเองหลังประกาศ และคะแนนคนอื่นแบบไม่ระบุตัวตน",
   },
@@ -503,13 +500,6 @@ export const openapiSpec = {
         summary: "เพิ่มผู้ร่วมสอน — accountId = id ของนักศึกษา (TA ต้องเป็นนักศึกษา) หรืออาจารย์ (co-teacher ต้องเป็นอาจารย์ role teacher); 1 role ต่อคนต่อวิชา",
         params: [courseId], body: body(json(sectionRoleCreate), examples.roleCreateTa), res: ok(ref("SectionRole"), "201"),
         errors: { "400": "Validation error / role ไม่เข้ากับบัญชี (นักศึกษาเป็นได้แค่ TA) / ไม่พบบัญชี", "409": "คนนี้มี role ในรายวิชานี้แล้ว" },
-      }),
-    },
-    "/section-roles/{id}/permissions": {
-      patch: op("Collaborators", {
-        summary: "กำหนดสิทธิ์แทนค่าเริ่มต้นของ role (ส่ง null = กลับไปใช้ค่าเริ่มต้น)",
-        params: [id], body: body({ type: ["object", "null"], properties: { canManageRoster: { type: "boolean" }, canEditSettings: { type: "boolean" }, canPublishScores: { type: "boolean" } } }, examples.rolePermissions),
-        res: ok(ref("SectionRole")), errors: { ...V400, ...N404 },
       }),
     },
     "/section-roles/{id}": {

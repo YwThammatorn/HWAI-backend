@@ -22,6 +22,10 @@ import {
   toAssignment,
   toRubric,
   toSubmission,
+  cleanLatePolicy,
+  latePolicyProblem,
+  latePolicySchema,
+  type LatePolicy,
   withMembers,
   withRubricIds,
   withStudent,
@@ -51,6 +55,8 @@ const assignmentFields = z.object({
   gradingFinalized: z.boolean().optional(),
   isExam: z.boolean().optional(),
   gradingMode: z.enum(["ai", "manual"]).nullish(), // teacher's choice; null = not chosen yet
+  latePolicy: latePolicySchema.nullish(), // null = none (closes at the deadline)
+  rubricRestartedAt: z.iso.datetime({ offset: true }).nullish(), // set / cleared by the frontend around an AI re-grade
 });
 export const assignmentCreate = assignmentFields.extend({
   ...idOverride,
@@ -64,13 +70,24 @@ export const assignmentCreate = assignmentFields.extend({
 });
 export const assignmentUpdate = assignmentFields.partial();
 
-function assignmentData<T extends { attachments?: unknown; dueDate?: string | null; rubricIds?: string[] }>(data: T) {
-  const { attachments, dueDate, rubricIds: _derived, ...rest } = data;
+function assignmentData<T extends {
+  attachments?: unknown; dueDate?: string | null; rubricIds?: string[]; latePolicy?: LatePolicy | null; rubricRestartedAt?: string | null;
+}>(data: T) {
+  const { attachments, dueDate, rubricIds: _derived, latePolicy, rubricRestartedAt, ...rest } = data;
   return {
     ...rest,
     attachments: json(attachments),
     dueDate: dueDate === undefined ? undefined : dueDate === null ? null : new Date(`${dueDate}T00:00:00Z`),
+    latePolicy: json(latePolicy && cleanLatePolicy(latePolicy)),
+    rubricRestartedAt: rubricRestartedAt === undefined ? undefined : rubricRestartedAt === null ? null : new Date(rubricRestartedAt),
   };
+}
+
+/** 400 when a late policy being saved doesn't fit the assignment's (new or current) due date. */
+function assertLatePolicy(policy: LatePolicy | null | undefined, dueDate: string | null) {
+  if (!policy) return;
+  const problem = latePolicyProblem(policy, dueDate);
+  if (problem) throw new HttpError(400, problem);
 }
 
 // Members of a course read its assignments. Creating, editing and deleting one is a course setting
@@ -97,18 +114,22 @@ assignmentsRouter.get("/assignments/:id", async (req, res) => {
 assignmentsRouter.post("/courses/:courseId/assignments", async (req, res) => {
   await requireStaff(req, req.params.courseId, "canEditSettings");
   const { courseId: _ignored, ...data } = parse(assignmentCreate, req.body);
+  assertLatePolicy(data.latePolicy, data.dueDate ?? null);
   const row = await prisma.assignment.create({ data: { ...assignmentData(data), courseId: req.params.courseId }, include: withRubricIds });
   res.status(201).json(toAssignment(row));
 });
 
 assignmentsRouter.patch("/assignments/:id", async (req, res) => {
   const data = parse(assignmentUpdate, req.body);
-  const current = await prisma.assignment.findUniqueOrThrow({ where: { id: req.params.id }, select: { courseId: true, gradingFinalized: true } });
+  const current = await prisma.assignment.findUniqueOrThrow({ where: { id: req.params.id }, select: { courseId: true, gradingFinalized: true, dueDate: true } });
   const perms = await requireStaff(req, current.courseId);
   const announcing = data.gradingFinalized !== undefined && data.gradingFinalized !== current.gradingFinalized;
   if (announcing && !perms.canPublishScores) throw new HttpError(403, "You need the canPublishScores permission in this course");
-  const settings = Object.keys(data).filter((k) => !["gradingFinalized", "gradingMode", "rubricIds"].includes(k));
+  // Grading-side fields any staff may write; everything else (latePolicy included) is a course setting.
+  const settings = Object.keys(data).filter((k) => !["gradingFinalized", "gradingMode", "rubricIds", "rubricRestartedAt"].includes(k));
   if (settings.length > 0 && !perms.canEditSettings) throw new HttpError(403, "You need the canEditSettings permission in this course");
+  const dueDate = data.dueDate !== undefined ? data.dueDate : current.dueDate && current.dueDate.toISOString().slice(0, 10);
+  assertLatePolicy(data.latePolicy, dueDate ?? null);
   const row = await prisma.assignment.update({ where: { id: req.params.id }, data: assignmentData(data), include: withRubricIds });
   res.json(toAssignment(row));
 });

@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { z } from "zod";
 import { prisma } from "../lib/prisma.js";
-import { Prisma } from "../generated/prisma/client.js";
 import { HttpError, parse } from "../lib/http.js";
 import { requireAdmin } from "../lib/access.js";
 import { removeKind, splitUserFields, userFor } from "../lib/accounts.js";
@@ -66,7 +65,7 @@ async function assignCourse(tx: Tx, userId: string, courseId: string) {
   await tx.sectionRole.upsert({
     where: { courseId_userId: { courseId, userId } },
     create: { courseId, userId, role: "teacher" },
-    update: { role: "teacher", permissions: Prisma.DbNull },
+    update: { role: "teacher" },
   });
 }
 

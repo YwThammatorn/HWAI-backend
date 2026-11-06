@@ -4,7 +4,7 @@ import { prisma } from "../lib/prisma.js";
 import { HttpError, parse } from "../lib/http.js";
 import { requireAdmin, requireStaff } from "../lib/access.js";
 import { principalOf } from "../lib/auth.js";
-import { teacherInclude, termFromApi, toCourse, toManagedTeacher } from "../lib/serialize.js";
+import { courseInclude, teacherInclude, termFromApi, toCourse, toManagedTeacher } from "../lib/serialize.js";
 
 export const coursesRouter = Router();
 
@@ -14,7 +14,7 @@ const courseFields = z.object({
   status: z.enum(["active", "archived"]),
   coverColor: z.string().min(1),
   icon: z.enum(["book", "chart", "flask", "code", "palette", "laptop", "graduation", "globe"]), // COURSE_ICON_KEYS in HWAI-frontend
-  code: z.string().nullish(),
+  code: z.string().nullish(), // accepted and ignored: the code is the course template's (frontend mock mode still sends it)
   courseTemplateId: z.string().nullish(),
   academicYear: z.number().int().nullish(),
   term: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal("summer")]).nullish(),
@@ -35,26 +35,26 @@ export const courseUpdate = courseFields.partial();
 // pages. Which subject / year / term / section a course is stays with admins.
 const STAFF_FIELDS = new Set(["name", "description", "status", "coverColor", "icon", "schedule", "room"]);
 
-function mapTerm<T extends { term?: 1 | 2 | 3 | "summer" | null }>(data: T) {
-  const { term, ...rest } = data;
+function mapTerm<T extends { term?: 1 | 2 | 3 | "summer" | null; code?: string | null }>(data: T) {
+  const { term, code: _fromTemplate, ...rest } = data;
   if (term === undefined) return rest;
   return { ...rest, term: term === null ? null : termFromApi(term) };
 }
 
 coursesRouter.get("/courses", async (_req, res) => {
-  const rows = await prisma.course.findMany({ orderBy: { createdAt: "asc" } });
+  const rows = await prisma.course.findMany({ include: courseInclude, orderBy: { createdAt: "asc" } });
   res.json(rows.map(toCourse));
 });
 
 coursesRouter.get("/courses/:id", async (req, res) => {
-  const row = await prisma.course.findUniqueOrThrow({ where: { id: req.params.id } });
+  const row = await prisma.course.findUniqueOrThrow({ where: { id: req.params.id }, include: courseInclude });
   res.json(toCourse(row));
 });
 
 coursesRouter.post("/courses", async (req, res) => {
   requireAdmin(req);
   const data = parse(courseCreate, req.body);
-  const row = await prisma.course.create({ data: mapTerm(data) });
+  const row = await prisma.course.create({ data: mapTerm(data), include: courseInclude });
   res.status(201).json(toCourse(row));
 });
 
@@ -62,10 +62,10 @@ coursesRouter.patch("/courses/:id", async (req, res) => {
   const data = parse(courseUpdate, req.body);
   if (!principalOf(req).admin) {
     await requireStaff(req, req.params.id, "canEditSettings");
-    const adminOnly = Object.keys(data).filter((k) => !STAFF_FIELDS.has(k));
+    const adminOnly = Object.keys(data).filter((k) => !STAFF_FIELDS.has(k) && k !== "code"); // code: ignored
     if (adminOnly.length > 0) throw new HttpError(403, `Only an admin can change: ${adminOnly.join(", ")}`);
   }
-  const row = await prisma.course.update({ where: { id: req.params.id }, data: mapTerm(data) });
+  const row = await prisma.course.update({ where: { id: req.params.id }, data: mapTerm(data), include: courseInclude });
   res.json(toCourse(row));
 });
 

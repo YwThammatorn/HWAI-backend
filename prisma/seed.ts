@@ -5,7 +5,7 @@ import { readFileSync } from "node:fs";
 import { prisma } from "../src/lib/prisma.js";
 import { termFromApi, type ApiTerm } from "../src/lib/serialize.js";
 import { enrollmentStatus, submissionStatus } from "../src/lib/content.js";
-import { Prisma } from "../src/generated/prisma/client.js";
+import type { Prisma } from "../src/generated/prisma/client.js";
 
 function load<T>(file: string): T {
   return JSON.parse(readFileSync(new URL(`./seed-data/${file}`, import.meta.url), "utf8")) as T;
@@ -39,7 +39,8 @@ async function main() {
   for (const t of curriculum.courseTemplates) {
     await prisma.courseTemplate.upsert({ where: { id: t.id }, create: t, update: t });
   }
-  for (const { term, ...c } of courses) {
+  // code: the mock's copy of the template's code — a section has none of its own (the API reads the template's)
+  for (const { term, code: _fromTemplate, ...c } of courses as (SeedCourse & { code?: string | null })[]) {
     const data = { ...c, term: term === undefined ? undefined : termFromApi(term) };
     await prisma.course.upsert({ where: { id: c.id }, create: data, update: data });
   }
@@ -120,7 +121,7 @@ async function seedTeaches(userId: string, courseId: string) {
   await prisma.sectionRole.upsert({
     where: { courseId_userId: { courseId, userId } },
     create: { courseId, userId, role: "teacher" },
-    update: { role: "teacher", permissions: Prisma.DbNull },
+    update: { role: "teacher" },
   });
 }
 

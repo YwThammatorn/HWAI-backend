@@ -67,8 +67,8 @@ frontend ต้องรันที่ origin ที่อยู่ใน `CORS
 |---|---|
 | admin | ทุกอย่าง |
 | ทุกคนที่เข้าสู่ระบบ | อ่านรายวิชา, หลักสูตร, รายชื่ออาจารย์; อัปโหลด / เปิดไฟล์; ลบไฟล์ที่ตัวเองอัปโหลด |
-| อาจารย์ของวิชา (section role `teacher` ที่ admin assign) / co-teacher | ทุกอย่างในวิชานั้น (co-teacher ถูกจำกัดสิทธิ์ได้ด้วย `permissions`) |
-| TA (`section_roles`) | ตรวจงาน, เลือกโหมดตรวจ, Calibration + ตาม `permissions`: `canManageRoster` รายชื่อ + ผู้ร่วมสอน, `canEditSettings` ตั้งค่าวิชา / งาน / rubric / หมวดคะแนน / CLO, `canPublishScores` ประกาศคะแนน — ให้สิทธิ์คนอื่นเกินที่ตัวเองมีไม่ได้ และแก้สิทธิ์ตัวเองไม่ได้ |
+| อาจารย์ของวิชา (section role `teacher` ที่ admin assign) / co-teacher | ทุกอย่างในวิชานั้น |
+| TA (`section_roles`) | ตรวจงาน, เลือกโหมดตรวจ, Calibration — สิทธิ์มาจาก role อย่างเดียว: ไม่มีสิทธิ์จัดการรายชื่อ + ผู้ร่วมสอน (`canManageRoster`), ตั้งค่าวิชา / งาน / rubric / หมวดคะแนน / CLO (`canEditSettings`) และประกาศคะแนน (`canPublishScores`) |
 | อาจารย์ (ทุกคน) | ใช้คลัง rubric; เห็นรายชื่อนักศึกษาทั้งหมด (ไว้เพิ่มเข้าวิชา / เลือก TA) |
 | นักศึกษา | อ่านข้อมูลวิชาที่ลงทะเบียน (รายชื่อเพื่อน, งาน, rubric, ทีม, CLO); ส่ง / ส่งซ้ำงานของตัวเอง หรือของเพื่อนร่วมทีมในงานกลุ่ม — ผู้ส่ง, ชื่อ, เวลา, คะแนน, สถานะ เซิร์ฟเวอร์กำหนดเอง ส่งซ้ำได้แค่ไฟล์/ลิงก์ และส่งซ้ำงานที่ตรวจแล้วไม่ได้; ตั้งทีมที่ตัวเองอยู่ / ออกจากทีม; เห็นข้อมูลนักศึกษาของตัวเองเท่านั้น |
 
@@ -145,13 +145,19 @@ Response shape ตรงกับ type ใน `HWAI-frontend/src/lib/*.ts` (fiel
 | rubric | `GET /rubrics` | `GET /assignments/:id/rubrics` | `POST` ที่เดียวกัน | `PATCH`/`DELETE /rubrics/:id` |
 | งานที่ส่ง | `GET /submissions` | `GET /assignments/:id/submissions` | `POST` ที่เดียวกัน (1 ครั้ง/คน/งาน, ซ้ำ = 409) | `PATCH /submissions/:id` |
 | ทีม | `GET /student-groups` | `GET /assignments/:id/groups` | `POST` ที่เดียวกัน (ไม่เกิน `maxGroupSize`) | `PATCH`/`DELETE /student-groups/:id` |
-| ผู้ร่วมสอน (section roles) | `GET /section-roles` | `GET /courses/:courseId/roles` | `POST` ที่เดียวกัน (`accountId` = id นักศึกษาสำหรับ TA / id อาจารย์สำหรับ co-teacher, 1 role ต่อคนต่อวิชา) | `PATCH /section-roles/:id/permissions`, `DELETE /section-roles/:id` |
+| ผู้ร่วมสอน (section roles) | `GET /section-roles` | `GET /courses/:courseId/roles` | `POST` ที่เดียวกัน (`accountId` = id นักศึกษาสำหรับ TA / id อาจารย์สำหรับ co-teacher, 1 role ต่อคนต่อวิชา) | `DELETE /section-roles/:id` |
 | CLO | `GET /clos` | `GET /courses/:courseId/clos` | `POST` ที่เดียวกัน | `PATCH`/`DELETE /clos/:id` |
 | คลัง rubric | `GET /rubric-library` | `GET /rubric-library?courseTemplateId=` (วิชานั้น + ที่ใช้ได้ทุกวิชา) | `POST /rubric-library` | `PATCH` (เปลี่ยนชื่อ) / `DELETE /rubric-library/:id` |
 | Calibration | `GET /calibration-runs` | `GET /calibration-runs?assignmentId=` | `PUT /calibration-runs/:id` (สร้างหรือแทนที่ทั้ง run) | `DELETE /calibration-runs/:id` |
 
 field เกี่ยวกับ AI: งานมี `gradingMode` (`"ai"`/`"manual"` — อาจารย์เลือกตอนเริ่มตรวจ), งานที่ส่งมี `aiCriterionScores` (คะแนนรายเกณฑ์ที่ AI ให้),
 rubric มี `aiOffsets` (ค่าปรับ AI จากหน้า Calibration) และเกณฑ์แต่ละข้อมี `cloIds` (CLO ที่เกณฑ์นั้นวัด)
+
+งานยังมี `latePolicy` (ส่งช้าได้ถึงวันไหน หักคะแนนแบบไหน — `{ closeDate, mode: none|perDay|tiers|flat, unit: percent|points, amount?, cap?, tiers? }`;
+ตรวจรูปแบบตามที่ frontend ตรวจ: `closeDate` ต้องหลัง `dueDate`, percent ไม่เกิน 100 ฯลฯ ไม่งั้น 400; เก็บเฉพาะ field ที่ mode ใช้ tiers เรียงแล้ว;
+ส่ง `null` = ไม่มี; เป็นการตั้งค่ารายวิชา ต้องมี `canEditSettings`) — backend แค่เก็บไว้ การหักคะแนน frontend คำนวณเอง (`finalScoreOf`)
+และยังไม่บังคับช่วงเวลาส่งงาน/เริ่มตรวจฝั่ง server · `rubricRestartedAt` (เวลาที่ rubric ถูกแก้ระหว่างตรวจจนคะแนนถูกล้าง) — frontend ตั้งและล้างเอง
+(หลัง AI ตรวจงานที่รออยู่ใหม่) staff คนไหนก็แก้ได้ (เช่น TA ที่สั่ง AI ตรวจใหม่)
 
 ลบงาน → rubric, งานที่ส่ง และทีมของงานนั้นถูกลบตาม · ลบรายวิชา → เนื้อหาทั้งหมดของรายวิชาถูกลบตาม · ลบหมวดคะแนน → งานยังอยู่แค่ไม่มีหมวด
 
@@ -195,7 +201,7 @@ src/
 |---|---|---|---|
 | `curriculum_versions` | `CurriculumVersion` | `/curriculum-versions` | หลักสูตร |
 | `course_templates` | `CourseTemplate` | `/course-templates` | รายวิชาในหลักสูตร |
-| `courses` | `Course` | `/courses` | รายวิชาที่เปิดสอน (section) |
+| `courses` | `Course` | `/courses` | รายวิชาที่เปิดสอน (section) — `code` ที่ API ส่งคือรหัสของ course template (section ไม่เก็บเอง แก้ที่ template แล้วทุก section เปลี่ยนตาม) |
 | `users` | `User` | (`id`, `title`, `name`, `email`, `status` ของอาจารย์ / นักศึกษา) | ทุกคนที่เข้าระบบ — อีเมลไม่ซ้ำและเป็นตัวเล็ก, ชื่อห้ามว่าง (CHECK) |
 | `teachers` | `Teacher` | `/managed-teachers` | อาจารย์ — `user_id` (PK, FK ไป `users`); วิชาที่สอน (`courseIds`) คือ section role `teacher` ของคนนั้น |
 | `students` | `Student` | `/cohort-students` | นักศึกษา — `user_id` (PK, FK ไป `users`) + `student_id` (ที่ roster / งานที่ส่ง / ทีม ชี้มา), `program`, หลักสูตร |

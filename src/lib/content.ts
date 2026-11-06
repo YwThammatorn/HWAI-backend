@@ -45,6 +45,45 @@ export const criterionSchema = z.looseObject({
 export const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "expected YYYY-MM-DD");
 export const idOverride = { id: z.string().min(1).optional() };
 
+// ── Late policy (HWAI-frontend src/lib/assignments.ts LatePolicy, API_CONTRACT "Late policy / deduction") ──
+
+export const latePolicySchema = z.object({
+  closeDate: isoDate, // the last day late work is accepted — after the due date
+  mode: z.enum(["none", "perDay", "tiers", "flat"]),
+  unit: z.enum(["percent", "points"]),
+  amount: z.number().optional(),
+  cap: z.number().optional(),
+  tiers: z.array(z.object({ untilDay: z.number(), amount: z.number() })).optional(),
+});
+export type LatePolicy = z.infer<typeof latePolicySchema>;
+
+/** What is wrong with a policy, as the frontend's latePolicyProblem — null when it is fine. */
+export function latePolicyProblem(p: LatePolicy, dueDate: string | null): string | null {
+  if (!dueDate) return "A late policy needs a due date";
+  if (p.closeDate <= dueDate) return "latePolicy.closeDate must be after the due date";
+  const ok = (n: number | undefined) => typeof n === "number" && Number.isFinite(n) && n >= 0 && (p.unit === "points" || n <= 100);
+  const amountRule = p.unit === "percent" ? "between 0 and 100 (percent)" : "0 or more (points)";
+  if (p.mode === "flat" && !ok(p.amount)) return `latePolicy.amount must be ${amountRule}`;
+  if (p.mode === "perDay" && (!ok(p.amount) || (p.cap !== undefined && !ok(p.cap)))) return `latePolicy.amount and cap must be ${amountRule}`;
+  if (p.mode === "tiers") {
+    const ts = p.tiers ?? [];
+    if (ts.length === 0 || ts.some((x) => !Number.isInteger(x.untilDay) || x.untilDay < 1 || !ok(x.amount))) {
+      return `latePolicy.tiers needs at least one tier, each with a whole untilDay of 1 or more and an amount ${amountRule}`;
+    }
+    if (new Set(ts.map((x) => x.untilDay)).size !== ts.length) return "latePolicy.tiers can't repeat an untilDay";
+  }
+  return null;
+}
+
+/** Only the fields the chosen mode uses, tiers sorted — what is stored (the frontend's cleanLatePolicy). */
+export function cleanLatePolicy(p: LatePolicy): LatePolicy {
+  const base = { closeDate: p.closeDate, mode: p.mode, unit: p.unit };
+  if (p.mode === "none") return base;
+  if (p.mode === "flat") return { ...base, amount: p.amount ?? 0 };
+  if (p.mode === "perDay") return { ...base, amount: p.amount ?? 0, ...(p.cap !== undefined && { cap: p.cap }) };
+  return { ...base, tiers: [...(p.tiers ?? [])].sort((x, y) => x.untilDay - y.untilDay) };
+}
+
 // ── Serializers ──────────────────────────────────────────────────────────────
 
 /** Drop keys whose value is null/undefined so OPTIONAL fields come out as `undefined` on the client. */
@@ -105,6 +144,8 @@ export function toAssignment(a: Assignment & { rubrics: { id: string }[] }) {
       gradingFinalized: a.gradingFinalized,
       isExam: a.isExam,
       gradingMode: a.gradingMode,
+      latePolicy: a.latePolicy,
+      rubricRestartedAt: a.rubricRestartedAt ? iso(a.rubricRestartedAt) : null,
       createdAt: iso(a.createdAt),
       updatedAt: iso(a.updatedAt),
     }),

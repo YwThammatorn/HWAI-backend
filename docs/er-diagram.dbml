@@ -1,6 +1,6 @@
 // HWAI — ER diagram (PostgreSQL), for https://dbdiagram.io
 //
-// Source: prisma/schema.prisma + prisma/migrations up to 20261109100000_users.
+// Source: prisma/schema.prisma + prisma/migrations up to 20261114100000_assignment_late_policy.
 // Table / column / enum names are the real PostgreSQL ones (@@map / @map), not the Prisma model names.
 //
 // Conventions:
@@ -13,7 +13,7 @@
 
 Project HWAI {
   database_type: 'PostgreSQL'
-  Note: 'HWAI — AI-assisted grading for KMITL Computer Engineering. Schema as of migration 20261109100000_users.'
+  Note: 'HWAI — AI-assisted grading for KMITL Computer Engineering. Schema as of migration 20261114100000_assignment_late_policy.'
 }
 
 // ───────────────────────────── Enums ─────────────────────────────
@@ -134,8 +134,7 @@ Table courses {
   status course_status [not null, default: 'active']
   cover_color text [not null]
   icon course_icon [not null, default: 'book']
-  code text
-  course_template_id text
+  course_template_id text [note: 'รหัสวิชา (code ใน API) อ่านจาก course_templates.code ไม่ได้เก็บซ้ำในตารางนี้']
   academic_year int
   term term
   section_number text
@@ -232,7 +231,6 @@ Table section_roles {
   course_id text [not null]
   user_id text [not null, note: 'TA = นักศึกษา, co-teacher / teacher = อาจารย์']
   role section_role_type [not null]
-  permissions jsonb [note: 'override สิทธิ์: { canManageRoster, canEditSettings, canPublishScores }']
   created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
   updated_at timestamptz [not null]
 
@@ -242,7 +240,7 @@ Table section_roles {
   }
 
   Note: '''
-  staff ของ section ทั้งหมดในตารางเดียว: role = 'teacher' คืออาจารย์ผู้สอนหลัก (แอดมินกำหนด สิทธิ์เต็มเสมอ, permissions = null), 'co-teacher' / 'ta' คือผู้ร่วมดูแลที่อาจารย์เพิ่ม
+  staff ของ section ทั้งหมดในตารางเดียว: role = 'teacher' คืออาจารย์ผู้สอนหลัก (แอดมินกำหนด), 'co-teacher' / 'ta' คือผู้ร่วมดูแลที่อาจารย์เพิ่ม — สิทธิ์คิดจาก role อย่างเดียว: teacher / co-teacher ทำได้ทุกอย่าง, ta จัดการ roster / แก้ settings / ประกาศคะแนนไม่ได้
   โค้ด (API) เช็คเอง ไม่ใช่ฐานข้อมูล: role = 'ta' ต้องเป็นนักศึกษา (มีแถวใน students), role = 'co-teacher' / 'teacher' ต้องเป็นอาจารย์ (มีแถวใน teachers)
   '''
 }
@@ -262,7 +260,7 @@ Table enrollments {
     student_id [name: 'enrollments_student_id_idx']
   }
 
-  Note: 'รายชื่อนักศึกษาใน section (ชื่อ/อีเมลอ่านจาก students)'
+  Note: 'รายชื่อนักศึกษาใน section (ชื่อ/อีเมลอ่านจาก users ผ่าน students.user_id)'
 }
 
 Table student_groups {
@@ -332,6 +330,8 @@ Table assignments {
   grading_finalized boolean [not null, default: false, note: '"Finish & announce"']
   is_exam boolean [not null, default: false]
   grading_mode grading_mode [note: 'null = ยังไม่เลือก']
+  late_policy jsonb [note: 'นโยบายรับงานช้า: { closeDate, mode (none / perDay / tiers / flat), unit (percent / points), amount?, cap?, tiers? } — null = ปิดรับตอนครบกำหนด']
+  rubric_restarted_at timestamptz [note: 'เวลาที่แก้ rubric หลังเริ่มตรวจแล้ว (คะแนนเดิมถูกล้าง รอตรวจใหม่) — null = ไม่มี']
   created_at timestamptz [not null, default: `CURRENT_TIMESTAMP`]
   updated_at timestamptz [not null]
 
